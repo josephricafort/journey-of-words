@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1572518738908.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "3EFF65F3",
+    "lastKnownWriteTime" : 1573744176,
+    "last_content_update" : 1573744176625,
+    "path" : "~/Work/Portfolio Projects/Austronesian Language Dataviz/main.R",
+    "project_path" : "main.R",
+    "properties" : {
+        "cursorPosition" : "116,50",
+        "scrollLine" : "95",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
