@@ -1,0 +1,84 @@
+warning: LF will be replaced by CRLF in .Rproj.user/7A8F4B65/sources/prop/3D8CFC28.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in .Rproj.user/7A8F4B65/sources/prop/528452B5.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in .Rproj.user/7A8F4B65/sources/prop/D9186A76.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in .Rproj.user/7A8F4B65/sources/s-443693D1/2C72790E.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in .Rproj.user/7A8F4B65/sources/s-443693D1/3EFF65F3.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in .Rproj.user/7A8F4B65/sources/s-443693D1/42684195.
+The file will have its original line endings in your working directory
+[1mdiff --git a/.Rproj.user/7A8F4B65/console06/CE4E6EF1 b/.Rproj.user/7A8F4B65/console06/CE4E6EF1[m
+[1mindex ae93def..e495f19 100644[m
+[1m--- a/.Rproj.user/7A8F4B65/console06/CE4E6EF1[m
+[1m+++ b/.Rproj.user/7A8F4B65/console06/CE4E6EF1[m
+[36m@@ -508,4 +508,223 @@[m [m$[0K[3G[?25h[?25l$ e[0K[3G[?25h[4G[?25l$ echo -e "a\n*\nq\n"|git add[m
+  38: xd/mobile_web.xd[0K[m
+ [0;34;94mAdd untracked[0m>>[0K[17G[?25h[?25l[0;34;94mAdd untracked[0m>> warning: LF will be replaced by CRLF in .Rhistory.[0K[17G[?25h[?25l[m
+ The file will have its original line endings in your working directory[0K[m
+[32m+[m[32m[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/7A8F4B65/pcs/files-pane.pper.[0K[?25l[m[41m[m
+[32m+[m[32mThe file will have its original line endings in your working directory[0K[m[41m[m
+[32m+[m[32m[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/7A8F4B65/pcs/source-pane.pper.[0K[?25l[m[41m[m
+[32m+[m[32mThe file will have its original line endings in your working directory[0K[m[41m[m
+[32m+[m[32m[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/7A8F4B65/rmd-outputs.[0K[?25l[m[41m[m
+[32m+[m[32mThe file will have its original line endings in your working directory[0K[m[41m[m
+[32m+[m[32m[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/7A8F4B65/sources/prop/3D8CFC28.[0K[?25l[m[41m[m
+[32m+[m[32mThe file will have its original line endings in your working directory[0K[m[41m[m
+[32m+[m[32m[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/7A8F4B65/sources/prop/528452B5.[0K[?25l[m[41m[m
+[32m+[m[32mThe file will have its original line endings in your working directory[0K[m[41m[m
+[32m+[m[32m[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/7A8F4B65/sources/prop/6F689A0B.[0K[?25l[m[41m[m
+[32m+[m[32mThe file will have its original line endings in your working directory[0K[m[41m[m
+[32m+[m[32m[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/7A8F4B65/sources/prop/D9186A76.[0K[?25l[m[41m[m
+[32m+[m[32mThe file will have its original line endings in your working directory[0K[m[41m[m
+[32m+[m[32m[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/7A8F4B65/sources/prop/FC642901.[0K[?25l[m[41m[m
+[32m+[m[32mThe file will have its original line endings in your working directory[0K[m[41m[m
+[32m+[m[32m[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/7A8F4B65/sources/prop/INDEX.[0K[?25l[m[41m[m
+[32m+[m[32mThe file will have its original line endings in your working directory[0K[m[41m[m
+[32m+[m[32m[0K[?25h[?25lwarning: LF will be replaced by CRLF in .Rproj.user/7A8F4B65/sources/s-443693D1/2C72790E.[0K[1G[?25h[?25l[m[41m[m
+[32m+[m[32mThe file will have its original line endings in your working directory[0K[m[41m[m
+[32m+[m[32m[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/7A8F4B65/sources/s-443693D1/2C72790E-contents.[0K[?25l[m[41m[m
+[32m+[m[32mThe file will have its original line endings in your working directory[0K[m[41m[m
+[32m+[m[32m[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/7A8F4B65/sources/s-443693D1/3EFF65F3.[0K[?25l[m[41m[m
+[32m+[m[32mThe file will have its original line endings in your working directory[0K[m[41m[m
+[32m+[m[32m[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/7A8F4B65/sources/s-443693D1/3EFF65F3-contents.[0K[?25l[m[41m[m
+[32m+[m[32mThe file will have its original line endings in your working directory[0K[m[41m[m
+[32m+[m[32m[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/7A8F4B65/sources/s-443693D1/42684195.[0K[?25l[m[41m[m
+[32m+[m[32mThe file will have its original line endings in your working directory[0K[m[41m[m
+[32m+[m[32m[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/7A8F4B65/sources/s-443693D1/42684195-contents.[0K[?25l[m[41m[m
+[32m+[m[32mThe file will have its original line endings in your working directory[0K[m[41m[m
+[32m+[m[32m[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/7A8F4B65/sources/s-443693D1/BBA7E068.[0K[?25l[m[41m[m
+[32m+[m[32mThe file will have its original line endings in your working directory[0K[m[41m[m
+[32m+[m[32m[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/7A8F4B65/sources/s-443693D1/BBA7E068-contents.[0K[?25l[m[41m[m
+[32m+[m[32mThe file will have its original line endings in your working directory[0K[m[41m[m
+[32m+[m[32m[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/shared/notebooks/paths.[0K[?25l[m[41m[m
+[32m+[m[32mThe file will have its original line endings in your working directory[0K[m[41m[m
+[32m+[m[32m[0K[?25hwarning: LF will be replaced by CRLF in assets/svg/World_map_blank_without_borders.svg.[0K[?25l[m[41m[m
+[32m+[m[32mThe file will have its original line endings in your working directory[0K[m[41m[m
+[32m+[m[32m[0K[?25hadded 38 paths[0K[?25l[m[41m[m
+[32m+[m[32m[0K[?25h[?25l[m[41m[m
+[32m+[m[32m[0;1m*** Commands ***[0m[0K[m[41m[m
+[32m+[m[32m  1: [0;34;94ms[0mtatus       2: [0;34;94mu[0mpdate       3: [0;34;94mr[0mevert       4: [0;34;94ma[0mdd untracked[0K[m[41m[m
+[32m+[m[32m  5: [0;34;94mp[0match        6: [0;34;94md[0miff         7: [0;34;94mq[0muit         8: [0;34;94mh[0melp[0K[m[41m[m
+[32m+[m[32m[0;34;94mWhat now[0m> Bye.[0K[m[41m[m
+[32m+[m[32m[0K[?25h[?25l[m[41m[m
+[32m+[m[32m[0;32mLenovo@JRICAFORT-L03 [0;35m [0;33m/f/Documents/Work/Portfolio Projects/Austronesian Language Dataviz[0;36m (master)[0m[0K[m[41m[m
+[32m+[m[32m$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git s[0K[?25ht[0Ka[0Kt[0K[?25lu[0K[11G[?25h[12G[?25l$ git status[0K[?25h[?25l[m[41m[m
+[32m+[m[32m[0K[?25hOn branch master[0K[?25l[m[41m[m
+[32m+[m[32m[0K[m[41m[m
+[32m+[m[32mNo commits yet[0K[m[41m[m
+[32m+[m[32m[0K[m[41m[m
+[32m+[m[32mChanges to be committed:[0K[m[41m[m
+[32m+[m[32m  (use "git rm --cached <file>..." to unstage)[0K[m[41m[m
+[32m+[m[32m[0K[m[41m[m
+[32m+[m[32m        [0;32mnew file:   .RData[0m[0K[m[41m[m
+[32m+[m[32m        [0;32mnew file:   .Rhistory[0m[0K[m[41m[m
+[32m+[m[32m        [0;32mnew file:   .Rproj.user/7A8F4B65/console06/CE4E6EF1[0m[0K[m[41m[m
+[32m+[m[32m        [0;32mnew file:   .Rproj.user/7A8F4B65/console06/INDEX001[0m[0K[m[41m[m
+[32m+[m[32m        [0;32mnew file:   .Rproj.user/7A8F4B65/pcs/files-pane.pper[0m[0K[m[41m[m
+[32m+[m[32m        [0;32mnew file:   .Rproj.user/7A8F4B65/pcs/source-pane.pper[0m[0K[m[41m[m
+[32m+[m[32m        [0;32mnew file:   .Rproj.user/7A8F4B65/pcs/windowlayoutstate.pper[0m[0K[m[41m[m
+[32m+[m[32m        [0;32mnew file:   .Rproj.user/7A8F4B65/pcs/workbench-pane.pper[0m[0K[m[41m[m
+[32m+[m[32m        [0;32mnew file:   .Rproj.user/7A8F4B65/rmd-outputs[0m[0K[m[41m[m
+[32m+[m[32m        [0;32mnew file:   .Rproj.user/7A8F4B6

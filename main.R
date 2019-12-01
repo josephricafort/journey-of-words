@@ -1,6 +1,12 @@
+# install.packages("ggrepel")
+# install.packages("RColorBrewer")
+
 library(tidyverse)
 library(rvest)
 library(magrittr)
+library(maps)
+library(ggrepel)
+library(RColorBrewer)
 
 source("./info.R")
 source("./utils.R")
@@ -62,57 +68,62 @@ language_words <- tibble()
 
 
 
-# Fetching by API
+# # Fetching by API
+# 
+# language_info_api <- tibble()
+# language_words_api <- tibble()
+# 
+# for (i in first:last) {
+#   language_info <- tibble()
+#   language_words <- tibble()
+#   
+#   print(paste("Downloading language info ", i, "...", sep = ""))
+#   xml_string <- paste(url_api, i %>% as.character, sep = "") %>%
+#     read_html()
+#   
+#   language_info <- xml_string %>%
+#     html_node("record")
+#   
+#   id_lang <- language_info %>% html_node("id") %>% html_text
+#   language <- language_info %>% html_node("language") %>% html_text
+#   author <- language_info %>% html_node("author") %>% html_text
+#   silcode <- language_info %>% html_node("silcode") %>% html_text
+#   glottocode <- language_info %>% html_node("glottocode") %>% html_text
+#   notes <- language_info %>% html_node("notes") %>% html_text
+#   problems <- language_info %>% html_node("problems") %>% html_text
+#   classification <- language_info %>% html_node("classification") %>% html_text
+#   typedby <- language_info %>% html_node("typedby") %>% html_text
+#   checkedby <- language_info %>% html_node("checkedby") %>% html_text
+# 
+#   latitude <- xml_string %>% html_node("latitude") %>% html_text
+#   longitude <- xml_string %>% html_node("longitude") %>% html_text
+#     
+#   language_words <- xml_string %>%
+#     html_nodes("record") %>%
+#     extract(-1)
+#   
+#   id <- language_words %>% html_node("id") %>% html_text
+#   word_id <- language_words %>% html_node("word_id") %>% html_text
+#   word <- language_words %>% html_node("word") %>% html_text
+#   item <- language_words %>% html_node("item") %>% html_text
+#   annotation <- language_words %>% html_node("annotation") %>% html_text
+#   loan <- language_words %>% html_node("loan") %>% html_text
+#   cognacy <- language_words %>% html_node("cognacy") %>% html_text
+#   pmpcognacy <- language_words %>% html_node("pmpcognacy") %>% html_text
+#   
+#   language_info <- tibble(id_lang, language, author, silcode, glottocode, notes, problems, classification, typedby, checkedby, latitude, longitude)
+#   language_words <- tibble(id_lang, language, id, word_id, word, item, annotation, loan, cognacy, pmpcognacy)
+#   
+#   language_info_api <- bind_rows(language_info_api, language_info)
+#   language_words_api <- bind_rows(language_words_api, language_words)
+#   
+#   print(paste("Language ", language, " accessed...", sep = ""))
+# }
 
-language_info_api <- tibble()
-language_words_api <- tibble()
-
-for (i in first:last) {
-  language_info <- tibble()
-  language_words <- tibble()
-  
-  print(paste("Downloading language info ", i, "...", sep = ""))
-  xml_string <- paste(url_api, i %>% as.character, sep = "") %>%
-    read_html()
-  
-  language_info <- xml_string %>%
-    html_node("record")
-  
-  id_lang <- language_info %>% html_node("id") %>% html_text
-  language <- language_info %>% html_node("language") %>% html_text
-  author <- language_info %>% html_node("author") %>% html_text
-  silcode <- language_info %>% html_node("silcode") %>% html_text
-  glottocode <- language_info %>% html_node("glottocode") %>% html_text
-  notes <- language_info %>% html_node("notes") %>% html_text
-  problems <- language_info %>% html_node("problems") %>% html_text
-  classification <- language_info %>% html_node("classification") %>% html_text
-  typedby <- language_info %>% html_node("typedby") %>% html_text
-  checkedby <- language_info %>% html_node("checkedby") %>% html_text
-
-  latitude <- xml_string %>% html_node("latitude") %>% html_text
-  longitude <- xml_string %>% html_node("longitude") %>% html_text
-    
-  language_words <- xml_string %>%
-    html_nodes("record") %>%
-    extract(-1)
-  
-  id <- language_words %>% html_node("id") %>% html_text
-  word_id <- language_words %>% html_node("word_id") %>% html_text
-  word <- language_words %>% html_node("word") %>% html_text
-  item <- language_words %>% html_node("item") %>% html_text
-  annotation <- language_words %>% html_node("annotation") %>% html_text
-  loan <- language_words %>% html_node("loan") %>% html_text
-  cognacy <- language_words %>% html_node("cognacy") %>% html_text
-  pmpcognacy <- language_words %>% html_node("pmpcognacy") %>% html_text
-  
-  language_info <- tibble(id_lang, language, author, silcode, glottocode, notes, problems, classification, typedby, checkedby, latitude, longitude)
-  language_words <- tibble(id_lang, language, id, word_id, word, item, annotation, loan, cognacy, pmpcognacy)
-  
-  language_info_api <- bind_rows(language_info_api, language_info)
-  language_words_api <- bind_rows(language_words_api, language_words)
-  
-  print(paste("Language ", language, " accessed...", sep = ""))
-}
+language_info_api_clean <- language_info_api %>%
+  mutate(latitude = as.numeric(latitude),
+         longitude = as.numeric(longitude)) %>%
+  as_tibble
 
 language_words_api_clean <- language_words_api %>%
   filter(!is.na(id)) %>%
@@ -120,7 +131,38 @@ language_words_api_clean <- language_words_api %>%
               select(id_lang, language, silcode),
             by = c("id_lang", "language")) %>%
   select(language, silcode, id_lang, id:pmpcognacy) %>%
-  arrange(language)
+  separate(col = cognacy, into = c("cognacy1", "cognacy2"), sep="\\,") %>%
+  mutate(cognacy1 = as.numeric(cognacy1),
+         cognacy2 = as.numeric(cognacy2)) %>%
+  arrange(language) %>%
+  left_join(language_info_api_clean %>%
+              select(language, silcode, classification, longitude, latitude)) %>%
+  as_tibble
 
 write.csv(language_info_clean, "data/output_csv/language_info_clean.csv")
 write.csv(language_words_clean, "data/output_csv/language_words_clean.csv")
+
+# Visualize
+# Create scatterplot map of words
+
+world <- map_data("world2")
+
+language_info_api_clean_sel <- language_info_api_clean %>%
+  mutate(longitude = ifelse(longitude < 0, longitude + 360, longitude)) %>%
+  filter(classification %>% str_detect("Austronesian"))
+
+language_words_api_clean_sel <- language_words_api_clean %>%
+  mutate(longitude = ifelse(longitude < 0, longitude + 360, longitude)) %>%
+  filter(classification %>% str_detect("Austronesian")) %>%
+  # filter(word %>% str_detect("red"))
+  filter(word == "woman/female")
+
+ggplot(language_words_api_clean_sel) +
+  geom_polygon(data = world, aes(long, lat, group = group), fill="grey", alpha=0.3) +
+  geom_contour(aes(x = longitude, y = latitude, z = cognacy1)) +
+  # geom_point(data = language_info_api_clean_sel, aes(longitude, latitude)) +
+  geom_text(aes(longitude, latitude, label = item, color = cognacy1), size = 3, check_overlap = TRUE) +
+  theme_minimal() +
+  xlim(35, 270) + ylim(-40, 35) +
+  scale_color_gradient(low = "red", high = "blue")
+
