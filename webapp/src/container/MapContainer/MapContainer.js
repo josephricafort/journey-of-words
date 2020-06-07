@@ -1,6 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
 
-import { Map as LeafletMap, TileLayer, Marker, Tooltip } from "react-leaflet";
+import {
+  Map as LeafletMap,
+  TileLayer,
+  Marker,
+  Tooltip,
+  ZoomControl,
+} from "react-leaflet";
 import LayerGroupCollision from "../../component/LayerGroupCollision/LayerGroupCollision";
 import styles from "./MapContainer.module.scss";
 
@@ -10,7 +16,8 @@ require("react-leaflet-markercluster/dist/styles.min.css");
 const MapContainer = () => {
   const mapRef = useRef(Map);
   // const [mapBounds, setMapBounds] = useState({});
-  const [wordMain, setWord] = useState("eye");
+  const [wordList, setWordList] = useState([]);
+  const [wordMain, setWord] = useState("fire");
   const [dataInfo, setDataInfo] = useState([]);
   const [wordTranslationsData, setWordTranslationsData] = useState([]);
   // const [mapMove, setMapMove] = useState(false);
@@ -38,10 +45,6 @@ const MapContainer = () => {
       });
   }, [dataInfo]);
 
-  const checkVal = (val) => {
-    return val !== undefined ? val : 0;
-  };
-
   const wordTranslation = (dataWords) => {
     return dataInfo.map((langInfo) => {
       const langWordElement = dataWords.find(
@@ -65,7 +68,7 @@ const MapContainer = () => {
       zoom={6}
       maxZoom={10}
       attributionControl={true}
-      zoomControl={true}
+      zoomControl={false}
       doubleClickZoom={true}
       scrollWheelZoom={true}
       dragging={true}
@@ -78,11 +81,11 @@ const MapContainer = () => {
         url={STAMEN_STYLE_LAYER}
         ext="jpg"
         attribution={ATTRIBUTION}
+        zIndex={-100}
       ></TileLayer>
-      {/* <LayerGroupCollision> */}
       {wordTranslationsData.map((lang) => (
         <Marker
-          position={[checkVal(lang.latitude), checkVal(lang.longitude)]}
+          position={[lang.latitude, lang.longitude]}
           key={lang.language_id}
           opacity={0}
         >
@@ -91,7 +94,7 @@ const MapContainer = () => {
           </Tooltip>
         </Marker>
       ))}
-      {/* </LayerGroupCollision> */}
+      <ZoomControl position="topright"></ZoomControl>
     </LeafletMap>
   );
 };

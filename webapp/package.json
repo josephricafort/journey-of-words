@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.10.1",
     "leaflet": "^1.6.0",
+    "leaflet.layergroup.collision": "^0.3.1",
     "leaflet.markercluster": "^1.4.1",
     "node-sass": "^4.14.1",
     "prop-types": "^15.7.2",
