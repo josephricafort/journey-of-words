@@ -1,11 +1,22 @@
 .menu-container {
+  background-color: #ffffff;
   position: absolute;
   top: 0;
-  left: 50%;
-  transform: translate(-50%, 0);
+  left: 0;
   z-index: 1000;
+  max-height: calc(100vh - 12px);
+  overflow: auto;
+  border-radius: 5px;
 
-  .menu {
-    position: block;
+  .word-details {
+    position: sticky;
+    top: 0;
+    padding: 0 16px;
+    z-index: 1050;
+    border-radius: 0;
+  }
+
+  .menu-list {
+    width: 100%;
   }
 }

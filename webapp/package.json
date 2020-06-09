@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.10.1",
+    "@material-ui/icons": "^4.9.1",
     "leaflet": "^1.6.0",
     "leaflet.layergroup.collision": "^0.3.1",
     "leaflet.markercluster": "^1.4.1",
@@ -15,6 +16,7 @@
     "react-leaflet": "^2.7.0",
     "react-leaflet-markercluster": "^2.0.0",
     "react-scripts": "3.2.0",
+    "react-swipeable-views": "^0.13.9",
     "style-loader": "^1.2.1"
   },
   "scripts": {

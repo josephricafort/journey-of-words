@@ -9,18 +9,18 @@ import {
 } from "react-leaflet";
 import LayerGroupCollision from "../../component/LayerGroupCollision/LayerGroupCollision";
 import styles from "./MapContainer.module.scss";
+import MenuContainer from "../MenuContainer/MenuContainer";
+import wordsInfo from "../../data/output_json/words_info.json";
 
 require("leaflet/dist/leaflet.css");
 require("react-leaflet-markercluster/dist/styles.min.css");
 
 const MapContainer = () => {
+  const [wordMain, setWordMain] = useState("Five");
   const mapRef = useRef(Map);
-  // const [mapBounds, setMapBounds] = useState({});
   const [wordList, setWordList] = useState([]);
-  const [wordMain, setWord] = useState("fire");
   const [dataInfo, setDataInfo] = useState([]);
   const [wordTranslationsData, setWordTranslationsData] = useState([]);
-  // const [mapMove, setMapMove] = useState(false);
 
   const DB_LOCAL = "http://localhost:3000";
   const STAMEN_STYLE_LAYER =
@@ -33,7 +33,6 @@ const MapContainer = () => {
       .then((response) => response.json())
       .then((data) => {
         setDataInfo(data.filter((lang) => !!lang.latitude && !!lang.longitude));
-        console.log(dataInfo);
       });
   }, []);
 
@@ -43,7 +42,7 @@ const MapContainer = () => {
       .then((data) => {
         setWordTranslationsData(wordTranslation(data));
       });
-  }, [dataInfo]);
+  }, [dataInfo, wordMain]);
 
   const wordTranslation = (dataWords) => {
     return dataInfo.map((langInfo) => {
@@ -62,40 +61,45 @@ const MapContainer = () => {
   };
 
   return (
-    <LeafletMap
-      className={styles.style}
-      center={[2.218, 115.6628]}
-      zoom={6}
-      maxZoom={10}
-      attributionControl={true}
-      zoomControl={false}
-      doubleClickZoom={true}
-      scrollWheelZoom={true}
-      dragging={true}
-      animate={true}
-      easeLinearity={0.35}
-      preferCanvas={true}
-      ref={mapRef}
-    >
-      <TileLayer
-        url={STAMEN_STYLE_LAYER}
-        ext="jpg"
-        attribution={ATTRIBUTION}
-        zIndex={-100}
-      ></TileLayer>
-      {wordTranslationsData.map((lang) => (
-        <Marker
-          position={[lang.latitude, lang.longitude]}
-          key={lang.language_id}
-          opacity={0}
-        >
-          <Tooltip permanent={true} direction="top">
-            {lang.word}
-          </Tooltip>
-        </Marker>
-      ))}
-      <ZoomControl position="topright"></ZoomControl>
-    </LeafletMap>
+    <div>
+      <LeafletMap
+        className={styles.style}
+        center={[2.218, 115.6628]}
+        zoom={6}
+        maxZoom={10}
+        attributionControl={true}
+        zoomControl={false}
+        doubleClickZoom={true}
+        scrollWheelZoom={true}
+        dragging={true}
+        animate={true}
+        easeLinearity={0.35}
+        preferCanvas={true}
+        ref={mapRef}
+      >
+        <TileLayer
+          url={STAMEN_STYLE_LAYER}
+          ext="jpg"
+          attribution={ATTRIBUTION}
+          zIndex={-100}
+        ></TileLayer>
+        {wordTranslationsData.map((lang) => (
+          <Marker
+            position={[lang.latitude, lang.longitude]}
+            key={lang.language_id}
+            opacity={0}
+          >
+            <Tooltip permanent={true} direction="top">
+              {lang.word}
+            </Tooltip>
+          </Marker>
+        ))}
+        <ZoomControl position="topright"></ZoomControl>
+      </LeafletMap>
+      <MenuContainer
+        attributes={{ wordsInfo, wordMain, setWordMain }}
+      ></MenuContainer>
+    </div>
   );
 };
 

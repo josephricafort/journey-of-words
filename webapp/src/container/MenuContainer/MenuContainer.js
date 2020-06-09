@@ -1,41 +1,44 @@
 import React, { useEffect, useState, useRef } from "react";
 import styles from "./MenuContainer.module.scss";
 
-import { Menu, MenuItem, Button } from "@material-ui/core";
+import { Menu, MenuList, MenuItem, Button, Box, Card } from "@material-ui/core";
+import FullWidthTabs from "../../component/FullWidthTabs/FullWidthTabs";
+import ExpansionPanel from "@material-ui/core/ExpansionPanel";
+import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
+import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 
-const MenuContainer = ({ wordsInfo }) => {
-  const [anchorEl, setAnchorEl] = useState(null);
+const MenuContainer = ({ attributes }) => {
+  const { wordsInfo, wordMain, setWordMain } = attributes;
+  const categoryList = [...new Set(wordsInfo.map((word) => word.group))];
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handleSelectWord = (selectedWord, event) => {
+    setWordMain(selectedWord);
   };
 
   return (
-    <div className={styles["menu-container"]}>
-      <Button
-        aria-controls="simple-menu"
-        aria-haspopup="true"
-        onClick={handleClick}
-      >
-        Open Menu
-      </Button>
-      <Menu
-        id="simple-menu"
-        className={styles["menu"]}
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-      >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
-      </Menu>
-    </div>
+    <Box className={styles["menu-container"]}>
+      <Card className={styles["word-details"]}>
+        <h2>{wordMain}</h2>
+      </Card>
+      {categoryList.map((category) => (
+        <ExpansionPanel>
+          <ExpansionPanelSummary>{category}</ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+            <MenuList className={styles["menu-list"]}>
+              {wordsInfo
+                .filter((word) => word.group === category)
+                .map((word) => (
+                  <MenuItem
+                    onClick={(event) => handleSelectWord(word.Word, event)}
+                  >
+                    {word.Word}
+                  </MenuItem>
+                ))}
+            </MenuList>
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
+      ))}
+    </Box>
   );
 };
 
