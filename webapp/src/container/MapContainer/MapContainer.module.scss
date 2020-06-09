@@ -1,13 +1,13 @@
 @import "~leaflet/dist/leaflet.css";
 @import "~react-leaflet-markercluster/dist/styles.min.css";
 
-.style {
+.leaflet-map {
   position: absolute;
   top: 0;
   bottom: 0;
   width: 100%;
-}
 
-.markercluster-map {
-  height: 90vh;
+  .tooltip {
+    padding: 2px;
+  }
 }
