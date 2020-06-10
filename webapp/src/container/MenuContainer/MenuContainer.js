@@ -21,15 +21,16 @@ const MenuContainer = ({ attributes }) => {
         <h2>{wordMain}</h2>
       </Card>
       {categoryList.map((category) => (
-        <ExpansionPanel>
+        <ExpansionPanel key={category}>
           <ExpansionPanelSummary>{category}</ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <MenuList className={styles["menu-list"]}>
               {wordsInfo
                 .filter((word) => word.group === category)
-                .map((word) => (
+                .map((word, wordIndex) => (
                   <MenuItem
                     onClick={(event) => handleSelectWord(word.Word, event)}
+                    key={wordIndex}
                   >
                     {word.Word}
                   </MenuItem>

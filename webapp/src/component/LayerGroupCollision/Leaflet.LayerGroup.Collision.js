@@ -1,5 +1,5 @@
 const L = require("leaflet");
-const rbush = require("rbush");
+const RBush = require("rbush");
 
 var isMSIE8 = !(
   "getComputedStyle" in window && typeof window.getComputedStyle === "function"
@@ -61,7 +61,7 @@ function extensions(parentClass) {
     },
 
     clearLayers: function () {
-      this._rbush = rbush();
+      this._rbush = new RBush();
       this._originalLayers = [];
       this._visibleLayers = [];
       this._staticLayers = [];
@@ -203,7 +203,7 @@ function extensions(parentClass) {
         parentClass.prototype.removeLayer.call(this, this._visibleLayers[i]);
       }
 
-      this._rbush = rbush();
+      this._rbush = new RBush();
 
       for (var i = 0; i < this._originalLayers.length; i++) {
         this._maybeAddLayerToRBush(this._originalLayers[i]);

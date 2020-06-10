@@ -13,6 +13,7 @@ import {
 import LayerGroupCollision from "../../component/LayerGroupCollision/LayerGroupCollision";
 import styles from "./MapContainer.module.scss";
 import MenuContainer from "../MenuContainer/MenuContainer";
+import MarkersLayer from "../../component/MarkersLayer/MarkersLayer";
 import wordsInfo from "../../data/output_json/words_info.json";
 import { interpolateRgbBasis } from "d3";
 
@@ -22,11 +23,8 @@ require("react-leaflet-markercluster/dist/styles.min.css");
 const MapContainer = () => {
   const [wordMain, setWordMain] = useState("Five");
   const mapRef = useRef(Map);
-  const [wordList, setWordList] = useState([]);
   const [dataInfo, setDataInfo] = useState([]);
   const [wordTranslationsData, setWordTranslationsData] = useState([]);
-  // const cognacyColors = ["#00429d", "#ffffe0", "#93003a"];
-  const cognacyColors = ["#66bb6a", "#ffa726", "#e91e63"];
 
   const DB_LOCAL = "http://localhost:3000";
   const STAMEN_STYLE_LAYER =
@@ -72,26 +70,6 @@ const MapContainer = () => {
     });
   };
 
-  const cognacyLevel = (cognacy) => {
-    if (cognacy) {
-      const maxCognacy = d3.max(
-        wordTranslationsData.map((word) => word.cognacy1)
-      );
-      const minCognacy = d3.min(
-        wordTranslationsData.map((word) => word.cognacy1)
-      );
-      const midCognacy = (maxCognacy + minCognacy) / 2;
-      const colorScale = d3
-        .scaleLinear()
-        .domain([minCognacy, midCognacy, maxCognacy])
-        .range(cognacyColors);
-
-      return colorScale(cognacy);
-    } else {
-      return "rgba(0, 0, 0, 0)";
-    }
-  };
-
   return (
     <div>
       <LeafletMap
@@ -110,34 +88,12 @@ const MapContainer = () => {
         ref={mapRef}
       >
         <TileLayer
-          // url={STAMEN_STYLE_LAYER}
           url={CARTODB_POSITRON_STYLE_LAYER}
           ext="jpg"
-          // attribution={STAMEN_ATTRIBUTION}
           attribution={CARTODB_ATTRIBUTION}
           zIndex={-100}
         ></TileLayer>
-        <LayerGroup>
-          {wordTranslationsData.map((word) => (
-            <CircleMarker
-              center={[word.latitude, word.longitude]}
-              radius={15}
-              key={word.language_id}
-              opacity={0}
-              fillColor={cognacyLevel(word.cognacy1)}
-              fillOpacity={0.8}
-            >
-              <Tooltip
-                className={styles["tooltip"]}
-                permanent={true}
-                direction="top"
-                opacity={0.75}
-              >
-                {word.word}
-              </Tooltip>
-            </CircleMarker>
-          ))}
-        </LayerGroup>
+        <MarkersLayer data={wordTranslationsData}></MarkersLayer>
         <ZoomControl position="topright"></ZoomControl>
       </LeafletMap>
       <MenuContainer

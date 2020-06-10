@@ -1,14 +1,14 @@
 // import React, { PropTypes } from "react";
-import PropTypes from "prop-types";
-import { MapLayer } from "react-leaflet";
-import { LayerGroup } from "leaflet";
+import { func, shape } from "prop-types";
+import { MapLayer, withLeaflet } from "react-leaflet";
+import L from "leaflet";
 import "./Leaflet.LayerGroup.Collision";
 
-export default class LayerGroupCollision extends MapLayer {
+class LayerGroupCollision extends MapLayer {
   static childContextTypes = {
-    layerContainer: PropTypes.shape({
-      addLayer: PropTypes.func.isRequired,
-      removeLayer: PropTypes.func.isRequired,
+    layerContainer: shape({
+      addLayer: func.isRequired,
+      removeLayer: func.isRequired,
     }),
   };
 
@@ -19,6 +19,10 @@ export default class LayerGroupCollision extends MapLayer {
   }
 
   createLeafletElement() {
-    return LayerGroup(this.getOptions()).collision({ margin: 5 });
+    const layerGroup = L.LayerGroup.collision({ margin: 5 });
+    this.layerContainer.addLayer(layerGroup);
+    return layerGroup;
   }
 }
+
+export default withLeaflet(LayerGroupCollision);
