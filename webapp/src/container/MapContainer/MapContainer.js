@@ -35,6 +35,8 @@ const MapContainer = () => {
     "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png";
   const CARTODB_ATTRIBUTION =
     '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
+  const CARTODB_VOYAGER_NOLABELS =
+    "https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png";
 
   useEffect(() => {
     fetch(`${DB_LOCAL}/language_info`)
@@ -88,7 +90,7 @@ const MapContainer = () => {
         ref={mapRef}
       >
         <TileLayer
-          url={CARTODB_POSITRON_STYLE_LAYER}
+          url={CARTODB_VOYAGER_NOLABELS}
           ext="jpg"
           attribution={CARTODB_ATTRIBUTION}
           zIndex={-100}
