@@ -29,10 +29,10 @@ const MenuContainer = ({ attributes }) => {
                 .filter((word) => word.group === category)
                 .map((word, wordIndex) => (
                   <MenuItem
-                    onClick={(event) => handleSelectWord(word.Word, event)}
+                    onClick={(event) => handleSelectWord(word.word, event)}
                     key={wordIndex}
                   >
-                    {word.Word}
+                    {word.word}
                   </MenuItem>
                 ))}
             </MenuList>

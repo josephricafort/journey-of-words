@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
+import { urlFriendly } from "../../utils/utils";
 
 import {
   Map as LeafletMap,
@@ -14,18 +15,24 @@ import LayerGroupCollision from "../../component/LayerGroupCollision/LayerGroupC
 import styles from "./MapContainer.module.scss";
 import MenuContainer from "../MenuContainer/MenuContainer";
 import MarkersLayer from "../../component/MarkersLayer/MarkersLayer";
-import wordsInfo from "../../data/output_json/words_info.json";
 import { interpolateRgbBasis } from "d3";
 
 require("leaflet/dist/leaflet.css");
 require("react-leaflet-markercluster/dist/styles.min.css");
 
 const MapContainer = () => {
-  const [wordMain, setWordMain] = useState("Five");
   const mapRef = useRef(Map);
+  const [wordMain, setWordMain] = useState("five");
   const [dataInfo, setDataInfo] = useState([]);
   const [wordTranslationsData, setWordTranslationsData] = useState([]);
+  const [wordsInfo, setWordsInfo] = useState([]);
 
+  const DB_GITHUB =
+    "https://raw.githubusercontent.com/josephricafort/journey-of-words-r-data/master/data/output/json/";
+  const RAW = "?raw=true";
+  const DB_GITHUB_LANGUAGE_INFO = DB_GITHUB + "language_info.json";
+  const DB_GITHUB_WORDS = DB_GITHUB + "language_words/";
+  const DB_GITHUB_WORDS_INFO = DB_GITHUB + "words_info.json";
   const DB_LOCAL = "http://localhost:3000";
   const STAMEN_STYLE_LAYER =
     "https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}";
@@ -39,15 +46,19 @@ const MapContainer = () => {
     "https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png";
 
   useEffect(() => {
-    fetch(`${DB_LOCAL}/language_info`)
+    fetch(DB_GITHUB_LANGUAGE_INFO + RAW)
       .then((response) => response.json())
       .then((data) => {
         setDataInfo(data.filter((lang) => !!lang.latitude && !!lang.longitude));
       });
+
+    fetch(DB_GITHUB_WORDS_INFO)
+      .then((response) => response.json())
+      .then((data) => setWordsInfo(data));
   }, []);
 
   useEffect(() => {
-    fetch(`${DB_LOCAL}/language_words?word=${wordMain}`)
+    fetch(DB_GITHUB_WORDS + urlFriendly(wordMain) + ".json")
       .then((response) => response.json())
       .then((data) => {
         setWordTranslationsData(wordTranslation(data));
