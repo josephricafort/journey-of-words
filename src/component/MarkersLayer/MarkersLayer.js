@@ -69,7 +69,6 @@ const MarkersLayer = ({ data }) => {
               opacity={0.75}
             >
               {word.word}
-              {console.log(word.word)}
             </Tooltip>
           ) : null}
         </CircleMarker>,

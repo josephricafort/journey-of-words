@@ -1,8 +1,7 @@
-import React, { useEffect, useState, useRef } from "react";
+import React from "react";
 import styles from "./MenuContainer.module.scss";
 
-import { Menu, MenuList, MenuItem, Button, Box, Card } from "@material-ui/core";
-import FullWidthTabs from "../../component/FullWidthTabs/FullWidthTabs";
+import { MenuList, MenuItem, Box, Card } from "@material-ui/core";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";

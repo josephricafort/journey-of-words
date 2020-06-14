@@ -13,7 +13,7 @@ import {
 } from "react-leaflet";
 import LayerGroupCollision from "../../component/LayerGroupCollision/LayerGroupCollision";
 import styles from "./MapContainer.module.scss";
-import MenuContainer from "../MenuContainer/MenuContainer";
+import MenuContainer from "./MenuContainer/MenuContainer";
 import MarkersLayer from "../../component/MarkersLayer/MarkersLayer";
 import { interpolateRgbBasis } from "d3";
 
@@ -84,7 +84,7 @@ const MapContainer = () => {
   };
 
   return (
-    <div>
+    <div className={styles["map-container"]}>
       <LeafletMap
         className={styles["leaflet-map"]}
         center={[2.218, 115.6628]}
