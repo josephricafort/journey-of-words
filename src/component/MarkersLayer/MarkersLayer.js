@@ -61,14 +61,17 @@ const MarkersLayer = ({ data }) => {
           onmouseover={() => showLangTooltip()}
           onmouseout={() => hideLangTooltip()}
         >
-          <Tooltip
-            className={styles["tooltip"]}
-            permanent={true}
-            direction="top"
-            opacity={0.75}
-          >
-            {word.word}
-          </Tooltip>
+          {word.word ? (
+            <Tooltip
+              className={styles["tooltip"]}
+              permanent={true}
+              direction="top"
+              opacity={0.75}
+            >
+              {word.word}
+              {console.log(word.word)}
+            </Tooltip>
+          ) : null}
         </CircleMarker>,
       ])}
     </LayerGroupCollision>,
