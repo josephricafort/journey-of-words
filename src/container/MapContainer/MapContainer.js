@@ -66,6 +66,13 @@ const MapContainer = () => {
 
   return (
     <div className={styles["map-container"]}>
+      <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css"
+        rel="stylesheet"
+        type="text/css"
+      />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet-src.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.9/d3.min.js"></script>
       <LeafletMap
         className={styles["leaflet-map"]}
         center={[2.218, 115.6628]}
@@ -81,8 +88,8 @@ const MapContainer = () => {
         preferCanvas={true}
         ref={mapRef}
       >
-        <TilesLayer></TilesLayer>
-        <MarkersLayer data={wordTranslationsData}></MarkersLayer>
+        <TilesLayer wordTranslationsData={wordTranslationsData}></TilesLayer>
+        {/* <MarkersLayer data={wordTranslationsData}></MarkersLayer> */}
         <ZoomControl position={"topright"}></ZoomControl>
       </LeafletMap>
       <MenuContainer
