@@ -6,7 +6,7 @@ import StoryContainer from "./container/StoryContainer/StoryContainer";
 const JourneyOfWords = () => {
   return (
     <div className="journey-of-words">
-      <StoryContainer></StoryContainer>
+      {/* <StoryContainer></StoryContainer> */}
       <MapContainer></MapContainer>
     </div>
   );

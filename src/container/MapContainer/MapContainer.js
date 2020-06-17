@@ -2,20 +2,12 @@ import React, { useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
 import { urlFriendly } from "../../utils/utils";
 
-import {
-  Map as LeafletMap,
-  TileLayer,
-  Marker,
-  Tooltip,
-  ZoomControl,
-  CircleMarker,
-  LayerGroup,
-} from "react-leaflet";
-import LayerGroupCollision from "../../component/LayerGroupCollision/LayerGroupCollision";
+import { Map as LeafletMap, ZoomControl } from "react-leaflet";
+import LayerGroupCollision from "../../component/MapContainer/LayerGroupCollision/LayerGroupCollision";
 import styles from "./MapContainer.module.scss";
 import MenuContainer from "./MenuContainer/MenuContainer";
-import MarkersLayer from "../../component/MarkersLayer/MarkersLayer";
-import { interpolateRgbBasis } from "d3";
+import MarkersLayer from "../../component/MapContainer/MarkersLayer/MarkersLayer";
+import TilesLayer from "../../component/MapContainer/TilesLayer/TilesLayer";
 
 require("leaflet/dist/leaflet.css");
 require("react-leaflet-markercluster/dist/styles.min.css");
@@ -33,17 +25,6 @@ const MapContainer = () => {
   const DB_GITHUB_LANGUAGE_INFO = DB_GITHUB + "language_info.json";
   const DB_GITHUB_WORDS = DB_GITHUB + "language_words/";
   const DB_GITHUB_WORDS_INFO = DB_GITHUB + "words_info.json";
-  const DB_LOCAL = "http://localhost:3000";
-  const STAMEN_STYLE_LAYER =
-    "https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}";
-  const STAMEN_ATTRIBUTION =
-    'attribution: \'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
-  const CARTODB_POSITRON_STYLE_LAYER =
-    "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png";
-  const CARTODB_ATTRIBUTION =
-    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
-  const CARTODB_VOYAGER_NOLABELS =
-    "https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png";
 
   useEffect(() => {
     fetch(DB_GITHUB_LANGUAGE_INFO + RAW)
@@ -100,14 +81,9 @@ const MapContainer = () => {
         preferCanvas={true}
         ref={mapRef}
       >
-        <TileLayer
-          url={CARTODB_VOYAGER_NOLABELS}
-          ext="jpg"
-          attribution={CARTODB_ATTRIBUTION}
-          zIndex={-100}
-        ></TileLayer>
+        <TilesLayer></TilesLayer>
         <MarkersLayer data={wordTranslationsData}></MarkersLayer>
-        <ZoomControl position="topright"></ZoomControl>
+        <ZoomControl position={"topright"}></ZoomControl>
       </LeafletMap>
       <MenuContainer
         attributes={{ wordsInfo, wordMain, setWordMain }}
