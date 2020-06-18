@@ -18,6 +18,7 @@ const MapContainer = () => {
   const [dataInfo, setDataInfo] = useState([]);
   const [wordTranslationsData, setWordTranslationsData] = useState([]);
   const [wordsInfo, setWordsInfo] = useState([]);
+  const [toggleZoom, setToggleZoom] = useState(false);
 
   const DB_GITHUB =
     "https://raw.githubusercontent.com/josephricafort/journey-of-words-r-data/master/data/output/json/";
@@ -44,7 +45,7 @@ const MapContainer = () => {
       .then((data) => {
         setWordTranslationsData(wordTranslation(data));
       });
-  }, [dataInfo, wordMain]);
+  }, [dataInfo, wordMain, toggleZoom]);
 
   const wordTranslation = (dataWords) => {
     return dataInfo.map((langInfo) => {
@@ -62,6 +63,10 @@ const MapContainer = () => {
         cognacy2: langWordElement ? langWordElement.cognacy2 : "",
       };
     });
+  };
+
+  const handleZoomLevelChanged = () => {
+    setToggleZoom(!toggleZoom);
   };
 
   return (
@@ -86,6 +91,7 @@ const MapContainer = () => {
         animate={true}
         easeLinearity={0.35}
         preferCanvas={true}
+        onzoomend={() => handleZoomLevelChanged()}
         ref={mapRef}
       >
         <TilesLayer wordTranslationsData={wordTranslationsData}></TilesLayer>
