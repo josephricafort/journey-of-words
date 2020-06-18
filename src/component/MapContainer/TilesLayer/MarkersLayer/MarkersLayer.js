@@ -38,7 +38,6 @@ const MarkersLayer = ({ wordTranslationsData }) => {
     svg.selectAll(".occluded").attr("opacity", 0);
   }
 
-  // Stolen from https://observablehq.com/@fil/occlusion
   function occlusion(svg) {
     const texts = [];
     svg.selectAll("text").each((d, i, e) => {
