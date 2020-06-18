@@ -7,7 +7,6 @@ import styles from "./MarkersLayer.module.scss";
 const MarkersLayer = ({ wordTranslationsData }) => {
   function drawCallback(selection, projection, data) {
     const svg = selection;
-    const svgCircle = selection.selectAll("circle");
     const latLngToLayer = (coords) => projection.latLngToLayerPoint(coords);
 
     svg
@@ -16,6 +15,7 @@ const MarkersLayer = ({ wordTranslationsData }) => {
       .join("text")
       .text((d) => d.word)
       .attr("font-size", 18 / projection.scale + "px")
+      .attr("fill", "#ffffff")
       .attr("x", (d) => latLngToLayer([d.latitude, d.longitude]).x)
       .attr("y", (d) => latLngToLayer([d.latitude, d.longitude]).y)
       .attr("text-anchor", "middle");

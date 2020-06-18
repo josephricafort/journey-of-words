@@ -1,7 +1,7 @@
 import React from "react";
 
 import MapContainer from "./container/MapContainer/MapContainer";
-import StoryContainer from "./container/StoryContainer/StoryContainer";
+// import StoryContainer from "./container/StoryContainer/StoryContainer";
 
 const JourneyOfWords = () => {
   return (

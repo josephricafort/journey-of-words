@@ -7,13 +7,14 @@
 
 import L from "leaflet";
 import * as d3 from "d3";
-import * as d3Geo from "d3-geo";
 
 // Check requirements
 if (typeof d3 == "undefined") {
+  // eslint-disable-next-line
   throw "D3 SVG Overlay for Leaflet requires D3 library loaded first";
 }
 if (typeof L == "undefined") {
+  // eslint-disable-next-line
   throw "D3 SVG Overlay for Leaflet requires Leaflet library loaded first";
 }
 
