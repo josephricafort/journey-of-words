@@ -28,6 +28,11 @@ const MenuContainer = ({ attributes }) => {
                 .filter((word) => word.group === category)
                 .map((word, wordIndex) => (
                   <MenuItem
+                    className={
+                      styles[
+                        `word-item${wordMain == word.word ? "-selected" : ""}`
+                      ]
+                    }
                     onClick={(event) => handleSelectWord(word.word, event)}
                     key={wordIndex}
                   >

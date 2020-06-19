@@ -18,5 +18,11 @@
 
   .menu-list {
     width: 100%;
+
+    .word-item {
+      &-selected {
+        font-weight: 700;
+      }
+    }
   }
 }
