@@ -76,8 +76,13 @@ const MapContainer = () => {
       <LeafletMap
         className={styles["leaflet-map"]}
         center={[2.218, 115.6628]}
-        zoom={6}
+        zoom={5}
         maxZoom={10}
+        minZoom={1}
+        maxBounds={[
+          [60, 0],
+          [-60, 300],
+        ]}
         attributionControl={true}
         zoomControl={false}
         doubleClickZoom={true}

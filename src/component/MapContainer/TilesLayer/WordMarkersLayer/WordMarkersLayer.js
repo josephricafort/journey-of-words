@@ -34,8 +34,22 @@ const WordMarkersLayer = ({ wordTranslationsData }) => {
       .text((d) => d.word)
       .attr("font-size", 14 / projection.scale + "px")
       .attr("fill", (d) => cognacyLevel(d.cognacy1))
-      .attr("x", (d) => latLngToLayer([d.latitude, d.longitude]).x)
-      .attr("y", (d) => latLngToLayer([d.latitude, d.longitude]).y)
+      .attr(
+        "x",
+        (d) =>
+          latLngToLayer([
+            d.latitude,
+            d.longitude < 0 ? d.longitude + 360 : d.longitude,
+          ]).x
+      )
+      .attr(
+        "y",
+        (d) =>
+          latLngToLayer([
+            d.latitude,
+            d.longitude < 0 ? d.longitude + 360 : d.longitude,
+          ]).y
+      )
       .attr("transform", `translate(0 -5)`)
       .attr("text-anchor", "end");
 

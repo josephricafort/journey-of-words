@@ -31,8 +31,22 @@ const CognacyCircles = ({ wordTranslationsData }) => {
     svg
       .data(data)
       .join("circle")
-      .attr("cx", (d) => latLngToLayer([d.latitude, d.longitude]).x)
-      .attr("cy", (d) => latLngToLayer([d.latitude, d.longitude]).y)
+      .attr(
+        "cx",
+        (d) =>
+          latLngToLayer([
+            d.latitude,
+            d.longitude < 0 ? d.longitude + 360 : d.longitude,
+          ]).x
+      )
+      .attr(
+        "cy",
+        (d) =>
+          latLngToLayer([
+            d.latitude,
+            d.longitude < 0 ? d.longitude + 360 : d.longitude,
+          ]).y
+      )
       .attr("r", (d) => 2 / projection.scale)
       .attr("fill", (d) => cognacyLevel(d.cognacy1))
       .attr("opacity", 0.8);
