@@ -2,23 +2,42 @@ import React from "react";
 
 import * as d3 from "d3";
 import D3SvgOverlay from "../D3SvgOverlay/D3SvgOverlay";
-import styles from "./MarkersLayer.module.scss";
+import styles from "./WordMarkersLayer.module.scss";
 
-const MarkersLayer = ({ wordTranslationsData }) => {
+const WordMarkersLayer = ({ wordTranslationsData }) => {
   function drawCallback(selection, projection, data) {
     const svg = selection;
     const latLngToLayer = (coords) => projection.latLngToLayerPoint(coords);
+    const cognacyColors = ["#66bb6a", "#ffa726", "#e91e63"];
+
+    const cognacyLevel = (cognacy) => {
+      if (cognacy) {
+        const cognacyArr = wordTranslationsData.map((word) => word.cognacy1);
+        const maxCognacy = d3.max(cognacyArr);
+        const minCognacy = d3.min(cognacyArr);
+        const midCognacy = (maxCognacy + minCognacy) / 2;
+        const colorScale = d3
+          .scaleLinear()
+          .domain([minCognacy, midCognacy, maxCognacy])
+          .range(cognacyColors);
+
+        return colorScale(cognacy);
+      } else {
+        return "#aaaaaa";
+      }
+    };
 
     svg
       .selectAll("text")
       .data(data)
       .join("text")
       .text((d) => d.word)
-      .attr("font-size", 18 / projection.scale + "px")
-      .attr("fill", "#ffffff")
+      .attr("font-size", 14 / projection.scale + "px")
+      .attr("fill", (d) => cognacyLevel(d.cognacy1))
       .attr("x", (d) => latLngToLayer([d.latitude, d.longitude]).x)
       .attr("y", (d) => latLngToLayer([d.latitude, d.longitude]).y)
-      .attr("text-anchor", "middle");
+      .attr("transform", `translate(0 -5)`)
+      .attr("text-anchor", "end");
 
     svg.node();
 
@@ -83,4 +102,4 @@ const MarkersLayer = ({ wordTranslationsData }) => {
   );
 };
 
-export default MarkersLayer;
+export default WordMarkersLayer;

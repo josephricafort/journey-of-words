@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./TilesLayer.module.scss";
 
 import { TileLayer } from "react-leaflet";
-import MarkersLayer from "./MarkersLayer/MarkersLayer";
+import WordMarkersLayer from "./WordMarkersLayer/WordMarkersLayer";
 import CognacyCircles from "./CognacyCircles/CognacyCircles";
 
 const TilesLayer = ({ wordTranslationsData }) => {
@@ -28,7 +28,9 @@ const TilesLayer = ({ wordTranslationsData }) => {
       <CognacyCircles
         wordTranslationsData={wordTranslationsData}
       ></CognacyCircles>
-      <MarkersLayer wordTranslationsData={wordTranslationsData}></MarkersLayer>
+      <WordMarkersLayer
+        wordTranslationsData={wordTranslationsData}
+      ></WordMarkersLayer>
     </div>
   );
 };

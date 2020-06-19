@@ -33,7 +33,7 @@ const CognacyCircles = ({ wordTranslationsData }) => {
       .join("circle")
       .attr("cx", (d) => latLngToLayer([d.latitude, d.longitude]).x)
       .attr("cy", (d) => latLngToLayer([d.latitude, d.longitude]).y)
-      .attr("r", (d) => 10 / projection.scale)
+      .attr("r", (d) => 2 / projection.scale)
       .attr("fill", (d) => cognacyLevel(d.cognacy1))
       .attr("opacity", 0.8);
   }
