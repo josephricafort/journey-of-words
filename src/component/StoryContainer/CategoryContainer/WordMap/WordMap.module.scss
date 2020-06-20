@@ -1,0 +1,16 @@
+.word-map {
+  padding: 12px;
+  max-width: 300px;
+
+  ul.word-map-blocks {
+    display: flex;
+    flex-flow: row wrap;
+
+    li {
+      list-style: none;
+      padding: 3px;
+      background: #eeeeee;
+      margin: 2px;
+    }
+  }
+}

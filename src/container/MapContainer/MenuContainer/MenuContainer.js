@@ -30,7 +30,7 @@ const MenuContainer = ({ attributes }) => {
                   <MenuItem
                     className={
                       styles[
-                        `word-item${wordMain == word.word ? "-selected" : ""}`
+                        `word-item${wordMain === word.word ? "-selected" : ""}`
                       ]
                     }
                     onClick={(event) => handleSelectWord(word.word, event)}
