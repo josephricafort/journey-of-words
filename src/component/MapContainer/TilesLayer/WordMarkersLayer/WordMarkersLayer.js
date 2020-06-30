@@ -4,7 +4,7 @@ import * as d3 from "d3";
 import D3SvgOverlay from "../D3SvgOverlay/D3SvgOverlay";
 import styles from "./WordMarkersLayer.module.scss";
 
-const WordMarkersLayer = ({ wordTranslationsData }) => {
+const WordMarkersLayer = ({ wordTranslations }) => {
   function drawCallback(selection, projection, data) {
     const svg = selection;
     const latLngToLayer = (coords) => projection.latLngToLayerPoint(coords);
@@ -12,7 +12,7 @@ const WordMarkersLayer = ({ wordTranslationsData }) => {
 
     const cognacyLevel = (cognacy) => {
       if (cognacy) {
-        const cognacyArr = wordTranslationsData.map((word) => word.cognacy1);
+        const cognacyArr = wordTranslations.map((word) => word.cognacy1);
         const maxCognacy = d3.max(cognacyArr);
         const minCognacy = d3.min(cognacyArr);
         const midCognacy = (maxCognacy + minCognacy) / 2;
@@ -110,7 +110,7 @@ const WordMarkersLayer = ({ wordTranslationsData }) => {
   return (
     <D3SvgOverlay
       className={styles["markers-layer"]}
-      data={wordTranslationsData}
+      data={wordTranslations}
       drawCallback={drawCallback}
     ></D3SvgOverlay>
   );

@@ -6,7 +6,6 @@ import StoryContainer from "./container/StoryContainer/StoryContainer";
 import { configureDataStore } from "./store/dataStore";
 import { urlFriendly } from "./utils/utils";
 import {
-  RAW,
   DB_GITHUB_WORDS,
   DB_GITHUB_LANGUAGE_INFO,
   DB_GITHUB_WORDS_INFO,
@@ -14,7 +13,6 @@ import {
   SET_WORDSINFO,
   SET_LANGUAGEINFO,
   SET_LANGHEIRARCHY,
-  SET_WORDMAIN,
   SET_WORDTRANSLATIONS,
 } from "./store/constants";
 import { useStore } from "./store/store";
@@ -22,15 +20,8 @@ import { useStore } from "./store/store";
 configureDataStore();
 
 const JourneyOfWords = () => {
-  const [wordMain, setWordMain] = useState("five");
-  // const [languageInfo, setLanguageInfo] = useState([]);
-  const [wordTranslations, setWordTranslations] = useState([]);
-  // const [wordsInfo, setWordsInfo] = useState([]);
-  const [langHeirarchy, setLangHeirarchy] = useState([]);
-  const [toggleZoom, setToggleZoom] = useState(false);
-
   const [state, dispatch] = useStore();
-  const { languageInfo, wordsInfo } = state;
+  const { wordMain, languageInfo, toggleZoom } = state;
 
   useEffect(() => {
     axios
@@ -47,7 +38,7 @@ const JourneyOfWords = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, [languageInfo]);
+  }, []);
 
   useEffect(() => {
     const translate = (dataWords) => {
@@ -66,37 +57,18 @@ const JourneyOfWords = () => {
         };
       });
     };
-    fetch(DB_GITHUB_WORDS + urlFriendly(wordMain) + ".json")
-      .then((response) => response.json())
-      .then((data) => {
-        setWordTranslations(translate(data));
+    axios
+      .get(DB_GITHUB_WORDS + urlFriendly(wordMain) + ".json")
+      .then((response) => {
+        const data = translate(response.data);
+        dispatch(SET_WORDTRANSLATIONS, data);
       });
   }, [languageInfo, wordMain, toggleZoom]);
 
-  // useEffect(() => {
-  //   axios
-  //     .get(DB_GITHUB_WORDS + urlFriendly(wordMain) + ".json")
-  //     .then((response) => {
-  //       const data = [response.data, languageInfo];
-  //       dispatch(SET_WORDTRANSLATIONS, data);
-  //     });
-  // }, [languageInfo, wordMain, toggleZoom]);
-
   return (
     <div className="journey-of-words">
-      {/* <StoryContainer
-        attributes={{ wordTranslations, wordMain, langHeirarchy }}
-      ></StoryContainer> */}
-      <MapContainer
-        attributes={{
-          wordMain,
-          setWordMain,
-          wordTranslations,
-          wordsInfo,
-          toggleZoom,
-          setToggleZoom,
-        }}
-      ></MapContainer>
+      <StoryContainer></StoryContainer>
+      <MapContainer></MapContainer>
     </div>
   );
 };

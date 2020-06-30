@@ -14,41 +14,10 @@ export const configureDataStore = () => {
     SET_LANGHEIRARCHY: (state, langHeirarchy) => ({
       langHeirarchy: [...langHeirarchy],
     }),
-    SET_WORDTRANSLATIONS: (state, payload) => {
-      const [dataWords, languageInfo] = payload;
-      const translate = (data) => {
-        return languageInfo.map((langInfo) => {
-          const langWordElement = data.find(
-            (langWord) => langWord.id_lang === langInfo.id_lang
-          );
-          return {
-            language: langInfo.language,
-            language_id: langInfo.id_lang,
-            word: langWordElement ? langWordElement.item : "",
-            latitude: langInfo.latitude,
-            longitude: langInfo.longitude,
-            cognacy1: langWordElement ? langWordElement.cognacy1 : "",
-            cognacy2: langWordElement ? langWordElement.cognacy2 : "",
-          };
-        });
-      };
-      return { wordTranslations: translate(dataWords) };
-      // const wordTranslations = languageInfo.map((langInfo) => {
-      //   const langWordElement = dataWords.find(
-      //     (langWord) => langWord.id_lang === languageInfo.id_lang
-      //   );
-      //   return {
-      //     language: langInfo.language,
-      //     language_id: langInfo.id_lang,
-      //     word: langWordElement ? langWordElement.item : "",
-      //     latitude: langInfo.latitude,
-      //     longitude: langInfo.longitude,
-      //     cognacy1: langWordElement ? langWordElement.cognacy1 : "",
-      //     cognacy2: langWordElement ? langWordElement.cognacy2 : "",
-      //   };
-      // });
-      // return { wordTranslations: [...wordTranslations] };
-    },
+    SET_WORDTRANSLATIONS: (state, payload) => ({
+      wordTranslations: [...payload],
+    }),
+    SET_TOGGLEZOOM: (state, toggleState) => ({ toggleZoom: toggleState }),
   };
 
   const initState = {

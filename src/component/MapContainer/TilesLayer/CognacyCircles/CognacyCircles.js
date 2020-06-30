@@ -4,12 +4,12 @@ import * as d3 from "d3";
 import D3SvgOverlay from "../D3SvgOverlay/D3SvgOverlay";
 import "./CognacyCircles.module.scss";
 
-const CognacyCircles = ({ wordTranslationsData }) => {
+const CognacyCircles = ({ wordTranslations }) => {
   const cognacyColors = ["#66bb6a", "#ffa726", "#e91e63"];
 
   const cognacyLevel = (cognacy) => {
     if (cognacy) {
-      const cognacyArr = wordTranslationsData.map((word) => word.cognacy1);
+      const cognacyArr = wordTranslations.map((word) => word.cognacy1);
       const maxCognacy = d3.max(cognacyArr);
       const minCognacy = d3.min(cognacyArr);
       const midCognacy = (maxCognacy + minCognacy) / 2;
@@ -54,7 +54,7 @@ const CognacyCircles = ({ wordTranslationsData }) => {
 
   return (
     <D3SvgOverlay
-      data={wordTranslationsData}
+      data={wordTranslations}
       drawCallback={drawCallback}
     ></D3SvgOverlay>
   );

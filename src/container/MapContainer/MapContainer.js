@@ -4,23 +4,19 @@ import { Map as LeafletMap, ZoomControl } from "react-leaflet";
 import styles from "./MapContainer.module.scss";
 import MenuContainer from "./MenuContainer/MenuContainer";
 import TilesLayer from "../../component/MapContainer/TilesLayer/TilesLayer";
+import { useStore } from "../../store/store";
+import { SET_TOGGLEZOOM } from "../../store/constants";
 
 require("leaflet/dist/leaflet.css");
 require("react-leaflet-markercluster/dist/styles.min.css");
 
-const MapContainer = ({ attributes }) => {
-  const {
-    wordMain,
-    setWordMain,
-    wordsInfo,
-    wordTranslations,
-    toggleZoom,
-    setToggleZoom,
-  } = attributes;
+const MapContainer = () => {
+  const [state, dispatch] = useStore();
+  const { toggleZoom } = state;
   const mapRef = useRef(Map);
 
   const handleZoomLevelChanged = () => {
-    setToggleZoom(!toggleZoom);
+    dispatch(SET_TOGGLEZOOM, !toggleZoom);
   };
 
   return (
@@ -46,12 +42,10 @@ const MapContainer = ({ attributes }) => {
         onzoomend={() => handleZoomLevelChanged()}
         ref={mapRef}
       >
-        <TilesLayer wordTranslationsData={wordTranslations}></TilesLayer>
-        <ZoomControl position={"topright"}></ZoomControl>
+        <TilesLayer></TilesLayer>
+        <ZoomControl position="topright"></ZoomControl>
       </LeafletMap>
-      <MenuContainer
-        attributes={{ wordsInfo, wordMain, setWordMain }}
-      ></MenuContainer>
+      <MenuContainer></MenuContainer>
     </div>
   );
 };

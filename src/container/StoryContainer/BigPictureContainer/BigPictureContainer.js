@@ -1,14 +1,16 @@
 import React, { useEffect } from "react";
 
 import styles from "./BigPictureContainer.module.scss";
+import { useStore } from "../../../store/store";
 
-const BigPictureContainer = (attributes) => {
-  const { wordTranslationsData, wordMain, langHeirarchy } = attributes;
+const BigPictureContainer = () => {
+  const state = useStore()[0];
+  const { wordTranslations, langHeirarchy } = state;
   const branchList = [...new Set(langHeirarchy.map((lang) => lang.branch))];
 
   useEffect(() => {
     langHeirarchy.map((lang) => {
-      const word = wordTranslationsData.find(
+      const word = wordTranslations.find(
         (item) => item.language_id === lang.id_lang
       );
     });
