@@ -1,20 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import styles from "./BigPictureContainer.module.scss";
 import { useStore } from "../../../store/store";
 
 const BigPictureContainer = () => {
   const state = useStore()[0];
-  const { wordTranslations, langHeirarchy } = state;
+  const { langHeirarchy } = state;
   const branchList = [...new Set(langHeirarchy.map((lang) => lang.branch))];
-
-  useEffect(() => {
-    langHeirarchy.map((lang) => {
-      const word = wordTranslations.find(
-        (item) => item.language_id === lang.id_lang
-      );
-    });
-  }, []);
 
   return (
     <div className={styles["big-picture"]}>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 
 import MapContainer from "./container/MapContainer/MapContainer";
@@ -38,7 +38,7 @@ const JourneyOfWords = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     const translate = (dataWords) => {
@@ -63,7 +63,7 @@ const JourneyOfWords = () => {
         const data = translate(response.data);
         dispatch(SET_WORDTRANSLATIONS, data);
       });
-  }, [languageInfo, wordMain, toggleZoom]);
+  }, [dispatch, languageInfo, wordMain, toggleZoom]);
 
   return (
     <div className="journey-of-words">

@@ -1,5 +1,3 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { initStore } from "./store";
 
 export const configureDataStore = () => {
