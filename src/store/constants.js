@@ -2,6 +2,7 @@ export const SET_WORDMAIN = "SET_WORDMAIN";
 export const SET_WORDSINFO = "SET_WORDSINFO";
 export const SET_LANGUAGEINFO = "SET_LANGUAGEINFO";
 export const SET_LANGHEIRARCHY = "SET_LANGHEIRARCHY";
+export const SET_WORDTRANSLATIONS = "SET_WORDTRANSLATIONS";
 
 export const DB_GITHUB =
   "https://raw.githubusercontent.com/josephricafort/journey-of-words-r-data/master/data/output/json/";

@@ -5,7 +5,7 @@ import CategoryContainer from "./CategoryContainer/CategoryContainer";
 import BigPictureContainer from "./BigPictureContainer/BigPictureContainer";
 
 const StoryContainer = ({ attributes }) => {
-  const { wordTranslationsData, wordMain, langHeirarchy } = attributes;
+  const { wordTranslations, wordMain, langHeirarchy } = attributes;
   const [wordsCount, setWordsCount] = useState({});
   const [categories, setCategories] = useState([]);
 
@@ -28,7 +28,7 @@ const StoryContainer = ({ attributes }) => {
       </div>
       <BigPictureContainer
         langHeirarchy={langHeirarchy}
-        wordTranslationsData={wordTranslationsData}
+        wordTranslationsData={wordTranslations}
         wordMain={wordMain}
       ></BigPictureContainer>
       <div className={styles["small-picture"]}>

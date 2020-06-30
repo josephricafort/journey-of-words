@@ -13,7 +13,7 @@ const MapContainer = ({ attributes }) => {
     wordMain,
     setWordMain,
     wordsInfo,
-    wordTranslationsData,
+    wordTranslations,
     toggleZoom,
     setToggleZoom,
   } = attributes;
@@ -46,7 +46,7 @@ const MapContainer = ({ attributes }) => {
         onzoomend={() => handleZoomLevelChanged()}
         ref={mapRef}
       >
-        <TilesLayer wordTranslationsData={wordTranslationsData}></TilesLayer>
+        <TilesLayer wordTranslationsData={wordTranslations}></TilesLayer>
         <ZoomControl position={"topright"}></ZoomControl>
       </LeafletMap>
       <MenuContainer

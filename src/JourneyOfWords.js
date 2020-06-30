@@ -15,6 +15,7 @@ import {
   SET_LANGUAGEINFO,
   SET_LANGHEIRARCHY,
   SET_WORDMAIN,
+  SET_WORDTRANSLATIONS,
 } from "./store/constants";
 import { useStore } from "./store/store";
 
@@ -23,7 +24,7 @@ configureDataStore();
 const JourneyOfWords = () => {
   const [wordMain, setWordMain] = useState("five");
   // const [languageInfo, setLanguageInfo] = useState([]);
-  const [wordTranslationsData, setWordTranslations] = useState([]);
+  const [wordTranslations, setWordTranslations] = useState([]);
   // const [wordsInfo, setWordsInfo] = useState([]);
   const [langHeirarchy, setLangHeirarchy] = useState([]);
   const [toggleZoom, setToggleZoom] = useState(false);
@@ -39,27 +40,21 @@ const JourneyOfWords = () => {
         axios.get(DB_GITHUB_LANG_HEIRARCHY_ARR),
       ])
       .then((responseArray) => {
-        dispatch(
-          SET_LANGUAGEINFO,
-          responseArray[0].data.filter(
-            (lang) => !!lang.latitude && !!lang.longitude
-          )
-        );
+        dispatch(SET_LANGUAGEINFO, responseArray[0].data);
         dispatch(SET_WORDSINFO, responseArray[1].data);
         dispatch(SET_LANGHEIRARCHY, responseArray[2].data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [languageInfo]);
 
   useEffect(() => {
-    const wordTranslation = (dataWords) => {
+    const translate = (dataWords) => {
       return languageInfo.map((langInfo) => {
         const langWordElement = dataWords.find(
           (langWord) => langWord.id_lang === langInfo.id_lang
         );
-
         return {
           language: langInfo.language,
           language_id: langInfo.id_lang,
@@ -74,33 +69,29 @@ const JourneyOfWords = () => {
     fetch(DB_GITHUB_WORDS + urlFriendly(wordMain) + ".json")
       .then((response) => response.json())
       .then((data) => {
-        setWordTranslations(wordTranslation(data));
+        setWordTranslations(translate(data));
       });
   }, [languageInfo, wordMain, toggleZoom]);
 
-  useEffect(() => {
-    fetch(DB_GITHUB_LANG_HEIRARCHY_ARR)
-      .then((response) => response.json())
-      .then((data) => {
-        data.map((lang) => {
-          const word = wordTranslationsData.find(
-            (item) => item.language_id === lang.id_lang
-          );
-        });
-        // setLangHeirarchy(data);
-      });
-  }, [languageInfo]);
+  // useEffect(() => {
+  //   axios
+  //     .get(DB_GITHUB_WORDS + urlFriendly(wordMain) + ".json")
+  //     .then((response) => {
+  //       const data = [response.data, languageInfo];
+  //       dispatch(SET_WORDTRANSLATIONS, data);
+  //     });
+  // }, [languageInfo, wordMain, toggleZoom]);
 
   return (
     <div className="journey-of-words">
-      <StoryContainer
-        attributes={{ wordTranslationsData, wordMain, langHeirarchy }}
-      ></StoryContainer>
+      {/* <StoryContainer
+        attributes={{ wordTranslations, wordMain, langHeirarchy }}
+      ></StoryContainer> */}
       <MapContainer
         attributes={{
           wordMain,
           setWordMain,
-          wordTranslationsData,
+          wordTranslations,
           wordsInfo,
           toggleZoom,
           setToggleZoom,
