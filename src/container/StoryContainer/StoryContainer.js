@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 
 import styles from "./StoryContainer.module.scss";
 import CategoryContainer from "./CategoryContainer/CategoryContainer";
+import BigPictureContainer from "./BigPictureContainer/BigPictureContainer";
 
-const StoryContainer = () => {
+const StoryContainer = ({ attributes }) => {
+  const { wordTranslationsData, wordMain, langHeirarchy } = attributes;
   const [wordsCount, setWordsCount] = useState({});
   const [categories, setCategories] = useState([]);
 
@@ -21,8 +23,15 @@ const StoryContainer = () => {
 
   return (
     <div className={styles["story-container"]}>
-      <h2>Story</h2>
-      <div className={styles["words"]}>
+      <div className={styles["title"]}>
+        <h2>Story</h2>
+      </div>
+      <BigPictureContainer
+        langHeirarchy={langHeirarchy}
+        wordTranslationsData={wordTranslationsData}
+        wordMain={wordMain}
+      ></BigPictureContainer>
+      <div className={styles["small-picture"]}>
         {categories.map((category) => (
           <CategoryContainer
             title={category}

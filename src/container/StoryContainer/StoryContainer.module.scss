@@ -1,4 +1,9 @@
 .story-container {
   position: relative;
   width: 100%;
+
+  .title {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
 }
