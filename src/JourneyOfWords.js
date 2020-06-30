@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import axios from "axios";
 
 import MapContainer from "./container/MapContainer/MapContainer";
-import StoryContainer from "./container/StoryContainer/StoryContainer";
+// import StoryContainer from "./container/StoryContainer/StoryContainer";
 import { configureDataStore } from "./store/dataStore";
 import { urlFriendly } from "./utils/utils";
 import {
@@ -38,7 +38,7 @@ const JourneyOfWords = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, [dispatch]);
+  }, []);
 
   useEffect(() => {
     const translate = (dataWords) => {
@@ -63,11 +63,11 @@ const JourneyOfWords = () => {
         const data = translate(response.data);
         dispatch(SET_WORDTRANSLATIONS, data);
       });
-  }, [dispatch, languageInfo, wordMain, toggleZoom]);
+  }, [languageInfo, wordMain, toggleZoom]);
 
   return (
     <div className="journey-of-words">
-      <StoryContainer></StoryContainer>
+      {/* <StoryContainer></StoryContainer> */}
       <MapContainer></MapContainer>
     </div>
   );
