@@ -8,7 +8,7 @@ import { useStore } from "../../../store/store";
 import {
   CARTODB_DARKMATTER,
   CARTODB_DM_ATTRIBUTION,
-} from "../../../store/constants";
+} from "../../../utils/constants";
 
 const TilesLayer = () => {
   const state = useStore()[0];

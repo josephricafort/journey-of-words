@@ -1,22 +1,40 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
+import axios from "axios";
 
 import { Map as LeafletMap, ZoomControl } from "react-leaflet";
 import styles from "./MapContainer.module.scss";
 import MenuContainer from "./MenuContainer/MenuContainer";
 import TilesLayer from "../../component/MapContainer/TilesLayer/TilesLayer";
 import { useStore } from "../../store/store";
-import { SET_TOGGLEZOOM } from "../../store/constants";
+import {
+  DB_GITHUB_WORDS,
+  SET_WORDTRANSLATIONS,
+  SET_TOGGLEZOOM,
+} from "../../utils/constants";
+import { urlFriendly } from "../../utils/utils";
 
 require("leaflet/dist/leaflet.css");
 require("react-leaflet-markercluster/dist/styles.min.css");
 
 const MapContainer = () => {
   const [state, dispatch] = useStore();
-  const { toggleZoom } = state;
+  const [wordMain, setWordMain] = useState("five");
+  const [toggleZoom, setToggleZoom] = useState(false);
+
+  const { languageInfo } = state;
   const mapRef = useRef(Map);
 
+  useEffect(() => {
+    axios
+      .get(DB_GITHUB_WORDS + urlFriendly(wordMain) + ".json")
+      .then((response) => {
+        const wordsData = response.data;
+        dispatch(SET_WORDTRANSLATIONS, { wordsData, languageInfo });
+      });
+  }, [languageInfo, wordMain, toggleZoom]);
+
   const handleZoomLevelChanged = () => {
-    dispatch(SET_TOGGLEZOOM, !toggleZoom);
+    setToggleZoom(!toggleZoom);
   };
 
   return (
@@ -45,7 +63,7 @@ const MapContainer = () => {
         <TilesLayer></TilesLayer>
         <ZoomControl position="topright"></ZoomControl>
       </LeafletMap>
-      <MenuContainer></MenuContainer>
+      <MenuContainer attributes={{ wordMain, setWordMain }}></MenuContainer>
     </div>
   );
 };

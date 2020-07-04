@@ -4,7 +4,7 @@ import axios from "axios";
 import styles from "./StoryContainer.module.scss";
 import CategoryContainer from "./CategoryContainer/CategoryContainer";
 import BigPictureContainer from "./BigPictureContainer/BigPictureContainer";
-import { DB_GITHUB_WORDS_COUNT_TOP20 } from "../../store/constants";
+import { DB_GITHUB_WORDS_COUNT_TOP20 } from "../../utils/constants";
 
 const StoryContainer = () => {
   const [wordsCount, setWordsCount] = useState([]);
@@ -25,7 +25,7 @@ const StoryContainer = () => {
         <h2>Story</h2>
       </div>
       <BigPictureContainer></BigPictureContainer>
-      <div className={styles["small-picture"]}>
+      {/* <div className={styles["small-picture"]}>
         {categories.map((category) => (
           <CategoryContainer
             title={category}
@@ -33,7 +33,7 @@ const StoryContainer = () => {
             key={category}
           ></CategoryContainer>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };
