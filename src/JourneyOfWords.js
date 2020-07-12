@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import axios from "axios";
 
 import MapContainer from "./container/MapContainer/MapContainer";
-import StoryContainer from "./container/StoryContainer/StoryContainer";
+// import StoryContainer from "./container/StoryContainer/StoryContainer";
 import { configureDataStore } from "./store/dataStore";
 import {
   DB_GITHUB_LANGUAGE_INFO,
@@ -38,7 +38,7 @@ const JourneyOfWords = () => {
 
   return (
     <div className="journey-of-words">
-      <StoryContainer></StoryContainer>
+      {/* <StoryContainer></StoryContainer> */}
       <MapContainer></MapContainer>
     </div>
   );
