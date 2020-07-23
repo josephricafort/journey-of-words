@@ -54,6 +54,7 @@ export const configureDataStore = () => {
       return { langHeirWords: translate(wordsData) };
     },
     SET_TOGGLEZOOM: (state, toggleState) => ({ toggleZoom: toggleState }),
+    SET_WORDGROUPS: (state, wordGroups) => ({ wordGroups: wordGroups }),
   };
 
   const initState = {
@@ -64,6 +65,7 @@ export const configureDataStore = () => {
     langHeirarchy: [],
     langHeirWords: [],
     toggleZoom: false,
+    wordGroups: [],
   };
 
   initStore(actions, initState);

@@ -13,9 +13,6 @@ import {
 } from "../../utils/constants";
 import { urlFriendly } from "../../utils/utils";
 
-require("leaflet/dist/leaflet.css");
-require("react-leaflet-markercluster/dist/styles.min.css");
-
 const MapContainer = () => {
   const [state, dispatch] = useStore();
   const [wordMain, setWordMain] = useState("five");

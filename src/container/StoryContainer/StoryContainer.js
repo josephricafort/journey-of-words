@@ -4,6 +4,7 @@ import axios from "axios";
 import styles from "./StoryContainer.module.scss";
 import CategoryContainer from "./CategoryContainer/CategoryContainer";
 import BigPictureContainer from "./BigPictureContainer/BigPictureContainer";
+import BubbleChartsContainer from "./BubbleChartsContainer/BubbleChartsContainer";
 import { DB_GITHUB_WORDS_COUNT_TOP20 } from "../../utils/constants";
 
 const StoryContainer = () => {
@@ -24,7 +25,8 @@ const StoryContainer = () => {
       <div className={styles["title"]}>
         <h2>Story</h2>
       </div>
-      <BigPictureContainer></BigPictureContainer>
+      <BubbleChartsContainer></BubbleChartsContainer>
+      {/* <BigPictureContainer></BigPictureContainer> */}
       {/* <div className={styles["small-picture"]}>
         {categories.map((category) => (
           <CategoryContainer
