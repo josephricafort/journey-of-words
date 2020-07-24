@@ -8,34 +8,51 @@ import styles from "./BubbleChartsContainer.module.scss";
 
 const BubbleChartsContainer = () => {
   const [data, setData] = useState([]);
-  const [dataFiltered, setDataFiltered] = useState([]);
-  const [maxCognacy, setMaxCognacy] = useState(80);
-  const [words, setWords] = useState([]);
 
   useEffect(() => {
     axios.get(DB_GITHUB_WORDS_COUNT_TOP20PC).then((d) => {
       setData(d.data);
-      setDataFiltered(d.data.filter((obj) => obj.word === "thin"));
-      setMaxCognacy(d3.max(d.data.map((obj) => obj.cognacy1)));
-      setWords([...new Set(d.data.map((obj) => obj.word))]);
     });
   }, []);
 
+  const groups = (d) => {
+    return [...new Set(d.map((obj) => obj.group))].sort();
+  };
+
+  const words = (d, g) => {
+    return [...new Set(d.filter((e) => e.group === g).map((e) => e.word))];
+  };
+
+  const dataWords = (w) => {
+    return data.filter((e) => e.word === w);
+  };
+
+  const maxCognacy = d3.max(data.map((e) => e.cognacy1));
+
   return (
     <div className={styles["bubblecharts-container"]}>
-      {words.map((w) => {
+      {groups(data).map((g) => {
         return (
-          <div className={styles["bubblechart"]}>
-            <h3>{w}</h3>
-            <BubbleChart
-              data={data.filter((d) => d.word == w)}
-              maxCognacy={maxCognacy}
-              key={w}
-            ></BubbleChart>
-          </div>
+          <div>
+            <h3>{g}</h3>
+            <div className={styles["group"]}>
+              {words(data, g).map((w) => {
+                return (
+                  <div className={styles["bubblechart"]}>
+                    <h4>{w}</h4>
+                    <BubbleChart
+                      data={dataWords(w)}
+                      maxCognacy={maxCognacy}
+                      key={w}
+                    ></BubbleChart>
+                  </div> // bubblechart
+                );
+              })}
+            </div>
+          </div> // group
         );
       })}
-    </div>
+    </div> // bubblecharts
   );
 };
 

@@ -1,5 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
-import axios from "axios";
+import React, { useRef, useEffect } from "react";
 
 import * as d3 from "d3";
 
@@ -26,7 +25,6 @@ const BubbleChart = ({ data, maxCognacy }) => {
       .slice(0, n);
     const scale = 0.6;
     const center = [width / 2, height / 2];
-    // const rescale = isNaN(nodes[0].x);
 
     const node = svg
       .append("g")
@@ -47,12 +45,6 @@ const BubbleChart = ({ data, maxCognacy }) => {
       .force("y", d3.forceY(center[1]).strength(0.001))
       .stop();
 
-    // differ application of the forces
-    setTimeout(() => {
-      simulation.restart();
-      node.transition().attr("r", (d) => d.r);
-    }, 0);
-
     for (const node of nodes) {
       node.x = node.x * scale + center[0];
       node.y = node.y * scale + center[1];
@@ -60,10 +52,11 @@ const BubbleChart = ({ data, maxCognacy }) => {
 
     function tick() {
       node.attr("cx", (d) => d.x).attr("cy", (d) => d.y);
+      node.attr("r", (d) => d.r);
     }
 
+    simulation.tick(30);
     tick();
-
     svg.node();
   }, []);
 
