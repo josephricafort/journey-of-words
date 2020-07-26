@@ -25,9 +25,6 @@ const BubbleChart = ({ data, maxCognacy }) => {
     const width = height * 1.2;
     const n = data.length;
 
-    // Prepare data
-    const languages = () => {};
-
     // Tooltip
     const tooltip = d3.select(tooltipRef.current);
 
