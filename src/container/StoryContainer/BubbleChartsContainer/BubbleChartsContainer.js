@@ -15,34 +15,39 @@ const BubbleChartsContainer = () => {
     });
   }, []);
 
-  const groups = (d) => {
-    return [...new Set(d.map((obj) => obj.group))].sort();
-  };
+  const groups = [...new Set(data.map((obj) => obj.group))].sort();
+  // .slice(0, 1); // slice() is for debug purposes only
 
-  const words = (d, g) => {
-    return [...new Set(d.filter((e) => e.group === g).map((e) => e.word))];
+  const words = (g) => {
+    return [...new Set(data.filter((e) => e.group === g).map((e) => e.word))];
   };
 
   const dataWords = (w) => {
     return data.filter((e) => e.word === w);
   };
 
-  const maxCognacy = d3.max(data.map((e) => e.cognacy1));
+  const dataGroup = (g) => {
+    return data.filter((e) => e.group === g);
+  };
+
+  const maxCognacy = (d) => {
+    return d3.max(d.map((e) => e.cognacy1));
+  };
 
   return (
     <div className={styles["bubblecharts-container"]}>
-      {groups(data).map((g) => {
+      {groups.map((g) => {
         return (
           <div>
             <h3>{g}</h3>
-            <div className={styles["group"]}>
-              {words(data, g).map((w) => {
+            <div className={styles["group"]} key={g}>
+              {words(g).map((w) => {
                 return (
                   <div className={styles["bubblechart"]}>
                     <h4>{w}</h4>
                     <BubbleChart
                       data={dataWords(w)}
-                      maxCognacy={maxCognacy}
+                      maxCognacy={maxCognacy(dataGroup(g))}
                       key={w}
                     ></BubbleChart>
                   </div> // bubblechart
