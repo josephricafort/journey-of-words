@@ -39,7 +39,7 @@ const JourneyOfWords = () => {
   return (
     <div className="journey-of-words">
       <StoryContainer></StoryContainer>
-      <MapContainer></MapContainer>
+      {/* <MapContainer></MapContainer> */}
     </div>
   );
 };

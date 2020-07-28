@@ -28,7 +28,7 @@ const MapContainer = () => {
         const wordsData = response.data;
         dispatch(SET_WORDTRANSLATIONS, { wordsData, languageInfo });
       });
-  }, [languageInfo, wordMain, toggleZoom]);
+  }, [languageInfo, wordMain]);
 
   const handleZoomLevelChanged = () => {
     setToggleZoom(!toggleZoom);

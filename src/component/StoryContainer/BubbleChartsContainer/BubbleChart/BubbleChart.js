@@ -21,14 +21,15 @@ const BubbleChart = ({ data, maxCognacy }) => {
 
   useEffect(() => {
     // The D3 code for this beautiful viz was forked from https://observablehq.com/@d3/force-layout-phyllotaxis
-    const height = 300;
-    const width = height * 1.2;
+    const height = 200;
+    const width = height * 3;
+    const padding = { top: 10, right: 80, bottom: 10, left: 80 };
     const n = data.length;
 
     // Tooltip
     const tooltip = d3.select(tooltipRef.current);
 
-    // Svg
+    // SVG
     const svg = d3
       .select(svgRef.current)
       .attr("viewBox", [0, 0, width, height]);
@@ -46,6 +47,14 @@ const BubbleChart = ({ data, maxCognacy }) => {
     const scale = 0.6;
     const center = [width / 2, height / 2];
 
+    // X-scale
+    const x = d3
+      .scaleLinear()
+      .domain(d3.extent(nodes.map((d) => d.branch_mean)))
+      .range([padding.left, width - padding.right]);
+
+    const y = d3.scaleLinear();
+
     const node = svg
       .append("g")
       .selectAll("circle")
@@ -61,15 +70,16 @@ const BubbleChart = ({ data, maxCognacy }) => {
           .style("top", d3.event.pageY - 28 + "px");
 
         d3.select(this)
-          .attr("id", "selected-circle")
           .attr("r", (d) => d.r * 1.25)
           .attr("stroke", "#333333")
           .attr("stroke-width", "3px")
+          .attr("fill", (d) => d.color)
           .raise();
       })
-      .on("mouseout", (d) => {
-        d3.select("#selected-circle").attr("id", null);
-        node.attr("stroke-width", "0px").attr("r", (d) => d.r);
+      .on("mouseout", function (d) {
+        d3.selectAll("circle")
+          .attr("stroke-width", "0px")
+          .attr("r", (d) => d.r);
         tooltip.style("opacity", 0);
       });
 
@@ -81,26 +91,26 @@ const BubbleChart = ({ data, maxCognacy }) => {
     const simulation = d3
       .forceSimulation(nodes)
       .on("tick", tick)
+      .force("x", d3.forceX((d) => x(d.branch_mean)).strength(0.8))
+      .force("y", d3.forceY(height / 2).strength(0.8))
       .force(
         "collide",
         d3.forceCollide().radius((d) => 1 + d.r)
       )
-      .force("x", d3.forceX(center[0]).strength(0.001))
-      .force("y", d3.forceY(center[1]).strength(0.001))
       .stop();
 
     for (const node of nodes) {
-      node.x = node.x * scale + center[0];
+      node.x = node.x * scale + center[0] + padding.left;
       node.y = node.y * scale + center[1];
     }
 
-    simulation.tick(30);
+    simulation.tick(200);
     tick();
     svg.node();
   }, []);
 
   return (
-    <div>
+    <div className="bubblechart">
       <svg ref={svgRef}></svg>
       <Tooltip ref={tooltipRef} className="tooltip"></Tooltip>
     </div>
