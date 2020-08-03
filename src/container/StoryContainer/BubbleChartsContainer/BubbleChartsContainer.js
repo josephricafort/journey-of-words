@@ -15,8 +15,9 @@ const BubbleChartsContainer = () => {
     });
   }, []);
 
-  const groups = [...new Set(data.map((obj) => obj.group))].sort();
-  // .slice(0, 1); // slice() is for debug purposes only
+  const groups = [...new Set(data.map((obj) => obj.group))].sort(); // slice() is for debug purposes only
+
+  // const groups = ["Verbs", "Body Parts"];
 
   const words = (g) => {
     return [...new Set(data.filter((e) => e.group === g).map((e) => e.word))];

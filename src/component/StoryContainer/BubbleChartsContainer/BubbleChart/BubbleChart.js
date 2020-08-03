@@ -1,33 +1,26 @@
 import React, { useRef, useEffect } from "react";
-// import styles from "./BubbleChart.module.scss";
-import styled from "@emotion/styled";
+import styled from "styled-components";
 import * as d3 from "d3";
 
-const Tooltip = styled.div`
-  position: absolute;
-  text-align: center;
-  height: 28px;
-  padding: 2px;
-  background: black;
-  color: white;
-  border: 0px;
-  font-size: 12px;
-  opacity: 0; // hide at first instance
+const BubbleChartContainer = styled.div`
+  margin-top: -20px;
 `;
+
+const SvgContainer = styled.svg``;
 
 const BubbleChart = ({ data, maxCognacy }) => {
   const svgRef = useRef();
   const tooltipRef = useRef();
 
+  const height = 200;
+  const width = height * 3;
+  const padding = { top: 10, right: 80, bottom: 10, left: 80 };
+
   useEffect(() => {
     // The D3 code for this beautiful viz was forked from https://observablehq.com/@d3/force-layout-phyllotaxis
-    const height = 200;
-    const width = height * 3;
-    const padding = { top: 10, right: 80, bottom: 10, left: 80 };
     const n = data.length;
-
-    // Tooltip
-    const tooltip = d3.select(tooltipRef.current);
+    const scale = 0.6;
+    const center = [width / 2, height / 2];
 
     // SVG
     const svg = d3
@@ -44,16 +37,12 @@ const BubbleChart = ({ data, maxCognacy }) => {
         return obj;
       })
       .slice(0, n);
-    const scale = 0.6;
-    const center = [width / 2, height / 2];
 
     // X-scale
     const x = d3
       .scaleLinear()
       .domain(d3.extent(nodes.map((d) => d.branch_mean)))
       .range([padding.left, width - padding.right]);
-
-    const y = d3.scaleLinear();
 
     const node = svg
       .append("g")
@@ -63,14 +52,21 @@ const BubbleChart = ({ data, maxCognacy }) => {
       .attr("r", 4)
       .attr("fill", (d) => d.color)
       .on("mouseover", function (d) {
-        tooltip
-          .html(`<strong>${d.item}</strong> (${d.count})`)
-          .style("opacity", 0.9)
-          .style("left", d3.event.pageX + "px")
-          .style("top", d3.event.pageY - 28 + "px");
+        // Tooltip on hover
+        svg
+          .append("g")
+          .attr("class", "tooltip")
+          .append("text")
+          .text(`${d.item} (${d.count})`)
+          .attr("class", "item")
+          .attr("x", width / 2)
+          .attr("y", "18px")
+          .attr("text-anchor", "middle")
+          .attr("font-size", "18px")
+          .style("opacity", 1);
 
         d3.select(this)
-          .attr("r", (d) => d.r * 1.25)
+          .attr("r", (d) => d.r)
           .attr("stroke", "#333333")
           .attr("stroke-width", "3px")
           .attr("fill", (d) => d.color)
@@ -80,7 +76,8 @@ const BubbleChart = ({ data, maxCognacy }) => {
         d3.selectAll("circle")
           .attr("stroke-width", "0px")
           .attr("r", (d) => d.r);
-        tooltip.style("opacity", 0);
+        // Remove tooltip on unhover
+        svg.selectAll(".tooltip").style("opacity", 0);
       });
 
     const tick = () => {
@@ -110,10 +107,9 @@ const BubbleChart = ({ data, maxCognacy }) => {
   }, []);
 
   return (
-    <div className="bubblechart">
-      <svg ref={svgRef}></svg>
-      <Tooltip ref={tooltipRef} className="tooltip"></Tooltip>
-    </div>
+    <BubbleChartContainer>
+      <SvgContainer ref={svgRef}></SvgContainer>
+    </BubbleChartContainer>
   );
 };
 
