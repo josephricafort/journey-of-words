@@ -38,8 +38,8 @@ const JourneyOfWords = () => {
 
   return (
     <div className="journey-of-words">
-      <StoryContainer></StoryContainer>
-      {/* <MapContainer></MapContainer> */}
+      {/* <StoryContainer></StoryContainer> */}
+      <MapContainer></MapContainer>
     </div>
   );
 };
