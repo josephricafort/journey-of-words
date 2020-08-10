@@ -1,3 +1,9 @@
+# Austronesian Languages Exploration
+
+Visualizing the Austronesian language database and reflecting the culture and society through words
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
