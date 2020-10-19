@@ -16,6 +16,8 @@ export const DB_GITHUB_LANG_HEIRARCHY_ARR =
 export const DB_GITHUB_WORDS_COUNT_TOP20 = DB_GITHUB + "words_count_top20.json";
 export const DB_GITHUB_WORDS_COUNT_TOP20PC =
   DB_GITHUB + "words_count_top20pc.json";
+export const DB_GITHUB_COGNATE_SETS_PLUS25 =
+  DB_GITHUB + "cognate_sets_plus25.json";
 
 export const CARTODB_DARKMATTER =
   "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png";

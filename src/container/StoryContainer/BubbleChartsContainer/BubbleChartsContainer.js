@@ -9,6 +9,12 @@ import styles from "./BubbleChartsContainer.module.scss";
 const BubbleChartsContainer = () => {
   const [data, setData] = useState([]);
 
+  // Translating from Top20 to Plus25 data
+  // word <- plang_gloss
+  // plang_subgroup <- branch_mean (numeric)
+  // cognate_gp <- cognate_group (integer)
+  // ? <- group
+
   useEffect(() => {
     axios.get(DB_GITHUB_WORDS_COUNT_TOP20PC).then((d) => {
       setData(d.data);
