@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
+import styled from "styled-components";
 
-import MapContainer from "./container/MapContainer/MapContainer";
-import StoryContainer from "./container/StoryContainer/StoryContainer";
 import { configureDataStore } from "./store/dataStore";
 import {
   DB_GITHUB_LANGUAGE_INFO,
@@ -13,8 +12,19 @@ import {
   SET_LANGHEIRARCHY,
 } from "./utils/constants";
 import { useStore } from "./store/store";
+import MapboxScrolly from "./container/MapboxScrolly/MapboxScrolly";
+import mapboxconfig from "./container/MapboxScrolly/config";
 
 configureDataStore();
+
+const ChapterScreen = styled.div`
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+  border: 1px solid brown;
+`;
 
 const JourneyOfWords = () => {
   const dispatch = useStore()[1];
@@ -38,8 +48,20 @@ const JourneyOfWords = () => {
 
   return (
     <div className="journey-of-words">
-      <StoryContainer></StoryContainer>
-      {/* <MapContainer></MapContainer> */}
+      <div className="chapter-world">
+        <MapboxScrolly {...mapboxconfig} />
+      </div>
+      <ChapterScreen className="chapter-nature">Chapter Nature</ChapterScreen>
+      <ChapterScreen className="chapter-conversion">
+        Chapter Conversion
+      </ChapterScreen>
+      <ChapterScreen className="chapter-extraction">
+        Chapter Extraction
+      </ChapterScreen>
+      <ChapterScreen className="chapter-fate">Chapter Fate</ChapterScreen>
+      {/* <ChapterScreen className="section-end-exploration">
+        <MapContainer></MapContainer>
+      </ChapterScreen> */}
     </div>
   );
 };

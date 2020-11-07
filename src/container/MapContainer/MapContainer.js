@@ -6,11 +6,7 @@ import styles from "./MapContainer.module.scss";
 import MenuContainer from "./MenuContainer/MenuContainer";
 import TilesLayer from "../../component/MapContainer/TilesLayer/TilesLayer";
 import { useStore } from "../../store/store";
-import {
-  DB_GITHUB_WORDS,
-  SET_WORDTRANSLATIONS,
-  SET_TOGGLEZOOM,
-} from "../../utils/constants";
+import { DB_GITHUB_WORDS, SET_WORDTRANSLATIONS } from "../../utils/constants";
 import { urlFriendly } from "../../utils/utils";
 
 const MapContainer = () => {
