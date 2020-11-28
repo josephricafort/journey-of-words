@@ -1,23 +1,17 @@
 var config = {
-  style: "mapbox://styles/josephricafort/ckh67moqu0yvl19p3a47tvsqx/draft",
+  style: "mapbox://styles/josephricafort/ckhxlghrg09zp1bqu5s7pt7jl/",
   accessToken:
     "pk.eyJ1Ijoiam9zZXBocmljYWZvcnQiLCJhIjoiY2pueTd4d3lzMDB1ZzNxbGhxZnpyOHZ4eSJ9.SVeNEBhsMbzpUUt9tgbNSg",
   showMarkers: false,
   theme: "light",
   alignment: "left",
-  title: "The Words That Sailed Across Half The World",
-  subtitle:
-    "How the shared linguistic ancestry of Austronesians told us the story of mankind’s greatest expansion and adversities across the vast Indo-Pacific.",
-  byline:
-    "An adaptation of Robert Blust’s “Out Of Taiwan: The Austronesian Expansion As A Chapter In Human History. Produced by Joseph Ricafort",
-  footer: "Source: source citations, etc.",
   chapters: [
     {
-      id: "world-1",
-      title: "Words as a Vessel of Cultures of the Past",
-      image: "./path/to/image/source.png",
+      id: "world-taiwan",
+      title: "",
+      image: "",
       description:
-        "Words are our means to connect with another human being. It became a vessel of our oral traditions and cultures that made it alive for thousands of years. Words are living artifacts that remind us how our early ancestors lived, suffered and overcame the challenges they faced. For some Austronesians, the boat symbolizes the word of the past",
+        "4,000 years ago, a group of people called the Austronesians were living along the coasts of the island of Taiwan and lived there for thousands of years.",
       location: {
         center: { lon: 120.36092, lat: 23.67234 },
         zoom: 7.38,
@@ -38,11 +32,11 @@ var config = {
       ],
     },
     {
-      id: "world-2-boat",
+      id: "world-boat",
       title: "The Austronesians",
       image: "./path/to/image/source.png",
       description:
-        "4,000 years ago, a group of people called the Austronesians were living along the coasts of the island of Taiwan and lived there for thousands of years. Suddenly, someone unknown to history had a ‘dream’ of how to cross the waters that no one had dared to cross before (Blust 1977, 1984/1985). Through this dream, they innovated a boat by combining a sailing raft used at sea and a dugout canoe, a centuries old boat used on the interior rivers. The outrigger canoe was born! They called it, *qabaŋ₁ PAN boat, canoe. The new outrigger canoe made crossing wide water gaps far easier than had been possible when only bamboo rafts were used at sea!",
+        "Suddenly, one of the Austronesians unknown to history had a ‘dream’ of how to cross the waters that no one had dared to cross before (Blust 1977, 1984/1985). Through this dream, they innovated a boat by combining a sailing raft used at sea and a dugout canoe, a centuries old boat used on the interior rivers. The outrigger canoe was born! They called it, *qabaŋ₁ PAN boat, canoe. The new outrigger canoe made crossing wide water gaps far easier than had been possible when only bamboo rafts were used at sea!",
       location: {
         center: { lon: 121.126, lat: 22.55054 },
         zoom: 9.77,
@@ -63,7 +57,7 @@ var config = {
       ],
     },
     {
-      id: "world-3-cagayan",
+      id: "world-cagayan",
       title: "Crossing the seas to Northern Philippines",
       image: "./path/to/image/source.png",
       description:
@@ -88,7 +82,7 @@ var config = {
       ],
     },
     {
-      id: "world-4-expansion-philippines",
+      id: "world-expansion-philippines",
       title: "Expansion throughout the Philippine islands",
       image: "./path/to/image/source.png",
       description:
@@ -113,7 +107,7 @@ var config = {
       ],
     },
     {
-      id: "world-5-greater-sunda-isalnds",
+      id: "world-greater-sunda-isalnds",
       title: "The Greater Sunda Islands",
       image: "./path/to/image/source.png",
       description:
@@ -138,7 +132,7 @@ var config = {
       ],
     },
     {
-      id: "world-6-newguinea-papua",
+      id: "world-newguinea-papua",
       title: "Island of New Guinea and Papua",
       image: "./path/to/image/source.png",
       description:
@@ -163,7 +157,7 @@ var config = {
       ],
     },
     {
-      id: "world-7-new-britain-bismarck",
+      id: "world-new-britain-bismarck",
       title: "New Britain and Bismarck",
       image: "./path/to/image/source.png",
       description:
@@ -188,7 +182,7 @@ var config = {
       ],
     },
     {
-      id: "world-8-long-pause",
+      id: "world-long-pause",
       title: "The Long Pause",
       image: "./path/to/image/source.png",
       description:
@@ -213,7 +207,7 @@ var config = {
       ],
     },
     {
-      id: "world-9-at-this-stage",
+      id: "world-at-this-stage",
       title: "China, Greece and Rome were still in land",
       image: "./path/to/image/source.png",
       description:
@@ -238,7 +232,7 @@ var config = {
       ],
     },
     {
-      id: "world-10-rising-sun",
+      id: "world-rising-sun",
       title: "Another Dream Towards The Rising Sun",
       image: "./path/to/image/source.png",
       description:
@@ -263,7 +257,7 @@ var config = {
       ],
     },
     {
-      id: "world-11-tahiti-society-islands",
+      id: "world-tahiti-society-islands",
       title: "Tahiti and the Society Islands",
       image: "./path/to/image/source.png",
       description:
@@ -288,7 +282,7 @@ var config = {
       ],
     },
     {
-      id: "world-11-polynesian-triangle",
+      id: "world-polynesian-triangle",
       title: "The Polynesian Triangle",
       image: "./path/to/image/source.png",
       description:
@@ -313,7 +307,7 @@ var config = {
       ],
     },
     {
-      id: "world-12-barito",
+      id: "world-barito",
       title: "Some Austronesian from Barito river basin",
       image: "./path/to/image/source.png",
       description:
@@ -338,7 +332,7 @@ var config = {
       ],
     },
     {
-      id: "world-13-barito",
+      id: "world-barito-voyage",
       title: "Following the Coast of India, then Rested in Mozambique",
       image: "./path/to/image/source.png",
       description:
@@ -363,7 +357,7 @@ var config = {
       ],
     },
     {
-      id: "world-14-madagascar",
+      id: "world-madagascar",
       title: "The New Home In Madagascar",
       image: "./path/to/image/source.png",
       description:
@@ -388,7 +382,7 @@ var config = {
       ],
     },
     {
-      id: "world-15-austronesian-complete",
+      id: "world-austronesian-complete",
       title: "Stretching across half the world",
       image: "./path/to/image/source.png",
       description:

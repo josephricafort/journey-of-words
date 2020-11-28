@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./MapboxScrolly.css";
+import "./MapboxScrolly.scss";
 import mapboxgl from "mapbox-gl";
 import scrollama from "scrollama";
 

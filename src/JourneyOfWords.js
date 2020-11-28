@@ -14,10 +14,25 @@ import {
 import { useStore } from "./store/store";
 import MapboxScrolly from "./container/MapboxScrolly/MapboxScrolly";
 import mapboxconfig from "./container/MapboxScrolly/config";
+import ChaptersContainer from "./container/ChaptersContainer/ChaptersContainer";
+import Earth from "./container/ChaptersContainer/Earth";
 
 configureDataStore();
 
-const ChapterScreen = styled.div`
+const AppContainer = styled.div`
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100vh;
+  border: 1px solid brown;
+  text-align: center;
+  border: none;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+`;
+
+const ChaptersScreen = styled.div`
   position: relative;
   display: block;
   width: 100%;
@@ -47,22 +62,18 @@ const JourneyOfWords = () => {
   }, []);
 
   return (
-    <div className="journey-of-words">
+    <AppContainer className="journey-of-words">
+      <ChaptersScreen className="section-intro">Section Intro</ChaptersScreen>
       <div className="chapter-world">
         <MapboxScrolly {...mapboxconfig} />
       </div>
-      <ChapterScreen className="chapter-nature">Chapter Nature</ChapterScreen>
-      <ChapterScreen className="chapter-conversion">
-        Chapter Conversion
-      </ChapterScreen>
-      <ChapterScreen className="chapter-extraction">
-        Chapter Extraction
-      </ChapterScreen>
-      <ChapterScreen className="chapter-fate">Chapter Fate</ChapterScreen>
+      <div className="chapters-container">
+        <ChaptersContainer />
+      </div>
       {/* <ChapterScreen className="section-end-exploration">
         <MapContainer></MapContainer>
       </ChapterScreen> */}
-    </div>
+    </AppContainer>
   );
 };
 
