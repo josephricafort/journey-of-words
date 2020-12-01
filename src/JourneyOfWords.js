@@ -14,8 +14,8 @@ import {
 import { useStore } from "./store/store";
 import MapboxScrolly from "./container/MapboxScrolly/MapboxScrolly";
 import mapboxconfig from "./container/MapboxScrolly/config";
+import chaptersconfig from "./container/ChaptersContainer/config";
 import ChaptersContainer from "./container/ChaptersContainer/ChaptersContainer";
-import Earth from "./container/ChaptersContainer/Earth";
 
 configureDataStore();
 
@@ -68,7 +68,7 @@ const JourneyOfWords = () => {
         <MapboxScrolly {...mapboxconfig} />
       </div>
       <div className="chapters-container">
-        <ChaptersContainer />
+        <ChaptersContainer {...chaptersconfig} />
       </div>
       {/* <ChapterScreen className="section-end-exploration">
         <MapContainer></MapContainer>
