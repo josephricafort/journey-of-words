@@ -2,27 +2,24 @@ import React from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
-  position: -webkit-sticky;
-  position: sticky;
-  display: block;
+  position: relative;
   width: 100%;
   height: 100vh;
-  border: 1px solid brown;
   text-align: center;
   border: none;
-  top: 0;
 `;
 
 const Wrapper = styled.div`
   position: absolute;
   bottom: 20px;
+  width: 100%;
   left: 50%;
   transform: translate(-50%, 0%);
 `;
 
-const r = 100;
-
 const Earth = () => {
+  const r = 100;
+
   return (
     <Container className="earth-container">
       <Wrapper className="earth-wrapper">

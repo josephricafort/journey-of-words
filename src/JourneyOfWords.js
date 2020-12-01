@@ -24,7 +24,6 @@ const AppContainer = styled.div`
   display: block;
   width: 100%;
   height: 100vh;
-  border: 1px solid brown;
   text-align: center;
   border: none;
   position: -webkit-sticky;
@@ -38,7 +37,6 @@ const ChaptersScreen = styled.div`
   width: 100%;
   height: 100vh;
   background-color: white;
-  border: 1px solid brown;
 `;
 
 const JourneyOfWords = () => {
