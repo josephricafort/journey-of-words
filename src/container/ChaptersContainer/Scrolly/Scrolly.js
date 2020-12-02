@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Scrollama, Step } from "react-scrollama";
+
+import { useStore } from "../../../store/store";
+import { SET_CURRENTSTEPINDEX } from "../../../utils/constants";
 
 const CardWrapper = styled.div``;
 
@@ -33,6 +36,8 @@ const IntroWrapper = styled.div`
 
 const Scrolly = (chaptersconfig) => {
   const { slides } = chaptersconfig;
+  const [state, dispatch] = useStore();
+  const { currentStepIndex } = state;
 
   function slideSwitch(slide) {
     return (
@@ -69,10 +74,16 @@ const Scrolly = (chaptersconfig) => {
     );
   }
 
+  const onStepEnter = ({ data }) => {
+    dispatch(SET_CURRENTSTEPINDEX, data);
+  };
+
   return (
-    <Scrollama className="scrolly-scrollama">
+    <Scrollama className="scrolly-scrollama" onStepEnter={onStepEnter}>
       {slides.map((slide) => (
-        <Step key={slide.id}>{slideSwitch(slide)}</Step>
+        <Step className="scrolly-step" key={slide.id} data={slide.id}>
+          {slideSwitch(slide)}
+        </Step>
       ))}
     </Scrollama>
   );

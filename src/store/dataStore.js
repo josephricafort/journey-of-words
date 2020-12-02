@@ -2,16 +2,16 @@ import { initStore } from "./store";
 
 export const configureDataStore = () => {
   const actions = {
+    // scrolly
+    SET_CURRENTSTEPINDEX: (state, stepIndex) => ({
+      currentStepIndex: stepIndex,
+    }),
+
+    // data
+    //- words
     SET_WORDMAIN: (state, word) => ({ wordMain: word }),
     SET_WORDSINFO: (state, wordsInfo) => ({ wordsInfo: [...wordsInfo] }),
-    SET_LANGUAGEINFO: (state, languageInfo) => ({
-      languageInfo: languageInfo.filter(
-        (lang) => !!lang.latitude && !!lang.longitude
-      ),
-    }),
-    SET_LANGHEIRARCHY: (state, langHeirarchy) => ({
-      langHeirarchy: [...langHeirarchy],
-    }),
+    SET_WORDGROUPS: (state, wordGroups) => ({ wordGroups: wordGroups }),
     SET_WORDTRANSLATIONS: (state, payload) => {
       const { wordsData, languageInfo } = payload;
       const translate = (wordsData) => {
@@ -32,6 +32,17 @@ export const configureDataStore = () => {
       };
       return { wordTranslations: translate(wordsData) };
     },
+
+    //- languages
+    SET_LANGUAGEINFO: (state, languageInfo) => ({
+      languageInfo: languageInfo.filter(
+        (lang) => !!lang.latitude && !!lang.longitude
+      ),
+    }),
+    SET_LANGHEIRARCHY: (state, langHeirarchy) => ({
+      langHeirarchy: [...langHeirarchy],
+    }),
+
     SET_LANGHEIRWORDS: (state, payload) => {
       const { wordsData, langHeirarchy } = payload;
       const translate = (wordsData) => {
@@ -53,19 +64,29 @@ export const configureDataStore = () => {
       };
       return { langHeirWords: translate(wordsData) };
     },
+
+    // leaflet map
     SET_TOGGLEZOOM: (state, toggleState) => ({ toggleZoom: toggleState }),
-    SET_WORDGROUPS: (state, wordGroups) => ({ wordGroups: wordGroups }),
   };
 
   const initState = {
+    // scrolly
+    currentStepIndex: 1,
+
+    // data related
+    //- words
     wordMain: "five",
-    languageInfo: [],
     wordsInfo: [],
     wordTranslations: [],
+    wordGroups: [],
+
+    //- languages
+    languageInfo: [],
     langHeirarchy: [],
     langHeirWords: [],
+
+    // leaflet
     toggleZoom: false,
-    wordGroups: [],
   };
 
   initStore(actions, initState);
