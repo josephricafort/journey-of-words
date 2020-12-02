@@ -15,6 +15,7 @@ const Wrapper = styled.div`
   width: 100%;
   left: 50%;
   transform: translate(-50%, 0%);
+  max-width: 700px;
 `;
 
 const Earth = () => {
@@ -26,11 +27,9 @@ const Earth = () => {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           version="1.1"
-          width={`${r * 2}px`}
-          height={`${r * 2}px`}
           viewBox={`0 0 ${r * 2} ${r * 2}`}
           enableBackground={`new 0 0 ${r * 2} ${r * 2}`}
-          preserveAspectRatio="xMinYMin meet"
+          preserveAspectRatio="xMidYMin meet"
         >
           <circle cx={r} cy={r} r={r} fill="blue" />
         </svg>

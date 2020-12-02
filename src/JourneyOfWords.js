@@ -68,9 +68,6 @@ const JourneyOfWords = () => {
       <div className="chapters-container">
         <ChaptersContainer {...chaptersconfig} />
       </div>
-      {/* <ChapterScreen className="section-end-exploration">
-        <MapContainer></MapContainer>
-      </ChapterScreen> */}
     </AppContainer>
   );
 };

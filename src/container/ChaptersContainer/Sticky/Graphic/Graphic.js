@@ -11,10 +11,12 @@ const Wrapper = styled.div`
   position: absolute;
   top: 20px;
   width: calc(100% - 40px);
-  min-height: 300px;
+  min-height: 50vh;
   left: 50%;
   transform: translate(-50%, 0%);
   background-color: orange;
+  margin: 0 auto;
+  max-width: 700px;
 `;
 
 const Graphic = () => {

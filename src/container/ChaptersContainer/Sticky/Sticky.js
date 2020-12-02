@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import Earth from "./Earth";
-import Graphic from "./Graphic";
+import Graphic from "./Graphic/Graphic";
 
 const Container = styled.div`
   position: -webkit-sticky;
