@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import axios from "axios";
 
 import { Map as LeafletMap, ZoomControl } from "react-leaflet";
+import { CRS, Projection } from "leaflet";
 import styles from "./MapContainer.module.scss";
 import MenuContainer from "./MenuContainer/MenuContainer";
 import TilesLayer from "../../component/MapContainer/TilesLayer/TilesLayer";
@@ -52,6 +53,7 @@ const MapContainer = () => {
         preferCanvas={true}
         onzoomend={() => handleZoomLevelChanged()}
         ref={mapRef}
+        projection={Projection.SphericalMercator}
       >
         <TilesLayer></TilesLayer>
         <ZoomControl position="topright"></ZoomControl>

@@ -79,7 +79,12 @@ const Scrolly = (chaptersconfig) => {
   };
 
   return (
-    <Scrollama className="scrolly-scrollama" onStepEnter={onStepEnter}>
+    <Scrollama
+      className="scrolly-scrollama"
+      onStepEnter={onStepEnter}
+      offset={0.5}
+      debug
+    >
       {slides.map((slide) => (
         <Step className="scrolly-step" key={slide.id} data={slide.id}>
           {slideSwitch(slide)}
