@@ -1,5 +1,5 @@
 const config = {
-  style: "mapbox://styles/josephricafort/ckhxlghrg09zp1bqu5s7pt7jl/",
+  style: "mapbox://styles/josephricafort/ckhxlghrg09zp1bqu5s7pt7jl/draft/",
   accessToken:
     "pk.eyJ1Ijoiam9zZXBocmljYWZvcnQiLCJhIjoiY2pueTd4d3lzMDB1ZzNxbGhxZnpyOHZ4eSJ9.SVeNEBhsMbzpUUt9tgbNSg",
   showMarkers: false,
@@ -20,15 +20,15 @@ const config = {
       },
       onChapterEnter: [
         // {
-        //     layer: 'layer-name',
-        //     opacity: 1
-        // }
+        //   layer: "formosa",
+        //   opacity: 1,
+        // },
       ],
       onChapterExit: [
         // {
-        //     layer: 'layer-name',
-        //     opacity: 0
-        // }
+        //   layer: "formosa",
+        //   opacity: 0,
+        // },
       ],
     },
     {
@@ -44,16 +44,16 @@ const config = {
         bearing: -170.4,
       },
       onChapterEnter: [
-        // {
-        //     layer: 'layer-name',
-        //     opacity: 1
-        // }
+        {
+          layer: "formosa",
+          opacity: 1,
+        },
       ],
       onChapterExit: [
-        // {
-        //     layer: 'layer-name',
-        //     opacity: 0
-        // }
+        {
+          layer: "formosa",
+          opacity: 0,
+        },
       ],
     },
     {
@@ -69,16 +69,16 @@ const config = {
         bearing: -178.33,
       },
       onChapterEnter: [
-        // {
-        //     layer: 'layer-name',
-        //     opacity: 1
-        // }
+        {
+          layer: "northern-philippines",
+          opacity: 1,
+        },
       ],
       onChapterExit: [
-        // {
-        //     layer: 'layer-name',
-        //     opacity: 0
-        // }
+        {
+          layer: "northern-philippines",
+          opacity: 0,
+        },
       ],
     },
     {
@@ -94,16 +94,16 @@ const config = {
         bearing: -174.4,
       },
       onChapterEnter: [
-        // {
-        //     layer: 'layer-name',
-        //     opacity: 1
-        // }
+        {
+          layer: "philippines",
+          opacity: 1,
+        },
       ],
       onChapterExit: [
-        // {
-        //     layer: 'layer-name',
-        //     opacity: 0
-        // }
+        {
+          layer: "philippines",
+          opacity: 0,
+        },
       ],
     },
     {
@@ -119,16 +119,16 @@ const config = {
         bearing: -164.05,
       },
       onChapterEnter: [
-        // {
-        //     layer: 'layer-name',
-        //     opacity: 1
-        // }
+        {
+          layer: "sunda-islands",
+          opacity: 1,
+        },
       ],
       onChapterExit: [
-        // {
-        //     layer: 'layer-name',
-        //     opacity: 0
-        // }
+        {
+          layer: "sunda-islands",
+          opacity: 0,
+        },
       ],
     },
     {
@@ -144,16 +144,20 @@ const config = {
         bearing: 132.8,
       },
       onChapterEnter: [
-        // {
-        //     layer: 'layer-name',
-        //     opacity: 1
-        // }
+        {
+          layer: "papua",
+          opacity: 1,
+        },
+        {
+          layer: "fiji",
+          opacity: 0,
+        },
       ],
       onChapterExit: [
-        // {
-        //     layer: 'layer-name',
-        //     opacity: 0
-        // }
+        {
+          layer: "papua",
+          opacity: 0,
+        },
       ],
     },
     {
@@ -169,16 +173,16 @@ const config = {
         bearing: 118.44,
       },
       onChapterEnter: [
-        // {
-        //     layer: 'layer-name',
-        //     opacity: 1
-        // }
+        {
+          layer: "fiji",
+          opacity: 1,
+        },
       ],
       onChapterExit: [
         // {
-        //     layer: 'layer-name',
-        //     opacity: 0
-        // }
+        //   layer: "fiji",
+        //   opacity: 0,
+        // },
       ],
     },
     {
@@ -195,15 +199,15 @@ const config = {
       },
       onChapterEnter: [
         // {
-        //     layer: 'layer-name',
-        //     opacity: 1
-        // }
+        //   layer: "fiji",
+        //   opacity: 1,
+        // },
       ],
       onChapterExit: [
         // {
-        //     layer: 'layer-name',
-        //     opacity: 0
-        // }
+        //   layer: "fiji",
+        //   opacity: 0,
+        // },
       ],
     },
     {
@@ -220,13 +224,13 @@ const config = {
       },
       onChapterEnter: [
         // {
-        //     layer: 'layer-name',
+        //     layer: 'fiji',
         //     opacity: 1
         // }
       ],
       onChapterExit: [
         // {
-        //     layer: 'layer-name',
+        //     layer: 'fiji',
         //     opacity: 0
         // }
       ],
@@ -244,14 +248,14 @@ const config = {
         bearing: 118.44,
       },
       onChapterEnter: [
-        // {
-        //     layer: 'layer-name',
-        //     opacity: 1
-        // }
+        {
+          layer: "fiji",
+          opacity: 1,
+        },
       ],
       onChapterExit: [
         // {
-        //     layer: 'layer-name',
+        //     layer: 'fiji',
         //     opacity: 0
         // }
       ],
@@ -269,16 +273,24 @@ const config = {
         bearing: 111.94,
       },
       onChapterEnter: [
-        // {
-        //     layer: 'layer-name',
-        //     opacity: 1
-        // }
+        {
+          layer: "tahiti",
+          opacity: 1,
+        },
+        {
+          layer: "fiji",
+          opacity: 0,
+        },
+        {
+          layer: "polynesia",
+          opacity: 0,
+        },
       ],
       onChapterExit: [
-        // {
-        //     layer: 'layer-name',
-        //     opacity: 0
-        // }
+        {
+          layer: "tahiti",
+          opacity: 0,
+        },
       ],
     },
     {
@@ -294,16 +306,16 @@ const config = {
         bearing: 116.04,
       },
       onChapterEnter: [
-        // {
-        //     layer: 'layer-name',
-        //     opacity: 1
-        // }
+        {
+          layer: "polynesia",
+          opacity: 1,
+        },
       ],
       onChapterExit: [
         // {
-        //     layer: 'layer-name',
-        //     opacity: 0
-        // }
+        //   layer: "polynesia",
+        //   opacity: 0,
+        // },
       ],
     },
     {
@@ -344,10 +356,14 @@ const config = {
         bearing: -87.02,
       },
       onChapterEnter: [
-        // {
-        //     layer: 'layer-name',
-        //     opacity: 1
-        // }
+        {
+          layer: "polynesia",
+          opacity: 1,
+        },
+        {
+          layer: "madagascar",
+          opacity: 0,
+        },
       ],
       onChapterExit: [
         // {
@@ -369,16 +385,20 @@ const config = {
         bearing: -117.42,
       },
       onChapterEnter: [
-        // {
-        //     layer: 'layer-name',
-        //     opacity: 1
-        // }
+        {
+          layer: "madagascar",
+          opacity: 1,
+        },
+        {
+          layer: "polynesia",
+          opacity: 0,
+        },
       ],
       onChapterExit: [
         // {
-        //     layer: 'layer-name',
-        //     opacity: 0
-        // }
+        //   layer: "madagascar",
+        //   opacity: 0,
+        // },
       ],
     },
     {
