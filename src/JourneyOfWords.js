@@ -74,7 +74,7 @@ const TitleWrapper = styled.div`
 const JourneyOfWords = () => {
   const dispatch = useStore()[1];
 
-  useEffect(() => {
+  const fetchAllData = () => {
     axios
       .all([
         axios.get(DB_GITHUB_LANGUAGE_INFO),
@@ -89,7 +89,9 @@ const JourneyOfWords = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, [dispatch]);
+  };
+
+  useEffect(fetchAllData, []);
 
   return (
     <ThemeProvider theme={theme}>
