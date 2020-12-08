@@ -31,7 +31,7 @@ const GraphicWrapper = styled.div`
 const Sticky = () => {
   return (
     <Container className="sticky-container">
-      <GraphicWrapper className="graphic">
+      <GraphicWrapper className="graphic-wrapper">
         <FaceTattoo />
         <DistributionChart />
       </GraphicWrapper>

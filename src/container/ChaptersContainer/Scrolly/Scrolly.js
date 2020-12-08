@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Scrollama, Step } from "react-scrollama";
 
@@ -15,7 +15,9 @@ const CardContainer = styled.div`
 const Card = styled.div`
   position: relative;
   display: block;
-  background-color: pink;
+  background-color: ${(props) =>
+    (props.type === "intro" && "none") || props.theme.white};
+  opacity: 0.85;
   max-width: 700px;
   margin: auto;
   text-align: center;
@@ -23,53 +25,56 @@ const Card = styled.div`
   min-height: 200px;
   padding: 10px 20px;
 
+  p {
+    color: ${(props) => props.theme.black}
+    opacity: 1;
+    &.chapter-roman-numeral {
+      text-transform: uppercase;
+    }
+  }
+
+  h2 {
+    color: ${(props) => props.theme.black}
+  }
+
   @media (max-width: 800px) {
     margin: 20px 20px;
   }
 `;
 
-const IntroWrapper = styled.div`
-  position: relative;
-  height: 100vh;
-  z-index: 75;
-`;
-
 const Scrolly = (chaptersconfig) => {
   const { slides } = chaptersconfig;
-  const [state, dispatch] = useStore();
-  const { currentStepIndex } = state;
+  const dispatch = useStore()[1];
 
   function slideSwitch(slide) {
     return (
       <CardWrapper className="scrolly-card-wrapper">
-        {slide.type === "intro" && (
-          <CardContainer className="scrolly-card-container">
-            <Card className="scrolly-card intro">
-              <p>{slide.contents.chapterLabel}</p>
-              <h2>{slide.contents.title}</h2>
+        <CardContainer className="scrolly-card-container">
+          {slide.type === "intro" && (
+            <Card className="scrolly-card intro" {...slide}>
+              <p className="chapter-roman-numeral">
+                {slide.contents.chapterLabel}
+              </p>
+              <h2 className="chapter-title">{slide.contents.title}</h2>
             </Card>
-          </CardContainer>
-        )}
-        {slide.type === "quote" && (
-          <CardContainer className="scrolly-card-container">
+          )}
+          {slide.type === "quote" && (
             <Card className="scrolly-card quote">
               <h2>"{slide.contents.quote.an}"</h2>
               <p>"{slide.contents.quote.en}"</p>
               <p>- {slide.contents.author}</p>
             </Card>
-          </CardContainer>
-        )}
-        {slide.type === "face-tattoo" && (
-          <CardContainer className="scrolly-card-container">
+          )}
+          {slide.type === "face-tattoo" && (
             <Card className="scrolly-card face-tattoo">
               <h2>{slide.contents.title}</h2>
-              {slide.contents.p.map((p) => (
-                <p>{p}</p>
+              {slide.contents.p.map((p, i) => (
+                <p key={i}>{p}</p>
               ))}
             </Card>
-          </CardContainer>
-        )}
-        {slide.type === null ? null : null}
+          )}
+          {slide.type === null ? null : null}
+        </CardContainer>
       </CardWrapper>
     );
   }
@@ -83,10 +88,13 @@ const Scrolly = (chaptersconfig) => {
       className="scrolly-scrollama"
       onStepEnter={onStepEnter}
       offset={0.5}
-      debug
     >
       {slides.map((slide) => (
-        <Step className="scrolly-step" key={slide.id} data={slide.id}>
+        <Step
+          className="scrolly-step"
+          key={slide.id + "-" + slide.chapter}
+          data={slide.id}
+        >
           {slideSwitch(slide)}
         </Step>
       ))}

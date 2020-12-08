@@ -9,7 +9,7 @@ const config = {
     {
       id: "world-taiwan",
       title: "",
-      image: "",
+      image: "./path/to/image/source.png",
       description:
         "4,000 years ago, a group of people called the Austronesians were living along the coasts of the island of Taiwan and lived there for thousands of years.",
       location: {
@@ -214,8 +214,10 @@ const config = {
       id: "world-at-this-stage",
       title: "China, Greece and Rome were still in land",
       image: "./path/to/image/source.png",
-      description:
-        "Around 1,100 BC still at a very early stage, the Austronesian expansion was impressive, as it covered some 95 degrees of longitude from northern Sumatra in the west to Samoa in the east, and 47 degrees of latitude from Taiwan in the north to New Caledonia in the south. Chinese civilization, in the form of the Western Zhou dynasty, was still very early its long history, the civilization of Greece had not yet blossomed into fullness, and it was hundreds of years before the rise of Rome, but through skill in deep sea navigation, Austronesian speakers had already settled lands that had never previously been touched by humans! All of this was possible because these people, uniquely at the time, had learned how to find their way across the largest ocean on Earth by following the winds, currents, and the flights of birds during the daylight hours, and the stars at night.  To them the sea was no more a barrier --- rather, it was a highway into the unknown (Doran 1981, Kirch 2000).",
+      description: [
+        "Around 1,100 BC still at a very early stage, the Austronesian expansion was impressive, as it covered some 95 degrees of longitude from northern Sumatra in the west to Samoa in the east, and 47 degrees of latitude from Taiwan in the north to New Caledonia in the south.",
+        "Chinese civilization, in the form of the Western Zhou dynasty, was still very early its long history, the civilization of Greece had not yet blossomed into fullness, and it was hundreds of years before the rise of Rome, but through skill in deep sea navigation, Austronesian speakers had already settled lands that had never previously been touched by humans! All of this was possible because these people, uniquely at the time, had learned how to find their way across the largest ocean on Earth by following the winds, currents, and the flights of birds during the daylight hours, and the stars at night.  To them the sea was no more a barrier --- rather, it was a highway into the unknown (Doran 1981, Kirch 2000).",
+      ],
       location: {
         center: { lon: 155.1758, lat: -7.33014 },
         zoom: 5.62,

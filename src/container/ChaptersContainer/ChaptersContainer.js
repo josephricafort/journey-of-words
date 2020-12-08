@@ -3,25 +3,14 @@ import styled from "styled-components";
 
 import Scrolly from "./Scrolly/Scrolly";
 import Sticky from "./Sticky/Sticky";
-import { useStore } from "../../store/store";
+// import { useStore } from "../../store/store";
 
 const Container = styled.div`
   position: relative;
   display: block;
   width: 100%;
   background-color: white;
-  background-color: lightgreen;
-`;
-
-const Debug = styled.div`
-  position: fixed;
-  // position: sticky;
-  top: 10px;
-  left: 10px;
-  width: 100%;
-  height: 100vh;
-  text-align: left;
-  font-size: 1.2em;
+  background-color: ${(props) => props.theme.green2};
 `;
 
 /* Standardizing z-index
@@ -32,15 +21,10 @@ Background: 0 -24
 */
 
 const ChaptersContainer = (chaptersconfig) => {
-  const { currentStepIndex } = useStore()[0];
-
   return (
     <Container className="chapters-container">
       <Sticky className="chapters-sticky" />
       <Scrolly className="chapters-scrolly" {...chaptersconfig}></Scrolly>
-      <Debug>
-        Current slide: <strong>{currentStepIndex}</strong>
-      </Debug>
     </Container>
   );
 };

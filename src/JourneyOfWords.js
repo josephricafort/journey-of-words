@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
-import styled from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
+import { theme } from "./theme";
 
 import { configureDataStore } from "./store/dataStore";
 import {
@@ -12,6 +13,7 @@ import {
   SET_LANGHEIRARCHY,
 } from "./utils/constants";
 import { useStore } from "./store/store";
+import GlobalStyle from "./GlobalStyle";
 import MapboxScrolly from "./container/MapboxScrolly/MapboxScrolly";
 import mapboxconfig from "./container/MapboxScrolly/config";
 import chaptersconfig from "./container/ChaptersContainer/config";
@@ -36,7 +38,37 @@ const ChaptersScreen = styled.div`
   display: block;
   width: 100%;
   height: 100vh;
-  background-color: white;
+  background-color: ${(props) => props.theme.white};
+`;
+
+const TitleContainer = styled.div`
+  position: relative;
+  display: block;
+  height: 100vh;
+  padding: 20px;
+  background-color: ${(props) => props.theme.blue8};
+  opacity: 0.75;
+`;
+
+const TitleWrapper = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 700px;
+  margin: 0 auto;
+  width: 100%;
+  opacity: 1;
+
+  h1 {
+    color: white;
+    opacity: inherit;
+  }
+
+  p {
+    color: white;
+    opacity: inherit;
+  }
 `;
 
 const JourneyOfWords = () => {
@@ -57,18 +89,39 @@ const JourneyOfWords = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [dispatch]);
 
   return (
-    <AppContainer className="journey-of-words">
-      <ChaptersScreen className="section-intro">Section Intro</ChaptersScreen>
-      <div className="chapter-world">
-        <MapboxScrolly {...mapboxconfig} />
-      </div>
-      <div className="chapters-container">
-        <ChaptersContainer {...chaptersconfig} />
-      </div>
-    </AppContainer>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <AppContainer className="journey-of-words">
+        <ChaptersScreen className="section-intro">Section Intro</ChaptersScreen>
+        <div className="chapter-world">
+          <MapboxScrolly {...mapboxconfig} />
+        </div>
+        <TitleContainer className="title-container">
+          <TitleWrapper className="title-wrapper">
+            <h1>The Words That Sailed Across Half The World</h1>
+            <p className="title-description">
+              How the shared linguistic ancestry of Austronesians tells us the
+              story of mankind’s greatest expansion and adversities across the
+              vast Indo-Pacific.
+            </p>
+            <p className="title-byline">
+              Based from the extensive research by Robert Blust, Russell Gray,
+              Simon Greenhill, Steven Trussel and Joseph Watts.
+            </p>
+            <p>
+              Written, designed and developed by Joseph Ricafort. Illustrations
+              by Colleen Joyce Ricafort.
+            </p>
+          </TitleWrapper>
+        </TitleContainer>
+        <div className="chapters">
+          <ChaptersContainer {...chaptersconfig} />
+        </div>
+      </AppContainer>
+    </ThemeProvider>
   );
 };
 
