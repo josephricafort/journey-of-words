@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import styled, { ThemeProvider } from "styled-components";
-import { theme } from "./theme";
+
+import variables from "./styles/variables";
+import GlobalStyle from "./styles/GlobalStyle";
+import { lightTheme } from "./styles/theme";
 
 import { configureDataStore } from "./store/dataStore";
 import {
@@ -13,7 +16,6 @@ import {
   SET_LANGHEIRARCHY,
 } from "./utils/constants";
 import { useStore } from "./store/store";
-import GlobalStyle from "./GlobalStyle";
 import MapboxScrolly from "./container/MapboxScrolly/MapboxScrolly";
 import mapboxconfig from "./container/MapboxScrolly/config";
 import chaptersconfig from "./container/ChaptersContainer/config";
@@ -94,7 +96,7 @@ const JourneyOfWords = () => {
   useEffect(fetchAllData, []);
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={{ ...variables, ...lightTheme }}>
       <GlobalStyle />
       <AppContainer className="journey-of-words">
         <ChaptersScreen className="section-intro">Section Intro</ChaptersScreen>
@@ -113,10 +115,7 @@ const JourneyOfWords = () => {
               Based from the extensive research by Robert Blust, Russell Gray,
               Simon Greenhill, Steven Trussel and Joseph Watts.
             </p>
-            <p>
-              Written, designed and developed by Joseph Ricafort. Illustrations
-              by Colleen Joyce Ricafort.
-            </p>
+            <p>Written, designed and developed by Joseph Ricafort.</p>
           </TitleWrapper>
         </TitleContainer>
         <div className="chapters">

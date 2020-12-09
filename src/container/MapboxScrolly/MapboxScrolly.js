@@ -1,7 +1,62 @@
 import React, { Component } from "react";
-import "./MapboxScrolly.scss";
 import mapboxgl from "mapbox-gl";
 import scrollama from "scrollama";
+import styled from "styled-components";
+
+const MapContainer = styled.div`
+  &.mapboxgl-map {
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    z-index: -5;
+  }
+`;
+
+const Header = styled.div`
+  margin: 3vh auto;
+  width: 90vw;
+  padding: 2vh;
+  text-align: center;
+  color: ${(props) => props.theme.color};
+  background-color: ${(props) => props.theme.backgroundColor};
+`;
+
+const Footer = styled.div`
+  width: 100%;
+  min-height: 5vh;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  text-align: center;
+  line-height: 25px;
+  font-size: 13px;
+  color: ${(props) => props.theme.color};
+  background-color: ${(props) => props.theme.backgroundColor};
+`;
+
+const Features = styled.div`
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+  z-index: 100;
+
+  &.centered {
+    width: 50vw;
+    margin: 0 auto;
+  }
+  &.lefty {
+    width: 33vw;
+    margin-left: 5vw;
+  }
+  &.righty {
+    width: 33vw;
+    margin-left: 62vw;
+  }
+
+  @media (max-width: 750px) {
+    width: 90vw;
+    margin: 0 auto;
+  }
+`;
 
 const layerTypes = {
   fill: ["fill-opacity"],
@@ -111,36 +166,39 @@ class MapboxScrolly extends Component {
 
   render() {
     const config = this.props;
-    const theme = config.theme;
+    const { alignment } = config;
     const currentChapterID = this.state.currentChapter.id;
     return (
       <div>
-        <div
+        <MapContainer
           ref={(el) => (this.mapContainer = el)}
           className="absolute top right left bottom"
         />
         <div id="story">
           {config.title && (
-            <div id="header" className={theme}>
+            <Header id="header">
               <h1>{config.title}</h1>
               {config.subtitle && <h2>{config.subtitle}</h2>}
               {config.byline && <p>{config.byline}</p>}
-            </div>
+            </Header>
           )}
-          <div id="features" className={alignments[config.alignment]}>
+          <Features
+            id="features"
+            className={alignments[alignment]}
+            {...alignment}
+          >
             {config.chapters.map((chapter) => (
               <Chapter
                 key={chapter.id}
-                theme={theme}
                 {...chapter}
                 currentChapterID={currentChapterID}
               />
             ))}
-          </div>
+          </Features>
           {config.footer && (
-            <div id="footer" className={theme}>
+            <Footer id="footer">
               <p>{config.footer}</p>
-            </div>
+            </Footer>
           )}
         </div>
       </div>
@@ -148,17 +206,39 @@ class MapboxScrolly extends Component {
   }
 }
 
-function Chapter({ id, theme, title, image, description, currentChapterID }) {
+const Card = styled.div`
+  padding: 25px 50px;
+  line-height: 25px;
+  font-size: 13px;
+  color: ${(props) => props.theme.color};
+  background-color: ${(props) => props.theme.backgroundColor};
+`;
+
+const CardWrapper = styled.div`
+  &.step {
+    padding-bottom: 50vh;
+    opacity: 0.25;
+  }
+  &.step.active {
+    opacity: 0.9;
+  }
+`;
+
+const CardImage = styled.img`
+  width: 100%;
+`;
+
+const Chapter = ({ id, title, image, description, currentChapterID }) => {
   const classList = id === currentChapterID ? "step active" : "step";
   return (
-    <div id={id} className={classList}>
-      <div className={theme}>
+    <CardWrapper id={id} className={classList}>
+      <Card>
         {title && <h3 className="title">{title}</h3>}
-        {image && <img src={image} alt={title}></img>}
+        {image && <CardImage src={image} alt={title}></CardImage>}
         {description && <p>{description}</p>}
-      </div>
-    </div>
+      </Card>
+    </CardWrapper>
   );
-}
+};
 
 export default MapboxScrolly;

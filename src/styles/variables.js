@@ -137,4 +137,6 @@ const derivedVars = {
   lineRed4: baseVars.red8,
 };
 
-export const theme = { ...baseVars, ...derivedVars };
+const variables = { ...baseVars, ...derivedVars };
+
+export default variables;
