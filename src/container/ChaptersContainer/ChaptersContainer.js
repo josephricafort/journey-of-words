@@ -23,8 +23,8 @@ Background: 0 -24
 const ChaptersContainer = (chaptersconfig) => {
   return (
     <Container className="chapters-container">
-      <Sticky className="chapters-sticky" />
-      <Scrolly className="chapters-scrolly" {...chaptersconfig}></Scrolly>
+      {/* <Sticky className="chapters-sticky" />
+      <Scrolly className="chapters-scrolly" {...chaptersconfig}></Scrolly> */}
     </Container>
   );
 };

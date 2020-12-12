@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import JourneyOfWords from "./JourneyOfWords";
+import StoryApp from "./StoryApp";
 
 it("renders without crashing", () => {
   const div = document.createElement("div");

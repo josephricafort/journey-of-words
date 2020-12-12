@@ -7,11 +7,9 @@ export const SET_LANGHEIRARCHY = "SET_LANGHEIRARCHY";
 export const SET_LANGHEIRWORDS = "SET_LANGHEIRWORDS";
 
 export const SET_TOGGLEZOOM = "SET_TOGGLEZOOM";
-
 export const SET_CURRENTSTEPINDEX = "SET_CURRENTSTEPINDEX";
 
-// data
-//- words
+// data languages
 export const DB_GITHUB =
   "https://raw.githubusercontent.com/josephricafort/journey-of-words-r-data/master/data/output/json/";
 export const DB_GITHUB_WORDS_INFO = DB_GITHUB + "words_info.json";
@@ -22,15 +20,49 @@ export const DB_GITHUB_WORDS_COUNT_TOP20PC =
 export const DB_GITHUB_COGNATE_SETS_PLUS25 =
   DB_GITHUB + "cognate_sets_plus25.json";
 
-//- language
+// data words
 export const DB_GITHUB_LANGUAGE_INFO = DB_GITHUB + "language_info.json";
 export const DB_GITHUB_LANG_HEIRARCHY_ARR =
   DB_GITHUB + "language_heirarchy_array.json";
 
-// leaflet
-export const CARTODB_DARKMATTER =
-  "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png";
-export const CARTODB_DM_ATTRIBUTION =
-  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
-// export const SAMPLE_GEOJSON =
-//   "https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json";
+// mapbox
+export const MAPBOX_USERNAME = "josephricafort";
+export const MAPBOX_ACCESS_TOKEN =
+  "pk.eyJ1Ijoiam9zZXBocmljYWZvcnQiLCJhIjoiY2pueTd4d3lzMDB1ZzNxbGhxZnpyOHZ4eSJ9.SVeNEBhsMbzpUUt9tgbNSg";
+
+export const mapboxStyles = {
+  world: "ckhxlghrg09zp1bqu5s7pt7jl",
+  nature: "ckh67moqu0yvl19p3a47tvsqx",
+  conversion: "ckhxlnfls0u0k19o002omoe6t",
+  extraction: "ckhxlvl2j0yhc19qu9w4yd07p",
+  fate: "ckhxm5tkq0yrn19o54k84vf2f",
+  exploration: "ckihdysh06grw19k06mn5v8p9",
+};
+
+const IS_DRAFT = true;
+function generateStylePath(id, isDraft) {
+  return `https://api.mapbox.com/styles/v1/${MAPBOX_USERNAME}/${id}/${
+    isDraft ? `draft` : ``
+  }/tiles/256/{z}/{x}/{y}?access_token=${MAPBOX_ACCESS_TOKEN}`;
+}
+
+export const MAPBOX_STYLE_WORLD = generateStylePath(mapboxStyles.world, true);
+export const MAPBOX_STYLE_NATURE = generateStylePath(mapboxStyles.nature, true);
+export const MAPBOX_STYLE_CONVERSION = generateStylePath(
+  mapboxStyles.conversion,
+  true
+);
+export const MAPBOX_STYLE_EXTRACTION = generateStylePath(
+  mapboxStyles.extraction,
+  true
+);
+export const MAPBOX_STYLE_FATE = generateStylePath(mapboxStyles.fate, IS_DRAFT);
+export const MAPBOX_STYLE_EXPLORATION = generateStylePath(
+  mapboxStyles.exploration,
+  true
+);
+
+// export const MAPBOX_STYLE_EXPLORATION =
+//   "https://api.mapbox.com/styles/v1/josephricafort/ckihdysh06grw19k06mn5v8p9/draft/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoiam9zZXBocmljYWZvcnQiLCJhIjoiY2pueTd4d3lzMDB1ZzNxbGhxZnpyOHZ4eSJ9.SVeNEBhsMbzpUUt9tgbNSg";
+export const MAPBOX_ATTRIBUTION =
+  "Map data &copy; <a href=&quot;https://www.openstreetmap.org/&quot;>OpenStreetMap</a> contributors, <a href=&quot;https://creativecommons.org/licenses/by-sa/2.0/&quot;>CC-BY-SA</a>, Imagery &copy; <a href=&quot;https://www.mapbox.com/&quot;>Mapbox</a>";

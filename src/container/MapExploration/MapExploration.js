@@ -1,16 +1,35 @@
 import React, { useRef, useState, useEffect } from "react";
 import axios from "axios";
-
+import styled from "styled-components";
 import { Map as LeafletMap, ZoomControl } from "react-leaflet";
-import { CRS, Projection } from "leaflet";
-import styles from "./MapContainer.module.scss";
+import { Projection } from "leaflet";
+
 import MenuContainer from "./MenuContainer/MenuContainer";
 import TilesLayer from "../../component/MapContainer/TilesLayer/TilesLayer";
 import { useStore } from "../../store/store";
 import { DB_GITHUB_WORDS, SET_WORDTRANSLATIONS } from "../../utils/constants";
 import { urlFriendly } from "../../utils/utils";
 
-const MapContainer = () => {
+const Container = styled.div`
+  &.map-container {
+    position: relative;
+    display: block;
+
+    .leaflet-map {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100vh;
+
+      .tooltip {
+        padding: 2px;
+      }
+    }
+  }
+`;
+
+const MapExploration = () => {
   const [state, dispatch] = useStore();
   const [wordMain, setWordMain] = useState("five");
   const [toggleZoom, setToggleZoom] = useState(false);
@@ -18,23 +37,25 @@ const MapContainer = () => {
   const { languageInfo } = state;
   const mapRef = useRef(Map);
 
-  useEffect(() => {
+  const fetchData = () => {
     axios
       .get(DB_GITHUB_WORDS + urlFriendly(wordMain) + ".json")
       .then((response) => {
         const wordsData = response.data;
         dispatch(SET_WORDTRANSLATIONS, { wordsData, languageInfo });
       });
-  }, [languageInfo, wordMain]);
+  };
+
+  useEffect(fetchData, [languageInfo, wordMain]);
 
   const handleZoomLevelChanged = () => {
     setToggleZoom(!toggleZoom);
   };
 
   return (
-    <div className={styles["map-container"]}>
+    <Container className="map-container">
       <LeafletMap
-        className={styles["leaflet-map"]}
+        className="leaflet-map"
         center={[2.218, 115.6628]}
         zoom={5}
         maxZoom={10}
@@ -59,8 +80,8 @@ const MapContainer = () => {
         <ZoomControl position="topright"></ZoomControl>
       </LeafletMap>
       <MenuContainer attributes={{ wordMain, setWordMain }}></MenuContainer>
-    </div>
+    </Container>
   );
 };
 
-export default MapContainer;
+export default MapExploration;

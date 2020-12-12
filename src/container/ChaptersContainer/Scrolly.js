@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { Scrollama, Step } from "react-scrollama";
 
-import { useStore } from "../../../store/store";
-import { SET_CURRENTSTEPINDEX } from "../../../utils/constants";
+import { useStore } from "../../store/store";
+import { SET_CURRENTSTEPINDEX } from "../../utils/constants";
 
 const CardWrapper = styled.div``;
 
@@ -16,14 +16,19 @@ const Card = styled.div`
   position: relative;
   display: block;
   background-color: ${(props) =>
-    (props.type === "intro" && "none") || props.theme.white};
+    (props.type === "intro" && "none") ||
+    (props.type === "quote" && props.theme.green2) ||
+    props.theme.white};
+  border: 1px solid ${(props) =>
+    (props.type === "intro" && "none") ||
+    (props.type === "quote" && props.theme.green5) ||
+    props.theme.white};
   opacity: 0.85;
-  max-width: 700px;
+  max-width: 500px;
   margin: auto;
-  text-align: center;
   margin: 20px auto;
   min-height: 200px;
-  padding: 10px 20px;
+  padding: 20px 40px;
 
   p {
     color: ${(props) => props.theme.black}
@@ -59,15 +64,15 @@ const Scrolly = (chaptersconfig) => {
             </Card>
           )}
           {slide.type === "quote" && (
-            <Card className="scrolly-card quote">
-              <h2>"{slide.contents.quote.an}"</h2>
+            <Card className="scrolly-card quote" {...slide}>
+              <h3>"{slide.contents.quote.an}"</h3>
               <p>"{slide.contents.quote.en}"</p>
-              <p>- {slide.contents.author}</p>
+              <p>{slide.contents.author}</p>
             </Card>
           )}
           {slide.type === "face-tattoo" && (
             <Card className="scrolly-card face-tattoo">
-              <h2>{slide.contents.title}</h2>
+              <h3>{slide.contents.title}</h3>
               {slide.contents.p.map((p, i) => (
                 <p key={i}>{p}</p>
               ))}

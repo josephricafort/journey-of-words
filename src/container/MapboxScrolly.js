@@ -44,11 +44,9 @@ const Features = styled.div`
     margin: 0 auto;
   }
   &.lefty {
-    width: 33vw;
     margin-left: 5vw;
   }
   &.righty {
-    width: 33vw;
     margin-left: 62vw;
   }
 
@@ -125,6 +123,10 @@ class MapboxScrolly extends Component {
       });
     }
 
+    function switchLayer(chap) {
+      return map.setStyle(chap.style);
+    }
+
     const setState = this.setState.bind(this);
 
     // instantiate the scrollama
@@ -132,6 +134,7 @@ class MapboxScrolly extends Component {
 
     map.on("load", function () {
       // setup the instance, pass callback functions
+
       scroller
         .setup({
           step: ".step",
@@ -149,6 +152,9 @@ class MapboxScrolly extends Component {
           }
           if (chapter.onChapterEnter.length > 0) {
             chapter.onChapterEnter.forEach(setLayerOpacity);
+          }
+          if (chapter.style) {
+            switchLayer(chapter);
           }
         })
         .onStepExit((response) => {
@@ -168,6 +174,7 @@ class MapboxScrolly extends Component {
     const config = this.props;
     const { alignment } = config;
     const currentChapterID = this.state.currentChapter.id;
+
     return (
       <div>
         <MapContainer
@@ -206,22 +213,23 @@ class MapboxScrolly extends Component {
   }
 }
 
+const CardWrapper = styled.div`
+  &.step {
+    padding: 25vh 0;
+    opacity: 0.25;
+  }
+  &.step.active {
+    opacity: 0.9;
+  }
+`;
+
 const Card = styled.div`
   padding: 25px 50px;
   line-height: 25px;
   font-size: 13px;
   color: ${(props) => props.theme.color};
   background-color: ${(props) => props.theme.backgroundColor};
-`;
-
-const CardWrapper = styled.div`
-  &.step {
-    padding-bottom: 50vh;
-    opacity: 0.25;
-  }
-  &.step.active {
-    opacity: 0.9;
-  }
+  text-align: left;
 `;
 
 const CardImage = styled.img`
@@ -232,7 +240,7 @@ const Chapter = ({ id, title, image, description, currentChapterID }) => {
   const classList = id === currentChapterID ? "step active" : "step";
   return (
     <CardWrapper id={id} className={classList}>
-      <Card>
+      <Card className="ca">
         {title && <h3 className="title">{title}</h3>}
         {image && <CardImage src={image} alt={title}></CardImage>}
         {description && <p>{description}</p>}

@@ -8,10 +8,10 @@ const GlobalStyle = createGlobalStyle`
     font-family: ${(props) => props.theme.sansserif};
 
     h1 {
-        font-size: 56px;
+        font-size: 36px;
     }
     h2 {
-        font-size: 36px;
+        font-size: 28px;
     }
     h3 {
         font-size: 24px;
@@ -27,12 +27,12 @@ const GlobalStyle = createGlobalStyle`
         font-family: ${(props) => props.theme.serif};
     }
 
-    @media (max-width: 500px) {
+    @media (${(props) => props.theme.breakpointMedium}) {
         h1 {
-            font-size: 36px;
+            font-size: 48px;
         }
         h2 {
-            font-size: 28px;
+            font-size: 36px;
         }
     }
   }

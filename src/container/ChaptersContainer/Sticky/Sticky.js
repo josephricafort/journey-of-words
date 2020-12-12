@@ -2,7 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 import Earth from "./Earth";
-import FaceTattoo from "./Graphic/FaceTattoo";
+import FaceTattoo from "./Graphic/FaceTattoo/FaceTattoo";
+import FaceWoman from "./Graphic/FaceTattoo/FaceWoman";
+import GroupSilhouette from "./Graphic/FaceTattoo/GroupSilhouette";
 import DistributionChart from "./Graphic/DistributionChart";
 
 const Container = styled.div`
@@ -14,6 +16,7 @@ const Container = styled.div`
   text-align: center;
   border: none;
   top: 0;
+  background-color: ${(props) => props.theme.green1};
 `;
 
 const GraphicWrapper = styled.div`
@@ -23,7 +26,7 @@ const GraphicWrapper = styled.div`
   min-height: 50vh;
   left: 50%;
   transform: translate(-50%, 0%);
-  background-color: orange;
+  border: 1px solid ${(props) => props.theme.yellow};
   margin: 0 auto;
   max-width: 700px;
 `;
@@ -32,7 +35,10 @@ const Sticky = () => {
   return (
     <Container className="sticky-container">
       <GraphicWrapper className="graphic-wrapper">
-        <FaceTattoo />
+        <div className="face-tattoo">
+          <GroupSilhouette />
+          <FaceWoman />
+        </div>
         <DistributionChart />
       </GraphicWrapper>
       <Earth className="earth" />

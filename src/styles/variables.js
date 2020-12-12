@@ -1,8 +1,9 @@
 const baseVars = {
   // SCREEN
   small: 375,
-  medium: 500,
-  large: 1000,
+  medium: 768,
+  large: 1366,
+  wide: 1920,
 
   // COLOR
   // Base
@@ -72,9 +73,23 @@ const baseVars = {
   // FONTS
   serif: "'Crimson Text', serif",
   sansserif: "'Work Sans', sans-serif",
+
+  // LAYERS (z-Index)
+  zContents: 100,
+  zVisuals: 50,
+  zContent: 0,
+  zMap: -50,
+  zBackground: -100,
 };
 
 const derivedVars = {
+  // SCREEN
+  breakpointSmall: `min-width: ${baseVars.small}px`,
+  breakpointMedium: `min-width: ${baseVars.medium}px`,
+  breakpointLarge: `min-width: ${baseVars.large}px`,
+  breakpointWide: `min-width: ${baseVars.wide}px`,
+
+  // COLORS
   // primary
   blue: baseVars.blue5,
   green: baseVars.green5,

@@ -6,11 +6,10 @@ import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import { useStore } from "../../../store/store";
-import { SET_WORDMAIN } from "../../../utils/constants";
 
 const MenuContainer = ({ attributes }) => {
   const { wordMain, setWordMain } = attributes;
-  const [state, dispatch] = useStore();
+  const state = useStore()[0];
   const { wordsInfo } = state;
   const categoryList = [...new Set(wordsInfo.map((word) => word.group))];
 
