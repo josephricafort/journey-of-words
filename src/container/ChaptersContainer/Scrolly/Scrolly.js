@@ -5,6 +5,7 @@ import { Scrollama, Step } from "react-scrollama";
 import { useStore } from "../../../store/store";
 import { SET_CURRENTSTEPINDEX } from "../../../utils/constants";
 import DistributionChart from "./DistributionChart";
+import WordsChart from "./WordsChart";
 
 const CardWrapper = styled.div`
   padding: 0 20px;
@@ -48,6 +49,10 @@ const Card = styled.div`
   }
 `;
 
+const CardChart = styled(Card)`
+  max-width: ${(props) => props.theme.medium};
+`;
+
 const Scrolly = (chaptersconfig) => {
   const { slides } = chaptersconfig;
   const dispatch = useStore()[1];
@@ -85,6 +90,15 @@ const Scrolly = (chaptersconfig) => {
               <p key={i}>{p}</p>
             ))}
             <DistributionChart {...slide.data} />
+          </Card>
+        )}
+        {slide.type === "words-chart" && (
+          <Card className="scrolly-card words-chart">
+            {slide.contents.title && <h3>{slide.contents.title}</h3>}
+            {slide.contents.p.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+            <WordsChart {...slide.data} />
           </Card>
         )}
         {slide.type === null ? null : null}

@@ -1,4 +1,4 @@
-export const dummyData = [
+export const dummyDistributionData = [
   {
     group: "Formosans",
     value0: 23,

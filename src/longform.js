@@ -1,3 +1,5 @@
+import { ChatRounded } from "@material-ui/icons";
+
 const longform = {
   header: {
     title: "The Words That Sailed Across Half The World",
@@ -482,6 +484,19 @@ const longform = {
         id: 1.3,
         icon: "fern",
         contents: {
+          title: "Distribution Chart",
+          p: [
+            "Some very long texts here will be placed that describe something nice and informative about what the writer wants to talk about",
+          ],
+          data: "./some-github-data-url-here",
+        },
+      },
+      {
+        type: "words-chart",
+        id: 1.4,
+        icon: "boat",
+        contents: {
+          title: "Words Chart",
           p: [
             "Some very long texts here will be placed that describe something nice and informative about what the writer wants to talk about",
           ],
