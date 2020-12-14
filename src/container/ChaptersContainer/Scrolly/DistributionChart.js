@@ -30,30 +30,24 @@ const GroupLevel = styled.g``;
 
 const Circle = styled.circle`
   fill: ${(props) =>
-    (props.keyObj === "value0" && props.theme.grey2) ||
-    (props.keyObj === "value1" && props.theme.fillGreen1) ||
-    (props.keyObj === "value2" && props.theme.fillGreen2) ||
-    (props.keyObj === "value3" && props.theme.fillGreen3) ||
-    (props.keyObj === "value4" && props.theme.fillGreen4)};
+    (props.keyObj === props.objKeys[0] && props.theme.grey2) ||
+    (props.keyObj === props.objKeys[1] && props.theme.fillGreen1) ||
+    (props.keyObj === props.objKeys[2] && props.theme.fillGreen2) ||
+    (props.keyObj === props.objKeys[3] && props.theme.fillGreen3) ||
+    (props.keyObj === props.objKeys[4] && props.theme.fillGreen4)};
   stroke: ${(props) =>
     props.keyObj === "value0" ? props.theme.grey3 : "none"};
   stroke-width: 0.5px;
 `;
 
-const svgProps = {
-  version: "1.1",
-  xmlns: "http://www.w3.org/2000/svg",
-  x: "0px",
-  y: "0px",
-  //   viewBox: "0 0 200 200",
-  // enableBackground: "new 0 0 100 200",
-};
-
 const CircleArray = ({ obj }) => {
   const MAX_EL_PER_ROW = 40;
-  const RAD = 4;
+  const RAD = 3;
   const DIAM = RAD * 2;
-  const OFFSET = 5;
+  const OFFSET = RAD;
+  const GAP = 1;
+
+  const objKeys = Object.keys(obj);
   const objVals = Object.fromEntries(
     Object.entries(obj).filter(([key, value]) => Number.isFinite(value))
   );
@@ -63,21 +57,26 @@ const CircleArray = ({ obj }) => {
     .reduce((acc, currVal) => acc + currVal, 0);
   const maxElPerCol = Math.round(sumCircles / MAX_EL_PER_ROW);
 
-  const cx = (i) => DIAM * Math.floor(i / maxElPerCol) + OFFSET;
-  const cy = (i) => DIAM * (i % maxElPerCol) + OFFSET;
+  const cx = (i) => (DIAM + GAP) * Math.floor(i / maxElPerCol) + OFFSET;
+  const cy = (i) => (DIAM + GAP) * (i % maxElPerCol) + OFFSET;
 
-  const height = () => maxElPerCol * DIAM + OFFSET;
-  const width = (val) => Math.ceil(val / maxElPerCol) * DIAM + OFFSET;
+  const height = () => maxElPerCol * (DIAM + GAP) + OFFSET;
+  const width = (val) => Math.ceil(val / maxElPerCol) * (DIAM + GAP) + OFFSET;
+
+  const svgProps = {
+    className: "distrib-svg",
+    version: "1.1",
+    xmlns: "http://www.w3.org/2000/svg",
+    x: "0px",
+    y: "0px",
+    //   viewBox: "0 0 200 200",
+    // enableBackground: "new 0 0 100 200",
+  };
 
   return (
     <SVGWrapper className="svg-wrapper">
       {Object.entries(objVals).map(([keyObj, value], index) => (
-        <SVG
-          height={`${height()}px`}
-          width={`${width(value)}px`}
-          className="distrib-svg"
-          {...svgProps}
-        >
+        <SVG height={`${height()}px`} width={`${width(value)}px`} {...svgProps}>
           {Array.from(Array(value), (e, i) => (
             <Circle
               className={keyObj}
@@ -86,6 +85,7 @@ const CircleArray = ({ obj }) => {
               r={RAD}
               key={i}
               keyObj={keyObj}
+              objKeys={objKeys}
             />
           ))}
         </SVG>
