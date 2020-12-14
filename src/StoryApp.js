@@ -18,7 +18,7 @@ import {
 import { useStore } from "./store/store";
 import MapboxScrolly from "./container/MapboxScrolly";
 // import MapExploration from "./container/MapExploration/MapExploration";
-import Scrolly from "./container/ChaptersContainer/Scrolly";
+import Scrolly from "./container/ChaptersContainer/Scrolly/Scrolly";
 import Sticky from "./container/ChaptersContainer/Sticky/Sticky";
 
 import longform from "./longform";

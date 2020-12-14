@@ -15,7 +15,6 @@ const longform = {
       showMarkers: false,
       theme: "light",
       alignment: "left",
-
       chapters: [
         {
           id: "world-taiwan",
@@ -476,6 +475,17 @@ const longform = {
             "Also similar stuffs with the first one blah blah blah.",
             "I don't want to talk about it. :(",
           ],
+        },
+      },
+      {
+        type: "distribution-chart",
+        id: 1.3,
+        icon: "fern",
+        contents: {
+          p: [
+            "Some very long texts here will be placed that describe something nice and informative about what the writer wants to talk about",
+          ],
+          data: "./some-github-data-url-here",
         },
       },
       {

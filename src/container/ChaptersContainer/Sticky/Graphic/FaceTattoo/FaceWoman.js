@@ -10,7 +10,9 @@ const Wrapper = styled.div`
   max-width: 400px;
 
   @media (${(props) => props.theme.breakpointMedium}) {
-    max-width: 600px;
+    top: 5vw;
+    width: 200px;
+    max-width: 800px;
   }
 `;
 
@@ -25,7 +27,7 @@ const FaceWoman = () => {
         x="0px"
         y="0px"
         viewBox="0 0 143.25 202"
-        // enableBackground="new 0 0 143.25 202"
+        enableBackground="new 0 0 143.25 202"
       >
         <g id="elements">
           <g id="woman">

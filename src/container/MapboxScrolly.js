@@ -38,20 +38,9 @@ const Features = styled.div`
   padding-top: 10vh;
   padding-bottom: 10vh;
   z-index: 100;
+  width: 100%;
 
-  &.centered {
-    width: 50vw;
-    margin: 0 auto;
-  }
-  &.lefty {
-    margin-left: 5vw;
-  }
-  &.righty {
-    margin-left: 62vw;
-  }
-
-  @media (max-width: 750px) {
-    width: 90vw;
+  @media (${(props) => props.theme.breakpointSmall}) {
     margin: 0 auto;
   }
 `;
@@ -63,12 +52,6 @@ const layerTypes = {
   symbol: ["icon-opacity", "text-opacity"],
   raster: ["raster-opacity"],
   "fill-extrusion": ["fill-extrusion-opacity"],
-};
-
-const alignments = {
-  left: "lefty",
-  center: "centered",
-  right: "righty",
 };
 
 const transformRequest = (url) => {
@@ -189,16 +172,13 @@ class MapboxScrolly extends Component {
               {config.byline && <p>{config.byline}</p>}
             </Header>
           )}
-          <Features
-            id="features"
-            className={alignments[alignment]}
-            {...alignment}
-          >
+          <Features id="features">
             {config.chapters.map((chapter) => (
               <Chapter
                 key={chapter.id}
                 {...chapter}
                 currentChapterID={currentChapterID}
+                {...alignment}
               />
             ))}
           </Features>
@@ -214,33 +194,53 @@ class MapboxScrolly extends Component {
 }
 
 const CardWrapper = styled.div`
+  max-width: 500px;
+  margin: 0 20px;
+
   &.step {
-    padding: 25vh 0;
+    padding: 50vh 0;
     opacity: 0.25;
   }
   &.step.active {
     opacity: 0.9;
   }
+
+  @media (${(props) => props.theme.breakpointSmall}) {
+    ${(props) => props.alignment === "center" && `margin: 0 auto;`}
+    ${(props) => props.alignment === "left" && `margin: 0 20px 0 auto`}
+    ${(props) => props.alignment === "right" && `margin: 0 auto 0 20px`}
+  }
 `;
 
 const Card = styled.div`
-  padding: 25px 50px;
+  padding: 5px 20px;
   line-height: 25px;
   font-size: 13px;
   color: ${(props) => props.theme.color};
   background-color: ${(props) => props.theme.backgroundColor};
   text-align: left;
+
+  @media (${(props) => props.theme.breakpointMedium}) {
+    padding: 20px 40px;
+  }
 `;
 
 const CardImage = styled.img`
   width: 100%;
 `;
 
-const Chapter = ({ id, title, image, description, currentChapterID }) => {
+const Chapter = ({
+  id,
+  title,
+  image,
+  description,
+  currentChapterID,
+  alignment,
+}) => {
   const classList = id === currentChapterID ? "step active" : "step";
   return (
-    <CardWrapper id={id} className={classList}>
-      <Card className="ca">
+    <CardWrapper id={id} className={[classList, "card-wrapper"]} {...alignment}>
+      <Card className="card">
         {title && <h3 className="title">{title}</h3>}
         {image && <CardImage src={image} alt={title}></CardImage>}
         {description && <p>{description}</p>}

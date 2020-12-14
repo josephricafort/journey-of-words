@@ -1,0 +1,42 @@
+export const dummyData = [
+  {
+    group: "Formosans",
+    value0: 23,
+    value1: 7,
+    value2: 8,
+    value3: 32,
+    value4: 53,
+  },
+  {
+    group: "Maritime Southeast Asians",
+    value0: 267,
+    value1: 35,
+    value2: 45,
+    value3: 123,
+    value4: 22,
+  },
+  {
+    group: "Micronesians",
+    value0: 45,
+    value1: 32,
+    value2: 34,
+    value3: 7,
+    value4: 12,
+  },
+  {
+    group: "Melanesians",
+    value0: 37,
+    value1: 2,
+    value2: 8,
+    value3: 7,
+    value4: 9,
+  },
+  {
+    group: "Polynesians",
+    value0: 25,
+    value1: 10,
+    value2: 233,
+    value3: 72,
+    value4: 12,
+  },
+];

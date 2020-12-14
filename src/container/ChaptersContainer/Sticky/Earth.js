@@ -4,14 +4,14 @@ import { Map as LeafletMap, TileLayer } from "react-leaflet";
 import { Projection } from "leaflet";
 
 import {
-  CARTODB_DARKMATTER,
-  CARTODB_DM_ATTRIBUTION,
-  MAPBOX_STYLE_WORLD,
+  // CARTODB_DARKMATTER,
+  // CARTODB_DM_ATTRIBUTION,
+  // MAPBOX_STYLE_WORLD,
   MAPBOX_STYLE_NATURE,
-  MAPBOX_STYLE_CONVERSION,
-  MAPBOX_STYLE_EXTRACTION,
-  MAPBOX_STYLE_FATE,
-  MAPBOX_STYLE_EXPLORATION,
+  // MAPBOX_STYLE_CONVERSION,
+  // MAPBOX_STYLE_EXTRACTION,
+  // MAPBOX_STYLE_FATE,
+  // MAPBOX_STYLE_EXPLORATION,
   MAPBOX_ATTRIBUTION,
 } from "../../../utils/constants";
 
@@ -49,11 +49,10 @@ const Wrapper = styled.div`
 `;
 
 const Earth = () => {
-  const r = 100;
   const mapRef = useRef(Map);
 
   const leafletConfig = {
-    center: [90, 140],
+    center: [-45, 150],
     zoom: 2,
     maxZoom: 10,
     minZoom: 1,

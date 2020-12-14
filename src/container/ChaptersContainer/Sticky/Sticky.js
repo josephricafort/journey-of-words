@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import Earth from "./Earth";
-import FaceTattoo from "./Graphic/FaceTattoo/FaceTattoo";
+// import FaceTattoo from "./Graphic/FaceTattoo/FaceTattoo";
 import FaceWoman from "./Graphic/FaceTattoo/FaceWoman";
 import GroupSilhouette from "./Graphic/FaceTattoo/GroupSilhouette";
 import DistributionChart from "./Graphic/DistributionChart";
@@ -26,7 +26,7 @@ const GraphicWrapper = styled.div`
   min-height: 50vh;
   left: 50%;
   transform: translate(-50%, 0%);
-  border: 1px solid ${(props) => props.theme.yellow};
+  // border: 1px solid ${(props) => props.theme.yellow};
   margin: 0 auto;
   max-width: 700px;
 `;

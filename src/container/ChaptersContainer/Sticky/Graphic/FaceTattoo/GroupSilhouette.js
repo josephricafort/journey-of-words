@@ -8,6 +8,10 @@ const Wrapper = styled.div`
   transform: translate(-50%, 0);
   width: 100%;
   max-width: 400px;
+
+  @media (${(props) => props.theme.breakpointMedium}) {
+    max-width: 500px;
+  }
 `;
 
 const GroupSilhouette = () => {
@@ -21,7 +25,7 @@ const GroupSilhouette = () => {
         x="0px"
         y="0px"
         viewBox="0 0 334.65 137.71"
-        enable-background="new 0 0 334.65 137.71"
+        enableBackground="new 0 0 334.65 137.71"
       >
         <g id="elements">
           <g id="peopleGroupWrapper" transform="translate(46.657 -105)">
@@ -30,7 +34,7 @@ const GroupSilhouette = () => {
                 id="person1"
                 opacity="0.5"
                 fill="#C69C6D"
-                enable-background="new    "
+                enableBackground="new    "
                 d="M281.59,0.38
 				c-3.48-8.36-10.91-15-19.09-19.09c-1.43-0.72-2.83-1.38-4.2-1.99c2.13-1.81,3.41-4.42,3.52-7.21c0-7.72-10.99-13.98-24.54-13.98
 				s-24.54,6.26-24.54,13.97c0.11,2.79,1.39,5.41,3.52,7.21c-1.37,0.61-2.77,1.27-4.2,1.99c-8.18,4.09-15.6,10.73-19.09,19.09
@@ -44,7 +48,7 @@ const GroupSilhouette = () => {
                 id="person2"
                 opacity="0.5"
                 fill="#C69C6D"
-                enable-background="new    "
+                enableBackground="new    "
                 d="M147.71,42.19c-1.29-0.67-2.55-0.03-3.67,1.2
 				c0.34-2.37,0.51-4.76,0.52-7.15c0-3.81-0.13-7.89-0.5-12.04c-0.15-10.69-4.41-21.3-4.41-21.3c-5.4-14.41-16.5-25.97-38.79-25.97
 				c-25.24,0-35.88,11.56-40.36,25.96c-1.87,7.14-2.9,14.48-3.05,21.86l0,0c-0.15,3.96-0.15,7.85-0.15,11.49
@@ -56,7 +60,7 @@ const GroupSilhouette = () => {
                 id="person3"
                 opacity="0.25"
                 fill="#C69C6D"
-                enable-background="new    "
+                enableBackground="new    "
                 d="M333.36,41c-1.03-0.54-2.04-0.02-2.94,0.96
 				c0.27-1.9,0.41-3.81,0.42-5.73c0-3.05-0.1-6.31-0.4-9.64c-0.26-5.84-1.45-11.6-3.53-17.06C322.59-2,313.7-11.25,295.85-11.25
 				c-20.21,0-28.73,9.25-32.32,20.79c-1.5,5.72-2.32,11.59-2.44,17.5l0,0c-0.12,3.17-0.12,6.28-0.12,9.2
@@ -68,7 +72,7 @@ const GroupSilhouette = () => {
                 id="person4"
                 opacity="0.25"
                 fill="#C69C6D"
-                enable-background="new    "
+                enableBackground="new    "
                 d="M76.78,5.05
 				c-2.87-6.89-8.99-12.36-15.74-15.74c-1.18-0.59-2.33-1.14-3.46-1.64c1.76-1.49,2.81-3.65,2.9-5.95c0-6.36-9.06-11.52-20.23-11.52
 				s-20.23,5.16-20.23,11.52c0.09,2.3,1.14,4.46,2.9,5.95c-1.13,0.5-2.28,1.05-3.46,1.64C12.72-7.32,6.6-1.85,3.73,5.05
