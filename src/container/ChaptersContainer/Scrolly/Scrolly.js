@@ -24,7 +24,7 @@ const Card = styled.div`
     (props.type === "quote" && props.theme.green5) ||
     props.theme.white};
   opacity: 0.85;
-  max-width: 500px;
+  max-width: 800px;
   margin: 20px auto;
   min-height: 200px;
   padding: 20px 40px;
@@ -34,6 +34,7 @@ const Card = styled.div`
     opacity: 1;
     text-align: left;
     &.chapter-roman-numeral {
+      text-align: center;
       text-transform: uppercase;
     }
   }

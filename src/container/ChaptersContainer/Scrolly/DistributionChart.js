@@ -16,6 +16,21 @@ const Group = styled.div`
   }
 `;
 
+const DistributionChart = () => {
+  const { width: innerWidth } = useWindowDimensions();
+
+  return (
+    <Container className="distrib-chart-container">
+      {dummyDistributionData.map((gp) => (
+        <Group className={["distrib-an-group", gp.group]} key={gp.group}>
+          <p className="distrib-title-container">{gp.group}</p>
+          <CircleArray obj={gp} innerWidth={innerWidth} />
+        </Group>
+      ))}
+    </Container>
+  );
+};
+
 const SVGWrapper = styled.div`
   position: relative;
   width: 100%;
@@ -52,7 +67,6 @@ const Circle = styled.circle`
 
 const CircleArray = ({ obj, innerWidth }) => {
   const theme = useContext(ThemeContext);
-  console.log(innerWidth);
 
   const MAX_EL_PER_ROW = 40;
   const GAP = 1;
@@ -93,8 +107,13 @@ const CircleArray = ({ obj, innerWidth }) => {
   return (
     <SVGWrapper className="svg-wrapper">
       {Object.entries(objVals).map(([keyObj, value], index) => (
-        <SVGContainer className="svg-container">
-          <SVG height={height} width={width(value)} key={index} {...svgProps}>
+        <SVGContainer className="svg-container" key={`svg-container${index}`}>
+          <SVG
+            height={height}
+            width={width(value)}
+            key={`svg-${index}`}
+            {...svgProps}
+          >
             {Array.from(Array(value), (e, i) => (
               <Circle
                 className={keyObj}
@@ -111,21 +130,6 @@ const CircleArray = ({ obj, innerWidth }) => {
         </SVGContainer>
       ))}
     </SVGWrapper>
-  );
-};
-
-const DistributionChart = () => {
-  const { width: innerWidth } = useWindowDimensions();
-
-  return (
-    <Container className="distrib-chart-container">
-      {dummyDistributionData.map((gp) => (
-        <Group className={["distrib-an-group", gp.group]} key={gp.group}>
-          <p className="distrib-title-container">{gp.group}</p>
-          <CircleArray obj={gp} innerWidth={innerWidth} />
-        </Group>
-      ))}
-    </Container>
   );
 };
 

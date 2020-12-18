@@ -7,7 +7,8 @@ const longform = {
       "How the shared linguistic ancestry of Austronesians tells us the story of mankind’s greatest expansion and adversities across the vast Indo-Pacific.",
     byline1:
       "Based from the reasearch works of Robert Blust, Russell Gray, Simon Greenhill, Steven Trussel and Joseph Watts.",
-    byline2: "Written, designed and developed by Joseph Ricafort.",
+    byline2:
+      "Written, designed and developed by Joseph Ricafort. Illustrations by Colleen Joyce Ricafort",
   },
   mapboxScrolly: {
     config: {
@@ -484,9 +485,9 @@ const longform = {
         id: 1.3,
         icon: "fern",
         contents: {
-          title: "Distribution Chart",
+          title: "Austronesians and nature",
           p: [
-            "Some very long texts here will be placed that describe something nice and informative about what the writer wants to talk about",
+            "Being knowledgeable about nature, they were also experts in agriculture and domestication of animals which has become their major food source. The surrounding seas and forests have also provided them with abundant food resources through fishing and hunting.",
           ],
           data: "./some-github-data-url-here",
         },
