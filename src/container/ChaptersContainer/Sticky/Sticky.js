@@ -16,7 +16,7 @@ const Container = styled.div`
   text-align: center;
   border: none;
   top: 0;
-  background-color: ${(props) => props.theme.green1};
+  background-color: ${(props) => props.theme.backgroundColor};
 `;
 
 const GraphicWrapper = styled.div`

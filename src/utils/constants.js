@@ -8,6 +8,7 @@ export const SET_LANGHEIRWORDS = "SET_LANGHEIRWORDS";
 
 export const SET_TOGGLEZOOM = "SET_TOGGLEZOOM";
 export const SET_CURRENTSTEPINDEX = "SET_CURRENTSTEPINDEX";
+export const SET_CURRENTCHAPTERTHEME = "SET_CURRENTCHAPTERTHEME";
 
 // data languages
 export const DB_GITHUB =
@@ -61,8 +62,13 @@ export const MAPBOX_STYLE_EXPLORATION = generateStylePath(
   mapboxStyles.exploration,
   true
 );
-
-// export const MAPBOX_STYLE_EXPLORATION =
-//   "https://api.mapbox.com/styles/v1/josephricafort/ckihdysh06grw19k06mn5v8p9/draft/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoiam9zZXBocmljYWZvcnQiLCJhIjoiY2pueTd4d3lzMDB1ZzNxbGhxZnpyOHZ4eSJ9.SVeNEBhsMbzpUUt9tgbNSg";
 export const MAPBOX_ATTRIBUTION =
   "Map data &copy; <a href=&quot;https://www.openstreetmap.org/&quot;>OpenStreetMap</a> contributors, <a href=&quot;https://creativecommons.org/licenses/by-sa/2.0/&quot;>CC-BY-SA</a>, Imagery &copy; <a href=&quot;https://www.mapbox.com/&quot;>Mapbox</a>";
+
+export const CHAPTER_NAMES = [
+  "world",
+  "nature",
+  "conversion",
+  "extraction",
+  "fate",
+];

@@ -4,7 +4,7 @@ import styled, { ThemeProvider } from "styled-components";
 
 import variables from "./styles/variables";
 import GlobalStyle from "./styles/GlobalStyle";
-import { lightTheme } from "./styles/theme";
+import { lightTheme, chapterThemes } from "./styles/theme";
 
 import { configureDataStore } from "./store/dataStore";
 import {
@@ -70,8 +70,10 @@ const ScrollyContainer = styled.section`
 configureDataStore();
 
 const StoryApp = () => {
-  const dispatch = useStore()[1];
+  const [state, dispatch] = useStore();
+  const { currentChapterTheme } = state;
   const { header, mapboxScrolly, chaptersScrolly } = longform;
+  const chapterThemeVars = chapterThemes[currentChapterTheme];
 
   const fetchAllData = () => {
     axios
@@ -93,7 +95,7 @@ const StoryApp = () => {
   useEffect(fetchAllData, []);
 
   return (
-    <ThemeProvider theme={{ ...variables, ...lightTheme }}>
+    <ThemeProvider theme={{ ...variables, ...lightTheme, ...chapterThemeVars }}>
       <GlobalStyle />
       <AppContainer className="app-container">
         <MapboxScrolly {...mapboxScrolly.config} />

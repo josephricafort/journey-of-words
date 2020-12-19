@@ -9,40 +9,37 @@ import {
 } from "./dummyWordsData";
 import WordCloud from "./WordCloud";
 
-const CategorySelection = styled.div`
+const Selection = styled.div`
   position: relative;
   display: block;
   text-align: left;
+`;
+
+const CategorySelection = styled(Selection)`
   margin-bottom: 10px;
 `;
 
-const CategoryButton = styled.div`
+const WordSelection = styled(Selection)``;
+
+const Button = styled.div`
   display: inline-block;
   padding: 10px;
-  background-color: ${(props) =>
-    (props.activeCat === props.catName && props.theme.green1) || "none"};
   margin-right: 10px;
   border-radius: 5px 5px 0 0;
   cursor: pointer;
+`;
+
+const CategoryButton = styled(Button)`
+  background-color: ${(props) =>
+    (props.activeCat === props.catName && props.theme.green1) || "none"};
   font-size: 18px;
   font-weight: ${(props) => (props.activeCat === props.catName && 700) || 500};
 `;
 
-const WordSelection = styled.div`
-  position: relative;
-  display: block;
-  text-align: left;
-`;
-
-const WordButton = styled.div`
-  display: inline-block;
-  padding: 10px;
+const WordButton = styled(Button)`
   background-color: ${(props) =>
     (props.activeWord === props.wordName && props.theme.green2) || "none"};
-  margin-right: 10px;
   margin-bottom: 10px;
-  border-radius: 5px 5px 0 0;
-  cursor: pointer;
   font-size: 20px;
   font-weight: ${(props) =>
     (props.activeWord === props.wordName && 700) || 500};
@@ -64,6 +61,8 @@ const wordList = (cat) => [
     dummyWordsData.filter((wd) => wd.wordCatEn === cat).map((wd) => wd.wordEn)
   ),
 ];
+const wordProtoAn = (wordEn) =>
+  dummyWordsData.find((word) => word.wordEn === wordEn).wordProtoAn;
 
 const WordsChart = () => {
   const [activeCat, setActiveCat] = useState(categoryList[0]);
@@ -103,7 +102,7 @@ const WordsChart = () => {
           </WordButton>
         ))}
       </WordSelection>
-      <CurrentWord>{activeWord}</CurrentWord>
+      <CurrentWord>{`${activeWord} (${wordProtoAn(activeWord)})`}</CurrentWord>
       <SVGChart activeWord={activeWord} />
     </div>
   );

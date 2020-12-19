@@ -3,6 +3,8 @@ import styled, { ThemeContext } from "styled-components";
 
 import useWindowDimensions from "../../../utils/useWindowDimensions";
 import { dummyDistributionData } from "./dummyDistributionData";
+import { useStore } from "../../../store/store";
+import { SET_CURRENTTHEME } from "../../../utils/constants";
 
 const Container = styled.div`
   position: relative;
@@ -49,23 +51,24 @@ const SVGContainer = styled.div`
 `;
 
 const SVG = styled.svg`
-  position: relative;
   position: inline;
 `;
 
 const Circle = styled.circle`
   fill: ${(props) =>
-    (props.keyObj === props.objKeys[0] && props.theme.grey3) ||
-    (props.keyObj === props.objKeys[1] && props.theme.fillGreen1) ||
-    (props.keyObj === props.objKeys[2] && props.theme.fillGreen2) ||
-    (props.keyObj === props.objKeys[3] && props.theme.fillGreen3) ||
-    (props.keyObj === props.objKeys[4] && props.theme.fillGreen4)};
+    (props.keyObj === props.objKeys[0] && props.theme.fill0) ||
+    (props.keyObj === props.objKeys[1] && props.theme.fill1) ||
+    (props.keyObj === props.objKeys[2] && props.theme.fill2) ||
+    (props.keyObj === props.objKeys[3] && props.theme.fill3) ||
+    (props.keyObj === props.objKeys[4] && props.theme.fill4)};
   stroke: ${(props) =>
-    props.keyObj === props.objKeys[0] ? props.theme.grey2 : "none"};
+    props.keyObj === props.objKeys[0] ? props.theme.stroke0 : "none"};
   stroke-width: 0.5px;
 `;
 
 const CircleArray = ({ obj, innerWidth }) => {
+  const state = useStore()[0];
+  const { currentTheme } = state;
   const theme = useContext(ThemeContext);
 
   const MAX_EL_PER_ROW = 40;

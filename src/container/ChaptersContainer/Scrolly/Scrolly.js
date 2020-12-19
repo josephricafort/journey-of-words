@@ -3,7 +3,11 @@ import styled from "styled-components";
 import { Scrollama, Step } from "react-scrollama";
 
 import { useStore } from "../../../store/store";
-import { SET_CURRENTSTEPINDEX } from "../../../utils/constants";
+import {
+  SET_CURRENTSTEPINDEX,
+  SET_CURRENTCHAPTERTHEME,
+  CHAPTER_NAMES,
+} from "../../../utils/constants";
 import DistributionChart from "./DistributionChart";
 import WordsChart from "./WordsChart";
 
@@ -108,7 +112,20 @@ const Scrolly = (chaptersconfig) => {
   }
 
   const onStepEnter = ({ data }) => {
+    const currentChapterTheme = (data) => {
+      const chapterIndex = data.toString().split(".")[0];
+
+      return (
+        (chapterIndex === "0" && CHAPTER_NAMES[0]) ||
+        (chapterIndex === "1" && CHAPTER_NAMES[1]) ||
+        (chapterIndex === "2" && CHAPTER_NAMES[2]) ||
+        (chapterIndex === "3" && CHAPTER_NAMES[3]) ||
+        (chapterIndex === "4" && CHAPTER_NAMES[4])
+      );
+    };
+
     dispatch(SET_CURRENTSTEPINDEX, data);
+    dispatch(SET_CURRENTCHAPTERTHEME, currentChapterTheme(data));
   };
 
   return (

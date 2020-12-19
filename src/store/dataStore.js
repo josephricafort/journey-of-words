@@ -6,9 +6,11 @@ export const configureDataStore = () => {
     SET_CURRENTSTEPINDEX: (state, stepIndex) => ({
       currentStepIndex: stepIndex,
     }),
+    SET_CURRENTCHAPTERTHEME: (state, currentChapterTheme) => ({
+      currentChapterTheme: currentChapterTheme,
+    }),
 
-    // data
-    //- words
+    // data words
     SET_WORDMAIN: (state, word) => ({ wordMain: word }),
     SET_WORDSINFO: (state, wordsInfo) => ({ wordsInfo: [...wordsInfo] }),
     SET_WORDGROUPS: (state, wordGroups) => ({ wordGroups: wordGroups }),
@@ -33,7 +35,7 @@ export const configureDataStore = () => {
       return { wordTranslations: translate(wordsData) };
     },
 
-    //- languages
+    // data languages
     SET_LANGUAGEINFO: (state, languageInfo) => ({
       languageInfo: languageInfo.filter(
         (lang) => !!lang.latitude && !!lang.longitude
@@ -72,6 +74,7 @@ export const configureDataStore = () => {
   const initState = {
     // scrolly
     currentStepIndex: 1,
+    currentChapterTheme: "world",
 
     // data related
     //- words
