@@ -1,10 +1,9 @@
-import React, { useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import styled, { ThemeContext } from "styled-components";
 
 import useWindowDimensions from "../../../utils/useWindowDimensions";
+import useDimensions from "../../../utils/useDimensions";
 import { dummyDistributionData } from "./dummyDistributionData";
-import { useStore } from "../../../store/store";
-import { SET_CURRENTTHEME } from "../../../utils/constants";
 
 const Container = styled.div`
   position: relative;
@@ -19,14 +18,14 @@ const Group = styled.div`
 `;
 
 const DistributionChart = () => {
-  const { width: innerWidth } = useWindowDimensions();
+  const { width: windowWidth } = useWindowDimensions();
 
   return (
     <Container className="distrib-chart-container">
       {dummyDistributionData.map((gp) => (
         <Group className={["distrib-an-group", gp.group]} key={gp.group}>
           <p className="distrib-title-container">{gp.group}</p>
-          <CircleArray obj={gp} innerWidth={innerWidth} />
+          <CircleArray obj={gp} windowWidth={windowWidth} />
         </Group>
       ))}
     </Container>
@@ -66,16 +65,16 @@ const Circle = styled.circle`
   stroke-width: 0.5px;
 `;
 
-const CircleArray = ({ obj, innerWidth }) => {
-  const state = useStore()[0];
-  const { currentTheme } = state;
+const CircleArray = ({ obj, windowWidth }) => {
   const theme = useContext(ThemeContext);
-
-  const MAX_EL_PER_ROW = 40;
-  const GAP = 1;
+  const [svgRef, svgDims] = useDimensions();
 
   const rad =
-    (innerWidth < theme.small && 2) || (innerWidth < theme.medium && 3) || 4;
+    (windowWidth < theme.small && 2) || (windowWidth < theme.medium && 3) || 4;
+  const GAP = 1;
+
+  const maxElPerRow = Math.ceil(svgDims.width / (rad + GAP));
+
   const diam = rad * 2;
   const offset = rad;
 
@@ -84,10 +83,10 @@ const CircleArray = ({ obj, innerWidth }) => {
   );
   const objKeys = Object.keys(objVals);
   const sumCircles = Object.entries(obj)
-    .map(([key, value]) => value)
+    .map(([, value]) => value)
     .filter((val) => Number.isFinite(val))
     .reduce((acc, currVal) => acc + currVal, 0);
-  const maxElPerCol = Math.round(sumCircles / MAX_EL_PER_ROW);
+  const maxElPerCol = Math.ceil(sumCircles / maxElPerRow);
 
   const cx = (i) => (diam + GAP) * Math.floor(i / maxElPerCol) + offset;
   const cy = (i) => (diam + GAP) * (i % maxElPerCol) + offset;
@@ -115,6 +114,7 @@ const CircleArray = ({ obj, innerWidth }) => {
             height={height}
             width={width(value)}
             key={`svg-${index}`}
+            ref={svgRef}
             {...svgProps}
           >
             {Array.from(Array(value), (e, i) => (

@@ -114,7 +114,6 @@ const Scrolly = (chaptersconfig) => {
   const onStepEnter = ({ data }) => {
     const currentChapterTheme = (data) => {
       const chapterIndex = data.toString().split(".")[0];
-
       return (
         (chapterIndex === "0" && CHAPTER_NAMES[0]) ||
         (chapterIndex === "1" && CHAPTER_NAMES[1]) ||
@@ -123,7 +122,6 @@ const Scrolly = (chaptersconfig) => {
         (chapterIndex === "4" && CHAPTER_NAMES[4])
       );
     };
-
     dispatch(SET_CURRENTSTEPINDEX, data);
     dispatch(SET_CURRENTCHAPTERTHEME, currentChapterTheme(data));
   };

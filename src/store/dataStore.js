@@ -74,7 +74,7 @@ export const configureDataStore = () => {
   const initState = {
     // scrolly
     currentStepIndex: 1,
-    currentChapterTheme: "world",
+    currentChapterTheme: "nature",
 
     // data related
     //- words
