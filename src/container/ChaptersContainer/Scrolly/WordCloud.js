@@ -3,8 +3,9 @@ import { ThemeContext } from "styled-components";
 import * as d3 from "d3";
 
 import { calcDistance } from "../../../utils/utils";
+import { COORDS_HOMELAND } from "../../../utils/constants";
 
-const WordCloud = ({ data, height, padding, activeWord }) => {
+const WordCloud = ({ data, height, padding, activeWord, wordList }) => {
   const svgRef = useRef();
   const theme = useContext(ThemeContext);
 
@@ -12,14 +13,14 @@ const WordCloud = ({ data, height, padding, activeWord }) => {
 
   const generateChart = () => {
     // The D3 code for this beautiful viz was forked from https://observablehq.com/@d3/force-layout-phyllotaxis
-    const dataFiltered = data.filter((lang) => lang.wordEn === activeWord);
-    const n = dataFiltered.length;
+    const dataSelected = data.flat().filter((wd) => wd.wordEn === activeWord);
+    const n = dataSelected.length;
     const scale = 0.6;
     const center = [width / 2, height / 2];
 
     // SVG
     const svg = d3.select(svgRef.current);
-    const nodes = dataFiltered
+    const nodes = dataSelected
       .map((el) => {
         const obj = Object.assign({}, el);
         obj.r = 40;
@@ -27,9 +28,8 @@ const WordCloud = ({ data, height, padding, activeWord }) => {
       })
       .slice(0, n);
 
-    const mainland = { lat: 23.817981, long: 120.954427 };
     const distMainland = (d) =>
-      calcDistance(mainland.lat, mainland.long, d.lat, d.long);
+      calcDistance(COORDS_HOMELAND.LAT, COORDS_HOMELAND.LONG, d.lat, d.long);
     const domainExtent = d3.extent(nodes.map((d) => distMainland(d)));
 
     const y = d3
@@ -45,7 +45,7 @@ const WordCloud = ({ data, height, padding, activeWord }) => {
       .attr("x", width / 2)
       .attr("y", (d) => y(distMainland(d)))
       .attr("font-family", theme.cursive)
-      .attr("font-size", "24px")
+      .attr("font-size", "14px")
       .attr("text-anchor", "middle")
       .text((d) => d.wordAn);
 
@@ -57,8 +57,8 @@ const WordCloud = ({ data, height, padding, activeWord }) => {
     const simulation = d3
       .forceSimulation(nodes)
       .on("tick", tick)
-      .force("y", d3.forceY((d) => y(distMainland(d))).strength(1.2))
-      .force("x", d3.forceX(width / 2).strength(0.8))
+      .force("y", d3.forceY((d) => y(distMainland(d))).strength(1))
+      .force("x", d3.forceX(width / 2).strength(1))
       .force(
         "collide",
         d3.forceCollide().radius((d) => 1 + d.r)

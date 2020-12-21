@@ -3,43 +3,36 @@ export const dummyWordsData = [
     wordCatEn: "forests",
     wordEn: "earth",
     wordProtoAn: "*taneq",
-    wordAn: "qaBan",
   },
   {
     wordCatEn: "forests",
     wordEn: "plant",
     wordProtoAn: "*agdaw",
-    wordAn: "hagsa",
   },
   {
     wordCatEn: "forests",
     wordEn: "flower",
     wordProtoAn: "*tsdadf",
-    wordAn: "sadsjjs",
   },
   {
     wordCatEn: "seas",
     wordEn: "beach",
     wordProtoAn: "*asdsda",
-    wordAn: "vgdscd",
   },
   {
     wordCatEn: "seas",
     wordEn: "sand",
     wordProtoAn: "*sadwad",
-    wordAn: "czcdzd",
   },
   {
     wordCatEn: "skies",
     wordEn: "birds",
     wordProtoAn: "*sadsnflej",
-    wordAn: "csdsdcs",
   },
   {
     wordCatEn: "skies",
     wordEn: "clouds",
     wordProtoAn: "*xasxas",
-    wordAn: "kuikuk",
   },
 ];
 

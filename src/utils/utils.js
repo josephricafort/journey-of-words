@@ -25,3 +25,8 @@ export function calcDistance(lat1, lon1, lat2, lon2) {
   const d = R * c;
   return d;
 }
+
+// check if undefined
+export function isUndefined(v) {
+  return typeof v === "undefined";
+}

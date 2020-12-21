@@ -91,7 +91,7 @@ const CircleArray = ({ obj, windowWidth }) => {
   const cx = (i) => (diam + GAP) * Math.floor(i / maxElPerCol) + offset;
   const cy = (i) => (diam + GAP) * (i % maxElPerCol) + offset;
 
-  const height = maxElPerCol * (diam + GAP) + offset;
+  const height = () => maxElPerCol * (diam + GAP) + offset;
   const width = (val) => Math.ceil(val / maxElPerCol) * (diam + GAP) + offset;
 
   const perc = (val) => Math.round((val / sumCircles) * 100);
@@ -110,25 +110,25 @@ const CircleArray = ({ obj, windowWidth }) => {
     <SVGWrapper className="svg-wrapper">
       {Object.entries(objVals).map(([keyObj, value], index) => (
         <SVGContainer className="svg-container" key={`svg-container${index}`}>
-          <SVG
-            height={height}
+          <svg
+            {...svgProps}
+            height={height()}
             width={width(value)}
             key={`svg-${index}`}
             ref={svgRef}
-            {...svgProps}
           >
             {Array.from(Array(value), (e, i) => (
               <Circle
                 className={keyObj}
-                cx={cx(i)}
-                cy={cy(i)}
+                cx={cx(i) || 5}
+                cy={cy(i) || 5}
                 r={rad}
                 key={i}
                 keyObj={keyObj}
                 objKeys={objKeys}
               />
             ))}
-          </SVG>
+          </svg>
           {width(value) >= 20 && <p>{perc(value)}%</p>}
         </SVGContainer>
       ))}

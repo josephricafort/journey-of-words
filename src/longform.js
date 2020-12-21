@@ -501,7 +501,59 @@ const longform = {
           p: [
             "Some very long texts here will be placed that describe something nice and informative about what the writer wants to talk about",
           ],
-          data: "./some-github-data-url-here",
+        },
+        data: {
+          wordsItems: [
+            {
+              category: "nature",
+              wordsAn: ["*taneq", "*Cubuq", "*bu<U+014B>a", "*likaC"],
+              wordsEn: ["earth", "flower", "lightning"],
+            },
+            {
+              category: "seas",
+              wordsAn: ["*bali₃", "*Nabek", "*laŋiC"],
+              wordsEn: ["sand", "sky", "outriggerfloat"],
+            },
+            {
+              category: "agriculture",
+              wordsAn: ["*punti1", "*niuR", "*mamaq", "*buaq"],
+              wordsEn: ["banana", "coconut", "fruit"],
+            },
+            {
+              category: "animal domestication",
+              wordsAn: ["*manuk"],
+              wordsEn: ["chicken"],
+            },
+            {
+              category: "fishing",
+              wordsAn: ["*quda", "*hasa"],
+              wordsEn: ["shrimp", "gills"],
+            },
+            {
+              category: "family & social",
+              wordsAn: ["*amax", "*ina", "*kuCux", "*ai3"],
+              wordsEn: ["father", "mother", "headlouse", "come"],
+            },
+            {
+              category: "emotion & expression",
+              wordsAn: [
+                "*maCa",
+                "*susu1",
+                "*NiSawa",
+                "*qaCay",
+                "*takut",
+                "*batux",
+              ],
+              wordsEn: [
+                "eye",
+                "femalebreast",
+                "breath",
+                "liver",
+                "fear",
+                "stone",
+              ],
+            },
+          ],
         },
       },
       {

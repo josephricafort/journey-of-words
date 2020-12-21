@@ -103,7 +103,7 @@ const Scrolly = (chaptersconfig) => {
             {slide.contents.p.map((p, i) => (
               <p key={i}>{p}</p>
             ))}
-            <WordsChart {...slide.data} />
+            <WordsChart slideData={slide.data} />
           </Card>
         )}
         {slide.type === null ? null : null}

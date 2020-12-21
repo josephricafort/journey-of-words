@@ -17,6 +17,7 @@ const Container = styled.div`
   border: none;
   top: 0;
   background-color: ${(props) => props.theme.backgroundColor};
+  opacity: 0.9;
 `;
 
 const GraphicWrapper = styled.div`
@@ -29,6 +30,7 @@ const GraphicWrapper = styled.div`
   // border: 1px solid ${(props) => props.theme.yellow};
   margin: 0 auto;
   max-width: 700px;
+  opacity: 1;
 `;
 
 const Sticky = () => {
@@ -39,7 +41,7 @@ const Sticky = () => {
           <GroupSilhouette />
           <FaceWoman />
         </div>
-        <DistributionChart />
+        <DistributionChart className="distribution-chart" />
       </GraphicWrapper>
       <Earth className="earth" />
     </Container>

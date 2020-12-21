@@ -10,7 +10,12 @@ export const SET_TOGGLEZOOM = "SET_TOGGLEZOOM";
 export const SET_CURRENTSTEPINDEX = "SET_CURRENTSTEPINDEX";
 export const SET_CURRENTCHAPTERTHEME = "SET_CURRENTCHAPTERTHEME";
 
-// data languages
+// DATA
+export const COORDS_HOMELAND = { LAT: 23.817981, LONG: 120.954427 };
+export const COORDS_RAPANUI = { LAT: -27.104055, LONG: -109.228984 };
+export const COORDS_MADAGASCAR = { LAT: -22.065304, LONG: 43.185292 };
+
+// exploration - words
 export const DB_GITHUB =
   "https://raw.githubusercontent.com/josephricafort/journey-of-words-r-data/master/data/output/json/";
 export const DB_GITHUB_WORDS_INFO = DB_GITHUB + "words_info.json";
@@ -21,10 +26,15 @@ export const DB_GITHUB_WORDS_COUNT_TOP20PC =
 export const DB_GITHUB_COGNATE_SETS_PLUS25 =
   DB_GITHUB + "cognate_sets_plus25.json";
 
-// data words
+// exploration - languages
 export const DB_GITHUB_LANGUAGE_INFO = DB_GITHUB + "language_info.json";
 export const DB_GITHUB_LANG_HEIRARCHY_ARR =
   DB_GITHUB + "language_heirarchy_array.json";
+
+// scrolly - words
+export const DB_GITHUB_API =
+  "https://raw.githubusercontent.com/josephricafort/journey-of-words-r-data/master/api/";
+export const DB_GITHUB_API_WORDS = DB_GITHUB_API + "wordsinfodata/";
 
 // mapbox
 export const MAPBOX_USERNAME = "josephricafort";

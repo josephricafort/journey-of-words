@@ -8,6 +8,7 @@ const Wrapper = styled.div`
   transform: translate(-50%, 0);
   width: 150px;
   max-width: 400px;
+  opacity: 1;
 
   @media (${(props) => props.theme.breakpointMedium}) {
     top: 5vw;
@@ -28,6 +29,7 @@ const FaceWoman = () => {
         y="0px"
         viewBox="0 0 143.25 202"
         enableBackground="new 0 0 143.25 202"
+        opacity="1"
       >
         <g id="elements">
           <g id="woman">
