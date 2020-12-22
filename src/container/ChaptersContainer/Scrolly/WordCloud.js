@@ -2,7 +2,12 @@ import React, { useState, useRef, useEffect, useContext } from "react";
 import styled, { ThemeContext } from "styled-components";
 import * as d3 from "d3";
 
-import { calcDistance } from "../../../utils/utils";
+import {
+  calcDistance,
+  occlusion,
+  intersect,
+  distFromHomeland,
+} from "../../../utils/utils";
 import { COORDS_HOMELAND } from "../../../utils/constants";
 
 const GroupContainer = styled.g`

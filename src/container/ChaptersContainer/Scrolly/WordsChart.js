@@ -4,13 +4,10 @@ import * as d3 from "d3";
 import axios from "axios";
 
 import useDimensions from "../../../utils/useDimensions";
-import { calcDistance, isUndefined } from "../../../utils/utils";
-import {
-  DB_GITHUB_API_WORDS,
-  COORDS_HOMELAND,
-  COORDS_RAPANUI,
-} from "../../../utils/constants";
+import { isUndefined, distFromHomeland } from "../../../utils/utils";
+import { DB_GITHUB_API_WORDS, COORDS_RAPANUI } from "../../../utils/constants";
 
+import WordsLocation from "./WordsLocation";
 import WordCloud from "./WordCloud";
 import WordsDistribution from "./WordsDistribution";
 
@@ -205,15 +202,12 @@ const WordsChart = ({ slideData }) => {
 
 const SVGWrapper = styled.div`
   text-align: left;
-  height: ${(props) => props.height};
+  min-height: 500px;
+  height: 100%;
 `;
 
 const Group = styled.g`
   height: 100%;
-`;
-
-const LocNames = styled(Group)`
-  width: 200px;
 `;
 
 const WordsDistWrapper = styled.div`
@@ -223,19 +217,14 @@ const WordsDistWrapper = styled.div`
   text-align: center;
 `;
 
-const TextLocation = styled.text`
-  font-size: 12px;
-`;
-
-const SVGChart = ({ data, locationsData, activeWord, wordsPerCatList }) => {
-  const height = 600;
+const SVGChart = ({ data, locationsData }) => {
   const padding = { top: 40, right: 20, bottom: 40, left: 20 };
 
-  // const [svgData, setSvgData] = useState([]);
   const [dataOfWord, setDataOfWord] = useState([]);
   const [dataPerWordTally, setDataPerWordTally] = useState([]);
   const svgWrapperRef = useRef();
   const [svgRef, svgDims] = useDimensions();
+  const height = 500;
 
   const generateDataOfWord = () =>
     setDataOfWord(
@@ -268,8 +257,6 @@ const SVGChart = ({ data, locationsData, activeWord, wordsPerCatList }) => {
   const generateDataPerWordTally = () => {
     const N_WORDS_LIMIT = 75;
     const wordAnList = [...new Set(dataOfWord.map((e) => e.wordAn))];
-
-    // setSubgroupList([...new Set(dataOfWord.map((e) => e.langSubgroup))]);
 
     setDataPerWordTally(
       wordAnList
@@ -335,16 +322,6 @@ const SVGChart = ({ data, locationsData, activeWord, wordsPerCatList }) => {
     padding,
   };
 
-  const distRapaNui = distFromHomeland(COORDS_RAPANUI.LAT, COORDS_RAPANUI.LONG);
-  const domainMax = distRapaNui;
-
-  const y = d3
-    .scaleLinear()
-    .domain([0, domainMax])
-    .range([padding.top, height - padding.bottom]);
-
-  const yMidLocation = (loc) => y((loc.distRangeMax + loc.distRangeMin) / 2);
-
   // Hard code the range extent of the data
   const locationsExtent = [
     {
@@ -365,34 +342,17 @@ const SVGChart = ({ data, locationsData, activeWord, wordsPerCatList }) => {
           dataPerWordTally={dataPerWordTally}
           {...wordCloudProps}
         />
-        <LocNames className="location-names">
-          {locationsDataExtended.map(
-            (loc, index) =>
-              yMidLocation(loc) && (
-                <TextLocation
-                  x={padding.left}
-                  y={yMidLocation(loc)}
-                  textAnchor="right"
-                  key={index}
-                >
-                  {loc.langLocation}
-                </TextLocation>
-              )
-          )}
-        </LocNames>
+        <WordsLocation
+          data={locationsDataExtended}
+          padding={padding}
+          height={height}
+        />
       </svg>
       <WordsDistWrapper svgWidth={svgDims.width}>
-        <WordsDistribution
-          data={dataPerWordTally}
-          {...wordDistProps}
-        ></WordsDistribution>
+        <WordsDistribution data={dataPerWordTally} {...wordDistProps} />
       </WordsDistWrapper>
     </SVGWrapper>
   );
 };
-
-function distFromHomeland(latTo, longTo) {
-  return calcDistance(COORDS_HOMELAND.LAT, COORDS_HOMELAND.LONG, latTo, longTo);
-}
 
 export default WordsChart;

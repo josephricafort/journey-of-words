@@ -1,3 +1,6 @@
+import * as d3 from "d3";
+import { COORDS_HOMELAND } from "./constants";
+
 // replace spaces with percentage sign
 export const urlFriendly = function (word) {
   return word.toLowerCase().replace(",", "").replace(/ /g, "_");
@@ -41,4 +44,46 @@ export function fullSubgroupName(subgroupName) {
     (subgroupName === "WMP" && "Western Malayo Polynesia") ||
     null
   );
+}
+
+// Occlusion and intersect function used to avoid overlapping svg elements
+export function occlusion(svg) {
+  const texts = [];
+  svg.selectAll("text").each((d, i, e) => {
+    const bbox = e[i].getBoundingClientRect();
+    texts.push({
+      priority: +e[i].getAttribute("data-priority"),
+      node: e[i],
+      text: d,
+      bbox,
+      x: bbox.x,
+      y: bbox.y,
+      width: bbox.width,
+      height: bbox.height,
+    });
+  });
+  texts.sort((a, b) => d3.descending(a.priority, b.priority));
+
+  const filled = [];
+  texts.forEach((d) => {
+    const isOccluded = filled.some((e) => intersect(d, e));
+    d3.select(d.node).classed("occluded", isOccluded);
+    if (!isOccluded) filled.push(d);
+  });
+
+  return filled;
+}
+
+export function intersect(a, b) {
+  return !(
+    a.x + a.width < b.x ||
+    b.x + b.width < a.x ||
+    a.y + a.height < b.y ||
+    b.y + b.height < a.y
+  );
+}
+
+// Calculating the distance from homeland in Taiwan
+export function distFromHomeland(latTo, longTo) {
+  return calcDistance(COORDS_HOMELAND.LAT, COORDS_HOMELAND.LONG, latTo, longTo);
 }

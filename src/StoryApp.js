@@ -75,24 +75,23 @@ const StoryApp = () => {
   const { header, mapboxScrolly, chaptersScrolly } = longform;
   const chapterThemeVars = chapterThemes[currentChapterTheme];
 
-  const fetchAllData = () => {
-    axios
-      .all([
-        axios.get(DB_GITHUB_LANGUAGE_INFO),
-        axios.get(DB_GITHUB_WORDS_INFO),
-        axios.get(DB_GITHUB_LANG_HEIRARCHY_ARR),
-      ])
-      .then((responseArray) => {
-        dispatch(SET_LANGUAGEINFO, responseArray[0].data);
-        dispatch(SET_WORDSINFO, responseArray[1].data);
-        dispatch(SET_LANGHEIRARCHY, responseArray[2].data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  useEffect(fetchAllData, []);
+  // const fetchAllData = () => {
+  //   axios
+  //     .all([
+  //       axios.get(DB_GITHUB_LANGUAGE_INFO),
+  //       axios.get(DB_GITHUB_WORDS_INFO),
+  //       axios.get(DB_GITHUB_LANG_HEIRARCHY_ARR),
+  //     ])
+  //     .then((responseArray) => {
+  //       dispatch(SET_LANGUAGEINFO, responseArray[0].data);
+  //       dispatch(SET_WORDSINFO, responseArray[1].data);
+  //       dispatch(SET_LANGHEIRARCHY, responseArray[2].data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
+  // useEffect(fetchAllData, []);
 
   return (
     <ThemeProvider theme={{ ...variables, ...lightTheme, ...chapterThemeVars }}>
