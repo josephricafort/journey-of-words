@@ -33,42 +33,11 @@ const Word = styled.span`
     `text-decoration: underline solid ${props.theme.stroke1} 2px;`}
 `;
 
-const WordsDistribution = ({ data, height, padding }) => {
-  const [dataOfWord, setDataOfWord] = useState([]);
-  const [dataPerWordTally, setDataPerWordTally] = useState([]);
-  //   const [subgroupList, setSubgroupList] = useState([]);
+const WordsDistribution = ({ data }) => {
   const subgroupList = ["Formosan", "WMP", "CMP", "SHWNG", "OC"];
   const theme = useContext(ThemeContext);
 
-  const generateDataOfWord = () =>
-    setDataOfWord(
-      data.map((e) => {
-        const {
-          wordAn,
-          wordEn,
-          langName,
-          langISOCode,
-          langSubgroup,
-          langLocation,
-          lat,
-          long,
-        } = e;
-
-        return {
-          wordAn,
-          wordEn,
-          langName,
-          langISOCode,
-          langSubgroup,
-          langLocation,
-          lat,
-          long,
-        };
-      })
-    );
-  useEffect(generateDataOfWord, [data]);
-
-  const domainExtent = d3.extent(dataPerWordTally.map((e) => e.langNamesCount));
+  const domainExtent = d3.extent(data.map((e) => e.langNamesCount));
 
   const colorFillScale = d3
     .scaleLinear()
@@ -81,45 +50,6 @@ const WordsDistribution = ({ data, height, padding }) => {
     return Math.round(fontSize(count)) + "px";
   };
 
-  const generateDataPerWordTally = () => {
-    const N_WORDS_LIMIT = 100;
-    const wordAnList = [...new Set(dataOfWord.map((e) => e.wordAn))];
-
-    // setSubgroupList([...new Set(dataOfWord.map((e) => e.langSubgroup))]);
-
-    setDataPerWordTally(
-      wordAnList
-        .map((wd) => {
-          const currentWordData = dataOfWord.filter((e) => e.wordAn === wd);
-
-          const countReducer = (count, langName) =>
-            langName ? count + 1 : count;
-          const stringReducer = (strList, str) =>
-            str || str !== "" ? strList.concat(", ").concat(str) : strList;
-
-          const langSubgroupsList = [
-            ...new Set(currentWordData.map((wd) => wd.langSubgroup)),
-          ].reduce(stringReducer);
-          const langNamesList = [
-            ...new Set(currentWordData.map((wd) => wd.langName)),
-          ].reduce(stringReducer);
-          const langNamesCount = [
-            ...new Set(currentWordData.map((wd) => wd.langName)),
-          ].reduce(countReducer, 0);
-
-          return {
-            wordAn: wd,
-            langSubgroupsList,
-            langNamesList,
-            langNamesCount,
-          };
-        })
-        .sort((a, b) => (a.langNamesCount < b.langNamesCount ? 1 : -1))
-        .slice(0, N_WORDS_LIMIT)
-    );
-  };
-  useEffect(generateDataPerWordTally, [dataOfWord, data]);
-
   return (
     <Container className="words-distribution-container">
       {subgroupList.map((sg) => (
@@ -127,7 +57,7 @@ const WordsDistribution = ({ data, height, padding }) => {
           <SubgroupTitle className="subgroup">
             {fullSubgroupName(sg)} ({sg})
           </SubgroupTitle>
-          {dataPerWordTally
+          {data
             .filter((e) => e.langSubgroupsList === sg)
             .map(
               (w) =>

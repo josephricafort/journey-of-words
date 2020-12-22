@@ -512,7 +512,7 @@ const longform = {
             {
               category: "seas",
               wordsAn: ["*bali₃", "*Nabek", "*laŋiC"],
-              wordsEn: ["sand", "sky", "outriggerfloat"],
+              wordsEn: ["sand", "sky", "outrigger float"],
             },
             {
               category: "agriculture",
@@ -532,7 +532,7 @@ const longform = {
             {
               category: "family & social",
               wordsAn: ["*amax", "*ina", "*kuCux"],
-              wordsEn: ["father", "mother", "headlouse"],
+              wordsEn: ["father", "mother", "head louse"],
             },
             {
               category: "emotion & expression",
@@ -546,7 +546,7 @@ const longform = {
               ],
               wordsEn: [
                 "eye",
-                "femalebreast",
+                "female breast",
                 "breath",
                 "liver",
                 "fear",

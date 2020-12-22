@@ -11,11 +11,6 @@ import {
   COORDS_RAPANUI,
 } from "../../../utils/constants";
 
-import {
-  dummyWordsData,
-  dummyLangData,
-  dummyRegionData,
-} from "./dummyWordsData";
 import WordCloud from "./WordCloud";
 import WordsDistribution from "./WordsDistribution";
 
@@ -23,18 +18,20 @@ const Selection = styled.div`
   position: relative;
   display: block;
   text-align: left;
-  overflow-x: auto;
   max-width: 1400px;
   -webkit-overflow-scrolling: touch;
+  // overflow-x: auto;
+  white-space: nowrap;
 `;
 
 const CategorySelection = styled(Selection)`
   margin-bottom: 10px;
+  border-bottom: 1px solid ${(props) => props.theme.stroke1};
 `;
 
 const WordSelection = styled(Selection)``;
 
-const Button = styled.div`
+const Tab = styled.div`
   display: inline-block;
   padding: 10px;
   margin-right: 10px;
@@ -42,17 +39,16 @@ const Button = styled.div`
   cursor: pointer;
 `;
 
-const CategoryButton = styled(Button)`
+const CategoryTab = styled(Tab)`
   background-color: ${(props) =>
     (props.activeCat === props.catName && props.theme.green1) || "none"};
-  font-size: 18px;
+  font-size: 14px;
   font-weight: ${(props) => (props.activeCat === props.catName && 700) || 500};
 `;
 
-const WordButton = styled(Button)`
+const WordTab = styled(Tab)`
   background-color: ${(props) =>
     (props.activeWord === props.wordName && props.theme.green2) || "none"};
-  margin-bottom: 10px;
   font-size: 20px;
   font-weight: ${(props) =>
     (props.activeWord === props.wordName && 700) || 500};
@@ -63,7 +59,8 @@ const CurrentWord = styled.div`
   text-align: left;
   font-family: ${(props) => props.theme.cursive};
   font-size: 36px;
-  border: 2px dashed ${(props) => props.theme.strokeGreen1};
+  border: 1px solid ${(props) => props.theme.stroke1};
+  border-radius: 0 0 5px 5px;
   padding: 10px;
   margin-bottom: 10px;
 `;
@@ -86,7 +83,9 @@ const WordsChart = ({ slideData }) => {
     axios
       .all(
         wordsPerCatList(activeCat).map((wd) =>
-          axios.get(DB_GITHUB_API_WORDS + "/" + wd + ".json")
+          axios.get(
+            DB_GITHUB_API_WORDS + "/" + wd.split(" ").join("") + ".json"
+          )
         )
       )
       .then((responseArray) => {
@@ -100,25 +99,24 @@ const WordsChart = ({ slideData }) => {
 
   // Derive data for location names (LocNames group)
   const generateLocationsList = () => {
-    if (typeof wordsInfoData.flat() !== "undefined") {
-      setLocationsList(
-        [...new Set(wordsInfoData.flat().map((e) => e.langLocation))].filter(
-          (loc) => typeof loc !== "undefined"
-        )
-      );
-    }
+    setLocationsList(
+      [...new Set(wordsInfoData.flat().map((e) => e.langLocation))].filter(
+        (loc) => typeof loc !== "undefined"
+      )
+    );
   };
   useEffect(generateLocationsList, [wordsInfoData]);
 
   const generateLocationsData = () =>
     setLocationsData(
       locationsList.map((loc) => {
+        const isValid = (val) => !isNaN(val) || !isUndefined(val);
         const meanReducer = (mean, val) =>
-          !isNaN(val) ? (mean + val) / 2 : mean;
+          isValid(val) ? (mean + val) / 2 : mean;
         const minReducer = (min, val) =>
-          !isNaN(val) ? Math.min(min, val) : min;
+          isValid(val) ? Math.min(min, val) : min;
         const maxReducer = (max, val) =>
-          !isNaN(val) ? Math.max(max, val) : max;
+          isValid(val) ? Math.max(max, val) : max;
 
         const dataPerLocation = wordsInfoData
           .flat()
@@ -166,8 +164,8 @@ const WordsChart = ({ slideData }) => {
   const wordIndex = wordsPerCatList(activeCat).indexOf(activeWord);
   const svgChartProps = {
     activeWord,
+    locationsData,
     data: wordsInfoData[wordIndex],
-    locationsData: locationsData,
     wordsPerCatList: wordsPerCatList(activeCat),
   };
 
@@ -175,7 +173,7 @@ const WordsChart = ({ slideData }) => {
     <div className="words-chart-container">
       <CategorySelection className="category-selection">
         {categoryList.map((cat) => (
-          <CategoryButton
+          <CategoryTab
             className="category-button"
             onClick={(e) => handleClickCat(cat)}
             activeCat={activeCat}
@@ -183,12 +181,12 @@ const WordsChart = ({ slideData }) => {
             key={`category-${cat}`}
           >
             {cat}
-          </CategoryButton>
+          </CategoryTab>
         ))}
       </CategorySelection>
       <WordSelection className="words-selection">
         {wordsPerCatList(activeCat).map((word) => (
-          <WordButton
+          <WordTab
             className="word-button"
             key={`word-${word}`}
             activeWord={activeWord}
@@ -196,10 +194,10 @@ const WordsChart = ({ slideData }) => {
             onClick={(e) => handleClickWord(word)}
           >
             {word}
-          </WordButton>
+          </WordTab>
         ))}
       </WordSelection>
-      <CurrentWord>{`${activeWord} (${wordProtoAn(activeWord)})`}</CurrentWord>
+      <CurrentWord>{wordProtoAn(activeWord)}</CurrentWord>
       <SVGChart {...svgChartProps} />
     </div>
   );
@@ -218,16 +216,6 @@ const LocNames = styled(Group)`
   width: 200px;
 `;
 
-const LocLines = styled(Group)`
-  width: 50px;
-  transform: translate(200px, 0);
-`;
-
-const LocWords = styled(Group)`
-  width: 100%;
-  transform: translate(250px, 0);
-`;
-
 const WordsDistWrapper = styled.div`
   display: inline-block;
   width: calc(100% - ${(props) => props.svgWidth}px - 10px);
@@ -244,8 +232,87 @@ const SVGChart = ({ data, locationsData, activeWord, wordsPerCatList }) => {
   const padding = { top: 40, right: 20, bottom: 40, left: 20 };
 
   // const [svgData, setSvgData] = useState([]);
+  const [dataOfWord, setDataOfWord] = useState([]);
+  const [dataPerWordTally, setDataPerWordTally] = useState([]);
   const svgWrapperRef = useRef();
   const [svgRef, svgDims] = useDimensions();
+
+  const generateDataOfWord = () =>
+    setDataOfWord(
+      data.map((e) => {
+        const {
+          wordAn,
+          wordEn,
+          langName,
+          langISOCode,
+          langSubgroup,
+          langLocation,
+          lat,
+          long,
+        } = e;
+
+        return {
+          wordAn,
+          wordEn,
+          langName,
+          langISOCode,
+          langSubgroup,
+          langLocation,
+          lat,
+          long,
+        };
+      })
+    );
+  useEffect(generateDataOfWord, [data]);
+
+  const generateDataPerWordTally = () => {
+    const N_WORDS_LIMIT = 75;
+    const wordAnList = [...new Set(dataOfWord.map((e) => e.wordAn))];
+
+    // setSubgroupList([...new Set(dataOfWord.map((e) => e.langSubgroup))]);
+
+    setDataPerWordTally(
+      wordAnList
+        .map((wd) => {
+          const currentWordData = dataOfWord.filter((e) => e.wordAn === wd);
+
+          const countReducer = (count, langName) =>
+            langName ? count + 1 : count;
+          const stringReducer = (strList, str) =>
+            str || str !== "" ? strList.concat(", ").concat(str) : strList;
+          const meanReducer = (mean, val) =>
+            !isNaN(val) ? (mean + val) / 2 : mean;
+
+          const langSubgroupsList = [
+            ...new Set(currentWordData.map((wd) => wd.langSubgroup)),
+          ].reduce(stringReducer);
+          const langNamesList = [
+            ...new Set(currentWordData.map((wd) => wd.langName)),
+          ].reduce(stringReducer);
+          const langNamesCount = currentWordData
+            .map((wd) => wd.langName)
+            .reduce(countReducer, 0);
+          const latSubgroupMean = currentWordData
+            .map((wd) => wd.lat)
+            .reduce(meanReducer, 0);
+          const longSubgroupMean = currentWordData
+            .map((wd) => wd.long)
+            .reduce(meanReducer, 0);
+
+          return {
+            wordAn: wd,
+            langSubgroupsList,
+            langNamesList,
+            langNamesCount,
+            latSubgroupMean,
+            longSubgroupMean,
+          };
+        })
+        .sort((a, b) => (a.langNamesCount < b.langNamesCount ? 1 : -1))
+        .slice(0, N_WORDS_LIMIT)
+    );
+  };
+  useEffect(generateDataPerWordTally, [dataOfWord]);
 
   const svgProps = {
     version: "1.1",
@@ -253,22 +320,19 @@ const SVGChart = ({ data, locationsData, activeWord, wordsPerCatList }) => {
     x: "0px",
     y: "0px",
     width: "250px",
-    // viewBox: "0 0 200 200",
-    // enableBackground: "new 0 0 100 200",
     height: height,
   };
 
-  // const wordCloudProps = {
-  //   data: wordsInfoData,
-  //   wordList: wordsPerCatList,
-  //   activeWord,
-  //   height: height,
-  //   padding: padding,
-  // };
+  const wordCloudProps = {
+    outerSvgRef: svgRef,
+    outerSvgDims: svgDims,
+    padding,
+    locationsData,
+  };
 
   const wordDistProps = {
-    height: height,
-    padding: padding,
+    height: svgDims.height,
+    padding,
   };
 
   const distRapaNui = distFromHomeland(COORDS_RAPANUI.LAT, COORDS_RAPANUI.LONG);
@@ -279,7 +343,7 @@ const SVGChart = ({ data, locationsData, activeWord, wordsPerCatList }) => {
     .domain([0, domainMax])
     .range([padding.top, height - padding.bottom]);
 
-  const yLocation = (loc) => y(distFromHomeland(loc.latMean, loc.longMean));
+  const yMidLocation = (loc) => y((loc.distRangeMax + loc.distRangeMin) / 2);
 
   // Hard code the range extent of the data
   const locationsExtent = [
@@ -296,13 +360,18 @@ const SVGChart = ({ data, locationsData, activeWord, wordsPerCatList }) => {
   return (
     <SVGWrapper className="svg-wrapper" ref={svgWrapperRef}>
       <svg className="svg" {...svgProps} ref={svgRef}>
+        <WordCloud
+          data={dataOfWord}
+          dataPerWordTally={dataPerWordTally}
+          {...wordCloudProps}
+        />
         <LocNames className="location-names">
           {locationsDataExtended.map(
             (loc, index) =>
-              yLocation(loc) && (
+              yMidLocation(loc) && (
                 <TextLocation
                   x={padding.left}
-                  y={yLocation(loc)}
+                  y={yMidLocation(loc)}
                   textAnchor="right"
                   key={index}
                 >
@@ -311,24 +380,12 @@ const SVGChart = ({ data, locationsData, activeWord, wordsPerCatList }) => {
               )
           )}
         </LocNames>
-        <LocLines className="location-lines">
-          {locationsDataExtended.map((loc, index) => (
-            <circle
-              className="face-icon"
-              cx={20}
-              cy={yLocation(loc)}
-              r={5}
-              fill="grey"
-              key={index}
-            ></circle>
-          ))}
-        </LocLines>
-        {/* <LocWords className="location-words">
-          <WordCloud {...wordCloudProps} />
-        </LocWords> */}
       </svg>
       <WordsDistWrapper svgWidth={svgDims.width}>
-        <WordsDistribution data={data} {...wordDistProps}></WordsDistribution>
+        <WordsDistribution
+          data={dataPerWordTally}
+          {...wordDistProps}
+        ></WordsDistribution>
       </WordsDistWrapper>
     </SVGWrapper>
   );

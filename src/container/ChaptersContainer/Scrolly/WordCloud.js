@@ -1,32 +1,38 @@
-import React, { useRef, useEffect, useContext } from "react";
-import { ThemeContext } from "styled-components";
+import React, { useState, useRef, useEffect, useContext } from "react";
+import styled, { ThemeContext } from "styled-components";
 import * as d3 from "d3";
 
 import { calcDistance } from "../../../utils/utils";
 import { COORDS_HOMELAND } from "../../../utils/constants";
 
-const WordCloud = ({ data, height, padding, activeWord, wordList }) => {
-  const svgRef = useRef();
+const GroupContainer = styled.g`
+  height: 100%;
+`;
+
+const WordCloud = ({ data, dataPerWordTally, outerSvgDims, padding }) => {
+  const N_WORDS_LIMIT = 300;
+  const { height, width } = outerSvgDims;
+  const gRef = useRef();
   const theme = useContext(ThemeContext);
 
-  const width = 400;
+  const dataPWTTopList = [...new Set(dataPerWordTally.map((e) => e.wordAn))];
+  const dataTop = data
+    .filter((e) => dataPWTTopList.some((li) => li === e.wordAn))
+    .slice(0, N_WORDS_LIMIT);
 
   const generateChart = () => {
     // The D3 code for this beautiful viz was forked from https://observablehq.com/@d3/force-layout-phyllotaxis
-    const dataSelected = data.flat().filter((wd) => wd.wordEn === activeWord);
-    const n = dataSelected.length;
     const scale = 0.6;
-    const center = [width / 2, height / 2];
+    const center = [width * 0.75, height / 2];
 
     // SVG
-    const svg = d3.select(svgRef.current);
-    const nodes = dataSelected
-      .map((el) => {
-        const obj = Object.assign({}, el);
-        obj.r = 40;
-        return obj;
-      })
-      .slice(0, n);
+    const group = d3.select(gRef.current);
+    const nodes = dataTop.map((el) => {
+      const obj = Object.assign({}, el);
+      obj.r = 2;
+      return obj;
+    });
+    console.log(nodes);
 
     const distMainland = (d) =>
       calcDistance(COORDS_HOMELAND.LAT, COORDS_HOMELAND.LONG, d.lat, d.long);
@@ -37,28 +43,26 @@ const WordCloud = ({ data, height, padding, activeWord, wordList }) => {
       .domain(domainExtent)
       .range([padding.top, height - padding.bottom]);
 
-    const node = svg
-      .selectAll("text")
-      .attr("class", "text")
+    const node = group
+      .selectAll("circle")
+      .attr("class", "circle")
       .data(nodes)
-      .join("text")
-      .attr("x", width / 2)
-      .attr("y", (d) => y(distMainland(d)))
-      .attr("font-family", theme.cursive)
-      .attr("font-size", "14px")
-      .attr("text-anchor", "middle")
-      .text((d) => d.wordAn);
+      .join("circle")
+      .attr("cx", width * 0.75)
+      .attr("cy", (d) => y(distMainland(d)))
+      .attr("r", (d) => d.r)
+      .attr("fill", theme.fill3);
 
     const tick = () => {
-      node.attr("x", (d) => d.x).attr("y", (d) => d.y);
+      node.attr("cx", (d) => d.x).attr("cy", (d) => d.y);
       node.attr("r", (d) => d.r);
     };
 
     const simulation = d3
       .forceSimulation(nodes)
       .on("tick", tick)
-      .force("y", d3.forceY((d) => y(distMainland(d))).strength(1))
-      .force("x", d3.forceX(width / 2).strength(1))
+      .force("cy", d3.forceY((d) => y(distMainland(d))).strength(0.8))
+      .force("cx", d3.forceX(width * 0.75).strength(0.8))
       .force(
         "collide",
         d3.forceCollide().radius((d) => 1 + d.r)
@@ -70,14 +74,19 @@ const WordCloud = ({ data, height, padding, activeWord, wordList }) => {
       node.y = node.y * scale + center[1];
     }
 
-    simulation.tick(200);
+    simulation.tick(250);
     tick();
-    svg.node();
+    group.node();
   };
+  useEffect(generateChart, [dataTop]);
 
-  useEffect(generateChart, [activeWord]);
-
-  return <g className="words-cloud-container" ref={svgRef} width="100%" />;
+  return (
+    <GroupContainer
+      className="words-cloud-container"
+      ref={gRef}
+      {...outerSvgDims}
+    />
+  );
 };
 
 export default WordCloud;
