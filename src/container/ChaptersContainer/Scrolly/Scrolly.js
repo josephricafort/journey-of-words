@@ -21,11 +21,11 @@ const Card = styled.div`
   display: block;
   background-color: ${(props) =>
     (props.type === "intro" && "none") ||
-    (props.type === "quote" && props.theme.green2) ||
+    (props.type === "quote" && props.theme.fill2) ||
     props.theme.white};
   border: 1px solid ${(props) =>
     (props.type === "intro" && "none") ||
-    (props.type === "quote" && props.theme.green5) ||
+    (props.type === "quote" && props.theme.fill5) ||
     props.theme.white};
   opacity: 0.85;
   max-width: 800px;

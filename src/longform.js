@@ -519,6 +519,30 @@ const longform = {
               wordsAn: ["*punti1", "*niuR", "*mamaq", "*buaq"],
               wordsEn: ["banana", "coconut", "fruit"],
             },
+          ],
+        },
+      },
+      {
+        type: "intro",
+        chapter: "conversion",
+        id: 2,
+        contents: {
+          chapterLabel: "Chapter III",
+          title: "Conversion",
+        },
+      },
+      {
+        type: "words-chart",
+        id: 2.1,
+        icon: "boat",
+        contents: {
+          title: "Words Chart",
+          p: [
+            "Some very long texts here will be placed that describe something nice and informative about what the writer wants to talk about",
+          ],
+        },
+        data: {
+          wordsItems: [
             {
               category: "animal domestication",
               wordsAn: ["*manuk"],
@@ -534,6 +558,30 @@ const longform = {
               wordsAn: ["*amax", "*ina", "*kuCux"],
               wordsEn: ["father", "mother", "head louse"],
             },
+          ],
+        },
+      },
+      {
+        type: "intro",
+        chapter: "extraction",
+        id: 3,
+        contents: {
+          chapterLabel: "Chapter IV",
+          title: "Extraction",
+        },
+      },
+      {
+        type: "words-chart",
+        id: 3.1,
+        icon: "boat",
+        contents: {
+          title: "Words Chart",
+          p: [
+            "Some very long texts here will be placed that describe something nice and informative about what the writer wants to talk about",
+          ],
+        },
+        data: {
+          wordsItems: [
             {
               category: "emotion & expression",
               wordsAn: [
@@ -554,24 +602,6 @@ const longform = {
               ],
             },
           ],
-        },
-      },
-      {
-        type: "intro",
-        chapter: "conversion",
-        id: 2,
-        contents: {
-          chapterLabel: "Chapter III",
-          title: "Conversion",
-        },
-      },
-      {
-        type: "intro",
-        chapter: "extraction",
-        id: 3,
-        contents: {
-          chapterLabel: "Chapter IV",
-          title: "Extraction",
         },
       },
       {

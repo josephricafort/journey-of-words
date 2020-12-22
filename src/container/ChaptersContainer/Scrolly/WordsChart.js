@@ -206,10 +206,6 @@ const SVGWrapper = styled.div`
   height: 100%;
 `;
 
-const Group = styled.g`
-  height: 100%;
-`;
-
 const WordsDistWrapper = styled.div`
   display: inline-block;
   width: calc(100% - ${(props) => props.svgWidth}px - 10px);
