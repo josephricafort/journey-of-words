@@ -38,14 +38,14 @@ const Tab = styled.div`
 
 const CategoryTab = styled(Tab)`
   background-color: ${(props) =>
-    (props.activeCat === props.catName && props.theme.green1) || "none"};
+    (props.activeCat === props.catName && props.theme.fill1) || "none"};
   font-size: 14px;
   font-weight: ${(props) => (props.activeCat === props.catName && 700) || 500};
 `;
 
 const WordTab = styled(Tab)`
   background-color: ${(props) =>
-    (props.activeWord === props.wordName && props.theme.green2) || "none"};
+    (props.activeWord === props.wordName && props.theme.fill2) || "none"};
   font-size: 20px;
   font-weight: ${(props) =>
     (props.activeWord === props.wordName && 700) || 500};
