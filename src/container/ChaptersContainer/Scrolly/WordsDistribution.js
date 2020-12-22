@@ -1,89 +1,146 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import React, { useState, useEffect, useContext } from "react";
+import styled, { ThemeContext } from "styled-components";
+import * as d3 from "d3";
 
-import { isUndefined } from "../../../utils/utils";
+import { isUndefined, fullSubgroupName } from "../../../utils/utils";
 
-const Container = styled.div``;
+const Container = styled.div`
+  text-align: left;
+`;
 
 const Subgroup = styled.div`
   height: 25%;
-  margin-bottom: 20px;
-  background-color: ${(props) => props.theme.fill1};
+  margin-bottom: 25px;
+  :not(:first-child) {
+    border-top: 2px solid ${(props) => props.theme.stroke0};
+  }
 `;
 
-const Word = styled.div`
-  display: inline-block;
-  padding: 1px;
+const SubgroupTitle = styled.p`
   font-size: 12px;
+  opacity: 0.75;
+  margin: 5px;
+`;
+
+const Word = styled.span`
+  display: inline-block;
+  margin: 2px 5px;
+  background-color: ${(props) => props.count > 1 && props.color};
+  font-family: ${(props) => props.theme.cursive};
+  font-size: ${(props) => props.fontSize || "12px"};
+  ${(props) =>
+    props.count === 1 &&
+    `text-decoration: underline solid ${props.theme.stroke1} 2px;`}
 `;
 
 const WordsDistribution = ({ data, height, padding }) => {
-  const [dataCategory, setDataCategory] = useState([]);
-  const [subgroupList, setSubgroupList] = useState([]);
+  const [dataOfWord, setDataOfWord] = useState([]);
+  const [dataPerWordTally, setDataPerWordTally] = useState([]);
+  //   const [subgroupList, setSubgroupList] = useState([]);
+  const subgroupList = ["Formosan", "WMP", "CMP", "SHWNG", "OC"];
+  const theme = useContext(ThemeContext);
 
-  const wordAnList = [...new Set(dataCategory.map((e) => e.wordAn))];
+  const generateDataOfWord = () =>
+    setDataOfWord(
+      data.map((e) => {
+        const {
+          wordAn,
+          wordEn,
+          langName,
+          langISOCode,
+          langSubgroup,
+          langLocation,
+          lat,
+          long,
+        } = e;
 
-  const dataAvailable = () => {
-    if (!isUndefined(data)) {
-      setDataCategory(
-        data.map((e) => {
-          const {
-            wordAn,
-            wordEn,
-            langName,
-            langISOCode,
-            langSubgroup,
-            langLocation,
-            lat,
-            long,
-          } = e;
+        return {
+          wordAn,
+          wordEn,
+          langName,
+          langISOCode,
+          langSubgroup,
+          langLocation,
+          lat,
+          long,
+        };
+      })
+    );
+  useEffect(generateDataOfWord, [data]);
+
+  const domainExtent = d3.extent(dataPerWordTally.map((e) => e.langNamesCount));
+
+  const colorFillScale = d3
+    .scaleLinear()
+    .domain(domainExtent)
+    .range([theme.backgroundColor, theme.fill3])
+    .interpolate(d3.interpolateHcl);
+
+  const fontSizeScale = (count) => {
+    const fontSize = d3.scaleLinear().domain(domainExtent).range([14, 36]);
+    return Math.round(fontSize(count)) + "px";
+  };
+
+  const generateDataPerWordTally = () => {
+    const N_WORDS_LIMIT = 100;
+    const wordAnList = [...new Set(dataOfWord.map((e) => e.wordAn))];
+
+    // setSubgroupList([...new Set(dataOfWord.map((e) => e.langSubgroup))]);
+
+    setDataPerWordTally(
+      wordAnList
+        .map((wd) => {
+          const currentWordData = dataOfWord.filter((e) => e.wordAn === wd);
+
+          const countReducer = (count, langName) =>
+            langName ? count + 1 : count;
+          const stringReducer = (strList, str) =>
+            str || str !== "" ? strList.concat(", ").concat(str) : strList;
+
+          const langSubgroupsList = [
+            ...new Set(currentWordData.map((wd) => wd.langSubgroup)),
+          ].reduce(stringReducer);
+          const langNamesList = [
+            ...new Set(currentWordData.map((wd) => wd.langName)),
+          ].reduce(stringReducer);
+          const langNamesCount = [
+            ...new Set(currentWordData.map((wd) => wd.langName)),
+          ].reduce(countReducer, 0);
 
           return {
-            wordAn,
-            wordEn,
-            langName,
-            langISOCode,
-            langSubgroup,
-            langLocation,
-            lat,
-            long,
+            wordAn: wd,
+            langSubgroupsList,
+            langNamesList,
+            langNamesCount,
           };
         })
-      );
-      setSubgroupList([...new Set(dataCategory.map((e) => e.langSubgroup))]);
-    }
+        .sort((a, b) => (a.langNamesCount < b.langNamesCount ? 1 : -1))
+        .slice(0, N_WORDS_LIMIT)
+    );
   };
-  useEffect(dataAvailable, [data]);
-
-  const dataCategoryTally = wordAnList.map((wd) => {
-    const countReducer = (count, langName) => (langName ? count + 1 : count);
-    const langNameReducer = (langNames, langName) =>
-      langName !== "" ? langNames.concat(", ").concat(langName) : langNames;
-
-    const langCount = data.map((e) => e.langName).reduce(countReducer, 0);
-    const langNamesList = data.map((e) => e.langName).reduce(langNameReducer);
-
-    return {
-      wordAn: wd,
-      langCount,
-      langNamesList,
-    };
-  });
-  console.log(dataCategoryTally);
-
-  const wordPerSubgroupList = (sg) => [
-    ...new Set(
-      dataCategory.filter((e) => e.langSubgroup === sg).map((e) => e.wordAn)
-    ),
-  ];
+  useEffect(generateDataPerWordTally, [dataOfWord, data]);
 
   return (
     <Container className="words-distribution-container">
       {subgroupList.map((sg) => (
         <Subgroup>
-          {wordPerSubgroupList(sg).map((w) => (
-            <Word>{w}</Word>
-          ))}
+          <SubgroupTitle className="subgroup">
+            {fullSubgroupName(sg)} ({sg})
+          </SubgroupTitle>
+          {dataPerWordTally
+            .filter((e) => e.langSubgroupsList === sg)
+            .map(
+              (w) =>
+                w.langNamesCount !== 0 && (
+                  <Word
+                    color={colorFillScale(w.langNamesCount)}
+                    fontSize={fontSizeScale(w.langNamesCount)}
+                    count={w.langNamesCount}
+                  >
+                    {w.wordAn} {w.langNamesCount > 1 && `(${w.langNamesCount})`}
+                  </Word>
+                )
+            )}
         </Subgroup>
       ))}
     </Container>

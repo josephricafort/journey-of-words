@@ -23,6 +23,9 @@ const Selection = styled.div`
   position: relative;
   display: block;
   text-align: left;
+  overflow-x: auto;
+  max-width: 1400px;
+  -webkit-overflow-scrolling: touch;
 `;
 
 const CategorySelection = styled(Selection)`
@@ -67,7 +70,7 @@ const CurrentWord = styled.div`
 
 const WordsChart = ({ slideData }) => {
   const { wordsItems } = slideData;
-  const [wordsInfoData, setWordsInfoData] = useState([]);
+  const [wordsInfoData, setWordsInfoData] = useState([[], [], []]);
   const [locationsData, setLocationsData] = useState([]);
   const [locationsList, setLocationsList] = useState([]);
 
@@ -79,7 +82,7 @@ const WordsChart = ({ slideData }) => {
   const [activeCat, setActiveCat] = useState(categoryList[0]);
   const [activeWord, setActiveWord] = useState(wordsPerCatList(activeCat)[0]);
 
-  const fetchWordsChartData = () => {
+  const fetchWordsInfoData = () => {
     axios
       .all(
         wordsPerCatList(activeCat).map((wd) =>
@@ -93,7 +96,7 @@ const WordsChart = ({ slideData }) => {
         console.log(error);
       });
   };
-  useEffect(fetchWordsChartData, [activeCat]);
+  useEffect(fetchWordsInfoData, [activeCat]);
 
   // Derive data for location names (LocNames group)
   const generateLocationsList = () => {
@@ -240,6 +243,7 @@ const SVGChart = ({ data, locationsData, activeWord, wordsPerCatList }) => {
   const height = 600;
   const padding = { top: 40, right: 20, bottom: 40, left: 20 };
 
+  // const [svgData, setSvgData] = useState([]);
   const svgWrapperRef = useRef();
   const [svgRef, svgDims] = useDimensions();
 
@@ -263,24 +267,16 @@ const SVGChart = ({ data, locationsData, activeWord, wordsPerCatList }) => {
   // };
 
   const wordDistProps = {
-    data,
     height: height,
     padding: padding,
   };
 
   const distRapaNui = distFromHomeland(COORDS_RAPANUI.LAT, COORDS_RAPANUI.LONG);
-  const distMadagascar = distFromHomeland(
-    COORDS_RAPANUI.LAT,
-    COORDS_RAPANUI.LONG
-  );
-
-  const domainMin = 0;
   const domainMax = distRapaNui;
-  // const domainMax = d3.max(locationsData.map((loc) => loc.distRangeMax));
 
   const y = d3
     .scaleLinear()
-    .domain([domainMin, domainMax])
+    .domain([0, domainMax])
     .range([padding.top, height - padding.bottom]);
 
   const yLocation = (loc) => y(distFromHomeland(loc.latMean, loc.longMean));
@@ -295,19 +291,13 @@ const SVGChart = ({ data, locationsData, activeWord, wordsPerCatList }) => {
       distRangeMax: distFromHomeland(COORDS_RAPANUI.LAT, COORDS_RAPANUI.LONG),
     },
   ];
-  const haveDuplicatesLangLocs = locationsData.some(
-    (e) => e.langLocation === "Taiwan" || e.langLocation === "Rapa Nui"
-  );
-  const locationsDataExtended = [].concat(
-    locationsData,
-    () => haveDuplicatesLangLocs && locationsExtent
-  );
+  const locationsDataExtended = [].concat(locationsData, locationsExtent);
 
   return (
     <SVGWrapper className="svg-wrapper" ref={svgWrapperRef}>
       <svg className="svg" {...svgProps} ref={svgRef}>
         <LocNames className="location-names">
-          {[...locationsData, ...locationsExtent].map(
+          {locationsDataExtended.map(
             (loc, index) =>
               yLocation(loc) && (
                 <TextLocation
@@ -322,12 +312,12 @@ const SVGChart = ({ data, locationsData, activeWord, wordsPerCatList }) => {
           )}
         </LocNames>
         <LocLines className="location-lines">
-          {dummyRegionData.map((reg, index) => (
+          {locationsDataExtended.map((loc, index) => (
             <circle
               className="face-icon"
               cx={20}
-              cy={y(reg.distFromHomeland)}
-              r={15}
+              cy={yLocation(loc)}
+              r={5}
               fill="grey"
               key={index}
             ></circle>
@@ -338,7 +328,7 @@ const SVGChart = ({ data, locationsData, activeWord, wordsPerCatList }) => {
         </LocWords> */}
       </svg>
       <WordsDistWrapper svgWidth={svgDims.width}>
-        <WordsDistribution {...wordDistProps}></WordsDistribution>
+        <WordsDistribution data={data} {...wordDistProps}></WordsDistribution>
       </WordsDistWrapper>
     </SVGWrapper>
   );

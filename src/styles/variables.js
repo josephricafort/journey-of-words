@@ -73,7 +73,7 @@ const baseVars = {
   // FONTS
   serif: "'Crimson Text', serif",
   sansserif: "'Work Sans', sans-serif",
-  cursive: "'Caveat Brush', cursive",
+  cursive: "'News Cycle', sans-serif",
 
   // LAYERS (z-Index)
   zContents: 100,

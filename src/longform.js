@@ -506,7 +506,7 @@ const longform = {
           wordsItems: [
             {
               category: "nature",
-              wordsAn: ["*taneq", "*Cubuq", "*bu<U+014B>a", "*likaC"],
+              wordsAn: ["*taneq", "*Cubuq", "*buŋa", "*likaC"],
               wordsEn: ["earth", "flower", "lightning"],
             },
             {
@@ -531,8 +531,8 @@ const longform = {
             },
             {
               category: "family & social",
-              wordsAn: ["*amax", "*ina", "*kuCux", "*ai3"],
-              wordsEn: ["father", "mother", "headlouse", "come"],
+              wordsAn: ["*amax", "*ina", "*kuCux"],
+              wordsEn: ["father", "mother", "headlouse"],
             },
             {
               category: "emotion & expression",

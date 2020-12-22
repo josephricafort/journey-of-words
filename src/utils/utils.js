@@ -30,3 +30,15 @@ export function calcDistance(lat1, lon1, lat2, lon2) {
 export function isUndefined(v) {
   return typeof v === "undefined";
 }
+
+// unabreviated subgroup name
+export function fullSubgroupName(subgroupName) {
+  return (
+    (subgroupName === "CMP" && "Central Malayo-Polynesian") ||
+    (subgroupName === "Formosan" && "Formosan") ||
+    (subgroupName === "OC" && "Oceanic") ||
+    (subgroupName === "SHWNG" && "South Halmahera and West New Guinea") ||
+    (subgroupName === "WMP" && "Western Malayo Polynesia") ||
+    null
+  );
+}
