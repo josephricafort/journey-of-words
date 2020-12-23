@@ -29,11 +29,6 @@ export function calcDistance(lat1, lon1, lat2, lon2) {
   return d;
 }
 
-// check if undefined
-export function isUndefined(v) {
-  return typeof v === "undefined";
-}
-
 // unabreviated subgroup name
 export function fullSubgroupName(subgroupName) {
   return (
@@ -86,4 +81,38 @@ export function intersect(a, b) {
 // Calculating the distance from homeland in Taiwan
 export function distFromHomeland(latTo, longTo) {
   return calcDistance(COORDS_HOMELAND.LAT, COORDS_HOMELAND.LONG, latTo, longTo);
+}
+
+export function removeStringSpaces(str) {
+  return str.split(" ").join("");
+}
+
+// Check if valid
+export function isValid(val) {
+  return !isNaN(val) || !isUndefined(val);
+}
+
+export function isUndefined(v) {
+  return typeof v === "undefined";
+}
+
+// Reducers
+export function meanReducer(mean, val) {
+  return isValid(val) ? (mean + val) / 2 : mean;
+}
+
+export function minReducer(min, val) {
+  return isValid(val) ? Math.min(min, val) : min;
+}
+
+export function maxReducer(max, val) {
+  return isValid(val) ? Math.max(max, val) : max;
+}
+
+export function countReducer(count, item) {
+  return item ? count + 1 : count;
+}
+
+export function stringReducer(strList, str) {
+  return str || str !== "" ? strList.concat(", ").concat(str) : strList;
 }

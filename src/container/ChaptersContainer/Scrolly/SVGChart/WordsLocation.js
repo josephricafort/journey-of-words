@@ -2,8 +2,8 @@ import React, { useRef } from "react";
 import styled from "styled-components";
 import * as d3 from "d3";
 
-import { occlusion, distFromHomeland } from "../../../utils/utils";
-import { COORDS_RAPANUI } from "../../../utils/constants";
+import { occlusion, distFromHomeland } from "../../../../utils/utils";
+import { COORDS_RAPANUI } from "../../../../utils/constants";
 
 const GroupContainer = styled.g`
   text {

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import styled, { ThemeContext } from "styled-components";
 import * as d3 from "d3";
 
-import { isUndefined, fullSubgroupName } from "../../../utils/utils";
+import { isUndefined, fullSubgroupName } from "../../../../utils/utils";
 
 const Container = styled.div`
   text-align: left;

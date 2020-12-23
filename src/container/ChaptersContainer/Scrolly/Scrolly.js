@@ -27,7 +27,7 @@ const Card = styled.div`
     (props.type === "intro" && "none") ||
     (props.type === "quote" && props.theme.fill5) ||
     props.theme.white};
-  opacity: 0.85;
+  opacity: 0.95;
   max-width: 800px;
   margin: 20px auto;
   min-height: 200px;
@@ -52,10 +52,6 @@ const Card = styled.div`
     margin: 20px auto;
     padding: 5px 20px;
   }
-`;
-
-const CardChart = styled(Card)`
-  max-width: ${(props) => props.theme.medium};
 `;
 
 const Scrolly = (chaptersconfig) => {
@@ -94,6 +90,7 @@ const Scrolly = (chaptersconfig) => {
             {slide.contents.p.map((p, i) => (
               <p key={i}>{p}</p>
             ))}
+
             <DistributionChart {...slide.data} />
           </Card>
         )}
@@ -103,10 +100,10 @@ const Scrolly = (chaptersconfig) => {
             {slide.contents.p.map((p, i) => (
               <p key={i}>{p}</p>
             ))}
-            <WordsChart slideData={slide.data} />
+
+            <WordsChart slideData={slide.data} slideId={slide.id} />
           </Card>
         )}
-        {slide.type === null ? null : null}
       </CardWrapper>
     );
   }
