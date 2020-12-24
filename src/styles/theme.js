@@ -23,6 +23,7 @@ const chapterThemes = {
     stroke3: variables.strokeBlue3,
     stroke4: variables.strokeBlue4,
     backgroundColor: variables.blue1,
+    mapboxStyle: "ckhxlghrg09zp1bqu5s7pt7jl",
   },
   nature: {
     fill0: variables.fill0,
@@ -36,6 +37,7 @@ const chapterThemes = {
     stroke3: variables.strokeGreen3,
     stroke4: variables.strokeGreen4,
     backgroundColor: variables.green1,
+    mapboxStyle: "ckh67moqu0yvl19p3a47tvsqx",
   },
   conversion: {
     fill0: variables.fill0,
@@ -49,6 +51,7 @@ const chapterThemes = {
     stroke3: variables.strokeYellow3,
     stroke4: variables.strokeYellow4,
     backgroundColor: variables.yellow1,
+    mapboxStyle: "ckhxlnfls0u0k19o002omoe6t",
   },
   extraction: {
     fill0: variables.fill0,
@@ -62,6 +65,7 @@ const chapterThemes = {
     stroke3: variables.strokeRed3,
     stroke4: variables.strokeRed4,
     backgroundColor: variables.grey2,
+    mapboxStyle: "ckhxlvl2j0yhc19qu9w4yd07p",
   },
   fate: {
     fill0: variables.fill0,
@@ -75,6 +79,7 @@ const chapterThemes = {
     stroke3: variables.strokePurple3,
     stroke4: variables.strokePurple4,
     backgroundColor: variables.purple1,
+    mapboxStyle: "ckhxm5tkq0yrn19o54k84vf2f",
   },
 };
 

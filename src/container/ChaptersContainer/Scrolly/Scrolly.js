@@ -4,8 +4,8 @@ import { Scrollama, Step } from "react-scrollama";
 
 import { useStore } from "../../../store/store";
 import {
+  SET_CURRENTSLIDEDATA,
   SET_CURRENTSTEPINDEX,
-  SET_CURRENTCHAPTERTHEME,
 } from "../../../utils/constants";
 import DistributionChart from "./DistributionChart/DistributionChart";
 import WordsChart from "./WordsChart";
@@ -115,8 +115,8 @@ const Scrolly = (chaptersconfig) => {
     );
   }
 
-  const onStepEnter = ({ data }) => {
-    dispatch(SET_CURRENTSTEPINDEX, data);
+  const onStepEnter = ({ data: slideData }) => {
+    dispatch(SET_CURRENTSLIDEDATA, slideData);
   };
 
   return (
@@ -129,7 +129,7 @@ const Scrolly = (chaptersconfig) => {
         <Step
           className="scrolly-step"
           key={slide.id + "-" + slide.chapter}
-          data={slide.id}
+          data={slide}
         >
           {slideSwitch(slide)}
         </Step>

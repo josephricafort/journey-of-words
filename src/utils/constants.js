@@ -7,6 +7,7 @@ export const SET_LANGHEIRARCHY = "SET_LANGHEIRARCHY";
 export const SET_LANGHEIRWORDS = "SET_LANGHEIRWORDS";
 
 export const SET_TOGGLEZOOM = "SET_TOGGLEZOOM";
+export const SET_CURRENTSLIDEDATA = "SET_CURRENTSLIDEDATA";
 export const SET_CURRENTSTEPINDEX = "SET_CURRENTSTEPINDEX";
 export const SET_CURRENTCHAPTERTHEME = "SET_CURRENTCHAPTERTHEME";
 
@@ -41,6 +42,7 @@ export const DB_GITHUB_API_PULOTU = DB_GITHUB_API + "pulotudata/";
 export const MAPBOX_USERNAME = "josephricafort";
 export const MAPBOX_ACCESS_TOKEN =
   "pk.eyJ1Ijoiam9zZXBocmljYWZvcnQiLCJhIjoiY2pueTd4d3lzMDB1ZzNxbGhxZnpyOHZ4eSJ9.SVeNEBhsMbzpUUt9tgbNSg";
+export const MAPBOX_STYLE_URL = "mapbox://styles/" + MAPBOX_USERNAME;
 
 export const mapboxStyles = {
   world: "ckhxlghrg09zp1bqu5s7pt7jl",

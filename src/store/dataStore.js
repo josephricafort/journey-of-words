@@ -4,9 +4,10 @@ import { CHAPTER_NAMES } from "../utils/constants";
 export const configureDataStore = () => {
   const actions = {
     // scrolly
-    SET_CURRENTSTEPINDEX: (state, stepIndex) => {
+    SET_CURRENTSLIDEDATA: (state, slideData) => {
+      const { id, type, tattoo } = slideData;
       // Update the theme here when the stepIndex is updated
-      const chapterIndex = stepIndex.toString().split(".")[0];
+      const chapterIndex = id.toString().split(".")[0];
       const currentChapterTheme =
         (chapterIndex === "0" && CHAPTER_NAMES[0]) ||
         (chapterIndex === "1" && CHAPTER_NAMES[1]) ||
@@ -14,8 +15,11 @@ export const configureDataStore = () => {
         (chapterIndex === "3" && CHAPTER_NAMES[3]) ||
         (chapterIndex === "4" && CHAPTER_NAMES[4]);
       return {
-        currentStepIndex: stepIndex,
+        currentStepIndex: id,
         currentChapterTheme,
+        currentChapterIndex: chapterIndex,
+        currentFaceTattoo:
+          type === "face-tattoo" ? tattoo : { ...state.currentFaceTattoo },
       };
     },
 
@@ -84,6 +88,8 @@ export const configureDataStore = () => {
     // scrolly
     currentStepIndex: 1,
     currentChapterTheme: "nature",
+    currentChapterIndex: 0,
+    currentFaceTattoo: "",
 
     // data related
     //- words

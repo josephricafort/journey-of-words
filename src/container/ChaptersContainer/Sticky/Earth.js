@@ -3,14 +3,17 @@ import styled from "styled-components";
 import { Map as LeafletMap, TileLayer } from "react-leaflet";
 import { Projection } from "leaflet";
 
+import { useStore } from "../../../store/store";
+import { CHAPTER_NAMES } from "../../../utils/constants";
+
 import {
   // CARTODB_DARKMATTER,
   // CARTODB_DM_ATTRIBUTION,
-  // MAPBOX_STYLE_WORLD,
+  MAPBOX_STYLE_WORLD,
   MAPBOX_STYLE_NATURE,
-  // MAPBOX_STYLE_CONVERSION,
-  // MAPBOX_STYLE_EXTRACTION,
-  // MAPBOX_STYLE_FATE,
+  MAPBOX_STYLE_CONVERSION,
+  MAPBOX_STYLE_EXTRACTION,
+  MAPBOX_STYLE_FATE,
   // MAPBOX_STYLE_EXPLORATION,
   MAPBOX_ATTRIBUTION,
 } from "../../../utils/constants";
@@ -51,6 +54,14 @@ const Wrapper = styled.div`
 const Earth = () => {
   const mapRef = useRef(Map);
 
+  const { currentChapterTheme } = useStore()[0];
+  const currentMapboxStyle = (theme) =>
+    (theme === CHAPTER_NAMES[0] && MAPBOX_STYLE_WORLD) ||
+    (theme === CHAPTER_NAMES[1] && MAPBOX_STYLE_NATURE) ||
+    (theme === CHAPTER_NAMES[2] && MAPBOX_STYLE_CONVERSION) ||
+    (theme === CHAPTER_NAMES[3] && MAPBOX_STYLE_EXTRACTION) ||
+    (theme === CHAPTER_NAMES[4] && MAPBOX_STYLE_FATE);
+
   const leafletConfig = {
     center: [-45, 150],
     zoom: 2,
@@ -73,7 +84,7 @@ const Earth = () => {
   };
 
   const tileLayerConfig = {
-    url: MAPBOX_STYLE_NATURE,
+    url: currentMapboxStyle(currentChapterTheme),
     attribution: MAPBOX_ATTRIBUTION,
     ext: "jpg",
     zIndex: -100,

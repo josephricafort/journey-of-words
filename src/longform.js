@@ -468,9 +468,9 @@ const longform = {
       {
         type: "face-tattoo",
         id: 1.2,
-        icon: "fish",
+        tattoo: "waves",
         contents: {
-          title: "Cool title texts here",
+          title: "Face tattoo chart here",
           p: [
             "Some very long texts here will be placed that describe something nice and informative about what the writer wants to talk about",
             "Also similar stuffs with the first one blah blah blah.",
@@ -481,7 +481,7 @@ const longform = {
       {
         type: "distribution-chart",
         id: 1.3,
-        icon: "fern",
+        tattoo: "fern",
         contents: {
           title: "Austronesians and nature",
           p: [
@@ -510,7 +510,7 @@ const longform = {
       {
         type: "words-chart",
         id: 1.4,
-        icon: "boat",
+        tattoo: "boat",
         contents: {
           title: "Words Chart",
           p: [
@@ -549,7 +549,7 @@ const longform = {
       {
         type: "words-chart",
         id: 2.1,
-        icon: "boat",
+        tattoo: "boat",
         contents: {
           title: "Words Chart",
           p: [
@@ -588,7 +588,7 @@ const longform = {
       {
         type: "distribution-chart",
         id: 3.2,
-        icon: "pickaxe",
+        tattoo: "pickaxe",
         contents: {
           title: "Austronesians and nature",
           p: [
@@ -616,7 +616,7 @@ const longform = {
       {
         type: "words-chart",
         id: 3.1,
-        icon: "boat",
+        tattoo: "boat",
         contents: {
           title: "Words Chart",
           p: [
