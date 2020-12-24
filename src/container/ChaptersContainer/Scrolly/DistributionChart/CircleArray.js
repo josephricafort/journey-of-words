@@ -1,36 +1,8 @@
 import React, { useContext } from "react";
 import styled, { ThemeContext } from "styled-components";
 
-import useWindowDimensions from "../../../utils/useWindowDimensions";
-import useDimensions from "../../../utils/useDimensions";
-import { dummyDistributionData } from "./dummyDistributionData";
-
-const Container = styled.div`
-  position: relative;
-`;
-
-const Group = styled.div`
-  display: block;
-
-  p {
-    margin-bottom: 5px;
-  }
-`;
-
-const DistributionChart = () => {
-  const { width: windowWidth } = useWindowDimensions();
-
-  return (
-    <Container className="distrib-chart-container">
-      {dummyDistributionData.map((gp) => (
-        <Group className={["distrib-an-group", gp.group]} key={gp.group}>
-          <p className="distrib-title-container">{gp.group}</p>
-          <CircleArray obj={gp} windowWidth={windowWidth} />
-        </Group>
-      ))}
-    </Container>
-  );
-};
+import useDimensions from "../../../../utils/useDimensions";
+import useWindowDimensions from "../../../../utils/useWindowDimensions";
 
 const SVGWrapper = styled.div`
   position: relative;
@@ -49,10 +21,6 @@ const SVGContainer = styled.div`
   }
 `;
 
-const SVG = styled.svg`
-  position: inline;
-`;
-
 const Circle = styled.circle`
   fill: ${(props) =>
     (props.keyObj === props.objKeys[0] && props.theme.fill0) ||
@@ -65,9 +33,10 @@ const Circle = styled.circle`
   stroke-width: 0.5px;
 `;
 
-const CircleArray = ({ obj, windowWidth }) => {
+const CircleArray = ({ obj }) => {
   const theme = useContext(ThemeContext);
   const [svgRef, svgDims] = useDimensions();
+  const { width: windowWidth } = useWindowDimensions();
 
   const rad =
     (windowWidth < theme.small && 2) || (windowWidth < theme.medium && 3) || 4;
@@ -91,8 +60,14 @@ const CircleArray = ({ obj, windowWidth }) => {
   const cx = (i) => (diam + GAP) * Math.floor(i / maxElPerCol) + offset;
   const cy = (i) => (diam + GAP) * (i % maxElPerCol) + offset;
 
-  const height = () => maxElPerCol * (diam + GAP) + offset;
-  const width = (val) => Math.ceil(val / maxElPerCol) * (diam + GAP) + offset;
+  const height = (val) => {
+    return maxElPerCol && maxElPerCol * (diam + GAP) + offset;
+    // return !isNaN(h) ? h : 0;
+  };
+  const width = (val) => {
+    const w = Math.ceil(val / maxElPerCol) * (diam + GAP) + offset;
+    return !isNaN(w) ? w : 300;
+  };
 
   const perc = (val) => Math.round((val / sumCircles) * 100);
 
@@ -102,8 +77,6 @@ const CircleArray = ({ obj, windowWidth }) => {
     xmlns: "http://www.w3.org/2000/svg",
     x: "0px",
     y: "0px",
-    //   viewBox: "0 0 200 200",
-    // enableBackground: "new 0 0 100 200",
   };
 
   return (
@@ -112,7 +85,7 @@ const CircleArray = ({ obj, windowWidth }) => {
         <SVGContainer className="svg-container" key={`svg-container${index}`}>
           <svg
             {...svgProps}
-            height={height()}
+            height={height(value)}
             width={width(value)}
             key={`svg-${index}`}
             ref={svgRef}
@@ -136,4 +109,4 @@ const CircleArray = ({ obj, windowWidth }) => {
   );
 };
 
-export default DistributionChart;
+export default CircleArray;

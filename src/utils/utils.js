@@ -84,7 +84,7 @@ export function distFromHomeland(latTo, longTo) {
 }
 
 export function removeStringSpaces(str) {
-  return str.split(" ").join("");
+  return isValid(str) ? str.split(" ").join("") : "invalid string";
 }
 
 // Check if valid
@@ -111,6 +111,10 @@ export function maxReducer(max, val) {
 
 export function countReducer(count, item) {
   return item ? count + 1 : count;
+}
+
+export function sumReducer(sum, val) {
+  return val ? sum + val : sum;
 }
 
 export function stringReducer(strList, str) {

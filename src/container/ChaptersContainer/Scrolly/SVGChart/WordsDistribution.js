@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import styled, { ThemeContext } from "styled-components";
 import * as d3 from "d3";
 
-import { isUndefined, fullSubgroupName } from "../../../../utils/utils";
+import { fullSubgroupName } from "../../../../utils/utils";
 
 const Container = styled.div`
   text-align: left;
@@ -52,20 +52,22 @@ const WordsDistribution = ({ data }) => {
 
   return (
     <Container className="words-distribution-container">
-      {subgroupList.map((sg) => (
-        <Subgroup>
+      {subgroupList.map((sg, index) => (
+        <Subgroup className="subgroup" key={"subgroup-" + sg + "-" + index}>
           <SubgroupTitle className="subgroup">
             {fullSubgroupName(sg)} ({sg})
           </SubgroupTitle>
           {data
             .filter((e) => e.langSubgroupsList === sg)
             .map(
-              (w) =>
+              (w, index) =>
                 w.langNamesCount !== 0 && (
                   <Word
+                    className="word-langnames"
                     color={colorFillScale(w.langNamesCount)}
                     fontSize={fontSizeScale(w.langNamesCount)}
                     count={w.langNamesCount}
+                    key={"langnames-" + index}
                   >
                     {w.wordAn} {w.langNamesCount > 1 && `(${w.langNamesCount})`}
                   </Word>

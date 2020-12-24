@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useContext } from "react";
+import React, { useRef, useContext } from "react";
 import styled, { ThemeContext } from "styled-components";
 import * as d3 from "d3";
 

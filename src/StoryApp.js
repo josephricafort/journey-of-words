@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import axios from "axios";
+import React from "react";
+// import axios from "axios";
 import styled, { ThemeProvider } from "styled-components";
 
 import variables from "./styles/variables";
@@ -7,14 +7,14 @@ import GlobalStyle from "./styles/GlobalStyle";
 import { lightTheme, chapterThemes } from "./styles/theme";
 
 import { configureDataStore } from "./store/dataStore";
-import {
-  DB_GITHUB_LANGUAGE_INFO,
-  DB_GITHUB_WORDS_INFO,
-  DB_GITHUB_LANG_HEIRARCHY_ARR,
-  SET_WORDSINFO,
-  SET_LANGUAGEINFO,
-  SET_LANGHEIRARCHY,
-} from "./utils/constants";
+// import {
+//   DB_GITHUB_LANGUAGE_INFO,
+//   DB_GITHUB_WORDS_INFO,
+//   DB_GITHUB_LANG_HEIRARCHY_ARR,
+//   SET_WORDSINFO,
+//   SET_LANGUAGEINFO,
+//   SET_LANGHEIRARCHY,
+// } from "./utils/constants";
 import { useStore } from "./store/store";
 import MapboxScrolly from "./container/MapboxScrolly";
 // import MapExploration from "./container/MapExploration/MapExploration";
@@ -70,7 +70,7 @@ const ScrollyContainer = styled.section`
 configureDataStore();
 
 const StoryApp = () => {
-  const [state, dispatch] = useStore();
+  const state = useStore()[0];
   const { currentChapterTheme } = state;
   const { header, mapboxScrolly, chaptersScrolly } = longform;
   const chapterThemeVars = chapterThemes[currentChapterTheme];

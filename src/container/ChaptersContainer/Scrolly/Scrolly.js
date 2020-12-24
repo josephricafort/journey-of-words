@@ -8,7 +8,7 @@ import {
   SET_CURRENTCHAPTERTHEME,
   CHAPTER_NAMES,
 } from "../../../utils/constants";
-import DistributionChart from "./DistributionChart";
+import DistributionChart from "./DistributionChart/DistributionChart";
 import WordsChart from "./WordsChart";
 
 const CardWrapper = styled.div`
@@ -50,7 +50,8 @@ const Card = styled.div`
 
   @media (${(props) => props.theme.breakpointSmall}) {
     margin: 20px auto;
-    padding: 5px 20px;
+    padding: 30px;
+    padding-top: 5px;
   }
 `;
 
@@ -90,8 +91,7 @@ const Scrolly = (chaptersconfig) => {
             {slide.contents.p.map((p, i) => (
               <p key={i}>{p}</p>
             ))}
-
-            <DistributionChart {...slide.data} />
+            <DistributionChart slideData={slide.data} slideId={slide.id} />
           </Card>
         )}
         {slide.type === "words-chart" && (
@@ -100,7 +100,6 @@ const Scrolly = (chaptersconfig) => {
             {slide.contents.p.map((p, i) => (
               <p key={i}>{p}</p>
             ))}
-
             <WordsChart slideData={slide.data} slideId={slide.id} />
           </Card>
         )}

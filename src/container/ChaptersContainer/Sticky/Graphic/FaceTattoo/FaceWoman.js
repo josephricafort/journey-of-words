@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import styled, { ThemeContext } from "styled-components";
+import React from "react";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   position: absolute;
@@ -18,8 +18,6 @@ const Wrapper = styled.div`
 `;
 
 const FaceWoman = () => {
-  const theme = useContext(ThemeContext);
-
   return (
     <Wrapper>
       <svg

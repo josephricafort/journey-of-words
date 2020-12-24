@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 
 import useDimensions from "../../../../utils/useDimensions";
-import useStore from "../../../../store/dataStore";
 import WordsLocation from "./WordsLocation";
 import WordCloud from "./WordCloud";
 import WordsDistribution from "./WordsDistribution";
@@ -31,7 +30,6 @@ const SVGChart = ({ data, locationsData }) => {
   const padding = { top: 40, right: 20, bottom: 40, left: 20 };
 
   const svgWrapperRef = useRef();
-  const state = useState()[0];
   const [dataOfWord, setDataOfWord] = useState([]);
   const [dataPerWordTally, setDataPerWordTally] = useState([]);
   const [svgRef, svgDims] = useDimensions();

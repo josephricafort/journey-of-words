@@ -1,5 +1,3 @@
-import { ChatRounded } from "@material-ui/icons";
-
 const longform = {
   header: {
     title: "The Words That Sailed Across Half The World",
@@ -491,6 +489,23 @@ const longform = {
           ],
           data: "./some-github-data-url-here",
         },
+        data: {
+          varItems: [
+            {
+              variable: "forcenature",
+              varDefinition:
+                "Forces of nature are controlled or embued by the supernatural.",
+            },
+            {
+              variable: "naturespirits",
+              varDefinition: "Nature spirits",
+            },
+            {
+              variable: "naturegods",
+              varDefinition: "Nature gods",
+            },
+          ],
+        },
       },
       {
         type: "words-chart",
@@ -506,17 +521,17 @@ const longform = {
           wordsItems: [
             {
               category: "nature",
-              wordsAn: ["*taneq", "*Cubuq", "*buŋa", "*likaC"],
+              wordsAn: ["*taneq", "*buŋa", "*likaC"],
               wordsEn: ["earth", "flower", "lightning"],
             },
             {
               category: "seas",
-              wordsAn: ["*bali₃", "*Nabek", "*laŋiC"],
+              wordsAn: ["*bali₃", "*laŋiC", "*Nabek"],
               wordsEn: ["sand", "sky", "outrigger float"],
             },
             {
               category: "agriculture",
-              wordsAn: ["*punti1", "*niuR", "*mamaq", "*buaq"],
+              wordsAn: ["*punti1", "*niuR", "*buaq"],
               wordsEn: ["banana", "coconut", "fruit"],
             },
           ],
