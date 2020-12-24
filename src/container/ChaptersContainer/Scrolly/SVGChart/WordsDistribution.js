@@ -10,7 +10,7 @@ const Container = styled.div`
 
 const Subgroup = styled.div`
   height: 25%;
-  margin-bottom: 25px;
+  margin-bottom: 10px;
   :not(:first-child) {
     border-top: 2px solid ${(props) => props.theme.stroke0};
   }

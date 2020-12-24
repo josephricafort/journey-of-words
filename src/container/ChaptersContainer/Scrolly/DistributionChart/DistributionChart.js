@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import styled from "styled-components";
 import axios from "axios";
 
-import CircleArray from "./CircleArray";
-import DotPlot from "./DotPlot";
-import { dummyDistributionData } from "../dummyDistributionData";
+// import DotPlot from "./DotPlot";
 import { DB_GITHUB_API_PULOTU } from "../../../../utils/constants";
 import { removeStringSpaces } from "../../../../utils/utils";
 
@@ -18,6 +16,8 @@ const Container = styled.div`
     }
   }
 `;
+
+const DotPlot = lazy(() => import("./DotPlot"));
 
 const DistributionChart = ({ slideData, slideId }) => {
   const { varItems } = slideData;
@@ -52,10 +52,12 @@ const DistributionChart = ({ slideData, slideId }) => {
       {varItems.map((v, vIndex) => (
         <div className="dotplot-wrapper" key={vIndex}>
           <h5>{v.varDefinition}</h5>
-          <DotPlot
-            variableData={variableData(vIndex)}
-            variable={v.variable}
-          ></DotPlot>
+          <Suspense fallback={<div>Generating data...</div>}>
+            <DotPlot
+              variableData={variableData(vIndex)}
+              variable={v.variable}
+            ></DotPlot>
+          </Suspense>
         </div>
       ))}
     </Container>

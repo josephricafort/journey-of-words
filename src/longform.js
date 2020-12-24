@@ -586,6 +586,34 @@ const longform = {
         },
       },
       {
+        type: "distribution-chart",
+        id: 3.2,
+        icon: "pickaxe",
+        contents: {
+          title: "Austronesians and nature",
+          p: [
+            "Being knowledgeable about nature, they were also experts in agriculture and domestication of animals which has become their major food source. The surrounding seas and forests have also provided them with abundant food resources through fishing and hunting.",
+          ],
+          data: "./some-github-data-url-here",
+        },
+        data: {
+          varItems: [
+            {
+              variable: "seaport",
+              varDefinition: "Seaport",
+            },
+            {
+              variable: "airtravel",
+              varDefinition: "Air travel",
+            },
+            {
+              variable: "vehiclesroads",
+              varDefinition: "Vehicles roads",
+            },
+          ],
+        },
+      },
+      {
         type: "words-chart",
         id: 3.1,
         icon: "boat",

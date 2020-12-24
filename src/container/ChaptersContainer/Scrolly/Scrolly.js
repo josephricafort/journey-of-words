@@ -14,6 +14,7 @@ import WordsChart from "./WordsChart";
 const CardWrapper = styled.div`
   padding: 0 20px;
   height: 100vh;
+  margin: 40px 0;
 `;
 
 const Card = styled.div`

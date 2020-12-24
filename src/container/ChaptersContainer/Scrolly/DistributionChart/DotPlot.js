@@ -30,10 +30,7 @@ const Circle = styled.circle`
 const DotPlot = ({ variableData, variable }) => {
   const theme = useContext(ThemeContext);
   const { width: windowWidth } = useWindowDimensions();
-  const [
-    svgWrapRef,
-    { width: svgWrapWidth, height: svgWrapHeight },
-  ] = useDimensions();
+  const [svgWrapRef, { width: svgWrapWidth }] = useDimensions();
   const GAP = 2;
 
   let valuesList = [...new Set(variableData.map((e) => e.value))].sort();
@@ -96,12 +93,13 @@ const DotPlot = ({ variableData, variable }) => {
 
   return (
     <SVGWrapper ref={svgWrapRef}>
-      {valuesList.map((val, gIndex) => (
+      {valuesList.map((val, index) => (
         <SVG
           {...svgProps}
           className={`svg-group-${val}`}
           height={height() + 10}
           width={width(valueCount(val)) + 20}
+          key={`svg-group-${index}`}
         >
           {groupedValueData(val).map((gvd, i) => (
             <Circle

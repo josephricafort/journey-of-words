@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
-import styled from "styled-components";
+import React, { useState, useEffect, useRef, useContext } from "react";
+import styled, { ThemeContext } from "styled-components";
 
 import useDimensions from "../../../../utils/useDimensions";
 import WordsLocation from "./WordsLocation";
@@ -12,6 +12,7 @@ import {
   stringReducer,
 } from "../../../../utils/utils";
 import { COORDS_RAPANUI } from "../../../../utils/constants";
+import useWindowDimensions from "../../../../utils/useWindowDimensions";
 
 const SVGWrapper = styled.div`
   text-align: left;
@@ -29,10 +30,11 @@ const WordsDistWrapper = styled.div`
 const SVGChart = ({ data, locationsData }) => {
   const padding = { top: 40, right: 20, bottom: 40, left: 20 };
 
-  const svgWrapperRef = useRef();
   const [dataOfWord, setDataOfWord] = useState([]);
   const [dataPerWordTally, setDataPerWordTally] = useState([]);
+  const [svgWrapperRef, { width: svgWrapperWidth }] = useDimensions();
   const [svgRef, svgDims] = useDimensions();
+  const theme = useContext(ThemeContext);
   const height = 500;
 
   const generateDataOfWord = () =>
@@ -108,12 +110,11 @@ const SVGChart = ({ data, locationsData }) => {
     xmlns: "http://www.w3.org/2000/svg",
     x: "0px",
     y: "0px",
-    width: "250px",
+    width: svgDims.width > theme.breakpointMedium ? "250px" : "0",
     height: height,
   };
 
   const wordCloudProps = {
-    outerSvgRef: svgRef,
     outerSvgDims: svgDims,
     padding,
     locationsData,
@@ -138,18 +139,20 @@ const SVGChart = ({ data, locationsData }) => {
 
   return (
     <SVGWrapper className="svg-wrapper" ref={svgWrapperRef}>
-      <svg className="svg" {...svgProps} ref={svgRef}>
-        <WordCloud
-          data={dataOfWord}
-          dataPerWordTally={dataPerWordTally}
-          {...wordCloudProps}
-        />
-        <WordsLocation
-          data={locationsDataExtended}
-          padding={padding}
-          height={height}
-        />
-      </svg>
+      {
+        <svg className="svg" {...svgProps} ref={svgRef}>
+          <WordCloud
+            data={dataOfWord}
+            dataPerWordTally={dataPerWordTally}
+            {...wordCloudProps}
+          />
+          <WordsLocation
+            data={locationsDataExtended}
+            padding={padding}
+            height={height}
+          />
+        </svg>
+      }
       <WordsDistWrapper svgWidth={svgDims.width}>
         <WordsDistribution data={dataPerWordTally} {...wordDistProps} />
       </WordsDistWrapper>
