@@ -1,14 +1,23 @@
 import { initStore } from "./store";
+import { CHAPTER_NAMES } from "../utils/constants";
 
 export const configureDataStore = () => {
   const actions = {
     // scrolly
-    SET_CURRENTSTEPINDEX: (state, stepIndex) => ({
-      currentStepIndex: stepIndex,
-    }),
-    SET_CURRENTCHAPTERTHEME: (state, currentChapterTheme) => ({
-      currentChapterTheme: currentChapterTheme,
-    }),
+    SET_CURRENTSTEPINDEX: (state, stepIndex) => {
+      // Update the theme here when the stepIndex is updated
+      const chapterIndex = stepIndex.toString().split(".")[0];
+      const currentChapterTheme =
+        (chapterIndex === "0" && CHAPTER_NAMES[0]) ||
+        (chapterIndex === "1" && CHAPTER_NAMES[1]) ||
+        (chapterIndex === "2" && CHAPTER_NAMES[2]) ||
+        (chapterIndex === "3" && CHAPTER_NAMES[3]) ||
+        (chapterIndex === "4" && CHAPTER_NAMES[4]);
+      return {
+        currentStepIndex: stepIndex,
+        currentChapterTheme,
+      };
+    },
 
     // data words
     SET_WORDMAIN: (state, word) => ({ wordMain: word }),

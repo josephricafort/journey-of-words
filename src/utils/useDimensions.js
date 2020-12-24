@@ -5,7 +5,7 @@ export default function useDimensions() {
   const [dimensions, setDimensions] = useState({});
   useLayoutEffect(() => {
     setDimensions(ref.current.getBoundingClientRect().toJSON());
-  }, []);
+  }, [ref.current]);
 
   return [ref, dimensions];
 }

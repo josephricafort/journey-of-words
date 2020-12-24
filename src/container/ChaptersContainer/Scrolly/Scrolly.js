@@ -6,30 +6,31 @@ import { useStore } from "../../../store/store";
 import {
   SET_CURRENTSTEPINDEX,
   SET_CURRENTCHAPTERTHEME,
-  CHAPTER_NAMES,
 } from "../../../utils/constants";
 import DistributionChart from "./DistributionChart/DistributionChart";
 import WordsChart from "./WordsChart";
 
 const CardWrapper = styled.div`
+  display: block;
   padding: 0 20px;
   height: 100vh;
-  margin: 40px 0;
+  margin: 30vh 0;
 `;
 
 const Card = styled.div`
   position: relative;
+  top: 50%;
   display: block;
-  background-color: ${(props) =>
-    (props.type === "intro" && "none") ||
-    (props.type === "quote" && props.theme.fill2) ||
-    props.theme.white};
-  border: 1px solid ${(props) =>
-    (props.type === "intro" && "none") ||
-    (props.type === "quote" && props.theme.fill5) ||
-    props.theme.white};
+  background-color: ${({ theme, type }) =>
+    (type === "intro" && theme.backgroundColor) ||
+    (type === "quote" && theme.fill1) ||
+    theme.white};
+  border: 1px solid ${({ theme, type }) =>
+    (type === "intro" && "none") ||
+    (type === "quote" && theme.stroke1) ||
+    theme.white};
   opacity: 0.95;
-  max-width: 800px;
+  max-width: 500px;
   margin: 20px auto;
   min-height: 200px;
   padding: 20px 40px;
@@ -56,6 +57,12 @@ const Card = styled.div`
   }
 `;
 
+const CardChart = styled(Card)`
+  position: relative;
+  max-width: 800px;
+  top: 0%;
+`;
+
 const Scrolly = (chaptersconfig) => {
   const { slides } = chaptersconfig;
   const dispatch = useStore()[1];
@@ -68,7 +75,7 @@ const Scrolly = (chaptersconfig) => {
             <p className="chapter-roman-numeral">
               {slide.contents.chapterLabel}
             </p>
-            <h2 className="chapter-title">{slide.contents.title}</h2>
+            <h1 className="chapter-title">{slide.contents.title}</h1>
           </Card>
         )}
         {slide.type === "quote" && (
@@ -87,40 +94,29 @@ const Scrolly = (chaptersconfig) => {
           </Card>
         )}
         {slide.type === "distribution-chart" && (
-          <Card className="scrolly-card distribution-chart">
+          <CardChart className="scrolly-card distribution-chart">
             {slide.contents.title && <h3>{slide.contents.title}</h3>}
             {slide.contents.p.map((p, i) => (
               <p key={i}>{p}</p>
             ))}
             <DistributionChart slideData={slide.data} slideId={slide.id} />
-          </Card>
+          </CardChart>
         )}
         {slide.type === "words-chart" && (
-          <Card className="scrolly-card words-chart">
+          <CardChart className="scrolly-card words-chart">
             {slide.contents.title && <h3>{slide.contents.title}</h3>}
             {slide.contents.p.map((p, i) => (
               <p key={i}>{p}</p>
             ))}
             <WordsChart slideData={slide.data} slideId={slide.id} />
-          </Card>
+          </CardChart>
         )}
       </CardWrapper>
     );
   }
 
   const onStepEnter = ({ data }) => {
-    const currentChapterTheme = (data) => {
-      const chapterIndex = data.toString().split(".")[0];
-      return (
-        (chapterIndex === "0" && CHAPTER_NAMES[0]) ||
-        (chapterIndex === "1" && CHAPTER_NAMES[1]) ||
-        (chapterIndex === "2" && CHAPTER_NAMES[2]) ||
-        (chapterIndex === "3" && CHAPTER_NAMES[3]) ||
-        (chapterIndex === "4" && CHAPTER_NAMES[4])
-      );
-    };
     dispatch(SET_CURRENTSTEPINDEX, data);
-    dispatch(SET_CURRENTCHAPTERTHEME, currentChapterTheme(data));
   };
 
   return (

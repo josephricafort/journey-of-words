@@ -1,4 +1,4 @@
-import React, { useState, useEffect, lazy, Suspense } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 
@@ -10,10 +10,8 @@ import {
   maxReducer,
 } from "../../../utils/utils";
 import { DB_GITHUB_API_WORDS } from "../../../utils/constants";
-// import SVGChart from "./SVGChart/SVGChart";
+import SVGChart from "./SVGChart/SVGChart";
 import { useStore } from "../../../store/store";
-
-const SVGChart = lazy(() => import("./SVGChart/SVGChart"));
 
 const Selection = styled.div`
   position: relative;
@@ -195,9 +193,7 @@ const WordsChart = ({ slideData }) => {
         ))}
       </WordSelection>
       <CurrentWord>{wordProtoAn(activeWord)}</CurrentWord>
-      <Suspense fallback={<div>Generating chart...</div>}>
-        <SVGChart {...svgChartProps} />
-      </Suspense>
+      <SVGChart {...svgChartProps} />
     </div>
   );
 };

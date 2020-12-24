@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
-import styled, { ThemeContext } from "styled-components";
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
 
 import useDimensions from "../../../../utils/useDimensions";
 import WordsLocation from "./WordsLocation";
@@ -12,12 +12,17 @@ import {
   stringReducer,
 } from "../../../../utils/utils";
 import { COORDS_RAPANUI } from "../../../../utils/constants";
-import useWindowDimensions from "../../../../utils/useWindowDimensions";
 
 const SVGWrapper = styled.div`
   text-align: left;
   min-height: 500px;
   height: 100%;
+
+  @media (max-width: ${(props) => props.theme.medium}{
+    svg {
+      width: 0 !important;
+    }
+  })
 `;
 
 const WordsDistWrapper = styled.div`
@@ -32,9 +37,7 @@ const SVGChart = ({ data, locationsData }) => {
 
   const [dataOfWord, setDataOfWord] = useState([]);
   const [dataPerWordTally, setDataPerWordTally] = useState([]);
-  const [svgWrapperRef, { width: svgWrapperWidth }] = useDimensions();
   const [svgRef, svgDims] = useDimensions();
-  const theme = useContext(ThemeContext);
   const height = 500;
 
   const generateDataOfWord = () =>
@@ -44,7 +47,7 @@ const SVGChart = ({ data, locationsData }) => {
           wordAn,
           wordEn,
           langName,
-          langISOCode,
+          // langISOCode,
           langSubgroup,
           langLocation,
           lat,
@@ -55,7 +58,7 @@ const SVGChart = ({ data, locationsData }) => {
           wordAn,
           wordEn,
           langName,
-          langISOCode,
+          // langISOCode,
           langSubgroup,
           langLocation,
           lat,
@@ -110,7 +113,7 @@ const SVGChart = ({ data, locationsData }) => {
     xmlns: "http://www.w3.org/2000/svg",
     x: "0px",
     y: "0px",
-    width: svgDims.width > theme.breakpointMedium ? "250px" : "0",
+    width: "200px",
     height: height,
   };
 
@@ -138,21 +141,19 @@ const SVGChart = ({ data, locationsData }) => {
   const locationsDataExtended = [].concat(locationsData, locationsExtent);
 
   return (
-    <SVGWrapper className="svg-wrapper" ref={svgWrapperRef}>
-      {
-        <svg className="svg" {...svgProps} ref={svgRef}>
-          <WordCloud
-            data={dataOfWord}
-            dataPerWordTally={dataPerWordTally}
-            {...wordCloudProps}
-          />
-          <WordsLocation
-            data={locationsDataExtended}
-            padding={padding}
-            height={height}
-          />
-        </svg>
-      }
+    <SVGWrapper className="svg-wrapper">
+      <svg className="svg" {...svgProps} ref={svgRef}>
+        <WordCloud
+          data={dataOfWord}
+          dataPerWordTally={dataPerWordTally}
+          {...wordCloudProps}
+        />
+        <WordsLocation
+          data={locationsDataExtended}
+          padding={padding}
+          height={height}
+        />
+      </svg>
       <WordsDistWrapper svgWidth={svgDims.width}>
         <WordsDistribution data={dataPerWordTally} {...wordDistProps} />
       </WordsDistWrapper>
