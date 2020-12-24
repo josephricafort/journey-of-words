@@ -74,7 +74,7 @@ const WordCloud = ({ data, dataPerWordTally, outerSvgDims, padding }) => {
     node.y = node.y * scale + center[1];
   }
 
-  simulation.tick(150);
+  simulation.tick(100);
   tick();
   group.node();
 

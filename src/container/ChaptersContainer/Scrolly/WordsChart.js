@@ -37,7 +37,7 @@ const Tab = styled.div`
   border-radius: 5px 5px 0 0;
   cursor: pointer;
   :hover {
-    background-color: rgba(${({ theme }) => theme.fill1}, 0.25);
+    background-color: ${({ theme }) => theme.fill1};
   }
 `;
 
