@@ -14,12 +14,10 @@ const CardWrapper = styled.div`
   display: block;
   padding: 0 20px;
   height: 100vh;
-  margin: 30vh 0;
 `;
 
 const Card = styled.div`
   position: relative;
-  top: 50%;
   display: block;
   background-color: ${({ theme, type }) =>
     (type === "intro" && theme.backgroundColor) ||

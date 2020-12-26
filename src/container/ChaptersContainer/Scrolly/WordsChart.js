@@ -19,7 +19,7 @@ const Selection = styled.div`
   text-align: left;
   max-width: 1400px;
   -webkit-overflow-scrolling: touch;
-  // overflow-x: auto;
+  overflow: scroll;
   white-space: nowrap;
 `;
 
