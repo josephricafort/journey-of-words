@@ -467,10 +467,48 @@ const longform = {
       },
       {
         type: "face-tattoo",
-        id: 1.2,
-        tattoo: "waves",
+        id: 1.21,
+        tattoo: {
+          area: "tattooSea",
+          isShown: true,
+          icon: "waves",
+        },
         contents: {
-          title: "Face tattoo chart here",
+          title: "Sea tattoo chart here",
+          p: [
+            "Some very long texts here will be placed that describe something nice and informative about what the writer wants to talk about",
+            "Also similar stuffs with the first one blah blah blah.",
+            "I don't want to talk about it. :(",
+          ],
+        },
+      },
+      {
+        type: "face-tattoo",
+        id: 1.22,
+        tattoo: {
+          area: "tattooBoat",
+          isShown: true,
+          icon: "boat-words",
+        },
+        contents: {
+          title: "Boat words tattoo chart here",
+          p: [
+            "Some very long texts here will be placed that describe something nice and informative about what the writer wants to talk about",
+            "Also similar stuffs with the first one blah blah blah.",
+            "I don't want to talk about it. :(",
+          ],
+        },
+      },
+      {
+        type: "face-tattoo",
+        id: 1.23,
+        tattoo: {
+          area: "tattooLand",
+          isShown: true,
+          icon: "islands",
+        },
+        contents: {
+          title: "Sea tattoo chart here",
           p: [
             "Some very long texts here will be placed that describe something nice and informative about what the writer wants to talk about",
             "Also similar stuffs with the first one blah blah blah.",
@@ -481,7 +519,7 @@ const longform = {
       {
         type: "distribution-chart",
         id: 1.3,
-        tattoo: "fern",
+        icon: "fern",
         contents: {
           title: "Austronesians and nature",
           p: [
@@ -510,7 +548,7 @@ const longform = {
       {
         type: "words-chart",
         id: 1.4,
-        tattoo: "boat",
+        icon: "boat",
         contents: {
           title: "Words Chart",
           p: [
@@ -547,9 +585,26 @@ const longform = {
         },
       },
       {
-        type: "words-chart",
+        type: "face-tattoo",
         id: 2.1,
-        tattoo: "boat",
+        tattoo: {
+          area: "tattooReligion",
+          isShown: true,
+          icon: "islam",
+        },
+        contents: {
+          title: "Sea tattoo chart here",
+          p: [
+            "Some very long texts here will be placed that describe something nice and informative about what the writer wants to talk about",
+            "Also similar stuffs with the first one blah blah blah.",
+            "I don't want to talk about it. :(",
+          ],
+        },
+      },
+      {
+        type: "words-chart",
+        id: 2.2,
+        icon: "boat",
         contents: {
           title: "Words Chart",
           p: [
@@ -588,7 +643,7 @@ const longform = {
       {
         type: "distribution-chart",
         id: 3.2,
-        tattoo: "pickaxe",
+        icon: "pickaxe",
         contents: {
           title: "Austronesians and nature",
           p: [
@@ -616,7 +671,7 @@ const longform = {
       {
         type: "words-chart",
         id: 3.1,
-        tattoo: "boat",
+        icon: "boat",
         contents: {
           title: "Words Chart",
           p: [

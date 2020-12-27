@@ -13,12 +13,16 @@ import WordsChart from "./WordsChart";
 const CardWrapper = styled.div`
   display: block;
   padding: 0 20px;
-  height: 100vh;
+  min-height: 100vh;
+  text-align: center;
+  border: 5px solid red; // to remove before pub
 `;
 
 const Card = styled.div`
   position: relative;
-  display: block;
+  margin: 0 auto;
+  margin-top: 50vh;
+  transform: translateY(-50%);
   background-color: ${({ theme, type }) =>
     (type === "intro" && theme.backgroundColor) ||
     (type === "quote" && theme.fill1) ||
@@ -29,7 +33,6 @@ const Card = styled.div`
     theme.white};
   opacity: 0.95;
   max-width: 500px;
-  margin: 20px auto;
   min-height: 200px;
   padding: 20px 40px;
 
@@ -49,10 +52,14 @@ const Card = styled.div`
   }
 
   @media (${(props) => props.theme.breakpointSmall}) {
-    margin: 20px auto;
     padding: 30px;
     padding-top: 5px;
   }
+`;
+
+const CardIntro = styled(Card)`
+  max-width: 1000px;
+  vertical-align: middle;
 `;
 
 const CardChart = styled(Card)`
@@ -69,12 +76,12 @@ const Scrolly = (chaptersconfig) => {
     return (
       <CardWrapper className="scrolly-card-wrapper">
         {slide.type === "intro" && (
-          <Card className="scrolly-card intro" {...slide}>
+          <CardIntro className="scrolly-card intro" {...slide}>
             <p className="chapter-roman-numeral">
               {slide.contents.chapterLabel}
             </p>
             <h1 className="chapter-title">{slide.contents.title}</h1>
-          </Card>
+          </CardIntro>
         )}
         {slide.type === "quote" && (
           <Card className="scrolly-card quote" {...slide}>
@@ -121,7 +128,7 @@ const Scrolly = (chaptersconfig) => {
     <Scrollama
       className="scrolly-scrollama"
       onStepEnter={onStepEnter}
-      offset={0.5}
+      offset={0.75}
     >
       {slides.map((slide) => (
         <Step

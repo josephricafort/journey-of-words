@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import Earth from "./Earth";
 // import FaceTattoo from "./Graphic/FaceTattoo/FaceTattoo";
-import FaceWoman from "./Graphic/FaceTattoo/FaceWoman";
+import FaceTattoo from "./Graphic/FaceTattoo/FaceTattoo";
 import GroupSilhouette from "./Graphic/FaceTattoo/GroupSilhouette";
 import DistributionChart from "./Graphic/DistributionChart";
 
@@ -39,7 +39,7 @@ const Sticky = () => {
       <GraphicWrapper className="graphic-wrapper">
         <div className="face-tattoo">
           <GroupSilhouette />
-          <FaceWoman />
+          <FaceTattoo />
         </div>
         <DistributionChart className="distribution-chart" />
       </GraphicWrapper>
