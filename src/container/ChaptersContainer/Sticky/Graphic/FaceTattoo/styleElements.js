@@ -34,8 +34,29 @@ const tattooAreas = [
   {
     id: "#country",
     area: "tattooCountry",
-    icon: ["TW", "PH", "ID", "MY", "SG", "TH", "VI", "TL"],
+    icon: ["ID", "TW", "PH", "MY", "SG", "TH", "VI", "TL"],
   },
+];
+
+const areaIconsSelections = [
+  { area: "#icon_words", icons: [] },
+  { area: "#icon_society", icons: [] },
+  { area: "#icon_resources", icons: [] },
+  { area: "#icon_nature", icons: [] },
+  { area: "#icon_lands", icons: [] },
+  {
+    area: "#icon_religion",
+    icons: ["buddhism_hiduism", "christianism", "islam"],
+  },
+  {
+    area: "#icon_colonist",
+    icons: ["british", "french", "spanish", "dutch", "portuguese", "american"],
+  },
+  { area: "#icon_extraction", icons: ["pickaxe", "fish", "nature", "islands"] },
+  { area: "#icon_locked", icons: [] },
+  { area: "#icon_government", icons: [] },
+  { area: "#icon_independence", icons: ["still_colony", "independent"] },
+  { area: "#icon_country", icons: [] },
 ];
 
 const blinkKeyframes = `@keyframes blink {

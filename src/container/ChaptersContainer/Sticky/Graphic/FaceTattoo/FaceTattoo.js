@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import FaceWoman from "./FaceWoman";
+import AreaIcons from "./AreaIcons";
 import { useStore } from "../../../../../store/store";
 
 const Container = styled.div`

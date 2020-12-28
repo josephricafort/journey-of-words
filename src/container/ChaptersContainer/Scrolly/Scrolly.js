@@ -129,6 +129,7 @@ const Scrolly = (chaptersconfig) => {
       className="scrolly-scrollama"
       onStepEnter={onStepEnter}
       offset={0.75}
+      debug
     >
       {slides.map((slide) => (
         <Step

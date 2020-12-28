@@ -42,10 +42,11 @@ export const configureDataStore = () => {
         currentChapterIndex: chapterIndex,
         currentFaceTattoo: tattoo ? { ...tattoo } : { ...currentFaceTattoo },
         currentTattooIndex: newTattooIndex,
-        isSlideTattooType: !!tattoo,
-        statesFaceTattoo: !!tattoo
-          ? [...newStatesFaceTattoo]
-          : [...statesFaceTattoo],
+        isSlideTattooType: type === "face-tattoo",
+        statesFaceTattoo:
+          type === "face-tattoo"
+            ? [...newStatesFaceTattoo]
+            : [...statesFaceTattoo],
       };
     },
 
