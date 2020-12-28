@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import Earth from "./Earth";
+import Earth from "./Earth/Earth";
 // import FaceTattoo from "./Graphic/FaceTattoo/FaceTattoo";
 import FaceTattoo from "./Graphic/FaceTattoo/FaceTattoo";
 import GroupSilhouette from "./Graphic/FaceTattoo/GroupSilhouette";
@@ -31,6 +31,7 @@ const GraphicWrapper = styled.div`
   margin: 0 auto;
   max-width: 700px;
   opacity: 1;
+  z-index: ${(props) => props.theme.zVisuals + 10};
 `;
 
 const Sticky = () => {

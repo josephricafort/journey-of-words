@@ -546,8 +546,28 @@ const longform = {
         },
       },
       {
+        type: "word-story",
+        id: 1.41,
+        contents: {
+          wordAn: "*kuto",
+          wordEn: "headlouse",
+          story:
+            "Some texts here telling the story of the word and why it is significant in the Austronesian culture.",
+        },
+      },
+      {
+        type: "word-story",
+        id: 1.41,
+        contents: {
+          wordAn: "*ina",
+          wordEn: "mother",
+          story:
+            "Some texts here telling the story of the word and why it is significant in the Austronesian culture.",
+        },
+      },
+      {
         type: "words-chart",
-        id: 1.4,
+        id: 1.42,
         icon: "boat",
         contents: {
           title: "Words Chart",

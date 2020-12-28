@@ -31,12 +31,12 @@ export const configureDataStore = () => {
         };
         newStatesFaceTattoo = statesFaceTattoo.map((obj, index) => {
           obj.isShown = setIsShown(index);
-          console.log(tattoo);
           return tattoo.area === obj.area ? tattoo : obj;
         });
       }
 
       return {
+        currentSlideData: slideData,
         currentStepIndex: id,
         currentChapterTheme,
         currentChapterIndex: chapterIndex,
@@ -113,6 +113,7 @@ export const configureDataStore = () => {
 
   const initState = {
     // scrolly
+    currentSlideData: {},
     currentStepIndex: 1,
     currentChapterTheme: "world",
     currentChapterIndex: 0,

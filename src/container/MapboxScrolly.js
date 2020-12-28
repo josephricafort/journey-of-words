@@ -3,8 +3,6 @@ import mapboxgl from "mapbox-gl";
 import scrollama from "scrollama";
 import styled from "styled-components";
 
-import { MAPBOX_STYLE_URL } from "../utils/constants";
-
 const MapContainer = styled.div`
   &.mapboxgl-map {
     top: 0;

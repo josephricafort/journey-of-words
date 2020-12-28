@@ -3,10 +3,7 @@ import styled from "styled-components";
 import { Scrollama, Step } from "react-scrollama";
 
 import { useStore } from "../../../store/store";
-import {
-  SET_CURRENTSLIDEDATA,
-  SET_CURRENTSTEPINDEX,
-} from "../../../utils/constants";
+import { SET_CURRENTSLIDEDATA } from "../../../utils/constants";
 import DistributionChart from "./DistributionChart/DistributionChart";
 import WordsChart from "./WordsChart";
 
@@ -68,6 +65,14 @@ const CardChart = styled(Card)`
   top: 0%;
 `;
 
+const Word = styled.p`
+  display: inline-block;
+  text-align: left;
+  font-family: ${(props) => props.theme.cursive};
+  font-size: 28px;
+  background-color: ${(props) => props.theme.fill1};
+`;
+
 const Scrolly = (chaptersconfig) => {
   const { slides } = chaptersconfig;
   const dispatch = useStore()[1];
@@ -96,6 +101,14 @@ const Scrolly = (chaptersconfig) => {
             {slide.contents.p.map((p, i) => (
               <p key={i}>{p}</p>
             ))}
+          </Card>
+        )}
+        {slide.type === "word-story" && (
+          <Card className="scrolly-card word-story">
+            <Word>
+              {slide.contents.wordAn} ({slide.contents.wordEn})
+            </Word>
+            {slide.contents.story && <p>{slide.contents.story}</p>}
           </Card>
         )}
         {slide.type === "distribution-chart" && (

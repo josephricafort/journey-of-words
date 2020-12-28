@@ -2,8 +2,8 @@ import React from "react";
 
 const AreaIcons = () => {
   return (
-    <g class="tattoo">
-      <g class="tattoo-areas" display="none">
+    <g className="tattoo">
+      <g className="tattoo-areas" display="none">
         <path
           id="colonist"
           display="inline"

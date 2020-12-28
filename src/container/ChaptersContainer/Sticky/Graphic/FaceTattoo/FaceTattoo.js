@@ -2,13 +2,13 @@ import React from "react";
 import styled from "styled-components";
 
 import FaceWoman from "./FaceWoman";
-import AreaIcons from "./AreaIcons";
 import { useStore } from "../../../../../store/store";
 
 const Container = styled.div`
   position: absolute;
   top: 0;
   left: 50%;
+  z-index: ${(props) => props.theme.zVisuals + 10};
   transform: translate(-50%, 0);
   width: 150px;
   max-width: 400px;

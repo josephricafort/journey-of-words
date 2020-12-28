@@ -1,10 +1,16 @@
-import React, { useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { Map as LeafletMap, TileLayer } from "react-leaflet";
 import { Projection } from "leaflet";
+import axios from "axios";
 
-import { useStore } from "../../../store/store";
-import { CHAPTER_NAMES } from "../../../utils/constants";
+import { useStore } from "../../../../store/store";
+import { removeStringSpaces } from "../../../../utils/utils";
+import {
+  CHAPTER_NAMES,
+  DB_GITHUB_API_WORDS,
+} from "../../../../utils/constants";
+import WordMarkersLayer from "./WordMarkersLayer";
 
 import {
   // CARTODB_DARKMATTER,
@@ -16,7 +22,7 @@ import {
   MAPBOX_STYLE_FATE,
   // MAPBOX_STYLE_EXPLORATION,
   MAPBOX_ATTRIBUTION,
-} from "../../../utils/constants";
+} from "../../../../utils/constants";
 
 const Container = styled.div`
   position: relative;
@@ -32,8 +38,8 @@ const Wrapper = styled.div`
   bottom: 0%;
   left: 50%;
   transform: translate(-50%, 0);
-  max-width: ${(props) => props.theme.medium}px;
-  max-height: 50vh;
+  max-width: 1000px;
+  max-height: 65vh;
   margin: auto;
 
   .leaflet-map {
@@ -54,7 +60,26 @@ const Wrapper = styled.div`
 const Earth = () => {
   const mapRef = useRef(Map);
 
-  const { currentChapterTheme } = useStore()[0];
+  const [scatterPlotData, setScatterPlotData] = useState([{}, {}, {}]);
+  const { currentSlideData, currentChapterTheme } = useStore()[0];
+  const { type } = currentSlideData;
+
+  const fetchScatterPlotData = () => {
+    if (type === "word-story") {
+      const { contents } = currentSlideData;
+      const { wordEn } = contents;
+      axios
+        .get(DB_GITHUB_API_WORDS + "/" + removeStringSpaces(wordEn) + ".json")
+        .then((response) => {
+          setScatterPlotData(JSON.parse(response.data));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  };
+  useEffect(fetchScatterPlotData, [currentSlideData]);
+
   const currentMapboxStyle = (theme) =>
     (theme === CHAPTER_NAMES[0] && MAPBOX_STYLE_WORLD) ||
     (theme === CHAPTER_NAMES[1] && MAPBOX_STYLE_NATURE) ||
@@ -63,7 +88,7 @@ const Earth = () => {
     (theme === CHAPTER_NAMES[4] && MAPBOX_STYLE_FATE);
 
   const leafletConfig = {
-    center: [-45, 150],
+    center: [0, 180],
     zoom: 2,
     maxZoom: 10,
     minZoom: 1,
@@ -94,7 +119,8 @@ const Earth = () => {
     <Container className="earth-container">
       <Wrapper className="earth-wrapper">
         <LeafletMap className="leaflet-map" {...leafletConfig}>
-          <TileLayer {...tileLayerConfig}></TileLayer>
+          <TileLayer {...tileLayerConfig} />
+          {type === "word-story" && <WordMarkersLayer data={scatterPlotData} />}
         </LeafletMap>
       </Wrapper>
     </Container>

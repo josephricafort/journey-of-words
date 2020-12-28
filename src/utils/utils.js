@@ -98,15 +98,15 @@ export function isUndefined(v) {
 
 // Reducers
 export function meanReducer(mean, val) {
-  return isValid(val) ? (mean + val) / 2 : mean;
+  return val ? (mean + val) / 2 : mean;
 }
 
 export function minReducer(min, val) {
-  return isValid(val) ? Math.min(min, val) : min;
+  return val ? Math.min(min, val) : min;
 }
 
 export function maxReducer(max, val) {
-  return isValid(val) ? Math.max(max, val) : max;
+  return val ? Math.max(max, val) : max;
 }
 
 export function countReducer(count, item) {
@@ -119,4 +119,23 @@ export function sumReducer(sum, val) {
 
 export function stringReducer(strList, str) {
   return str || str !== "" ? strList.concat(", ").concat(str) : strList;
+}
+
+export function cognacyLevel(data, cognacy) {
+  const cognacyColors = ["#66bb6a", "#ffa726", "#e91e63"];
+
+  if (cognacy) {
+    const cognacyArr = data.map((word) => word.cognacy1);
+    const maxCognacy = d3.max(cognacyArr);
+    const minCognacy = d3.min(cognacyArr);
+    const midCognacy = (maxCognacy + minCognacy) / 2;
+    const colorScale = d3
+      .scaleLinear()
+      .domain([minCognacy, midCognacy, maxCognacy])
+      .range(cognacyColors);
+
+    return colorScale(cognacy);
+  } else {
+    return "#aaaaaa";
+  }
 }
