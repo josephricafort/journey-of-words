@@ -543,11 +543,18 @@ const longform = {
               varDefinition: "Nature gods",
             },
           ],
+          varLegend: [
+            { value: 0, description: "Absent" },
+            { value: 1, description: "Present" },
+            { value: 2, description: "Minor" },
+            { value: 3, description: "Major" },
+            { value: 4, description: "Primary" },
+          ],
         },
       },
       {
         type: "word-story",
-        id: 1.41,
+        id: 1.411,
         contents: {
           wordAn: "*kuto",
           wordEn: "headlouse",
@@ -557,7 +564,7 @@ const longform = {
       },
       {
         type: "word-story",
-        id: 1.41,
+        id: 1.412,
         contents: {
           wordAn: "*ina",
           wordEn: "mother",
@@ -685,6 +692,13 @@ const longform = {
               variable: "vehiclesroads",
               varDefinition: "Vehicles roads",
             },
+          ],
+          varLegend: [
+            { value: 0, description: "Absent" },
+            { value: 1, description: "Present" },
+            { value: 2, description: "Minor" },
+            { value: 3, description: "Major" },
+            { value: 4, description: "Primary" },
           ],
         },
       },

@@ -7,7 +7,7 @@ const WordMarkersLayer = ({ data }) => {
   function drawCallback(selection, projection, data) {
     const svg = selection;
     const latLngToLayer = (coords) => projection.latLngToLayerPoint(coords);
-    const long360tweak = (long) => (long < 0 ? long + 360 : long);
+    const longMeridian = (long) => (long > 0 ? long : parseFloat(long) + 360);
 
     svg
       .selectAll("text")
@@ -17,17 +17,11 @@ const WordMarkersLayer = ({ data }) => {
       .attr("font-size", 14 / projection.scale + "px")
       .attr(
         "x",
-        (d) =>
-          d.lat &&
-          d.long &&
-          latLngToLayer([d.lat, d.long < 0 ? d.long + 360 : d.long]).x
+        (d) => d.lat && d.long && latLngToLayer([d.lat, longMeridian(d.long)]).x
       )
       .attr(
         "y",
-        (d) =>
-          d.lat &&
-          d.long &&
-          latLngToLayer([d.lat, d.long < 0 ? d.long + 360 : d.long]).y
+        (d) => d.lat && d.long && latLngToLayer([d.lat, longMeridian(d.long)]).y
       )
       .attr("transform", `translate(0 -5)`)
       .attr("text-anchor", "end");
@@ -35,7 +29,7 @@ const WordMarkersLayer = ({ data }) => {
     svg.node();
 
     occlusion(svg);
-    svg.selectAll(".occluded").attr("opacity", 0.05);
+    svg.selectAll(".occluded").attr("opacity", 0);
   }
 
   return (

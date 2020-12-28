@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useContext } from "react";
+import styled, { ThemeContext } from "styled-components";
 import { Scrollama, Step } from "react-scrollama";
 
 import { useStore } from "../../../store/store";
@@ -60,9 +60,7 @@ const CardIntro = styled(Card)`
 `;
 
 const CardChart = styled(Card)`
-  position: relative;
   max-width: 800px;
-  top: 0%;
 `;
 
 const Word = styled.p`
@@ -73,9 +71,37 @@ const Word = styled.p`
   background-color: ${(props) => props.theme.fill1};
 `;
 
+const LegendContainer = styled.div`
+  display: block;
+  text-align: left;
+  margin-top: 10px;
+  padding: 10px 10px 10px 0;
+`;
+
+const Legend = styled.div`
+  display: inline-block;
+  margin-right: 20px;
+`;
+
+const Circle = styled.circle`
+  fill: ${({ theme, value }) =>
+    (value && value === 0 && theme.fill0) ||
+    (value === 1 && theme.fill1) ||
+    (value === 2 && theme.fill2) ||
+    (value === 3 && theme.fill3) ||
+    (value === 4 && theme.fill4)};
+`;
+
+const Bullet = ({ value }) => (
+  <svg height={10} width={10}>
+    <Circle cx={5} cy={5} r={5} value={value}></Circle>
+  </svg>
+);
+
 const Scrolly = (chaptersconfig) => {
   const { slides } = chaptersconfig;
   const dispatch = useStore()[1];
+  const theme = useContext(ThemeContext);
 
   function slideSwitch(slide) {
     return (
@@ -118,6 +144,14 @@ const Scrolly = (chaptersconfig) => {
               <p key={i}>{p}</p>
             ))}
             <DistributionChart slideData={slide.data} slideId={slide.id} />
+            <LegendContainer className="variable-legends">
+              <p>Legend: </p>
+              {slide.data.varLegend.map((v) => (
+                <Legend key={v.value}>
+                  <Bullet value={v.value} /> {v.description}
+                </Legend>
+              ))}
+            </LegendContainer>
           </CardChart>
         )}
         {slide.type === "words-chart" && (

@@ -18,8 +18,8 @@ const SVG = styled.svg`
           ${isSlideTattooType && currTattooIntro(t.area) ? blinkAnim : ``}
           ${
             isSlideTattooType && currTattooIntro(t.area)
-              ? `fill: ${theme.fill2}; stroke: ${theme.stroke2}; stroke-width: 1px`
-              : `fill: ${theme.grey6}; stroke: none; stroke-width: 0px`
+              ? `fill: ${theme.fill2};`
+              : `fill: ${theme.grey6};`
           };
         }`)
       );

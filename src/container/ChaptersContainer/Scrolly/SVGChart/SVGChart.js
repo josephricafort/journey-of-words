@@ -42,29 +42,30 @@ const SVGChart = ({ data, locationsData }) => {
 
   const generateDataOfWord = () =>
     setDataOfWord(
-      data.map((e) => {
-        const {
-          wordAn,
-          wordEn,
-          langName,
-          // langISOCode,
-          langSubgroup,
-          langLocation,
-          lat,
-          long,
-        } = e;
+      data &&
+        data.map((e) => {
+          const {
+            wordAn,
+            wordEn,
+            langName,
+            // langISOCode,
+            langSubgroup,
+            langLocation,
+            lat,
+            long,
+          } = e;
 
-        return {
-          wordAn,
-          wordEn,
-          langName,
-          // langISOCode,
-          langSubgroup,
-          langLocation,
-          lat,
-          long,
-        };
-      })
+          return {
+            wordAn,
+            wordEn,
+            langName,
+            // langISOCode,
+            langSubgroup,
+            langLocation,
+            lat,
+            long,
+          };
+        })
     );
   useEffect(generateDataOfWord, [data]);
 

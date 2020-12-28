@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
 import styled from "styled-components";
 import { Map as LeafletMap, TileLayer } from "react-leaflet";
 import { Projection } from "leaflet";
@@ -10,7 +10,6 @@ import {
   CHAPTER_NAMES,
   DB_GITHUB_API_WORDS,
 } from "../../../../utils/constants";
-import WordMarkersLayer from "./WordMarkersLayer";
 
 import {
   // CARTODB_DARKMATTER,
@@ -115,12 +114,18 @@ const Earth = () => {
     zIndex: -100,
   };
 
+  const WordMarkersLayer = lazy(() => import("./WordMarkersLayer"));
+
   return (
     <Container className="earth-container">
       <Wrapper className="earth-wrapper">
         <LeafletMap className="leaflet-map" {...leafletConfig}>
           <TileLayer {...tileLayerConfig} />
-          {type === "word-story" && <WordMarkersLayer data={scatterPlotData} />}
+          {type === "word-story" && (
+            <Suspense fallback={<div>Generating scatterPlot map...</div>}>
+              <WordMarkersLayer data={scatterPlotData} />
+            </Suspense>
+          )}
         </LeafletMap>
       </Wrapper>
     </Container>
