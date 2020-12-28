@@ -23,13 +23,6 @@ import {
   MAPBOX_ATTRIBUTION,
 } from "../../../../utils/constants";
 
-const Container = styled.div`
-  position: relative;
-  height: 100vh;
-  text-align: center;
-  border: none;
-`;
-
 const Wrapper = styled.div`
   position: absolute;
   width: 100%;
@@ -117,18 +110,16 @@ const Earth = () => {
   const WordMarkersLayer = lazy(() => import("./WordMarkersLayer"));
 
   return (
-    <Container className="earth-container">
-      <Wrapper className="earth-wrapper">
-        <LeafletMap className="leaflet-map" {...leafletConfig}>
-          <TileLayer {...tileLayerConfig} />
-          {type === "word-story" && (
-            <Suspense fallback={<div>Generating scatterPlot map...</div>}>
-              <WordMarkersLayer data={scatterPlotData} />
-            </Suspense>
-          )}
-        </LeafletMap>
-      </Wrapper>
-    </Container>
+    <Wrapper className="earth-wrapper">
+      <LeafletMap className="leaflet-map" {...leafletConfig}>
+        <TileLayer {...tileLayerConfig} />
+        {type === "word-story" && (
+          <Suspense fallback={<div>Generating scatterPlot map...</div>}>
+            <WordMarkersLayer data={scatterPlotData} />
+          </Suspense>
+        )}
+      </LeafletMap>
+    </Wrapper>
   );
 };
 

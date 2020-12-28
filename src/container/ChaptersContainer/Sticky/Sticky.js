@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import Earth from "./Earth/Earth";
-// import FaceTattoo from "./Graphic/FaceTattoo/FaceTattoo";
 import FaceTattoo from "./Graphic/FaceTattoo/FaceTattoo";
 import GroupSilhouette from "./Graphic/FaceTattoo/GroupSilhouette";
-import DistributionChart from "./Graphic/DistributionChart";
+import { useStore } from "../../../store/store";
 
 const Container = styled.div`
   position: -webkit-sticky;
@@ -31,20 +30,75 @@ const GraphicWrapper = styled.div`
   margin: 0 auto;
   max-width: 700px;
   opacity: 1;
-  z-index: ${(props) => props.theme.zVisuals + 10};
+  z-index: ${(props) => props.theme.zVisuals + props.zGraphic};
+`;
+
+const EarthWrapper = styled.div`
+  position: relative;
+  height: 100vh;
+  text-align: center;
+  border: none;
+  z-index: ${(props) => props.theme.zVisuals + props.zEarth};
+`;
+
+const FocusOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: ${(props) => props.theme.black};
+  opacity: 0.75;
+  z-index: ${(props) => props.theme.zVisuals + 5};
 `;
 
 const Sticky = () => {
+  const state = useStore()[0];
+  const { currentSlideData } = state;
+  const { type } = currentSlideData;
+
+  const [graphicToHighlight, setGraphicToHighlight] = useState({
+    isDarkOverlay: false,
+    zGraphic: 10,
+    zEarth: 0,
+  });
+
+  useEffect(() => {
+    if (type === "face-tattoo") {
+      setGraphicToHighlight({
+        isDarkOverlay: true,
+        zGraphic: 10,
+        zEarth: 0,
+      });
+    } else if (type === "word-story" || type === "distribution-chart") {
+      setGraphicToHighlight({
+        isDarkOverlay: true,
+        zGraphic: 0,
+        zEarth: 10,
+      });
+    } else {
+      setGraphicToHighlight({
+        isDarkOverlay: false,
+        zGraphic: 0,
+        zEarth: 10,
+      });
+    }
+  }, [currentSlideData]);
+
+  const { isDarkOverlay, zGraphic, zEarth } = graphicToHighlight;
+
   return (
     <Container className="sticky-container">
-      <GraphicWrapper className="graphic-wrapper">
+      <GraphicWrapper className="graphic-wrapper" zGraphic={zGraphic}>
         <div className="face-tattoo">
           <GroupSilhouette />
           <FaceTattoo />
         </div>
-        <DistributionChart className="distribution-chart" />
       </GraphicWrapper>
-      <Earth className="earth" />
+      <EarthWrapper className="earth-wrapper" zEarth={zEarth}>
+        <Earth className="earth" />
+      </EarthWrapper>
+      {isDarkOverlay && <FocusOverlay className="focus-overlay-earth" />}
     </Container>
   );
 };
