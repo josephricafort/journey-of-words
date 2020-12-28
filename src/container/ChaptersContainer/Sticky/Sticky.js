@@ -76,6 +76,12 @@ const Sticky = () => {
         zGraphic: 0,
         zEarth: 10,
       });
+    } else if (type === "words-chart") {
+      setGraphicToHighlight({
+        isDarkOverlay: true,
+        zGraphic: -5,
+        zEarth: -5,
+      });
     } else {
       setGraphicToHighlight({
         isDarkOverlay: false,
