@@ -27,6 +27,37 @@ const GlobalStyle = createGlobalStyle`
         font-family: ${(props) => props.theme.serif};
     }
 
+    .word-an {
+        display: inline-block;
+        text-align: left;
+        font-family: ${(props) => props.theme.cursive};
+        font-size: 28px;
+        background-color: ${(props) => props.theme.fill1};
+        margin: 10px;
+        margin-left: 0;
+        padding: 5px;
+    }
+
+    .word-en {
+        display: inline-block;
+        text-align: left;
+        font-family: ${(props) => props.theme.sansserif};
+        font-size: 18px;
+        opacity: 0.8;
+        margin: 10px;
+        margin-left: 0;
+    }
+
+    .graphic-desc {
+        display: inline-block;
+        text-align: left;
+        font-family: ${(props) => props.theme.sansserif};
+        font-size: 14px;
+        opacity: 0.8;
+        margin: 10px;
+        margin-left: 0;
+    }
+
     @media (${(props) => props.theme.breakpointMedium}) {
         h1 {
             font-size: 48px;

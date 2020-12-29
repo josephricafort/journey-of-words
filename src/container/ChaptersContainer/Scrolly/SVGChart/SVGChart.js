@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import styled from "styled-components";
 
 import useDimensions from "../../../../utils/useDimensions";
-import WordsLocation from "./WordsLocation";
-import WordCloud from "./WordCloud";
-import WordsDistribution from "./WordsDistribution";
+// import WordsLocation from "./WordsLocation";
+// import WordCloud from "./WordCloud";
+// import WordsDistribution from "./WordsDistribution";
 import {
   distFromHomeland,
   countReducer,
@@ -12,6 +12,10 @@ import {
   stringReducer,
 } from "../../../../utils/utils";
 import { COORDS_RAPANUI } from "../../../../utils/constants";
+
+const WordCloud = lazy(() => import("./WordCloud"));
+const WordsLocation = lazy(() => import("./WordsLocation"));
+const WordsDistribution = lazy(() => import("./WordsDistribution"));
 
 const SVGWrapper = styled.div`
   text-align: left;
@@ -144,20 +148,24 @@ const SVGChart = ({ data, locationsData }) => {
   return (
     <SVGWrapper className="svg-wrapper">
       <svg className="svg" {...svgProps} ref={svgRef}>
-        <WordCloud
-          data={dataOfWord}
-          dataPerWordTally={dataPerWordTally}
-          {...wordCloudProps}
-        />
-        <WordsLocation
-          data={locationsDataExtended}
-          padding={padding}
-          height={height}
-        />
+        <Suspense fallback={<div>Loading charts...</div>}>
+          <WordCloud
+            data={dataOfWord}
+            dataPerWordTally={dataPerWordTally}
+            {...wordCloudProps}
+          />
+          <WordsLocation
+            data={locationsDataExtended}
+            padding={padding}
+            height={height}
+          />
+        </Suspense>
       </svg>
-      <WordsDistWrapper svgWidth={svgDims.width}>
-        <WordsDistribution data={dataPerWordTally} {...wordDistProps} />
-      </WordsDistWrapper>
+      <Suspense fallback={<div>Loading charts...</div>}>
+        <WordsDistWrapper svgWidth={svgDims.width}>
+          <WordsDistribution data={dataPerWordTally} {...wordDistProps} />
+        </WordsDistWrapper>
+      </Suspense>
     </SVGWrapper>
   );
 };

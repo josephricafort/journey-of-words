@@ -2,7 +2,7 @@ import React from "react";
 import { Scrollama, Step } from "react-scrollama";
 import styled from "styled-components";
 
-import slideSwitch from "../sharedComponents/Cards/slideSwitch";
+import slideSwitch from "../sharedComponents/slideSwitch";
 import { useStore } from "../../store/store";
 import { SET_CURRENTSLIDEDATA } from "../../utils/constants";
 

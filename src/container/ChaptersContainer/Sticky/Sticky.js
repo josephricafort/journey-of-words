@@ -16,7 +16,6 @@ const Container = styled.div`
   border: none;
   top: 0;
   background-color: ${(props) => props.theme.backgroundColor};
-  opacity: 0.9;
 `;
 
 const GraphicWrapper = styled.div`

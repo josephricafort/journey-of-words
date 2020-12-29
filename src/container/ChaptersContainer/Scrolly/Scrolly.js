@@ -3,7 +3,7 @@ import { Scrollama, Step } from "react-scrollama";
 
 import { useStore } from "../../../store/store";
 import { SET_CURRENTSLIDEDATA } from "../../../utils/constants";
-import slideSwitch from "../../sharedComponents/Cards/slideSwitch";
+import slideSwitch from "../../sharedComponents/slideSwitch";
 
 const Scrolly = (chaptersconfig) => {
   const { slides } = chaptersconfig;

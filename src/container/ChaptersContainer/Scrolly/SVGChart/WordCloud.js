@@ -29,13 +29,9 @@ const WordCloud = ({ data, dataPerWordTally, outerSvgDims, padding }) => {
   // SVG
   const group = d3.select(gRef.current);
   const nodes = dataTop
-    .filter((e) => isValid(e.lat) || isValid(e.long))
+    .filter((e) => e.lat || e.long)
     .map((e) => {
-      const r = 2;
-      return { ...e, r };
-      // const obj = Object.assign({}, e);
-      // obj.r = 2;
-      // return obj;
+      return { ...e, r: 2 };
     });
 
   const distMainland = (d) =>
@@ -78,7 +74,7 @@ const WordCloud = ({ data, dataPerWordTally, outerSvgDims, padding }) => {
     node.y = node.y * scale + center[1];
   }
 
-  simulation.tick(100);
+  simulation.tick(50);
   tick();
   group.node();
 

@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-import DistributionChart from "../../ChaptersContainer/Scrolly/DistributionChart/DistributionChart";
-import WordsChart from "../../ChaptersContainer/Scrolly/WordsChart";
+import DistributionChart from "../ChaptersContainer/Scrolly/DistributionChart/DistributionChart";
+import WordsChart from "../ChaptersContainer/Scrolly/WordsChart";
+import { Word } from "./styledElements";
 
 const CardWrapper = styled.div`
   display: block;
@@ -68,13 +69,13 @@ const CardKicker = styled(Card)`
   text-align: left;
 `;
 
-const Word = styled.p`
-  display: inline-block;
-  text-align: left;
-  font-family: ${(props) => props.theme.cursive};
-  font-size: 28px;
-  background-color: ${(props) => props.theme.fill1};
-`;
+// const Word = styled.p`
+//   display: inline-block;
+//   text-align: left;
+//   font-family: ${(props) => props.theme.cursive};
+//   font-size: 28px;
+//   background-color: ${(props) => props.theme.fill1};
+// `;
 
 const LegendContainer = styled.div`
   display: block;

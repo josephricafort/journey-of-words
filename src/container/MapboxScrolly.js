@@ -5,6 +5,9 @@ import styled from "styled-components";
 
 import { useStore } from "../store/store";
 import { SET_CURRENTSLIDEDATA } from "../utils/constants";
+import { Word } from "./sharedComponents/styledElements";
+
+import MarkdownHTML from "react-markdown/with-html";
 
 const MapContainer = styled.div`
   &.mapboxgl-map {
@@ -135,9 +138,9 @@ const MapboxScrolly = (props) => {
           if (chapter.style) {
             switchLayer(chapter);
           }
-          dispatch(SET_CURRENTSLIDEDATA, {
-            id: 0.3,
-          });
+          // dispatch(SET_CURRENTSLIDEDATA, {
+          //   id: 0.3,
+          // });
         })
         .onStepExit((response) => {
           var chapter = config.chapters.find(
@@ -174,8 +177,8 @@ const MapboxScrolly = (props) => {
             <Chapter
               id={chapter.id}
               key={chapter.id}
-              {...chapter}
               currentChapterID={currentChapterID}
+              {...chapter}
               {...alignment}
             />
           ))}
@@ -234,13 +237,30 @@ const Chapter = ({
   currentChapterID,
   alignment,
 }) => {
+  const markDownProps = (desc) => {
+    return {
+      source: desc,
+      skipHtml: false,
+      allowDangerousHtml: true,
+      unwrapDisallowed: true,
+      renderer: { Paragraph: "span" },
+    };
+  };
+
   const classList = id === currentChapterID ? "step active" : "step";
   return (
     <CardWrapper id={id} className={[classList, "card-wrapper"]} {...alignment}>
       <Card className="card">
         {title && <h3 className="title">{title}</h3>}
         {image && <CardImage src={image} alt={title}></CardImage>}
-        {description && <p>{description}</p>}
+        {(Array.isArray(description) && (
+          <div>
+            {description.map((d) => (
+              <MarkdownHTML {...markDownProps(d)} />
+            ))}
+          </div>
+        )) ||
+          (description && <MarkdownHTML {...markDownProps(description)} />)}
       </Card>
     </CardWrapper>
   );
