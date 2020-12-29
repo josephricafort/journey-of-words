@@ -25,13 +25,13 @@ const FaceTattoo = () => {
   const {
     currentFaceTattoo,
     statesFaceTattoo,
-    isSlideTattooType,
+    currentSlideData: { type },
   } = useStore()[0];
 
   const faceProps = {
     data: statesFaceTattoo,
     currData: currentFaceTattoo,
-    isSlideTattooType,
+    currSlideType: type,
   };
 
   return (

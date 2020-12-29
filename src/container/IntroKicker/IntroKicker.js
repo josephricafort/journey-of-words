@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Scrollama, Step } from "react-scrollama";
 import styled from "styled-components";
 
@@ -15,10 +15,15 @@ const Container = styled.div`
 
 const IntroKicker = ({ slides }) => {
   const dispatch = useStore()[1];
+  const [currentSlideData, setCurrentSlideData] = useState(slides[0]);
 
   const onStepEnter = ({ data: slideData }) => {
-    dispatch(SET_CURRENTSLIDEDATA, slideData);
+    setCurrentSlideData(slideData);
   };
+
+  useEffect(() => dispatch(SET_CURRENTSLIDEDATA, currentSlideData), [
+    currentSlideData,
+  ]);
 
   return (
     <Container className="intro-kicker">

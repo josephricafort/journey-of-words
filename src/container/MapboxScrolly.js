@@ -5,7 +5,6 @@ import styled from "styled-components";
 
 import { useStore } from "../store/store";
 import { SET_CURRENTSLIDEDATA } from "../utils/constants";
-import { Word } from "./sharedComponents/styledElements";
 
 import MarkdownHTML from "react-markdown/with-html";
 
@@ -74,7 +73,6 @@ const MapboxScrolly = (props) => {
   const config = props;
   const mapContainer = useRef(null);
   const [currentChapter, setCurrentChapter] = useState(props.chapters[0]);
-  const dispatch = useStore()[1];
 
   const configureMapboxScrolly = () => {
     const mapStart = config.chapters[0].location;
@@ -154,6 +152,9 @@ const MapboxScrolly = (props) => {
     window.addEventListener("resize", scroller.resize);
   };
   useEffect(configureMapboxScrolly, []);
+
+  const dispatch = useStore()[1];
+  useEffect(() => dispatch(SET_CURRENTSLIDEDATA, { id: 0 }), [currentChapter]);
 
   const { alignment } = props.config || {};
   const currentChapterID = currentChapter.id;
