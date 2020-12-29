@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Scrollama, Step } from "react-scrollama";
 
 import { useStore } from "../../../store/store";
@@ -9,9 +9,15 @@ const Scrolly = (chaptersconfig) => {
   const { slides } = chaptersconfig;
   const dispatch = useStore()[1];
 
+  const [currentSlideData, setCurrentSlideData] = useState(slides[0]);
+
   const onStepEnter = ({ data: slideData }) => {
-    dispatch(SET_CURRENTSLIDEDATA, slideData);
+    setCurrentSlideData(slideData);
   };
+
+  useEffect(() => {
+    dispatch(SET_CURRENTSLIDEDATA, currentSlideData);
+  }, [currentSlideData]);
 
   return (
     <Scrollama

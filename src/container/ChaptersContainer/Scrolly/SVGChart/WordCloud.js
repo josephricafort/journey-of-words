@@ -2,7 +2,7 @@ import React, { useRef, useContext } from "react";
 import styled, { ThemeContext } from "styled-components";
 import * as d3 from "d3";
 
-import { calcDistance, isValid } from "../../../../utils/utils";
+import { calcDistance } from "../../../../utils/utils";
 import { COORDS_HOMELAND } from "../../../../utils/constants";
 
 const GroupContainer = styled.g`
@@ -16,11 +16,13 @@ const WordCloud = ({ data, dataPerWordTally, outerSvgDims, padding }) => {
   const theme = useContext(ThemeContext);
 
   const dataPWTTopList = [...new Set(dataPerWordTally.map((e) => e.wordAn))];
-  const dataTop = data
-    .filter((e) =>
-      dataPWTTopList.some((li) => li && e.wordAn && li === e.wordAn)
-    )
-    .slice(0, N_WORDS_LIMIT);
+  const dataTop =
+    data &&
+    data
+      .filter((e) =>
+        dataPWTTopList.some((li) => li && e.wordAn && li === e.wordAn)
+      )
+      .slice(0, N_WORDS_LIMIT);
 
   // The D3 code for this beautiful viz was forked from https://observablehq.com/@d3/force-layout-phyllotaxis
   const scale = 0.6;
@@ -28,15 +30,17 @@ const WordCloud = ({ data, dataPerWordTally, outerSvgDims, padding }) => {
 
   // SVG
   const group = d3.select(gRef.current);
-  const nodes = dataTop
-    .filter((e) => e.lat || e.long)
-    .map((e) => {
-      return { ...e, r: 2 };
-    });
+  const nodes =
+    dataTop &&
+    dataTop
+      .filter((e) => e.lat || e.long)
+      .map((e) => {
+        return { ...e, r: 2 };
+      });
 
   const distMainland = (d) =>
     calcDistance(COORDS_HOMELAND.LAT, COORDS_HOMELAND.LONG, d.lat, d.long);
-  const domainExtent = d3.extent(nodes.map((d) => distMainland(d)));
+  const domainExtent = d3.extent(nodes.map((d) => d && distMainland(d)));
 
   const y = d3
     .scaleLinear()

@@ -5,7 +5,7 @@ import AreaIcons from "./AreaIcons";
 import { tattooAreas, blinkKeyframes, blinkAnim } from "./styleElements";
 
 const SVG = styled.svg`
-  ${({ data, currData, isSlideTattooType, theme }) => {
+  ${({ data, currData, currSlideType, theme }) => {
     const tattooIsShown = (area) => data.find((t) => t.area === area).isShown;
     const currTattooIntro = (area) => currData.area === area;
     const createTattooAreaStyles = () => {
@@ -15,9 +15,9 @@ const SVG = styled.svg`
           (styles += `${t.id} {${
             tattooIsShown(t.area) ? `opacity: 1;` : `opacity: 0;`
           }
-          ${isSlideTattooType && currTattooIntro(t.area) ? blinkAnim : ``}
+          ${currSlideType && currTattooIntro(t.area) ? blinkAnim : ``}
           ${
-            isSlideTattooType && currTattooIntro(t.area)
+            currSlideType && currTattooIntro(t.area)
               ? `fill: ${theme.fill2};`
               : `fill: ${theme.grey6};`
           };
@@ -42,7 +42,7 @@ const SVG = styled.svg`
   }}
 `;
 
-const FaceWoman = ({ data, currData, isSlideTattooType }) => {
+const FaceWoman = ({ data, currData, currSlideType }) => {
   return (
     <SVG
       version="1.1"
@@ -54,7 +54,7 @@ const FaceWoman = ({ data, currData, isSlideTattooType }) => {
       opacity="1"
       data={data}
       currData={currData}
-      isSlideTattooType={isSlideTattooType}
+      currSlideType={currSlideType}
     >
       <g id="elements">
         <g id="woman">

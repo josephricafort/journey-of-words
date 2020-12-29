@@ -72,13 +72,9 @@ const WordsChart = ({ slideData }) => {
   const { currentSlideIndex } = useStore()[0];
 
   const [wordsInfoData, setWordsInfoData] = useState([[], [], []]);
-  const [locationsData, setLocationsData] = useState([]);
-  const [locationsList, setLocationsList] = useState([]);
-
   const categoryList = wordsItems.map((cat) => cat.category);
   const wordsPerCatList = (cat) =>
     wordsItems.find((wd) => wd.category === cat).wordsEn;
-
   const [activeCat, setActiveCat] = useState(categoryList[0]);
   const [activeWord, setActiveWord] = useState(wordsPerCatList(activeCat)[0]);
 
@@ -98,52 +94,42 @@ const WordsChart = ({ slideData }) => {
         console.log(error);
       });
   };
-  useEffect(fetchWordsInfoData, [activeCat, currentSlideIndex]);
+  useEffect(fetchWordsInfoData, [activeCat]);
 
   // Derive data for location names (LocNames group)
-  const generateLocationsList = () => {
-    setLocationsList(
-      [...new Set(wordsInfoData.flat().map((e) => e.langLocation))].filter(
-        (loc) => typeof loc !== "undefined"
-      )
-    );
-  };
-  useEffect(generateLocationsList, [wordsInfoData]);
+  const locationsList = [
+    ...new Set(wordsInfoData.flat().map((e) => e.langLocation)),
+  ].filter((loc) => loc);
 
-  const generateLocationsData = () =>
-    locationsList &&
-    setLocationsData(
-      locationsList.map((loc) => {
-        const dataPerLocation = wordsInfoData
-          .flat()
-          .filter((w) => w.langLocation === loc);
-        const dataPerLocLat = dataPerLocation.map((e) => e.lat);
-        const dataPerLocLong = dataPerLocation.map((e) => e.long);
+  const locationsData = locationsList.map((loc) => {
+    const dataPerLocation = wordsInfoData
+      .flat()
+      .filter((w) => w.langLocation === loc);
+    const dataPerLocLat = dataPerLocation.map((e) => e.lat);
+    const dataPerLocLong = dataPerLocation.map((e) => e.long);
 
-        const latMean = dataPerLocLat.reduce(meanReducer);
-        const longMean = dataPerLocLong.reduce(meanReducer);
-        const latMin = dataPerLocLat.reduce(minReducer);
-        const longMin = dataPerLocLong.reduce(minReducer);
-        const latMax = dataPerLocLat.reduce(maxReducer);
-        const longMax = dataPerLocLong.reduce(maxReducer);
+    const latMean = dataPerLocLat.reduce(meanReducer);
+    const longMean = dataPerLocLong.reduce(meanReducer);
+    const latMin = dataPerLocLat.reduce(minReducer);
+    const longMin = dataPerLocLong.reduce(minReducer);
+    const latMax = dataPerLocLat.reduce(maxReducer);
+    const longMax = dataPerLocLong.reduce(maxReducer);
 
-        const distRangeMin = distFromHomeland(latMin, longMin);
-        const distRangeMax = distFromHomeland(latMax, longMax);
+    const distRangeMin = distFromHomeland(latMin, longMin);
+    const distRangeMax = distFromHomeland(latMax, longMax);
 
-        return {
-          langLocation: loc,
-          latMean,
-          longMean,
-          latMin,
-          longMin,
-          latMax,
-          longMax,
-          distRangeMin,
-          distRangeMax,
-        };
-      })
-    );
-  useEffect(generateLocationsData, [locationsList]);
+    return {
+      langLocation: loc,
+      latMean,
+      longMean,
+      latMin,
+      longMin,
+      latMax,
+      longMax,
+      distRangeMin,
+      distRangeMax,
+    };
+  });
 
   const wordProtoAn = (wordEn) => {
     const currCat = wordsItems.find((cat) => activeCat === cat.category);
