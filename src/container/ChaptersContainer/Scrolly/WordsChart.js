@@ -111,6 +111,7 @@ const WordsChart = ({ slideData }) => {
   useEffect(generateLocationsList, [wordsInfoData]);
 
   const generateLocationsData = () =>
+    locationsList &&
     setLocationsData(
       locationsList.map((loc) => {
         const dataPerLocation = wordsInfoData

@@ -8,6 +8,30 @@ const longform = {
     byline2:
       "Written, designed and developed by Joseph Ricafort. Illustrations by Colleen Joyce Ricafort",
   },
+  introKicker: {
+    config: {
+      slides: [
+        {
+          type: "kicker",
+          id: 0,
+          contents: {
+            title:
+              "Along these coasts 4000 years ago, there once lived a group of people who ventured on the journey that later became the world’s most widespread migration in human history.",
+          },
+        },
+        {
+          type: "intro",
+          id: 0.1,
+          contents: {
+            chapterLabel: "Chapter I",
+            title: "Journey",
+            byline:
+              "An adaptation of Robert Blust’s “Out Of Taiwan: The Austronesian Expansion As A Chapter In Human History",
+          },
+        },
+      ],
+    },
+  },
   mapboxScrolly: {
     config: {
       style: "mapbox://styles/josephricafort/ckhxlghrg09zp1bqu5s7pt7jl/draft/",

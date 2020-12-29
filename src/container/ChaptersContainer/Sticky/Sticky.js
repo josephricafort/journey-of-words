@@ -67,29 +67,29 @@ const Sticky = () => {
     if (type === "face-tattoo") {
       setGraphicToHighlight({
         isDarkOverlay: true,
-        zGraphic: 10,
+        zGraphic: 10, // highlight the graphic
         zEarth: 0,
       });
     } else if (type === "word-story" || type === "distribution-chart") {
       setGraphicToHighlight({
         isDarkOverlay: true,
         zGraphic: 0,
-        zEarth: 10,
+        zEarth: 10, // highlight the earth
       });
     } else if (type === "words-chart") {
       setGraphicToHighlight({
         isDarkOverlay: true,
-        zGraphic: -5,
+        zGraphic: -5, // unhighlight both
         zEarth: -5,
       });
     } else {
       setGraphicToHighlight({
         isDarkOverlay: false,
-        zGraphic: 0,
-        zEarth: 10,
+        zGraphic: 10, // graphic at the top by default
+        zEarth: 0,
       });
     }
-  }, [currentSlideData]);
+  }, [type]);
 
   const { isDarkOverlay, zGraphic, zEarth } = graphicToHighlight;
 

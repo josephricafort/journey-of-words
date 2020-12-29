@@ -16,6 +16,7 @@ import { configureDataStore } from "./store/dataStore";
 //   SET_LANGHEIRARCHY,
 // } from "./utils/constants";
 import { useStore } from "./store/store";
+import IntroKicker from "./container/IntroKicker/IntroKicker";
 import MapboxScrolly from "./container/MapboxScrolly";
 // import MapExploration from "./container/MapExploration/MapExploration";
 import Scrolly from "./container/ChaptersContainer/Scrolly/Scrolly";
@@ -72,7 +73,7 @@ configureDataStore();
 const StoryApp = () => {
   const state = useStore()[0];
   const { currentChapterTheme } = state;
-  const { header, mapboxScrolly, chaptersScrolly } = longform;
+  const { header, introKicker, mapboxScrolly, chaptersScrolly } = longform;
   const chapterThemeVars = chapterThemes[currentChapterTheme];
 
   // const fetchAllData = () => {
@@ -97,6 +98,7 @@ const StoryApp = () => {
     <ThemeProvider theme={{ ...variables, ...lightTheme, ...chapterThemeVars }}>
       <GlobalStyle />
       <AppContainer className="app-container">
+        <IntroKicker {...introKicker.config}></IntroKicker>
         <MapboxScrolly {...mapboxScrolly.config} />
         <HeaderWrapper className="header-wrapper">
           <HeaderContainer className="header-container">

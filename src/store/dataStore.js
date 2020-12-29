@@ -17,8 +17,8 @@ export const configureDataStore = () => {
         (chapterIndex === "4" && CHAPTER_NAMES[4]);
 
       // Update face tattoo status and icons accordingly
-      let tattooIndex,
-        newTattooIndex = 0;
+      let tattooIndex = 0;
+      let newTattooIndex = 0;
       let newStatesFaceTattoo = [];
 
       if (type === "face-tattoo") {

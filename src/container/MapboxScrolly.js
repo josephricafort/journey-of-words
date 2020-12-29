@@ -1,7 +1,10 @@
-import React, { Component } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import mapboxgl from "mapbox-gl";
 import scrollama from "scrollama";
 import styled from "styled-components";
+
+import { useStore } from "../store/store";
+import { SET_CURRENTSLIDEDATA } from "../utils/constants";
 
 const MapContainer = styled.div`
   &.mapboxgl-map {
@@ -64,23 +67,18 @@ const transformRequest = (url) => {
   };
 };
 
-class MapboxScrolly extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentChapter: props.chapters[0],
-    };
-    // this.setState = this.setState.bind(this);
-  }
+const MapboxScrolly = (props) => {
+  const config = props;
+  const mapContainer = useRef(null);
+  const [currentChapter, setCurrentChapter] = useState(props.chapters[0]);
+  const dispatch = useStore()[1];
 
-  componentDidMount() {
-    const config = this.props;
+  const configureMapboxScrolly = () => {
     const mapStart = config.chapters[0].location;
-
     mapboxgl.accessToken = config.accessToken;
 
     const map = new mapboxgl.Map({
-      container: this.mapContainer,
+      container: mapContainer.current,
       style: config.style,
       center: mapStart.center,
       zoom: mapStart.zoom,
@@ -110,8 +108,6 @@ class MapboxScrolly extends Component {
       return map.setStyle(chap.style);
     }
 
-    const setState = this.setState.bind(this);
-
     // instantiate the scrollama
     const scroller = scrollama();
 
@@ -128,7 +124,7 @@ class MapboxScrolly extends Component {
           const chapter = config.chapters.find(
             (chap) => chap.id === response.element.id
           );
-          setState({ currentChapter: chapter });
+          setCurrentChapter({ ...chapter });
           map.flyTo(chapter.location);
           if (config.showMarkers) {
             marker.setLngLat(chapter.location.center);
@@ -139,6 +135,9 @@ class MapboxScrolly extends Component {
           if (chapter.style) {
             switchLayer(chapter);
           }
+          dispatch(SET_CURRENTSLIDEDATA, {
+            id: 0.3,
+          });
         })
         .onStepExit((response) => {
           var chapter = config.chapters.find(
@@ -149,49 +148,47 @@ class MapboxScrolly extends Component {
           }
         });
     });
-
     window.addEventListener("resize", scroller.resize);
-  }
+  };
+  useEffect(configureMapboxScrolly, []);
 
-  render() {
-    const config = this.props;
-    const { alignment } = config;
-    const currentChapterID = this.state.currentChapter.id;
+  const { alignment } = props.config || {};
+  const currentChapterID = currentChapter.id;
 
-    return (
-      <div>
-        <MapContainer
-          ref={(el) => (this.mapContainer = el)}
-          className="absolute top right left bottom"
-        />
-        <div id="story">
-          {config.title && (
-            <Header id="header">
-              <h1>{config.title}</h1>
-              {config.subtitle && <h2>{config.subtitle}</h2>}
-              {config.byline && <p>{config.byline}</p>}
-            </Header>
-          )}
-          <Features id="features">
-            {config.chapters.map((chapter) => (
-              <Chapter
-                key={chapter.id}
-                {...chapter}
-                currentChapterID={currentChapterID}
-                {...alignment}
-              />
-            ))}
-          </Features>
-          {config.footer && (
-            <Footer id="footer">
-              <p>{config.footer}</p>
-            </Footer>
-          )}
-        </div>
+  return (
+    <div>
+      <MapContainer
+        ref={(el) => (mapContainer.current = el)}
+        className="absolute top right left bottom"
+      />
+      <div id="story">
+        {config.title && (
+          <Header id="header">
+            <h1>{config.title}</h1>
+            {config.subtitle && <h2>{config.subtitle}</h2>}
+            {config.byline && <p>{config.byline}</p>}
+          </Header>
+        )}
+        <Features id="features">
+          {config.chapters.map((chapter) => (
+            <Chapter
+              id={chapter.id}
+              key={chapter.id}
+              {...chapter}
+              currentChapterID={currentChapterID}
+              {...alignment}
+            />
+          ))}
+        </Features>
+        {config.footer && (
+          <Footer id="footer">
+            <p>{config.footer}</p>
+          </Footer>
+        )}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 const CardWrapper = styled.div`
   max-width: 500px;

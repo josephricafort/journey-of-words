@@ -17,7 +17,9 @@ const WordCloud = ({ data, dataPerWordTally, outerSvgDims, padding }) => {
 
   const dataPWTTopList = [...new Set(dataPerWordTally.map((e) => e.wordAn))];
   const dataTop = data
-    .filter((e) => dataPWTTopList.some((li) => li === e.wordAn))
+    .filter((e) =>
+      dataPWTTopList.some((li) => li && e.wordAn && li === e.wordAn)
+    )
     .slice(0, N_WORDS_LIMIT);
 
   // The D3 code for this beautiful viz was forked from https://observablehq.com/@d3/force-layout-phyllotaxis
@@ -29,9 +31,11 @@ const WordCloud = ({ data, dataPerWordTally, outerSvgDims, padding }) => {
   const nodes = dataTop
     .filter((e) => isValid(e.lat) || isValid(e.long))
     .map((e) => {
-      const obj = Object.assign({}, e);
-      obj.r = 2;
-      return obj;
+      const r = 2;
+      return { ...e, r };
+      // const obj = Object.assign({}, e);
+      // obj.r = 2;
+      // return obj;
     });
 
   const distMainland = (d) =>
