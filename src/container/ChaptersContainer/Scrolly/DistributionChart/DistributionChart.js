@@ -19,7 +19,7 @@ const Container = styled.div`
 
 const DotPlot = lazy(() => import("./DotPlot"));
 
-const DistributionChart = ({ slideData, slideId }) => {
+const DistributionChart = ({ slideData }) => {
   const { varItems } = slideData;
 
   const [distributionData, setDistributionData] = useState([[], [], []]);

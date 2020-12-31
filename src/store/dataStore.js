@@ -5,7 +5,6 @@ export const configureDataStore = () => {
   const actions = {
     // scrolly
     SET_CURRENTSLIDEDATA: (state, slideData) => {
-      const { statesFaceTattoo, currentFaceTattoo, currentTattooIndex } = state;
       const { id, type, tattoo } = slideData;
       // Update the theme here when the stepIndex is updated
       const chapterIndex = id.toString().split(".")[0];
@@ -16,37 +15,11 @@ export const configureDataStore = () => {
         (chapterIndex === "3" && CHAPTER_NAMES[3]) ||
         (chapterIndex === "4" && CHAPTER_NAMES[4]);
 
-      // Update face tattoo status and icons accordingly
-      let tattooIndex = 0;
-      let newTattooIndex = 0;
-      let newStatesFaceTattoo = [];
-
-      if (type === "face-tattoo") {
-        tattooIndex = statesFaceTattoo.find((obj) => tattoo.area === obj.area);
-        newTattooIndex = statesFaceTattoo.indexOf(tattooIndex);
-        newTattooIndex =
-          newTattooIndex >= 0 ? newTattooIndex : currentTattooIndex;
-        const setIsShown = (tIndex) => {
-          return tIndex <= newTattooIndex ? true : false;
-        };
-        newStatesFaceTattoo = statesFaceTattoo.map((obj, index) => {
-          obj.isShown = setIsShown(index);
-          return tattoo.area === obj.area ? tattoo : obj;
-        });
-      }
-
       return {
         currentSlideData: slideData,
         currentStepIndex: id,
         currentChapterTheme,
         currentChapterIndex: chapterIndex,
-        currentFaceTattoo: tattoo ? { ...tattoo } : { ...currentFaceTattoo },
-        currentTattooIndex: newTattooIndex,
-        isSlideTattooType: type === "face-tattoo",
-        statesFaceTattoo:
-          type === "face-tattoo"
-            ? [...newStatesFaceTattoo]
-            : [...statesFaceTattoo],
       };
     },
 
@@ -117,78 +90,6 @@ export const configureDataStore = () => {
     currentStepIndex: 1,
     currentChapterTheme: "world",
     currentChapterIndex: 0,
-
-    // woman face tattoo
-    currentFaceTattoo: {},
-    currentTattooIndex: 0,
-    isSlideTattooType: false,
-    statesFaceTattoo: [
-      {
-        area: "tattooSea",
-        isShown: false,
-        icon: "waves",
-      },
-      {
-        area: "tattooBoat",
-        isShown: false,
-        icon: "boat",
-      },
-      {
-        area: "tattooLand",
-        isShown: false,
-        icon: "islands",
-      },
-      {
-        area: "tattooNature",
-        isShown: false,
-        icon: "flower",
-      },
-      {
-        area: "tattooResource",
-        isShown: false,
-        icon: "fishes",
-      },
-      {
-        area: "tattooSociety",
-        isShown: false,
-        icon: "humans",
-      },
-      {
-        area: "tattooReligion",
-        isShown: false,
-        icon: "islam", // christianism, buddhism, hinduism
-      },
-      {
-        area: "tattooColonizer",
-        isShown: false,
-        icon: "british", // french, spanish, american, japanese, portuguese, chinese
-      },
-      {
-        area: "tattooColonyStatus",
-        isShown: false,
-        icon: "stillColony", // independent,
-      },
-      {
-        area: "tattooExtraction",
-        isShown: false,
-        icon: "pickaxe",
-      },
-      {
-        area: "tattooGovernment",
-        isShown: false,
-        icon: "building",
-      },
-      {
-        area: "tattooIndependence",
-        isShown: false,
-        icon: "flag",
-      },
-      {
-        area: "tattooCountry",
-        isShown: false,
-        icon: "id",
-      },
-    ],
 
     // data related
     //- words

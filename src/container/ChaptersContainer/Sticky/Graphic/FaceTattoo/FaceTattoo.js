@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import FaceWoman from "./FaceWoman";
 import { useStore } from "../../../../../store/store";
+import iniFaceTattoo from "./initFaceTattoo";
 
 const Container = styled.div`
   position: absolute;
@@ -22,11 +23,35 @@ const Container = styled.div`
 `;
 
 const FaceTattoo = () => {
-  const {
-    currentFaceTattoo,
-    statesFaceTattoo,
-    currentSlideData: { type },
-  } = useStore()[0];
+  const { currentSlideData } = useStore()[0];
+  const { type, tattoo } = currentSlideData || {};
+
+  const [statesFaceTattoo, setStatesFaceTattoo] = useState(iniFaceTattoo);
+  const [currentFaceTattoo, setCurrentFaceTattoo] = useState({});
+  const [currentTattooIndex, setCurrentTattooIndex] = useState(0);
+
+  const updateFaceTattooData = () => {
+    if (type === "face-tattoo") {
+      const tattooIndex = statesFaceTattoo.find(
+        (obj) => tattoo.area === obj.area
+      );
+      let newTattooIndex = statesFaceTattoo.indexOf(tattooIndex);
+      newTattooIndex =
+        newTattooIndex >= 0 ? newTattooIndex : currentTattooIndex;
+      const setIsShown = (tIndex) => {
+        return tIndex <= newTattooIndex ? true : false;
+      };
+      setStatesFaceTattoo(
+        statesFaceTattoo.map((obj, index) => {
+          obj.isShown = setIsShown(index);
+          return tattoo.area === obj.area ? tattoo : obj;
+        })
+      );
+      setCurrentFaceTattoo(tattoo ? tattoo : currentFaceTattoo);
+      setCurrentTattooIndex(newTattooIndex);
+    }
+  };
+  useEffect(updateFaceTattooData, [tattoo]);
 
   const faceProps = {
     data: statesFaceTattoo,

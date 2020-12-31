@@ -547,6 +547,7 @@ const longform = {
         contents: {
           chapterLabel: "Chapter II",
           title: "Nature",
+          byline: "The Austronesian Way of Life and Kinship with Nature",
         },
       },
       {
@@ -565,16 +566,67 @@ const longform = {
         type: "face-tattoo",
         id: 1.21,
         tattoo: {
-          area: "tattooSea",
+          area: "tattooNature",
           isShown: true,
-          icon: "waves",
+          icon: "flower",
         },
         contents: {
-          title: "Sea tattoo chart here",
           p: [
-            "Some very long texts here will be placed that describe something nice and informative about what the writer wants to talk about",
-            "Also similar stuffs with the first one blah blah blah.",
-            "I don't want to talk about it. :(",
+            "Aside from being master seafarers, the Austronesians have a deep connection with nature, the seas. They maintained their close relationship with them through worship and rituals.",
+          ],
+        },
+      },
+      {
+        type: "distribution-chart",
+        id: 1.32,
+        icon: "fern",
+        contents: {
+          title: "Forces of nature",
+          p: [
+            "They strongly believe that the forces of nature are controlled by or imbued with the supernatural.",
+          ],
+        },
+        data: {
+          varItems: [
+            {
+              variable: "forcenature",
+              varDefinition:
+                "Forces of nature are controlled or embued by the supernatural.",
+            },
+          ],
+          varLegend: [
+            { value: "?", description: "Absent" },
+            { value: 1, description: "Present" },
+          ],
+        },
+      },
+      {
+        type: "distribution-chart",
+        id: 1.31,
+        icon: "fern",
+        contents: {
+          title: "Austronesians and nature",
+          p: [
+            "They strongly believe that the forces of nature are controlled by or imbued with the supernatural.",
+          ],
+        },
+        data: {
+          varItems: [
+            {
+              variable: "naturespirits",
+              varDefinition: "Belief in nature spirits",
+            },
+            {
+              variable: "naturegods",
+              varDefinition: "Belief in nature gods",
+            },
+          ],
+          varLegend: [
+            { value: "?", description: "Absent" },
+            { value: 1, description: "Present, but not major focus" },
+            { value: 2, description: "Major Focus" },
+            { value: 3, description: "Major" },
+            { value: 4, description: "Principal focus" },
           ],
         },
       },

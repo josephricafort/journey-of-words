@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import MarkdownHTML from "react-markdown/with-html";
 
 import DistributionChart from "../ChaptersContainer/Scrolly/DistributionChart/DistributionChart";
 import WordsChart from "../ChaptersContainer/Scrolly/WordsChart";
@@ -97,7 +98,7 @@ const Bullet = ({ value }) => (
 
 const Circle = styled.circle`
   fill: ${({ theme, value }) =>
-    (value && value === 0 && theme.fill0) ||
+    (value && value === "?" && theme.fill0) ||
     (value === 1 && theme.fill1) ||
     (value === 2 && theme.fill2) ||
     (value === 3 && theme.fill3) ||
@@ -105,6 +106,16 @@ const Circle = styled.circle`
 `;
 
 function slideSwitch(slide) {
+  const markDownProps = (desc) => {
+    return {
+      source: desc,
+      skipHtml: false,
+      allowDangerousHtml: true,
+      unwrapDisallowed: true,
+      renderer: { Paragraph: "span" },
+    };
+  };
+
   return (
     <CardWrapper className="scrolly-card-wrapper" type={slide.type}>
       {slide.type === "intro" && (
@@ -131,9 +142,9 @@ function slideSwitch(slide) {
       {slide.type === "face-tattoo" && (
         <Card className="scrolly-card face-tattoo">
           <h3>{slide.contents.title}</h3>
-          {slide.contents.p.map((p, i) => (
-            <p key={i}>{p}</p>
-          ))}
+          {slide.contents.p.map(
+            (p, i) => p && <MarkdownHTML {...markDownProps(p)} key={i} />
+          )}
         </Card>
       )}
       {slide.type === "word-story" && (
@@ -147,9 +158,9 @@ function slideSwitch(slide) {
       {slide.type === "distribution-chart" && (
         <CardChart className="scrolly-card distribution-chart">
           {slide.contents.title && <h3>{slide.contents.title}</h3>}
-          {slide.contents.p.map((p, i) => (
-            <p key={i}>{p}</p>
-          ))}
+          {slide.contents.p.map(
+            (p, i) => p && <MarkdownHTML {...markDownProps(p)} key={i} />
+          )}
           <DistributionChart slideData={slide.data} slideId={slide.id} />
           <LegendContainer className="variable-legends">
             <p>Legend: </p>
@@ -164,9 +175,9 @@ function slideSwitch(slide) {
       {slide.type === "words-chart" && (
         <CardChart className="scrolly-card words-chart">
           {slide.contents.title && <h3>{slide.contents.title}</h3>}
-          {slide.contents.p.map((p, i) => (
-            <p key={i}>{p}</p>
-          ))}
+          {slide.contents.p.map(
+            (p, i) => p && <MarkdownHTML {...markDownProps(p)} key={i} />
+          )}
           <WordsChart slideData={slide.data} slideId={slide.id} />
         </CardChart>
       )}

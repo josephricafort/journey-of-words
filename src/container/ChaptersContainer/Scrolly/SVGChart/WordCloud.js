@@ -39,7 +39,7 @@ const WordCloud = ({ data, dataPerWordTally, outerSvgDims, padding }) => {
       });
 
   const distMainland = (d) =>
-    calcDistance(COORDS_HOMELAND.LAT, COORDS_HOMELAND.LONG, d.lat, d.long);
+    d && calcDistance(COORDS_HOMELAND.LAT, COORDS_HOMELAND.LONG, d.lat, d.long);
   const domainExtent = d3.extent(nodes.map((d) => d && distMainland(d)));
 
   const y = d3
@@ -78,7 +78,7 @@ const WordCloud = ({ data, dataPerWordTally, outerSvgDims, padding }) => {
     node.y = node.y * scale + center[1];
   }
 
-  simulation.tick(50);
+  simulation.tick(25);
   tick();
   group.node();
 

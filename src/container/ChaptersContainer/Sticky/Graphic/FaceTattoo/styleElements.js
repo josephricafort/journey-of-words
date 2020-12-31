@@ -2,7 +2,7 @@ const tattooAreas = [
   { id: "#seas", area: "tattooSea", icon: ["waves"] },
   { id: "#words", area: "tattooBoat", icon: ["boat"] },
   { id: "#lands", area: "tattooLand", icon: ["islands"] },
-  { id: "#nature", area: "tattooResource", icon: ["flower"] },
+  { id: "#nature", area: "tattooNature", icon: ["flower"] },
   { id: "#resources", area: "tattooResource", icon: ["fishes"] },
   { id: "#society", area: "tattooSociety", icon: ["humans"] },
   {
@@ -59,20 +59,6 @@ const areaIconsSelections = [
   { area: "#icon_country", icons: [] },
 ];
 
-const blinkKeyframes = `@keyframes blink {
-    0% {
-      opacity: 1;
-    }
-  
-    50% {
-      opacity: 0;
-    }
-  
-    100% {
-      opacity: 1;
-    }
-  }`;
-
 const blinkAnim = `animation: blink 1.25s linear infinite;`;
 
-export { tattooAreas, blinkKeyframes, blinkAnim };
+export { tattooAreas, blinkAnim };

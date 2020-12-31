@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import AreaIcons from "./AreaIcons";
-import { tattooAreas, blinkKeyframes, blinkAnim } from "./styleElements";
+import { tattooAreas, blinkAnim } from "./styleElements";
 
 const SVG = styled.svg`
   ${({ data, currData, currSlideType, theme }) => {
@@ -10,14 +10,16 @@ const SVG = styled.svg`
     const currTattooIntro = (area) => currData.area === area;
     const createTattooAreaStyles = () => {
       let styles = ``;
+      const animateDuringTattoo = (t) =>
+        currSlideType === "face-tattoo" && currTattooIntro(t.area);
       tattooAreas.forEach(
         (t) =>
           (styles += `${t.id} {${
             tattooIsShown(t.area) ? `opacity: 1;` : `opacity: 0;`
           }
-          ${currSlideType && currTattooIntro(t.area) ? blinkAnim : ``}
+          ${animateDuringTattoo(t) ? blinkAnim : ``}
           ${
-            currSlideType && currTattooIntro(t.area)
+            animateDuringTattoo(t)
               ? `fill: ${theme.fill2};`
               : `fill: ${theme.grey6};`
           };
@@ -25,9 +27,22 @@ const SVG = styled.svg`
       );
       return styles;
     };
+    const blinkKeyframes = ({ grey6, fill2 }) => `@keyframes blink {
+      0% {
+        fill: ${fill2};
+      }
+    
+      50% {
+        fill: ${grey6};
+      }
+    
+      100% {
+        fill: ${fill2};
+      }
+    }`;
 
     return `
-    ${blinkKeyframes}
+    ${blinkKeyframes(theme)}
 
     #words, #seas, #lands,
     #nature, #resources, #society,

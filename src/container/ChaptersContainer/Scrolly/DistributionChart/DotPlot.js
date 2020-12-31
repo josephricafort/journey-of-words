@@ -106,7 +106,6 @@ const DotPlot = ({ variableData, variable }) => {
               cx={cx(i) || 5}
               cy={cy(i) || 5}
               r={rad}
-              fill={"pink"}
               key={i}
               keyObj={"value" + val}
               objKeys={objKeys}
