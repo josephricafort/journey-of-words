@@ -93,11 +93,6 @@ const Earth = () => {
     (theme === CHAPTER_NAMES[3] && MAPBOX_STYLE_EXTRACTION) ||
     (theme === CHAPTER_NAMES[4] && MAPBOX_STYLE_FATE);
 
-  console.log("theme.medium");
-  console.log(theme.medium);
-  console.log("windowWidth");
-  console.log(windowWidth);
-
   const leafletConfig = {
     center: [0, 160],
     zoomSnap: 0.25,
