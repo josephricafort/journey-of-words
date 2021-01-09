@@ -36,6 +36,8 @@ export const DB_GITHUB_LANG_HEIRARCHY_ARR =
 export const DB_GITHUB_API =
   "https://raw.githubusercontent.com/josephricafort/journey-of-words-r-data/master/api/";
 export const DB_GITHUB_API_WORDS = DB_GITHUB_API + "wordsinfodata/";
+export const DB_GITHUB_API_LOCATIONS = DB_GITHUB_API + "locationsdata/";
+export const DB_GITHUB_API_PERWORDTALLY = DB_GITHUB_API + "dataperwordtally/";
 export const DB_GITHUB_API_PULOTU = DB_GITHUB_API + "pulotudata/";
 
 // mapbox

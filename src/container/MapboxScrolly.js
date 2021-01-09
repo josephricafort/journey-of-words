@@ -256,8 +256,8 @@ const Chapter = ({
         {image && <CardImage src={image} alt={title}></CardImage>}
         {(Array.isArray(description) && (
           <div>
-            {description.map((d) => (
-              <MarkdownHTML {...markDownProps(d)} />
+            {description.map((d, i) => (
+              <MarkdownHTML {...markDownProps(d)} key={i} />
             ))}
           </div>
         )) ||

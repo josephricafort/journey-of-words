@@ -1,10 +1,14 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import styled from "styled-components";
 import MarkdownHTML from "react-markdown/with-html";
 
 import DistributionChart from "../ChaptersContainer/Scrolly/DistributionChart/DistributionChart";
-import WordsChart from "../ChaptersContainer/Scrolly/WordsChart";
+// import WordsChart from "../ChaptersContainer/Scrolly/WordsChart";
 import { Word } from "./styledElements";
+
+const WordsChart = lazy(() =>
+  import("../ChaptersContainer/Scrolly/WordsChart")
+);
 
 const CardWrapper = styled.div`
   display: block;
@@ -178,7 +182,9 @@ function slideSwitch(slide) {
           {slide.contents.p.map(
             (p, i) => p && <MarkdownHTML {...markDownProps(p)} key={i} />
           )}
-          <WordsChart slideData={slide.data} slideId={slide.id} />
+          <Suspense fallback={<div>Loading words chart...</div>}>
+            <WordsChart slideData={slide.data} slideId={slide.id} />
+          </Suspense>
         </CardChart>
       )}
     </CardWrapper>
