@@ -24,7 +24,6 @@ const Container = styled.div`
 
 const FaceTattoo = () => {
   const { currentSlideData } = useContext(Context)[0];
-  console.log(useContext(Context)[0]);
   const { type, tattoo } = currentSlideData || {};
 
   const [statesFaceTattoo, setStatesFaceTattoo] = useState(iniFaceTattoo);

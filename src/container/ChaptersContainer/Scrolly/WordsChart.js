@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useMemo } from "react";
 import styled from "styled-components";
 import axios from "axios";
 
@@ -9,7 +9,10 @@ import {
   minReducer,
   maxReducer,
 } from "../../../utils/utils";
-import { DB_GITHUB_API_WORDS } from "../../../utils/constants";
+import {
+  DB_GITHUB_API_WORDS,
+  DB_GITHUB_API_LOCATIONS,
+} from "../../../utils/constants";
 import SVGChart from "./SVGChart/SVGChart";
 import { Context } from "../../../storeContext/Store";
 
@@ -72,13 +75,15 @@ const WordsChart = ({ slideData }) => {
   const { currentSlideIndex } = useContext(Context)[0];
 
   const [wordsInfoData, setWordsInfoData] = useState([[], [], []]);
+  // const [locationsData, setLocationsData] = useState([]);
+
   const categoryList = wordsItems.map((cat) => cat.category);
   const wordsPerCatList = (cat) =>
     wordsItems.find((wd) => wd.category === cat).wordsEn;
   const [activeCat, setActiveCat] = useState(categoryList[0]);
   const [activeWord, setActiveWord] = useState(wordsPerCatList(activeCat)[0]);
 
-  const fetchWordsInfoData = () => {
+  const fetchData = () => {
     axios
       .all(
         wordsPerCatList(activeCat).map((wd) =>
@@ -94,42 +99,44 @@ const WordsChart = ({ slideData }) => {
         console.log(error);
       });
   };
-  useEffect(fetchWordsInfoData, [activeCat]);
+  useEffect(fetchData, [activeCat]);
 
   // Derive data for location names (LocNames group)
   const locationsList = [
     ...new Set(wordsInfoData.flat().map((e) => e.langLocation)),
   ].filter((loc) => loc);
 
-  const locationsData = locationsList.map((loc) => {
-    const dataPerLocation = wordsInfoData
-      .flat()
-      .filter((w) => w.langLocation === loc);
-    const dataPerLocLat = dataPerLocation.map((e) => e.lat);
-    const dataPerLocLong = dataPerLocation.map((e) => e.long);
+  const generateLocationsData = (data) =>
+    locationsList.map((loc) => {
+      const dataPerLocation = data.flat().filter((w) => w.langLocation === loc);
+      const dataPerLocLat = dataPerLocation.map((e) => e.lat);
+      const dataPerLocLong = dataPerLocation.map((e) => e.long);
 
-    const latMean = dataPerLocLat.reduce(meanReducer);
-    const longMean = dataPerLocLong.reduce(meanReducer);
-    const latMin = dataPerLocLat.reduce(minReducer);
-    const longMin = dataPerLocLong.reduce(minReducer);
-    const latMax = dataPerLocLat.reduce(maxReducer);
-    const longMax = dataPerLocLong.reduce(maxReducer);
+      const latMean = dataPerLocLat.reduce(meanReducer);
+      const longMean = dataPerLocLong.reduce(meanReducer);
+      const latMin = dataPerLocLat.reduce(minReducer);
+      const longMin = dataPerLocLong.reduce(minReducer);
+      const latMax = dataPerLocLat.reduce(maxReducer);
+      const longMax = dataPerLocLong.reduce(maxReducer);
 
-    const distRangeMin = distFromHomeland(latMin, longMin);
-    const distRangeMax = distFromHomeland(latMax, longMax);
+      const distRangeMin = distFromHomeland(latMin, longMin);
+      const distRangeMax = distFromHomeland(latMax, longMax);
 
-    return {
-      langLocation: loc,
-      latMean,
-      longMean,
-      latMin,
-      longMin,
-      latMax,
-      longMax,
-      distRangeMin,
-      distRangeMax,
-    };
-  });
+      return {
+        langLocation: loc,
+        latMean,
+        longMean,
+        latMin,
+        longMin,
+        latMax,
+        longMax,
+        distRangeMin,
+        distRangeMax,
+      };
+    });
+  const locationsData = useMemo(() => generateLocationsData(wordsInfoData), [
+    wordsInfoData,
+  ]);
 
   const wordProtoAn = (wordEn) => {
     const currCat = wordsItems.find((cat) => activeCat === cat.category);
