@@ -55,9 +55,9 @@ const Wrapper = styled.div`
   }
 
   @media (${(props) => props.theme.breakpointLarge}) {
-    max-height: 100vh;
+    max-height: calc(100vh - 50px);
     max-width: 1400px;
-    margin: auto;
+    margin: 25px auto;
   }
 `;
 
