@@ -27,25 +27,26 @@ const GlobalStyle = createGlobalStyle`
         font-family: ${(props) => props.theme.serif};
     }
 
-    .word-an {
-        display: inline-block;
-        text-align: left;
-        font-family: ${(props) => props.theme.cursive};
-        font-size: 28px;
-        background-color: ${(props) => props.theme.fill1};
-        margin: 10px;
-        margin-left: 0;
-        padding: 5px;
-    }
-
-    .word-en {
-        display: inline-block;
-        text-align: left;
-        font-family: ${(props) => props.theme.sansserif};
-        font-size: 18px;
-        opacity: 0.8;
-        margin: 10px;
-        margin-left: 0;
+    .word {
+        &-an {
+            display: inline-block;
+            text-align: left;
+            margin: 10px;
+            margin-left: 0;
+            font-family: ${(props) => props.theme.cursive};
+            font-size: 28px;
+            background-color: ${(props) => props.theme.fill1};
+            padding: 5px;
+        }
+        &-en {
+            display: inline-block;
+            text-align: left;
+            margin: 10px;
+            margin-left: 0;
+            font-family: ${(props) => props.theme.sansserif};
+            font-size: 18px;
+            opacity: 0.8;
+        }
     }
 
     .graphic-desc {
