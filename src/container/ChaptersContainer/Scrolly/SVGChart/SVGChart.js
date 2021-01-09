@@ -19,10 +19,10 @@ const WordsDistribution = lazy(() => import("./WordsDistribution"));
 
 const SVGWrapper = styled.div`
   text-align: left;
-  min-height: 500px;
+  min-height: 400px;
   height: 100%;
 
-  @media (max-width: ${(props) => props.theme.medium}{
+  @media (max-width: ${(props) => props.theme.breakpointMedium}{
     svg {
       width: 0 !important;
     }
@@ -42,7 +42,7 @@ const SVGChart = ({ data, locationsData }) => {
   const [dataOfWord, setDataOfWord] = useState([]);
   // const [dataPerWordTally, setDataPerWordTally] = useState([]);
   const [svgRef, svgDims] = useDimensions();
-  const height = 500;
+  const height = 400;
 
   const generateDataOfWord = () =>
     setDataOfWord(

@@ -21,8 +21,7 @@ const Selection = styled.div`
   display: block;
   text-align: left;
   max-width: 1400px;
-  -webkit-overflow-scrolling: touch;
-  overflow: scroll;
+  overflow-x: auto;
   white-space: nowrap;
 `;
 

@@ -6,12 +6,13 @@ import React, {
   lazy,
   Suspense,
 } from "react";
-import styled from "styled-components";
+import styled, { ThemeContext } from "styled-components";
 import { Map as LeafletMap, TileLayer } from "react-leaflet";
 import { Projection } from "leaflet";
 import axios from "axios";
 
 import { Context } from "../../../../storeContext/Store";
+import useWindowDimensions from "../../../../utils/useWindowDimensions";
 import { removeStringSpaces } from "../../../../utils/utils";
 import {
   CHAPTER_NAMES,
@@ -38,8 +39,7 @@ const Wrapper = styled.div`
   left: 50%;
   transform: translate(-50%, 0);
   max-width: 1000px;
-  max-height: 65vh;
-  margin: auto;
+  max-height: 100vw;
 
   .leaflet-map {
     position: absolute;
@@ -48,16 +48,23 @@ const Wrapper = styled.div`
     width: 100%;
     border: 0px;
     border-radius: 50vh;
-    // height: 100vh;
 
     .tooltip {
       padding: 2px;
     }
   }
+
+  @media (${(props) => props.theme.breakpointLarge}) {
+    max-height: 1000px;
+    max-width: 1200px;
+    margin: auto;
+  }
 `;
 
 const Earth = () => {
   const mapRef = useRef(Map);
+  const { width: windowWidth } = useWindowDimensions();
+  const theme = useContext(ThemeContext);
 
   const [scatterPlotData, setScatterPlotData] = useState([{}, {}, {}]);
   const { currentSlideData, currentChapterTheme } = useContext(Context)[0];
@@ -86,9 +93,18 @@ const Earth = () => {
     (theme === CHAPTER_NAMES[3] && MAPBOX_STYLE_EXTRACTION) ||
     (theme === CHAPTER_NAMES[4] && MAPBOX_STYLE_FATE);
 
+  console.log("theme.medium");
+  console.log(theme.medium);
+  console.log("windowWidth");
+  console.log(windowWidth);
+
   const leafletConfig = {
-    center: [0, 180],
-    zoom: 2,
+    center: [0, 160],
+    zoomSnap: 0.25,
+    zoom:
+      (windowWidth > theme.large && 2.5) ||
+      (windowWidth > theme.medium && 2) ||
+      1.5,
     maxZoom: 10,
     minZoom: 1,
     maxBounds: [
@@ -117,7 +133,7 @@ const Earth = () => {
   const WordMarkersLayer = lazy(() => import("./WordMarkersLayer"));
 
   return (
-    <Wrapper className="earth-wrapper">
+    <Wrapper className="earth-wrapper" windowWidth={windowWidth}>
       <LeafletMap className="leaflet-map" {...leafletConfig}>
         <TileLayer {...tileLayerConfig} />
         {type === "word-story" && (

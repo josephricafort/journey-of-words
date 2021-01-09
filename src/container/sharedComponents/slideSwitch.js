@@ -16,6 +16,11 @@ const CardWrapper = styled.div`
   min-height: 100vh;
   text-align: center;
   border: 3px solid ${({ theme }) => theme.stroke2}; // to remove before pub
+
+  @media (${(props) => props.theme.breakpointSmall}) {
+    padding: 5px;
+    padding-top: 5px;
+  }
 `;
 
 const Card = styled.div`
@@ -31,7 +36,7 @@ border: 1px solid ${({ theme, type }) =>
   theme.white};
 opacity: 0.95;
 max-width: 500px;
-padding: 20px 40px;
+padding: 10px;
 
 p {
   color: ${(props) => props.theme.black}
@@ -49,7 +54,7 @@ h2 {
 }
 
 @media (${(props) => props.theme.breakpointSmall}) {
-  padding: 30px;
+  padding: 20px;
   padding-top: 5px;
 }
 `;

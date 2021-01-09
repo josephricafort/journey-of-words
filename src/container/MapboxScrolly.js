@@ -199,7 +199,7 @@ const MapboxScrolly = (props) => {
 
 const CardWrapper = styled.div`
   max-width: 500px;
-  margin: 0 20px;
+  margin: 0 5px;
 
   &.step {
     padding: 50vh 0;

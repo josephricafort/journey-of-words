@@ -6,6 +6,8 @@ import { fullSubgroupName } from "../../../../utils/utils";
 
 const Container = styled.div`
   text-align: left;
+  max-height: 400px;
+  overflow-y: auto;
 `;
 
 const Subgroup = styled.div`
@@ -27,7 +29,7 @@ const Word = styled.span`
   margin: 2px 5px;
   background-color: ${(props) => props.count > 1 && props.color};
   font-family: ${(props) => props.theme.cursive};
-  font-size: ${(props) => props.fontSize || "12px"};
+  font-size: ${(props) => props.fontSize || "10px"};
   ${(props) =>
     props.count === 1 &&
     `text-decoration: underline solid ${props.theme.stroke1} 2px;`}
