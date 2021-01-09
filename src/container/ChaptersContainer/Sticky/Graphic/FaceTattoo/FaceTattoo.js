@@ -16,7 +16,7 @@ const Container = styled.div`
   opacity: 1;
 
   @media (${(props) => props.theme.breakpointMedium}) {
-    top: 5vw;
+    top: 50px;
     width: 200px;
     max-width: 800px;
   }

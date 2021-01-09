@@ -22,7 +22,7 @@ const GraphicWrapper = styled.div`
   position: absolute;
   top: 20px;
   width: calc(100% - 40px);
-  min-height: 50vh;
+  // min-height: 50vh;
   left: 50%;
   transform: translate(-50%, 0%);
   // border: 1px solid ${(props) => props.theme.yellow};
@@ -30,6 +30,10 @@ const GraphicWrapper = styled.div`
   max-width: 700px;
   opacity: 1;
   z-index: ${(props) => props.theme.zVisuals + props.zGraphic};
+
+  @media (${(props) => props.theme.breakpointMedium}) {
+    top: 0;
+  }
 `;
 
 const EarthWrapper = styled.div`

@@ -3,13 +3,14 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   position: absolute;
-  top: 5vw;
+  top: 0;
   left: 50%;
   transform: translate(-50%, 0);
   width: 100%;
   max-width: 400px;
 
   @media (${(props) => props.theme.breakpointMedium}) {
+    top: 50px;
     max-width: 500px;
   }
 `;

@@ -55,8 +55,8 @@ const Wrapper = styled.div`
   }
 
   @media (${(props) => props.theme.breakpointLarge}) {
-    max-height: 1000px;
-    max-width: 1200px;
+    max-height: 100vh;
+    max-width: 1400px;
     margin: auto;
   }
 `;
@@ -99,7 +99,7 @@ const Earth = () => {
     zoom:
       (windowWidth > theme.large && 2.5) ||
       (windowWidth > theme.medium && 2) ||
-      1.5,
+      1.25,
     maxZoom: 10,
     minZoom: 1,
     maxBounds: [
