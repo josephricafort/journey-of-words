@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 // import axios from "axios";
 import styled, { ThemeProvider } from "styled-components";
 
@@ -15,7 +15,7 @@ import { configureDataStore } from "./store/dataStore";
 //   SET_LANGUAGEINFO,
 //   SET_LANGHEIRARCHY,
 // } from "./utils/constants";
-import { useStore } from "./store/store";
+import { Context } from "./storeContext/Store";
 import IntroKicker from "./container/IntroKicker/IntroKicker";
 import MapboxScrolly from "./container/MapboxScrolly";
 // import MapExploration from "./container/MapExploration/MapExploration";
@@ -71,7 +71,8 @@ const ScrollyContainer = styled.section`
 configureDataStore();
 
 const StoryApp = () => {
-  const state = useStore()[0];
+  const [state, dispatch] = useContext(Context);
+  console.log(state);
   const { currentChapterTheme } = state;
   const { header, introKicker, mapboxScrolly, chaptersScrolly } = longform;
   const chapterThemeVars = chapterThemes[currentChapterTheme];

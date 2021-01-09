@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import mapboxgl from "mapbox-gl";
 import scrollama from "scrollama";
 import styled from "styled-components";
 
-import { useStore } from "../store/store";
+import { Context } from "../storeContext/Store";
 import { SET_CURRENTSLIDEDATA } from "../utils/constants";
 
 import MarkdownHTML from "react-markdown/with-html";
@@ -153,8 +153,11 @@ const MapboxScrolly = (props) => {
   };
   useEffect(configureMapboxScrolly, []);
 
-  const dispatch = useStore()[1];
-  useEffect(() => dispatch(SET_CURRENTSLIDEDATA, { id: 0 }), [currentChapter]);
+  const dispatch = useContext(Context)[1];
+  useEffect(
+    () => dispatch({ type: SET_CURRENTSLIDEDATA, payload: { id: 0 } }),
+    [currentChapter]
+  );
 
   const { alignment } = props.config || {};
   const currentChapterID = currentChapter.id;

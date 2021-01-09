@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Scrollama, Step } from "react-scrollama";
 
-import { useStore } from "../../../store/store";
+import { Context } from "../../../storeContext/Store";
+
 import { SET_CURRENTSLIDEDATA } from "../../../utils/constants";
 import slideSwitch from "../../sharedComponents/slideSwitch";
 
 const Scrolly = (chaptersconfig) => {
   const { slides } = chaptersconfig;
-  const dispatch = useStore()[1];
+  const dispatch = useContext(Context)[1];
 
   const [currentSlideData, setCurrentSlideData] = useState(slides[0]);
 
@@ -16,7 +17,7 @@ const Scrolly = (chaptersconfig) => {
   };
 
   useEffect(() => {
-    dispatch(SET_CURRENTSLIDEDATA, currentSlideData);
+    dispatch({ type: SET_CURRENTSLIDEDATA, payload: currentSlideData });
   }, [currentSlideData]);
 
   return (

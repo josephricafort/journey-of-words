@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Scrollama, Step } from "react-scrollama";
 import styled from "styled-components";
 
 import slideSwitch from "../sharedComponents/slideSwitch";
-import { useStore } from "../../store/store";
+import { Context } from "../../storeContext/Store";
 import { SET_CURRENTSLIDEDATA } from "../../utils/constants";
 
 const Container = styled.div`
@@ -14,16 +14,17 @@ const Container = styled.div`
 `;
 
 const IntroKicker = ({ slides }) => {
-  const dispatch = useStore()[1];
+  const dispatch = useContext(Context)[1];
   const [currentSlideData, setCurrentSlideData] = useState(slides[0]);
 
   const onStepEnter = ({ data: slideData }) => {
     setCurrentSlideData(slideData);
   };
 
-  useEffect(() => dispatch(SET_CURRENTSLIDEDATA, currentSlideData), [
-    currentSlideData,
-  ]);
+  useEffect(
+    () => dispatch({ type: SET_CURRENTSLIDEDATA, payload: currentSlideData }),
+    [currentSlideData]
+  );
 
   return (
     <Container className="intro-kicker">

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 
 import FaceWoman from "./FaceWoman";
-import { useStore } from "../../../../../store/store";
+import { Context } from "../../../../../storeContext/Store";
 import iniFaceTattoo from "./initFaceTattoo";
 
 const Container = styled.div`
@@ -23,7 +23,8 @@ const Container = styled.div`
 `;
 
 const FaceTattoo = () => {
-  const { currentSlideData } = useStore()[0];
+  const { currentSlideData } = useContext(Context)[0];
+  console.log(useContext(Context)[0]);
   const { type, tattoo } = currentSlideData || {};
 
   const [statesFaceTattoo, setStatesFaceTattoo] = useState(iniFaceTattoo);

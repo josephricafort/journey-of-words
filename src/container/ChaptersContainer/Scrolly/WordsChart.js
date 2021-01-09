@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import axios from "axios";
 
@@ -11,7 +11,7 @@ import {
 } from "../../../utils/utils";
 import { DB_GITHUB_API_WORDS } from "../../../utils/constants";
 import SVGChart from "./SVGChart/SVGChart";
-import { useStore } from "../../../store/store";
+import { Context } from "../../../storeContext/Store";
 
 const Selection = styled.div`
   position: relative;
@@ -69,7 +69,7 @@ const CurrentWord = styled.div`
 
 const WordsChart = ({ slideData }) => {
   const { wordsItems } = slideData;
-  const { currentSlideIndex } = useStore()[0];
+  const { currentSlideIndex } = useContext(Context)[0];
 
   const [wordsInfoData, setWordsInfoData] = useState([[], [], []]);
   const categoryList = wordsItems.map((cat) => cat.category);

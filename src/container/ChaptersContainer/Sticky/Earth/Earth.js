@@ -1,10 +1,17 @@
-import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
+import React, {
+  useState,
+  useEffect,
+  useContext,
+  useRef,
+  lazy,
+  Suspense,
+} from "react";
 import styled from "styled-components";
 import { Map as LeafletMap, TileLayer } from "react-leaflet";
 import { Projection } from "leaflet";
 import axios from "axios";
 
-import { useStore } from "../../../../store/store";
+import { Context } from "../../../../storeContext/Store";
 import { removeStringSpaces } from "../../../../utils/utils";
 import {
   CHAPTER_NAMES,
@@ -53,7 +60,7 @@ const Earth = () => {
   const mapRef = useRef(Map);
 
   const [scatterPlotData, setScatterPlotData] = useState([{}, {}, {}]);
-  const { currentSlideData, currentChapterTheme } = useStore()[0];
+  const { currentSlideData, currentChapterTheme } = useContext(Context)[0];
   const { type } = currentSlideData;
 
   const fetchScatterPlotData = () => {

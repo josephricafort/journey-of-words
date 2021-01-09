@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 import Scrolly from "./Scrolly/Scrolly";
 import Sticky from "./Sticky/Sticky";
-// import { useStore } from "../../store/store";
 
 const Container = styled.div`
   position: relative;

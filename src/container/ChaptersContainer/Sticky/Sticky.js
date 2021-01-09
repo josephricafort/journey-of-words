@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 
 import Earth from "./Earth/Earth";
 import FaceTattoo from "./Graphic/FaceTattoo/FaceTattoo";
 import GroupSilhouette from "./Graphic/FaceTattoo/GroupSilhouette";
-import { useStore } from "../../../store/store";
+import { Context } from "../../../storeContext/Store";
 
 const Container = styled.div`
   position: -webkit-sticky;
@@ -52,7 +52,7 @@ const FocusOverlay = styled.div`
 `;
 
 const Sticky = () => {
-  const state = useStore()[0];
+  const state = useContext(Context)[0];
   const { currentSlideData } = state;
   const { type } = currentSlideData;
 

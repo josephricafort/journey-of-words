@@ -70,7 +70,6 @@ const CardChart = styled(Card)`
 
 const CardKicker = styled(Card)`
   max-width: 500px;
-  margin-left: 20px;
   text-align: left;
 `;
 
