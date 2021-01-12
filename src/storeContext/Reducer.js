@@ -1,4 +1,8 @@
-import { SET_CURRENTSLIDEDATA, CHAPTER_NAMES } from "../utils/constants";
+import {
+  SET_CURRENTSLIDEDATA,
+  SET_DISTRIBUTIONDATA,
+  CHAPTER_NAMES,
+} from "../utils/constants";
 
 const Reducer = (state, action) => {
   // Slide data variables
@@ -17,6 +21,11 @@ const Reducer = (state, action) => {
           (chapterIndex === "3" && CHAPTER_NAMES.EXTRACTION) ||
           (chapterIndex === "4" && CHAPTER_NAMES.FATE),
         currentChapterIndex: chapterIndex,
+      };
+    case SET_DISTRIBUTIONDATA:
+      return {
+        ...state,
+        currentDistributionData: action.payload,
       };
     default:
       return state;

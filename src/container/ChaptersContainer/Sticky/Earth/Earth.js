@@ -67,10 +67,11 @@ const Earth = () => {
   const theme = useContext(ThemeContext);
 
   const [scatterPlotData, setScatterPlotData] = useState([{}, {}, {}]);
+  const [iconsPlotData, setIconsPlotData] = useState([{}, {}, {}]);
   const { currentSlideData, currentChapterTheme } = useContext(Context)[0];
   const { type } = currentSlideData;
 
-  const fetchScatterPlotData = () => {
+  const fetchData = () => {
     if (type === "word-story") {
       const { contents } = currentSlideData;
       const { wordEn } = contents;
@@ -83,8 +84,11 @@ const Earth = () => {
           console.log(error);
         });
     }
+    if (type === "distribution-chart") {
+      const { varItems } = currentSlideData.data;
+    }
   };
-  useEffect(fetchScatterPlotData, [currentSlideData]);
+  useEffect(fetchData, [currentSlideData]);
 
   const currentMapboxStyle = (theme) =>
     (theme === CHAPTER_NAMES.WORLD && MAPBOX_STYLE_WORLD) ||

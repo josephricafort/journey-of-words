@@ -1,10 +1,14 @@
-import React, { useState, useEffect, lazy, Suspense } from "react";
+import React, { useState, useEffect, useContext, lazy, Suspense } from "react";
 import styled from "styled-components";
 import axios from "axios";
 
 // import DotPlot from "./DotPlot";
-import { DB_GITHUB_API_PULOTU } from "../../../../utils/constants";
+import {
+  DB_GITHUB_API_PULOTU,
+  SET_DISTRIBUTIONDATA,
+} from "../../../../utils/constants";
 import { removeStringSpaces } from "../../../../utils/utils";
+import { Context } from "../../../../storeContext/Store";
 
 const Container = styled.div`
   position: relative;
@@ -23,6 +27,8 @@ const DistributionChart = ({ slideData }) => {
   const { varItems } = slideData;
 
   const [distributionData, setDistributionData] = useState([[], [], []]);
+  const [state, dispatch] = useContext(Context);
+  const { currentDistributionData } = state;
 
   const fetchDistributionData = () => {
     axios
@@ -36,14 +42,22 @@ const DistributionChart = ({ slideData }) => {
           )
         )
       )
-      .then((responseArray) =>
-        setDistributionData(responseArray.map((res) => JSON.parse(res.data)))
-      )
+      .then((responseArray) => {
+        setDistributionData(responseArray.map((res) => JSON.parse(res.data)));
+      })
       .catch((error) => {
         console.log(error);
       });
   };
   useEffect(fetchDistributionData, []);
+
+  const updateDistributionData = () => {
+    dispatch({
+      type: SET_DISTRIBUTIONDATA,
+      payload: distributionData,
+    });
+  };
+  useEffect(updateDistributionData, [distributionData]);
 
   const variableData = (vIndex) => distributionData[vIndex];
 
@@ -53,10 +67,12 @@ const DistributionChart = ({ slideData }) => {
         <div className="dotplot-wrapper" key={vIndex}>
           <h5>{v.varDefinition}</h5>
           <Suspense fallback={<div>Generating data...</div>}>
-            <DotPlot
-              variableData={variableData(vIndex)}
-              variable={v.variable}
-            ></DotPlot>
+            {
+              <DotPlot
+                variableData={variableData(vIndex)}
+                variable={v.variable}
+              ></DotPlot>
+            }
           </Suspense>
         </div>
       ))}

@@ -647,7 +647,7 @@ const longform = {
       },
       {
         type: "face-tattoo",
-        id: 1.22,
+        id: 1.24,
         tattoo: {
           area: "tattooBoat",
           isShown: true,

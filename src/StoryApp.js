@@ -72,7 +72,6 @@ configureDataStore();
 
 const StoryApp = () => {
   const [state, dispatch] = useContext(Context);
-  console.log(state);
   const { currentChapterTheme } = state;
   const { header, introKicker, mapboxScrolly, chaptersScrolly } = longform;
   const chapterThemeVars = chapterThemes[currentChapterTheme];
