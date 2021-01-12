@@ -1,10 +1,15 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Scrollama, Step } from "react-scrollama";
+import styled from "styled-components";
 
 import { Context } from "../../../storeContext/Store";
 
 import { SET_CURRENTSLIDEDATA } from "../../../utils/constants";
 import slideSwitch from "../../sharedComponents/slideSwitch";
+
+const Wrapper = styled.div`
+  transform: translateY(-100vh);
+`;
 
 const Scrolly = (chaptersconfig) => {
   const { slides } = chaptersconfig;
@@ -21,22 +26,23 @@ const Scrolly = (chaptersconfig) => {
   }, [currentSlideData]);
 
   return (
-    <Scrollama
-      className="intro-kicker-scrollama"
-      onStepEnter={onStepEnter}
-      offset={0.75}
-      debug
-    >
-      {slides.map((slide) => (
-        <Step
-          className="intro-kicker-step"
-          key={slide.id + "-" + slide.chapter}
-          data={slide}
-        >
-          {slideSwitch(slide)}
-        </Step>
-      ))}
-    </Scrollama>
+    <Wrapper>
+      <Scrollama
+        className="intro-kicker-scrollama"
+        onStepEnter={onStepEnter}
+        offset={0.5}
+      >
+        {slides.map((slide) => (
+          <Step
+            className="intro-kicker-step"
+            key={slide.id + "-" + slide.chapter}
+            data={slide}
+          >
+            {slideSwitch(slide)}
+          </Step>
+        ))}
+      </Scrollama>
+    </Wrapper>
   );
 };
 

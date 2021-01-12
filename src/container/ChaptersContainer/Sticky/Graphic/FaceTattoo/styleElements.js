@@ -1,7 +1,12 @@
 const tattooAreas = [
-  { id: "#seas", area: "tattooSea", icon: ["waves"] },
-  { id: "#words", area: "tattooBoat", icon: ["boat"] },
-  { id: "#lands", area: "tattooLand", icon: ["islands"] },
+  {
+    id: "#seas, #words, #lands",
+    area: "tattooWorld",
+    icon: ["boat", "islands", "waves"],
+  },
+  // { id: "#seas", area: "tattooSea", icon: ["waves"] },
+  // { id: "#words", area: "tattooBoat", icon: ["boat"] },
+  // { id: "#lands", area: "tattooLand", icon: ["islands"] },
   { id: "#nature", area: "tattooNature", icon: ["flower"] },
   { id: "#resources", area: "tattooResource", icon: ["fishes"] },
   { id: "#society", area: "tattooSociety", icon: ["humans"] },

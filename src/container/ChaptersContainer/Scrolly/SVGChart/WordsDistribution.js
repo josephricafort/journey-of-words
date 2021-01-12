@@ -44,7 +44,7 @@ const WordsDistribution = ({ data }) => {
   const colorFillScale = d3
     .scaleLinear()
     .domain(domainExtent)
-    .range([theme.backgroundColor, theme.fill3])
+    .range([theme.fill1, theme.fill3])
     .interpolate(d3.interpolateHcl);
 
   const fontSizeScale = (count) => {

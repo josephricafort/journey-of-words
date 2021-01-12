@@ -9,11 +9,11 @@ export const configureDataStore = () => {
       // Update the theme here when the stepIndex is updated
       const chapterIndex = id.toString().split(".")[0];
       const currentChapterTheme =
-        (chapterIndex === "0" && CHAPTER_NAMES[0]) ||
-        (chapterIndex === "1" && CHAPTER_NAMES[1]) ||
-        (chapterIndex === "2" && CHAPTER_NAMES[2]) ||
-        (chapterIndex === "3" && CHAPTER_NAMES[3]) ||
-        (chapterIndex === "4" && CHAPTER_NAMES[4]);
+        (chapterIndex === "0" && CHAPTER_NAMES.WORLD) ||
+        (chapterIndex === "1" && CHAPTER_NAMES.NATURE) ||
+        (chapterIndex === "2" && CHAPTER_NAMES.CONVERSION) ||
+        (chapterIndex === "3" && CHAPTER_NAMES.EXTRACTION) ||
+        (chapterIndex === "4" && CHAPTER_NAMES.FATE);
 
       return {
         currentSlideData: slideData,

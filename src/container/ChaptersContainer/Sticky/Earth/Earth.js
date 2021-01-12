@@ -87,11 +87,11 @@ const Earth = () => {
   useEffect(fetchScatterPlotData, [currentSlideData]);
 
   const currentMapboxStyle = (theme) =>
-    (theme === CHAPTER_NAMES[0] && MAPBOX_STYLE_WORLD) ||
-    (theme === CHAPTER_NAMES[1] && MAPBOX_STYLE_NATURE) ||
-    (theme === CHAPTER_NAMES[2] && MAPBOX_STYLE_CONVERSION) ||
-    (theme === CHAPTER_NAMES[3] && MAPBOX_STYLE_EXTRACTION) ||
-    (theme === CHAPTER_NAMES[4] && MAPBOX_STYLE_FATE);
+    (theme === CHAPTER_NAMES.WORLD && MAPBOX_STYLE_WORLD) ||
+    (theme === CHAPTER_NAMES.NATURE && MAPBOX_STYLE_NATURE) ||
+    (theme === CHAPTER_NAMES.CONVERSION && MAPBOX_STYLE_CONVERSION) ||
+    (theme === CHAPTER_NAMES.EXTRACTION && MAPBOX_STYLE_EXTRACTION) ||
+    (theme === CHAPTER_NAMES.FATE && MAPBOX_STYLE_FATE);
 
   const leafletConfig = {
     center: [0, 160],

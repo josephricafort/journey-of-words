@@ -31,8 +31,7 @@ const IntroKicker = ({ slides }) => {
       <Scrollama
         className="scrolly-scrollama"
         onStepEnter={onStepEnter}
-        offset={0.75}
-        debug
+        offset={0.5}
       >
         {slides.map((slide, index) => (
           <Step

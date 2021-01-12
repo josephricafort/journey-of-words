@@ -55,11 +55,11 @@ export const mapboxStyles = {
   exploration: "ckihdysh06grw19k06mn5v8p9",
 };
 
-const IS_DRAFT = true;
+const IS_DRAFT = false;
 function generateStylePath(id, isDraft) {
   return `https://api.mapbox.com/styles/v1/${MAPBOX_USERNAME}/${id}/${
     isDraft ? `draft` : ``
-  }/tiles/256/{z}/{x}/{y}?access_token=${MAPBOX_ACCESS_TOKEN}`;
+  }/tiles/256/{z}/{x}/{y}?access_token=${MAPBOX_ACCESS_TOKEN}&fresh=true`;
 }
 
 export const MAPBOX_STYLE_WORLD = generateStylePath(mapboxStyles.world, true);
@@ -80,10 +80,10 @@ export const MAPBOX_STYLE_EXPLORATION = generateStylePath(
 export const MAPBOX_ATTRIBUTION =
   "Map data &copy; <a href=&quot;https://www.openstreetmap.org/&quot;>OpenStreetMap</a> contributors, <a href=&quot;https://creativecommons.org/licenses/by-sa/2.0/&quot;>CC-BY-SA</a>, Imagery &copy; <a href=&quot;https://www.mapbox.com/&quot;>Mapbox</a>";
 
-export const CHAPTER_NAMES = [
-  "world",
-  "nature",
-  "conversion",
-  "extraction",
-  "fate",
-];
+export const CHAPTER_NAMES = {
+  WORLD: "world",
+  NATURE: "nature",
+  CONVERSION: "conversion",
+  EXTRACTION: "extraction",
+  FATE: "fate",
+};

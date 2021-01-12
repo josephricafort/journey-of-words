@@ -22,6 +22,7 @@ const longform = {
         {
           type: "intro",
           id: 0.1,
+          chapter: "world",
           contents: {
             chapterLabel: "Chapter I",
             title: "World",
@@ -565,6 +566,20 @@ const longform = {
       {
         type: "face-tattoo",
         id: 1.21,
+        tattoo: {
+          area: "tattooWorld",
+          isShown: true,
+        },
+        contents: {
+          p: [
+            "**Tattoos** showcase one's life experiences in most Austronesian cultures, especially in Philippine and Polynesian cultures",
+            "**Boat** as a vessel of *oral traditions*, **islands** as a symbol of *adventure and exploration* and **waves** representing the *mastery of seafaring*. These are some of the important things common among most Austronesian cultures",
+          ],
+        },
+      },
+      {
+        type: "face-tattoo",
+        id: 1.22,
         tattoo: {
           area: "tattooNature",
           isShown: true,

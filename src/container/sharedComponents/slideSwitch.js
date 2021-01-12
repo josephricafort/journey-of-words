@@ -5,29 +5,29 @@ import MarkdownHTML from "react-markdown/with-html";
 import DistributionChart from "../ChaptersContainer/Scrolly/DistributionChart/DistributionChart";
 // import WordsChart from "../ChaptersContainer/Scrolly/WordsChart";
 import { Word } from "./styledElements";
+import { CHAPTER_NAMES } from "../../utils/constants";
 
 const WordsChart = lazy(() =>
   import("../ChaptersContainer/Scrolly/WordsChart")
 );
 
 const CardWrapper = styled.div`
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 0 20px;
-  min-height: 100vh;
+  min-height: 150vh;
   text-align: center;
   border: 3px solid ${({ theme }) => theme.stroke2}; // to remove before pub
 
   @media (${(props) => props.theme.breakpointSmall}) {
-    padding: 5px;
-    padding-top: 5px;
+    padding: 0;
   }
 `;
 
 const Card = styled.div`
 position: relative;
-margin: 0 auto;
-margin-top: 50vh;
-transform: translateY(-50%);
+margin: auto;
 background-color: ${({ theme, type }) =>
   (type === "quote" && theme.fill1) || theme.white};
 border: 1px solid ${({ theme, type }) =>
@@ -39,7 +39,7 @@ max-width: 500px;
 padding: 10px;
 
 p {
-  color: ${(props) => props.theme.black}
+  color: ${({ theme }) => theme.black}
   opacity: 1;
   text-align: left;
   &.chapter-roman-numeral {
@@ -49,25 +49,44 @@ p {
 }
 
 h2 {
-  color: ${(props) => props.theme.black}
+  color: ${({ theme }) => theme.black}
   text-align: center;
 }
 
-@media (${(props) => props.theme.breakpointSmall}) {
+@media (${({ theme }) => theme.breakpointSmall}) {
   padding: 20px;
   padding-top: 5px;
 }
 `;
 
 const CardIntro = styled(Card)`
-  max-width: 500px;
-  vertical-align: middle;
-  background-color: ${({ theme }) => theme.backgroundColor};
+  width: 100vw;
+  height: 150vh;
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  background-color: ${({ theme, chapter }) =>
+    (chapter === CHAPTER_NAMES.WORLD && theme.blue2) ||
+    (chapter === CHAPTER_NAMES.NATURE && theme.green2) ||
+    (chapter === CHAPTER_NAMES.CONVERSION && theme.yellow2) ||
+    (chapter === CHAPTER_NAMES.EXTRACTION && theme.red2) ||
+    (chapter === CHAPTER_NAMES.FATE && theme.purple2)};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   p {
     text-align: center;
   }
+
+  @media (${({ theme }) => theme.breakpointSmall}) {
+    padding: 0;
+    padding-top: 5px;
+  }
 `;
+
+const ContentsWrapper = styled.div``;
 
 const CardChart = styled(Card)`
   max-width: 800px;
@@ -127,12 +146,16 @@ function slideSwitch(slide) {
   return (
     <CardWrapper className="scrolly-card-wrapper" type={slide.type}>
       {slide.type === "intro" && (
-        <CardIntro className="scrolly-card intro" {...slide}>
-          <p className="chapter-roman-numeral">{slide.contents.chapterLabel}</p>
-          <h1 className="chapter-title">{slide.contents.title}</h1>
-          {slide.contents.byline && (
-            <p className="chapter-byline">{slide.contents.byline}</p>
-          )}
+        <CardIntro className="scrolly-card intro" chapter={slide.chapter}>
+          <ContentsWrapper className="contents-wrapper">
+            <p className="chapter-roman-numeral">
+              {slide.contents.chapterLabel}
+            </p>
+            <h1 className="chapter-title">{slide.contents.title}</h1>
+            {slide.contents.byline && (
+              <p className="chapter-byline">{slide.contents.byline}</p>
+            )}
+          </ContentsWrapper>
         </CardIntro>
       )}
       {slide.type === "quote" && (

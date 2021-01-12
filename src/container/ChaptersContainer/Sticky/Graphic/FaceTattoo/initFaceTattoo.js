@@ -1,19 +1,29 @@
 const initFaceTattoo = [
   {
-    area: "tattooSea",
+    area: "",
     isShown: false,
-    icon: "waves",
+    icon: "",
   },
   {
-    area: "tattooBoat",
+    area: "tattooWorld",
     isShown: false,
-    icon: "boat",
+    icon: ["boat", "islands", "waves"],
   },
-  {
-    area: "tattooLand",
-    isShown: false,
-    icon: "islands",
-  },
+  // {
+  //   area: "tattooBoat",
+  //   isShown: false,
+  //   icon: "boat",
+  // },
+  // {
+  //   area: "tattooLand",
+  //   isShown: false,
+  //   icon: "islands",
+  // },
+  // {
+  //   area: "tattooSea",
+  //   isShown: false,
+  //   icon: "waves",
+  // },
   {
     area: "tattooNature",
     isShown: false,
