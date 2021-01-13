@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import D3SvgOverlay from "../../../../utils/D3SvgOverlay/D3SvgOverlay";
+import { ThemeContext } from "styled-components";
 
 import { occlusion } from "../../../../utils/utils";
 
 const WordMarkersLayer = ({ data }) => {
+  const theme = useContext(ThemeContext);
+
   function drawCallback(selection, projection, data) {
     const svg = selection;
     const latLngToLayer = (coords) => projection.latLngToLayerPoint(coords);
@@ -14,7 +17,8 @@ const WordMarkersLayer = ({ data }) => {
       .data(data)
       .join("text")
       .text((d) => d.wordAn)
-      .attr("font-size", 14 / projection.scale + "px")
+      .attr("font-size", 10 / projection.scale + "px")
+      .attr("font-family", theme.cursive)
       .attr(
         "x",
         (d) => d.lat && d.long && latLngToLayer([d.lat, longMeridian(d.long)]).x
@@ -34,7 +38,7 @@ const WordMarkersLayer = ({ data }) => {
 
   return (
     <D3SvgOverlay
-      className="markers-layer"
+      className="word-markers-layer"
       data={data}
       drawCallback={drawCallback}
     ></D3SvgOverlay>

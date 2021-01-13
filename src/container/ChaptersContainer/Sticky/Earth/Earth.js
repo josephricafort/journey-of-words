@@ -68,7 +68,11 @@ const Earth = () => {
 
   const [scatterPlotData, setScatterPlotData] = useState([{}, {}, {}]);
   const [iconsPlotData, setIconsPlotData] = useState([{}, {}, {}]);
-  const { currentSlideData, currentChapterTheme } = useContext(Context)[0];
+  const {
+    currentSlideData,
+    currentChapterTheme,
+    currentDistributionData,
+  } = useContext(Context)[0];
   const { type } = currentSlideData;
 
   const fetchData = () => {
@@ -83,9 +87,6 @@ const Earth = () => {
         .catch((error) => {
           console.log(error);
         });
-    }
-    if (type === "distribution-chart") {
-      const { varItems } = currentSlideData.data;
     }
   };
   useEffect(fetchData, [currentSlideData]);
@@ -130,6 +131,7 @@ const Earth = () => {
   };
 
   const WordMarkersLayer = lazy(() => import("./WordMarkersLayer"));
+  const IconMarkersLayer = lazy(() => import("./IconMarkersLayer"));
 
   return (
     <Wrapper className="earth-wrapper" windowWidth={windowWidth}>
@@ -138,6 +140,11 @@ const Earth = () => {
         {type === "word-story" && (
           <Suspense fallback={<div>Generating scatterPlot map...</div>}>
             <WordMarkersLayer data={scatterPlotData} />
+          </Suspense>
+        )}
+        {type === "distribution-chart" && (
+          <Suspense fallback={<div>Generating iconPlot map...</div>}>
+            <IconMarkersLayer data={currentDistributionData} />
           </Suspense>
         )}
       </LeafletMap>

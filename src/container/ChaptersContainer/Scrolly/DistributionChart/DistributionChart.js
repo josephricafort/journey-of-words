@@ -28,7 +28,6 @@ const DistributionChart = ({ slideData }) => {
 
   const [distributionData, setDistributionData] = useState([[], [], []]);
   const [state, dispatch] = useContext(Context);
-  const { currentDistributionData } = state;
 
   const fetchDistributionData = () => {
     axios
