@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import * as d3 from "d3";
 import { Delaunay } from "d3-delaunay";
+import { ThemeContext } from "styled-components";
 
 import D3SvgOverlay from "../../../../utils/D3SvgOverlay/D3SvgOverlay";
 
 const VoronoiGrid = ({ data, earthWrapDims }) => {
   const { width, height } = earthWrapDims;
-  console.log(width + " x " + height);
+  const theme = useContext(ThemeContext);
 
   function drawCallback(selection, projection, data) {
     const svg = selection;
@@ -34,11 +35,29 @@ const VoronoiGrid = ({ data, earthWrapDims }) => {
       (d) => d.y
     ).voronoi([-width, -height, width, height]);
 
-    const grid = svg
-      .selectAll("path")
+    const circles = svg
+      .selectAll("circle")
+      .data(coordsArray)
+      .join("circle")
+      .attr("class", (d, i) => `circle-${i}`)
+      .attr("clip-path", (d, i) => `url(#clip-${i})`)
+      .style("clip-path", (d, i) => `url(#clip-${i})`) // For safari
+      .attr("cx", (d) => d.x)
+      .attr("cy", (d) => d.y)
+      .attr("r", 50)
+      .style("fill", (d) => theme.white)
+      .style("opacity", 0.5);
+
+    const voronoiClipPaths = svg
+      .append("defs")
+      .selectAll(".clip")
       .data(coordsArray.map((d, i) => voronoi.renderCell(i)))
-      .join("path")
+      .join("clipPath")
+      .attr("class", "clip")
+      .attr("id", (d, i) => "clip-" + i)
+      .append("path")
       .attr("d", (d) => d)
+      .attr("class", "clip-path-circle")
       .style("fill", "orange")
       .style("opacity", 0.7)
       .style("stroke", "black")

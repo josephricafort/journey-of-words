@@ -146,6 +146,7 @@ const Earth = () => {
         <TileLayer {...tileLayerConfig} />
         {type === "word-story" && (
           <Suspense fallback={<div>Generating scatterPlot map...</div>}>
+            <VoronoiGrid data={scatterPlotData} earthWrapDims={earthWrapDims} />
             <WordMarkersLayer data={scatterPlotData} />
           </Suspense>
         )}
