@@ -13,11 +13,13 @@ import axios from "axios";
 
 import { Context } from "../../../../storeContext/Store";
 import useWindowDimensions from "../../../../utils/useWindowDimensions";
+import useDimensions from "../../../../utils/useDimensions";
 import { removeStringSpaces } from "../../../../utils/utils";
 import {
   CHAPTER_NAMES,
   DB_GITHUB_API_WORDS,
 } from "../../../../utils/constants";
+import VoronoiGrid from "./VoronoiGrid";
 
 import {
   // CARTODB_DARKMATTER,
@@ -64,6 +66,7 @@ const Wrapper = styled.div`
 const Earth = () => {
   const mapRef = useRef(Map);
   const { width: windowWidth } = useWindowDimensions();
+  const [earthWrapRef, earthWrapDims] = useDimensions();
   const theme = useContext(ThemeContext);
 
   const [scatterPlotData, setScatterPlotData] = useState([{}, {}, {}]);
@@ -134,7 +137,11 @@ const Earth = () => {
   const IconMarkersLayer = lazy(() => import("./IconMarkersLayer"));
 
   return (
-    <Wrapper className="earth-wrapper" windowWidth={windowWidth}>
+    <Wrapper
+      className="earth-wrapper"
+      windowWidth={windowWidth}
+      ref={earthWrapRef}
+    >
       <LeafletMap className="leaflet-map" {...leafletConfig}>
         <TileLayer {...tileLayerConfig} />
         {type === "word-story" && (
@@ -144,6 +151,10 @@ const Earth = () => {
         )}
         {type === "distribution-chart" && (
           <Suspense fallback={<div>Generating iconPlot map...</div>}>
+            <VoronoiGrid
+              data={currentDistributionData}
+              earthWrapDims={earthWrapDims}
+            />
             <IconMarkersLayer data={currentDistributionData} />
           </Suspense>
         )}

@@ -27,7 +27,7 @@ const DistributionChart = ({ slideData }) => {
   const { varItems } = slideData;
 
   const [distributionData, setDistributionData] = useState([[], [], []]);
-  const [state, dispatch] = useContext(Context);
+  const dispatch = useContext(Context)[1];
 
   const fetchDistributionData = () => {
     axios
@@ -50,13 +50,13 @@ const DistributionChart = ({ slideData }) => {
   };
   useEffect(fetchDistributionData, []);
 
-  const updateDistributionData = () => {
+  const dispatchDistributionData = () => {
     dispatch({
       type: SET_DISTRIBUTIONDATA,
       payload: distributionData,
     });
   };
-  useEffect(updateDistributionData, [distributionData]);
+  useEffect(dispatchDistributionData, [distributionData]);
 
   const variableData = (vIndex) => distributionData[vIndex];
 

@@ -6,7 +6,6 @@ import { occlusion } from "../../../../utils/utils";
 
 const IconMarkersLayer = ({ data }) => {
   const theme = useContext(ThemeContext);
-  console.log(data);
 
   function switchValueFill(val) {
     switch (val) {
@@ -31,8 +30,11 @@ const IconMarkersLayer = ({ data }) => {
 
   function drawCallback(selection, projection, data) {
     const svg = selection;
-    const latLngToLayer = (coords) => projection.latLngToLayerPoint(coords);
     const longMeridian = (long) => (long > 0 ? long : parseFloat(long) + 360);
+    const latLngToLayer = (lat, long) => {
+      const coords = [parseFloat(lat), longMeridian(long)];
+      return projection.latLngToLayerPoint(coords);
+    };
 
     svg
       .selectAll("circle")
@@ -40,22 +42,10 @@ const IconMarkersLayer = ({ data }) => {
       .join("circle")
       // .text((d) => d.culture)
       .attr("font-size", 10 / projection.scale + "px")
-      .attr(
-        "cx",
-        (d) =>
-          d.lat &&
-          d.long &&
-          latLngToLayer([parseFloat(d.lat), longMeridian(d.long)]).x
-      )
-      .attr(
-        "cy",
-        (d) =>
-          d.lat &&
-          d.long &&
-          latLngToLayer([parseFloat(d.lat), longMeridian(d.long)]).y
-      )
+      .attr("cx", (d) => d.lat && d.long && latLngToLayer(d.lat, d.long).x)
+      .attr("cy", (d) => d.lat && d.long && latLngToLayer(d.lat, d.long).y)
       .attr("r", 2)
-      .attr("fill", (d) => switchValueFill(d.value));
+      .attr("fill", (d) => theme.fill4);
 
     svg.node();
 
