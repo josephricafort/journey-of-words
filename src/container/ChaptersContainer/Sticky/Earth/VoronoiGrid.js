@@ -1,16 +1,17 @@
 import React, { useContext } from "react";
 import * as d3 from "d3";
 import { Delaunay } from "d3-delaunay";
-import { ThemeContext } from "styled-components";
+import styled, { ThemeContext } from "styled-components";
 
 import D3SvgOverlay from "../../../../utils/D3SvgOverlay/D3SvgOverlay";
+import "./Voronoi.module.scss";
 
 const VoronoiGrid = ({ data, earthWrapDims }) => {
   const { width, height } = earthWrapDims;
   const theme = useContext(ThemeContext);
 
   function drawCallback(selection, projection, data) {
-    const svg = selection;
+    const svg = selection.attr("class", "voronoi-grid");
     const dataFlat = data.flat();
 
     const longMeridian = (long) => (long > 0 ? long : parseFloat(long) + 360);
@@ -35,18 +36,9 @@ const VoronoiGrid = ({ data, earthWrapDims }) => {
       (d) => d.y
     ).voronoi([-width, -height, width, height]);
 
-    const circles = svg
-      .selectAll("circle")
-      .data(coordsArray)
-      .join("circle")
-      .attr("class", (d, i) => `circle-${i}`)
-      .attr("clip-path", (d, i) => `url(#clip-${i})`)
-      .style("clip-path", (d, i) => `url(#clip-${i})`) // For safari
-      .attr("cx", (d) => d.x)
-      .attr("cy", (d) => d.y)
-      .attr("r", 50)
-      .style("fill", (d) => theme.white)
-      .style("opacity", 0.5);
+    const changeOpacity = function (selection, opacity) {
+      return selection.style("opacity", opacity);
+    };
 
     const voronoiClipPaths = svg
       .append("defs")
@@ -57,22 +49,36 @@ const VoronoiGrid = ({ data, earthWrapDims }) => {
       .attr("id", (d, i) => "clip-" + i)
       .append("path")
       .attr("d", (d) => d)
-      .attr("class", "clip-path-circle")
-      .style("fill", "orange")
-      .style("opacity", 0.7)
-      .style("stroke", "black")
-      .style("stroke-opacity", 0.7);
+      .attr("class", "clip-path-voronoi")
+      .style("opacity", 0.5)
+      .style("stroke", (d) => theme.black)
+      .style("stroke-width", 1);
+
+    const circles = svg
+      .selectAll("circle")
+      .data(coordsArray)
+      .join("circle")
+      .attr("class", (d) => `circle-hover`)
+      .attr("id", (d, i) => `circle-hover-${i}`)
+      .attr("clip-path", (d, i) => `url(#clip-${i})`)
+      .style("clip-path", (d, i) => `url(#clip-${i})`) // For safari
+      .attr("cx", (d) => d.x)
+      .attr("cy", (d) => d.y)
+      .attr("r", 50)
+      .style("fill", (d) => theme.white)
+      .style("opacity", 0.5)
+      .style("pointer-events", "all")
+      .on("mouseover", function (d) {
+        d3.select(this).style("fill", "pink");
+      })
+      .on("mouseout", function (d) {
+        d3.select(this).style("fill", "white");
+      });
 
     svg.node();
   }
 
-  return (
-    <D3SvgOverlay
-      className="word-markers-layer"
-      data={data}
-      drawCallback={drawCallback}
-    ></D3SvgOverlay>
-  );
+  return <D3SvgOverlay data={data} drawCallback={drawCallback} />;
 };
 
 export default VoronoiGrid;

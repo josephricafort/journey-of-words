@@ -76,6 +76,7 @@ const baseVars = {
   cursive: "'News Cycle', sans-serif",
 
   // LAYERS (z-Index)
+  zInteraction: 150,
   zContents: 100,
   zVisuals: 50,
   zContent: 0,

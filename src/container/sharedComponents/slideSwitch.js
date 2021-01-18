@@ -19,6 +19,7 @@ const CardWrapper = styled.div`
   min-height: 150vh;
   text-align: center;
   border: 3px solid ${({ theme }) => theme.stroke2}; // to remove before pub
+  pointer-events: none;
 
   @media (${(props) => props.theme.breakpointSmall}) {
     padding: 0;
@@ -37,6 +38,7 @@ border: 1px solid ${({ theme, type }) =>
 opacity: 0.95;
 max-width: 500px;
 padding: 10px;
+pointer-events: auto;
 
 p {
   color: ${({ theme }) => theme.black}

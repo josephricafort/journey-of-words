@@ -9,6 +9,7 @@ import slideSwitch from "../../sharedComponents/slideSwitch";
 
 const Wrapper = styled.div`
   transform: translateY(-100vh);
+  pointer-events: none;
 `;
 
 const Scrolly = (chaptersconfig) => {
@@ -26,7 +27,7 @@ const Scrolly = (chaptersconfig) => {
   }, [currentSlideData]);
 
   return (
-    <Wrapper>
+    <Wrapper className="scrolly-wrapper">
       <Scrollama
         className="intro-kicker-scrollama"
         onStepEnter={onStepEnter}
