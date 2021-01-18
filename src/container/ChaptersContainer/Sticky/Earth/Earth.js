@@ -42,6 +42,7 @@ const Wrapper = styled.div`
   transform: translate(-50%, 0);
   max-width: 1000px;
   max-height: 100vw;
+  overflow: hidden;
 
   .leaflet-map {
     position: absolute;

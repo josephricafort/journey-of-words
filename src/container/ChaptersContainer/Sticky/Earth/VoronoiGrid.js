@@ -22,10 +22,7 @@ const VoronoiGrid = ({ data, earthWrapDims }) => {
 
     const latExtent = d3.max(dataFlat.map((c) => (c.lat ? c.lat : null)));
     const longExtent = d3.max(dataFlat.map((c) => (c.long ? c.long : null)));
-    const extentLatLngToLayer =
-      latExtent && longExtent && latLngToLayer(latExtent, longExtent);
-    const minLatLngToLayer = latLngToLayer(90, 180);
-    // const extentLatLngToLayer = latLngToLayer(-90, 540);
+
     const coordsArray = dataFlat.map((c) => ({
       x: c.lat && c.long && latLngToLayer(c.lat, c.long).x,
       y: c.lat && c.long && latLngToLayer(c.lat, c.long).y,
@@ -34,7 +31,7 @@ const VoronoiGrid = ({ data, earthWrapDims }) => {
       coordsArray,
       (d) => d.x,
       (d) => d.y
-    ).voronoi([-width, -height, width, height]);
+    ).voronoi([-width / 2, -height / 2, width, height]);
 
     const changeOpacity = function (selection, opacity) {
       return selection.style("opacity", opacity);

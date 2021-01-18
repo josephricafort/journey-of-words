@@ -16,13 +16,15 @@ import {
 import SVGChart from "./SVGChart/SVGChart";
 import { Context } from "../../../storeContext/Store";
 
+const Container = styled.div``;
+
 const Selection = styled.div`
   position: relative;
   display: block;
   text-align: left;
   max-width: 1400px;
-  overflow-x: auto;
-  white-space: nowrap;
+  // overflow: auto; // doesn't work for mobile at the moment, creates a vertical scroll overflow
+  // white-space: nowrap;
 `;
 
 const CategorySelection = styled(Selection)`
