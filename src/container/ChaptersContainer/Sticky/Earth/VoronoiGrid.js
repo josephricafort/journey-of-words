@@ -59,10 +59,12 @@ const VoronoiGrid = ({
       .style("stroke-width", 1);
 
     // Circle catchers
-    svg
+    const circleCatchers = svg
       .selectAll("circle")
       .data(dataCultures)
-      .join("circle")
+      .join("circle");
+
+    circleCatchers
       .attr("class", (d) => `circle-hover`)
       .attr("id", (d, i) => `circle-hover-${i}`)
       .attr("clip-path", (d, i) => `url(#clip-${i})`)

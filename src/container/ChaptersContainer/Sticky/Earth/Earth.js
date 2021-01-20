@@ -34,43 +34,58 @@ import {
 } from "../../../../utils/constants";
 
 const Wrapper = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  bottom: 0%;
-  left: 50%;
-  transform: translate(-50%, 0);
-  max-width: 1000px;
-  max-height: 100vw;
-  overflow: hidden;
-
-  .leaflet-map {
+  ${({ theme }) => `
     position: absolute;
-    top: 0;
-    bottom: 20px;
     width: 100%;
-    border: 0px;
-    border-radius: 50vh;
+    height: 100%;
+    bottom: 0%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    max-width: 1000px;
+    max-height: 100vw;
+    overflow: hidden;
 
-    .tooltip {
-      padding: 2px;
-    }
+    .leaflet-map {
+      position: absolute;
+      top: 0;
+      bottom: 20px;
+      width: 100%;
+      border: 0px;
+      border-radius: 50vh;
 
-    .leaflet-pane.leaflet-map-pane {
-      .leaflet-pane.leaflet-overlay-pane {
-        .tooltip {
-          position: absolute;
-          background-color: pink;
+      .tooltip {
+        padding: 2px;
+      }
+
+      .leaflet-pane.leaflet-map-pane {
+        .leaflet-pane.leaflet-overlay-pane {
+          .tooltip {
+            position: absolute;
+            min-width: 100px;
+            width: 100%;
+            background-color: ${theme.white};
+            padding: 2px;
+            text-align: left;
+            z-index: ${
+              theme.zInteraction + 10 // place the tooltip over the d3 overlays
+            }; 
+          }
+
+          svg.leaflet-zoom-animated {
+            z-index: ${
+              theme.zInteraction - 10 // place svg d3 overlays below the tooltip
+            }; 
+          }
         }
       }
     }
-  }
 
-  @media (${(props) => props.theme.breakpointLarge}) {
-    max-height: calc(100vh - 50px);
-    max-width: 1400px;
-    margin: 25px auto;
-  }
+    @media (${theme.breakpointLarge}) {
+      max-height: calc(100vh - 50px);
+      max-width: 1400px;
+      margin: 25px auto;
+    }
+  `}
 `;
 
 const Earth = () => {

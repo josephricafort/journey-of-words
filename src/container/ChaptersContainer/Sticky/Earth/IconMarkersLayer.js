@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "styled-components";
+import * as d3 from "d3";
 
 import D3SvgOverlay from "../../../../utils/D3SvgOverlay/D3SvgOverlay";
 import { occlusion } from "../../../../utils/utils";
@@ -25,7 +26,8 @@ const IconMarkersLayer = ({ data }) => {
       .attr("cx", (d) => d.lat && d.long && latLngToLayer(d.lat, d.long).x)
       .attr("cy", (d) => d.lat && d.long && latLngToLayer(d.lat, d.long).y)
       .attr("r", 2)
-      .attr("fill", (d) => theme.fill4);
+      .attr("fill", (d) => theme.fill4)
+      .style("pointer-events", "all");
 
     svg.node();
 
