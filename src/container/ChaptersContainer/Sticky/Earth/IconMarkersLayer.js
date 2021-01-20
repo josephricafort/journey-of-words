@@ -1,32 +1,11 @@
 import React, { useContext } from "react";
-import styled, { ThemeContext } from "styled-components";
+import { ThemeContext } from "styled-components";
 
 import D3SvgOverlay from "../../../../utils/D3SvgOverlay/D3SvgOverlay";
 import { occlusion } from "../../../../utils/utils";
 
 const IconMarkersLayer = ({ data }) => {
   const theme = useContext(ThemeContext);
-
-  function switchValueFill(val) {
-    switch (val) {
-      case "?":
-        return theme.fill0;
-      case "0":
-        return theme.fill0;
-      case "1":
-        return theme.fill1;
-      case "2":
-        return theme.fill2;
-      case "3":
-        return theme.fill3;
-      case "4":
-        return theme.fill4;
-      case "5":
-        return theme.fill5;
-      default:
-        return theme.fill0;
-    }
-  }
 
   function drawCallback(selection, projection, data) {
     const svg = selection;
@@ -40,7 +19,8 @@ const IconMarkersLayer = ({ data }) => {
       .selectAll("circle")
       .data(data)
       .join("circle")
-      // .text((d) => d.culture)
+      .attr("class", "circle-marker")
+      .attr("id", (d, i) => `circle-marker-${i}`)
       .attr("font-size", 10 / projection.scale + "px")
       .attr("cx", (d) => d.lat && d.long && latLngToLayer(d.lat, d.long).x)
       .attr("cy", (d) => d.lat && d.long && latLngToLayer(d.lat, d.long).y)

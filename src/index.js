@@ -5,11 +5,14 @@ import StoryApp from "./StoryApp";
 import * as serviceWorker from "./serviceWorker";
 
 import Store from "./storeContext/Store";
+import ErrorBoundary from "./utils/ErrorBoundary/ErrorBoundary";
 
 ReactDOM.render(
-  <Store>
-    <StoryApp />
-  </Store>,
+  <ErrorBoundary>
+    <Store>
+      <StoryApp />
+    </Store>
+  </ErrorBoundary>,
   document.getElementById("root")
 );
 

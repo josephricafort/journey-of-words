@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import D3SvgOverlay from "../../../../utils/D3SvgOverlay/D3SvgOverlay";
 import { ThemeContext } from "styled-components";
 
+import D3SvgOverlay from "../../../../utils/D3SvgOverlay/D3SvgOverlay";
 import { occlusion } from "../../../../utils/utils";
 
 const WordMarkersLayer = ({ data }) => {
@@ -20,6 +20,8 @@ const WordMarkersLayer = ({ data }) => {
       .data(data)
       .join("text")
       .text((d) => d.wordAn)
+      .attr("class", "text-marker")
+      .attr("id", (d, i) => `text-marker-${i}`)
       .attr("font-size", 12 / projection.scale + "px")
       .attr("font-family", theme.cursive)
       .attr("x", (d) => d.lat && d.long && latLngToLayer(d.lat, d.long).x)

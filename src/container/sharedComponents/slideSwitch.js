@@ -92,7 +92,7 @@ const ContentsWrapper = styled.div``;
 
 const CardChart = styled(Card)`
   max-width: 800px;
-  min-height: 500px;
+  min-height: 150px;
 `;
 
 const CardKicker = styled(Card)`

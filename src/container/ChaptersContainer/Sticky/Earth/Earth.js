@@ -55,6 +55,15 @@ const Wrapper = styled.div`
     .tooltip {
       padding: 2px;
     }
+
+    .leaflet-pane.leaflet-map-pane {
+      .leaflet-pane.leaflet-overlay-pane {
+        .tooltip {
+          position: absolute;
+          background-color: pink;
+        }
+      }
+    }
   }
 
   @media (${(props) => props.theme.breakpointLarge}) {
@@ -78,6 +87,12 @@ const Earth = () => {
     currentDistributionData,
   } = useContext(Context)[0];
   const { type } = currentSlideData;
+
+  const [currentHovered, setCurrentHovered] = useState({
+    id: "",
+    index: "",
+  });
+  const hovered = { currentHovered, setCurrentHovered };
 
   const fetchData = () => {
     if (type === "word-story") {
@@ -147,7 +162,11 @@ const Earth = () => {
         <TileLayer {...tileLayerConfig} />
         {type === "word-story" && (
           <Suspense fallback={<div>Generating scatterPlot map...</div>}>
-            <VoronoiGrid data={scatterPlotData} earthWrapDims={earthWrapDims} />
+            <VoronoiGrid
+              data={scatterPlotData}
+              earthWrapDims={earthWrapDims}
+              {...hovered}
+            />
             <WordMarkersLayer data={scatterPlotData} />
           </Suspense>
         )}
@@ -156,6 +175,7 @@ const Earth = () => {
             <VoronoiGrid
               data={currentDistributionData}
               earthWrapDims={earthWrapDims}
+              {...hovered}
             />
             <IconMarkersLayer data={currentDistributionData} />
           </Suspense>
