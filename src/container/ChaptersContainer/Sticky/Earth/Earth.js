@@ -64,10 +64,11 @@ const Wrapper = styled.div`
             min-width: 100px;
             width: 100%;
             background-color: ${theme.white};
-            padding: 2px;
+            padding: 5px;
             text-align: left;
+            pointer-events: none;
             z-index: ${
-              theme.zInteraction + 10 // place the tooltip over the d3 overlays
+              theme.zInteraction + 10 // place the tooltip above the d3 overlays
             }; 
           }
 
@@ -108,6 +109,9 @@ const Earth = () => {
     index: "",
   });
   const hovered = { currentHovered, setCurrentHovered };
+  useEffect(() => {
+    setCurrentHovered();
+  }, [currentHovered]);
 
   const fetchData = () => {
     if (type === "word-story") {

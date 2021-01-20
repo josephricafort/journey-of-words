@@ -44,11 +44,13 @@ const VoronoiGrid = ({
       .style("position", "absolute");
 
     // Voronoi clipping paths
-    svg
+    const voronoiClipPaths = svg
       .append("defs")
       .selectAll(".clip")
       .data(dataCultures.map((d, i) => voronoi.renderCell(i)))
-      .join("clipPath")
+      .join("clipPath");
+
+    voronoiClipPaths
       .attr("class", "clip")
       .attr("id", (d, i) => "clip-" + i)
       .append("path")
@@ -75,15 +77,23 @@ const VoronoiGrid = ({
       .style("fill", "transparent")
       .style("opacity", 0.5)
       .style("pointer-events", "all")
-      .on("mouseover", function (e, d) {
+      .on("mouseover", function (event, d) {
+        const e = circleCatchers.nodes();
+        const i = e.indexOf(this);
+
         div.style("opacity", 0.9);
         div
           .html(d.culture || d.lang + "<br />")
-          .style("left", d.x + "px")
-          .style("top", d.y - 28 + "px");
+          .style("left", d.x + 10 + "px")
+          .style("top", d.y - 32 + "px");
+        d3.select(`#icon-marker-${i}`).attr("r", 6);
       })
-      .on("mouseout", function (e, d) {
+      .on("mouseout", function (event, d) {
+        const e = circleCatchers.nodes();
+        const i = e.indexOf(this);
+
         div.style("opacity", 0).classed("hidden", true);
+        d3.select(`#icon-marker-${i}`).attr("r", 2);
       });
 
     svg.node();
