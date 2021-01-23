@@ -21,15 +21,10 @@ const DivTooltip = styled.div`
  `}
 `;
 
-const VoronoiGridTooltip = ({ data, earthWrapDims }) => {
+const VoronoiGridTooltip = ({ data, earthWrapDims, type }) => {
   const { width, height } = earthWrapDims;
   const theme = useContext(ThemeContext);
   const divRef = useRef();
-
-  // const renderDivTooltip = () => {
-  //   d3.select(divRef.current).style("opacity", 0);
-  // };
-  // useEffect(renderDivTooltip, []);
 
   const divTooltip = d3.select(divRef.current);
 
@@ -71,11 +66,16 @@ const VoronoiGridTooltip = ({ data, earthWrapDims }) => {
       .style("stroke", (d) => theme.black)
       .style("stroke-width", 1);
 
-    // Icon Markers from the IconMarkersLayer
+    // Text and Icon Markers from the TextMarkersLayer and IconMarkersLayer
     const iconMarker = (i) => d3.select(`#icon-marker-${i}`);
+    const textMarker = (i) => d3.select(`#text-marker-${i}`);
+    const textMarkersAll = d3.selectAll(".text-marker");
+    const textMarkersOccluded = d3.selectAll("text.occluded");
 
     // Circle catchers
     const circleCatchers = svg
+      .append("g")
+      .attr("class", "circle-catchers-group")
       .selectAll("circle")
       .data(dataCultures)
       .join("circle");
@@ -93,22 +93,35 @@ const VoronoiGridTooltip = ({ data, earthWrapDims }) => {
       .style("fill", (d) => theme.white)
       .style("opacity", 0.25)
       .style("pointer-events", "all")
+      .style("font-family", theme.cursive)
       .on("mouseover", function (event, d) {
         const i = circleNodes.indexOf(this);
 
         divTooltip
           .style("opacity", 0.9)
-          .html(d.culture || d.lang + "<br />")
+          .html(
+            (type === "distribution-chart" && d.culture) ||
+              (type === "word-story" && d.langName + "<br />")
+          )
           .style("left", d.x + 10 + "px")
           .style("top", d.y - 32 + "px");
         iconMarker(i).attr("r", 6);
+        // textMarker(i).style("font-size", 18 / projection.scale + "px");
       })
       .on("mouseout", function (event, d) {
         const i = circleNodes.indexOf(this);
 
         divTooltip.style("opacity", 0);
         iconMarker(i).attr("r", 2);
+        // textMarker(i).style("font-size", 12 / projection.scale + "px");
       });
+
+    // svg.on("mouseover", function () {
+    //   d3.selectAll(".text-marker").style("opacity", 0.05);
+    // });
+    // .on("mouseout", function () {
+    //   d3.selectAll(".text-marker").style("opacity", 1);
+    // });
 
     svg.node();
   }

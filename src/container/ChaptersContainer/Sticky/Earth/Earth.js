@@ -62,7 +62,18 @@ const Wrapper = styled.div`
           svg.leaflet-zoom-animated {
             z-index: ${
               theme.zInteraction - 10 // place svg d3 overlays below the tooltip
-            }; 
+            };
+          }
+          svg {
+            g.word-markers-layer {
+
+              &:hover {
+                g text {
+                  opacity: 1;
+                  font-size: 2em;
+                }
+              }
+            }
           }
         }
       }
@@ -160,8 +171,12 @@ const Earth = () => {
         <TileLayer {...tileLayerConfig} />
         {type === "word-story" && (
           <Suspense fallback={<div>Generating scatterPlot map...</div>}>
-            <VoronoiGridTooltip data={scatterPlotData} earthWrapDims={earthWrapDims} />
             <WordMarkersLayer data={scatterPlotData} />
+            {/* <VoronoiGridTooltip
+              data={scatterPlotData}
+              earthWrapDims={earthWrapDims}
+              type={type}
+            /> */}
           </Suspense>
         )}
         {type === "distribution-chart" && (
@@ -169,6 +184,7 @@ const Earth = () => {
             <VoronoiGridTooltip
               data={currentDistributionData}
               earthWrapDims={earthWrapDims}
+              type={type}
             />
             <IconMarkersLayer data={currentDistributionData} />
           </Suspense>
