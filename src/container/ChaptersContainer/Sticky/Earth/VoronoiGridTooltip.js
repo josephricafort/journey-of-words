@@ -1,18 +1,34 @@
-import React, { useContext } from "react";
+import React, { useEffect, useContext, useRef } from "react";
 import * as d3 from "d3";
 import { Delaunay } from "d3-delaunay";
 import styled, { ThemeContext } from "styled-components";
 
 import D3SvgOverlay from "../../../../utils/D3SvgOverlay/D3SvgOverlay";
 
-const VoronoiGrid = ({
-  data,
-  earthWrapDims,
-  currentHovered,
-  setCurrentHovered,
-}) => {
+const DivTooltip = styled.div`
+  ${({ theme }) => `
+    position: absolute;
+    min-width: 100px;
+    background-color: ${theme.white};
+    padding: 5px;
+    text-align: left;
+    pointer-events: none;
+    z-index: ${
+      // theme.zInteraction + 10 // place the tooltip above the d3 overlays
+      500
+    }; 
+ `}
+`;
+
+const VoronoiGridTooltip = ({ data, earthWrapDims }) => {
   const { width, height } = earthWrapDims;
   const theme = useContext(ThemeContext);
+  const divRef = useRef();
+
+  const renderDivTooltip = () => {
+    const div = d3.select(divRef.current).style("opacity", 0);
+  };
+  useEffect(renderDivTooltip, []);
 
   function drawCallback(selection, projection, data) {
     const svg = selection.attr("class", "voronoi-grid");
@@ -35,14 +51,6 @@ const VoronoiGrid = ({
       (d) => d.y
     ).voronoi([-width / 2, -height / 2, width, height]);
 
-    // Div for the tooltip
-    const div = d3
-      .select("div.leaflet-pane.leaflet-overlay-pane")
-      .append("div")
-      .attr("class", "tooltip")
-      .style("opacity", 0)
-      .style("position", "absolute");
-
     // Voronoi clipping paths
     const voronoiClipPaths = svg
       .append("defs")
@@ -60,46 +68,55 @@ const VoronoiGrid = ({
       .style("stroke", (d) => theme.black)
       .style("stroke-width", 1);
 
+    // Icon Markers from the IconMarkersLayer
+    const iconMarker = (i) => d3.select(`#icon-marker-${i}`);
+
     // Circle catchers
     const circleCatchers = svg
       .selectAll("circle")
       .data(dataCultures)
       .join("circle");
 
+    const circleNodes = circleCatchers.nodes();
+    const divTooltip = d3.select(".tooltip");
+
     circleCatchers
-      .attr("class", (d) => `circle-hover`)
+      .attr("class", "circle-hover")
       .attr("id", (d, i) => `circle-hover-${i}`)
       .attr("clip-path", (d, i) => `url(#clip-${i})`)
       .style("clip-path", (d, i) => `url(#clip-${i})`) // For safari
       .attr("cx", (d) => d.x)
       .attr("cy", (d) => d.y)
       .attr("r", 50)
-      .style("fill", "transparent")
-      .style("opacity", 0.5)
+      .style("fill", (d) => theme.white)
+      .style("opacity", 0.25)
       .style("pointer-events", "all")
       .on("mouseover", function (event, d) {
-        const e = circleCatchers.nodes();
-        const i = e.indexOf(this);
+        const i = circleNodes.indexOf(this);
 
-        div.style("opacity", 0.9);
-        div
+        divTooltip
+          .style("opacity", 0.9)
           .html(d.culture || d.lang + "<br />")
           .style("left", d.x + 10 + "px")
           .style("top", d.y - 32 + "px");
-        d3.select(`#icon-marker-${i}`).attr("r", 6);
+        iconMarker(i).attr("r", 6);
       })
       .on("mouseout", function (event, d) {
-        const e = circleCatchers.nodes();
-        const i = e.indexOf(this);
+        const i = circleNodes.indexOf(this);
 
-        div.style("opacity", 0).classed("hidden", true);
-        d3.select(`#icon-marker-${i}`).attr("r", 2);
+        divTooltip.style("opacity", 0);
+        iconMarker(i).attr("r", 2);
       });
 
     svg.node();
   }
 
-  return <D3SvgOverlay data={data} drawCallback={drawCallback} />;
+  return (
+    <>
+      <D3SvgOverlay data={data} drawCallback={drawCallback} />
+      <DivTooltip className="tooltip" ref={divRef} />
+    </>
+  );
 };
 
-export default VoronoiGrid;
+export default VoronoiGridTooltip;

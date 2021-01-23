@@ -26,7 +26,7 @@ const IconMarkersLayer = ({ data }) => {
       .attr("cx", (d) => d.lat && d.long && latLngToLayer(d.lat, d.long).x)
       .attr("cy", (d) => d.lat && d.long && latLngToLayer(d.lat, d.long).y)
       .attr("r", 2)
-      .attr("fill", (d) => theme.fill4)
+      .attr("fill", (d) => theme.skin)
       .style("pointer-events", "none");
 
     svg.node();

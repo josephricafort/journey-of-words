@@ -19,7 +19,7 @@ import {
   CHAPTER_NAMES,
   DB_GITHUB_API_WORDS,
 } from "../../../../utils/constants";
-import VoronoiGrid from "./VoronoiGrid";
+import VoronoiGridTooltip from "./VoronoiGridTooltip";
 
 import {
   // CARTODB_DARKMATTER,
@@ -59,19 +59,6 @@ const Wrapper = styled.div`
 
       .leaflet-pane.leaflet-map-pane {
         .leaflet-pane.leaflet-overlay-pane {
-          .tooltip {
-            position: absolute;
-            min-width: 100px;
-            width: 100%;
-            background-color: ${theme.white};
-            padding: 5px;
-            text-align: left;
-            pointer-events: none;
-            z-index: ${
-              theme.zInteraction + 10 // place the tooltip above the d3 overlays
-            }; 
-          }
-
           svg.leaflet-zoom-animated {
             z-index: ${
               theme.zInteraction - 10 // place svg d3 overlays below the tooltip
@@ -99,19 +86,11 @@ const Earth = () => {
   const [iconsPlotData, setIconsPlotData] = useState([{}, {}, {}]);
   const {
     currentSlideData,
+    currentStepIndex,
     currentChapterTheme,
     currentDistributionData,
   } = useContext(Context)[0];
   const { type } = currentSlideData;
-
-  const [currentHovered, setCurrentHovered] = useState({
-    id: "",
-    index: "",
-  });
-  const hovered = { currentHovered, setCurrentHovered };
-  useEffect(() => {
-    setCurrentHovered();
-  }, [currentHovered]);
 
   const fetchData = () => {
     if (type === "word-story") {
@@ -137,12 +116,12 @@ const Earth = () => {
     (theme === CHAPTER_NAMES.FATE && MAPBOX_STYLE_FATE);
 
   const leafletConfig = {
-    center: [0, 160],
-    zoomSnap: 0.25,
+    center: [0, 130],
+    zoomSnap: 0.125,
     zoom:
-      (windowWidth > theme.large && 2.5) ||
-      (windowWidth > theme.medium && 2) ||
-      1.25,
+      (windowWidth > theme.large && 2.75) ||
+      (windowWidth > theme.medium && 2.125) ||
+      1.5,
     maxZoom: 10,
     minZoom: 1,
     maxBounds: [
@@ -181,20 +160,15 @@ const Earth = () => {
         <TileLayer {...tileLayerConfig} />
         {type === "word-story" && (
           <Suspense fallback={<div>Generating scatterPlot map...</div>}>
-            <VoronoiGrid
-              data={scatterPlotData}
-              earthWrapDims={earthWrapDims}
-              {...hovered}
-            />
+            <VoronoiGridTooltip data={scatterPlotData} earthWrapDims={earthWrapDims} />
             <WordMarkersLayer data={scatterPlotData} />
           </Suspense>
         )}
         {type === "distribution-chart" && (
           <Suspense fallback={<div>Generating iconPlot map...</div>}>
-            <VoronoiGrid
+            <VoronoiGridTooltip
               data={currentDistributionData}
               earthWrapDims={earthWrapDims}
-              {...hovered}
             />
             <IconMarkersLayer data={currentDistributionData} />
           </Suspense>
