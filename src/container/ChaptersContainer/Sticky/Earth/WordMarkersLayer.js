@@ -86,13 +86,13 @@ const WordMarkersLayer = ({ data }) => {
       .attr("y", (d) => d.lat && d.long && latLngToLayer(d.lat, d.long).y)
       .attr("transform", `translate(0 -5)`)
       .attr("text-anchor", "end")
-      .style("pointer-events", "all")
-      .on("mouseover", function (event, d) {
-        d3.select(this).style("font-size", 18 / projection.scale + "px");
-      })
-      .on("mouseout", function (event, d) {
-        d3.select(this).style("font-size", 12 / projection.scale + "px");
-      });
+      .style("pointer-events", "all");
+    // .on("mouseover", function (event, d) {
+    //   d3.select(this).style("font-size", 18 / projection.scale + "px");
+    // })
+    // .on("mouseout", function (event, d) {
+    //   d3.select(this).style("font-size", 12 / projection.scale + "px");
+    // });
 
     svgText.node();
 
