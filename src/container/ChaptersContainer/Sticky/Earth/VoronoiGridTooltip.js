@@ -8,6 +8,7 @@ import D3SvgOverlay from "../../../../utils/D3SvgOverlay/D3SvgOverlay";
 const DivTooltip = styled.div`
   ${({ theme }) => `
     position: absolute;
+    opacity: 0;
     min-width: 100px;
     background-color: ${theme.white};
     padding: 5px;
@@ -25,10 +26,12 @@ const VoronoiGridTooltip = ({ data, earthWrapDims }) => {
   const theme = useContext(ThemeContext);
   const divRef = useRef();
 
-  const renderDivTooltip = () => {
-    const div = d3.select(divRef.current).style("opacity", 0);
-  };
-  useEffect(renderDivTooltip, []);
+  // const renderDivTooltip = () => {
+  //   d3.select(divRef.current).style("opacity", 0);
+  // };
+  // useEffect(renderDivTooltip, []);
+
+  const divTooltip = d3.select(divRef.current);
 
   function drawCallback(selection, projection, data) {
     const svg = selection.attr("class", "voronoi-grid");
@@ -78,7 +81,6 @@ const VoronoiGridTooltip = ({ data, earthWrapDims }) => {
       .join("circle");
 
     const circleNodes = circleCatchers.nodes();
-    const divTooltip = d3.select(".tooltip");
 
     circleCatchers
       .attr("class", "circle-hover")
