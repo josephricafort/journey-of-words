@@ -68,9 +68,9 @@ const VoronoiGridTooltip = ({ data, earthWrapDims, type }) => {
 
     // Text and Icon Markers from the TextMarkersLayer and IconMarkersLayer
     const iconMarker = (i) => d3.select(`#icon-marker-${i}`);
-    const textMarker = (i) => d3.select(`#text-marker-${i}`);
-    const textMarkersAll = d3.selectAll(".text-marker");
-    const textMarkersOccluded = d3.selectAll("text.occluded");
+    // const textMarker = (i) => d3.select(`#text-marker-${i}`);
+    // const textMarkersAll = d3.selectAll(".text-marker");
+    // const textMarkersOccluded = d3.selectAll("text.occluded");
 
     // Circle catchers
     const circleCatchers = svg

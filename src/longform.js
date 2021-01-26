@@ -586,6 +586,7 @@ const longform = {
           icon: "flower",
         },
         contents: {
+          icon: "tpc_nature_agri.svg",
           p: [
             "Aside from being master seafarers, the Austronesians have a deep connection with nature, the seas. They maintained their close relationship with them through worship and rituals.",
           ],
@@ -594,8 +595,8 @@ const longform = {
       {
         type: "distribution-chart",
         id: 1.32,
-        icon: "fern",
         contents: {
+          icon: "tpc_nature_agri.svg",
           title: "Forces of nature",
           p: [
             "They strongly believe that the forces of nature are controlled by or imbued with the supernatural.",
@@ -621,6 +622,7 @@ const longform = {
         icon: "fern",
         contents: {
           title: "Austronesians and nature",
+          icon: "tpc_nature_agri.svg",
           p: [
             "They strongly believe that the forces of nature are controlled by or imbued with the supernatural.",
           ],
@@ -682,9 +684,9 @@ const longform = {
       {
         type: "distribution-chart",
         id: 1.3,
-        icon: "fern",
         contents: {
           title: "Austronesians and nature",
+          icon: "tpc_nature_agri.svg",
           p: [
             "Being knowledgeable about nature, they were also experts in agriculture and domestication of animals which has become their major food source. The surrounding seas and forests have also provided them with abundant food resources through fishing and hunting.",
           ],

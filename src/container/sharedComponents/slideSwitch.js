@@ -21,7 +21,7 @@ const CardWrapper = styled.div`
   border: 3px solid ${({ theme }) => theme.stroke2}; // to remove before pub
   pointer-events: none;
 
-  @media (${(props) => props.theme.breakpointSmall}) {
+  @media (${(theme) => theme.breakpointSmall}) {
     padding: 0;
   }
 `;
@@ -53,6 +53,10 @@ p {
 h2 {
   color: ${({ theme }) => theme.black}
   text-align: center;
+}
+
+h3.card-title.with-icon {
+  margin-top: 0;
 }
 
 @media (${({ theme }) => theme.breakpointSmall}) {
@@ -120,6 +124,14 @@ const Legend = styled.div`
   margin-right: 20px;
 `;
 
+const Icon = styled.img`
+  ${({ iconSize }) =>
+    (iconSize === "small" && `height: 50px; width: 50px;`) ||
+    (iconSize === " medium" && `height: 70px; width: 70px;`) ||
+    (iconSize === "large" && `height: 90px; width: 90px;`) ||
+    `height: 70px; width: 70px;`}
+`;
+
 const Bullet = ({ value }) => (
   <svg height={10} width={10}>
     <Circle cx={5} cy={5} r={5} value={value}></Circle>
@@ -154,7 +166,7 @@ function slideSwitch(slide) {
             <p className="chapter-roman-numeral">
               {slide.contents.chapterLabel}
             </p>
-            <h1 className="chapter-title">{slide.contents.title}</h1>
+            <h1 className="chapter-title with-icon">{slide.contents.title}</h1>
             {slide.contents.byline && (
               <p className="chapter-byline">{slide.contents.byline}</p>
             )}
@@ -170,12 +182,21 @@ function slideSwitch(slide) {
       )}
       {slide.type === "kicker" && (
         <CardKicker className="scrolly-card kicker">
-          <h3>{slide.contents.title}</h3>
+          <h3 className="card-title">{slide.contents.title}</h3>
         </CardKicker>
       )}
       {slide.type === "face-tattoo" && (
         <Card className="scrolly-card face-tattoo">
-          <h3>{slide.contents.title}</h3>
+          {slide.contents.icon && (
+            <Icon
+              className="topic-icon face-tattoo"
+              src={require("../../assets/icons/topics/" + slide.contents.icon)}
+              iconSize="medium"
+            />
+          )}
+          {slide.contents.title && (
+            <h3 className="card-title with-icon">{slide.contents.title}</h3>
+          )}
           {slide.contents.p.map(
             (p, i) => p && <MarkdownHTML {...markDownProps(p)} key={i} />
           )}
@@ -191,7 +212,16 @@ function slideSwitch(slide) {
       )}
       {slide.type === "distribution-chart" && (
         <CardChart className="scrolly-card distribution-chart">
-          {slide.contents.title && <h3>{slide.contents.title}</h3>}
+          {slide.contents.icon && (
+            <Icon
+              className="topic-icon distribution-chart"
+              src={require("../../assets/icons/topics/" + slide.contents.icon)}
+              iconSize="small"
+            />
+          )}
+          {slide.contents.title && (
+            <h3 className="card-title with-icon">{slide.contents.title}</h3>
+          )}
           {slide.contents.p.map(
             (p, i) => p && <MarkdownHTML {...markDownProps(p)} key={i} />
           )}
@@ -208,7 +238,9 @@ function slideSwitch(slide) {
       )}
       {slide.type === "words-chart" && (
         <CardChart className="scrolly-card words-chart">
-          {slide.contents.title && <h3>{slide.contents.title}</h3>}
+          {slide.contents.title && (
+            <h3 className="card-title">{slide.contents.title}</h3>
+          )}
           {slide.contents.p.map(
             (p, i) => p && <MarkdownHTML {...markDownProps(p)} key={i} />
           )}
