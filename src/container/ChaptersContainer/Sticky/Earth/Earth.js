@@ -83,6 +83,9 @@ const Wrapper = styled.div`
       max-height: calc(100vh - 50px);
       max-width: 1400px;
       margin: 25px auto;
+      left: auto;
+      right: 0;
+      transform: translate(0, 0);
     }
   `}
 `;

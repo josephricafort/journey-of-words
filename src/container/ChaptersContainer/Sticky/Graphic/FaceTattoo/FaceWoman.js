@@ -70,6 +70,7 @@ const FaceWoman = ({ data, currData, currSlideType }) => {
       data={data}
       currData={currData}
       currSlideType={currSlideType}
+      className="face-woman"
     >
       <g id="elements">
         <g id="woman">

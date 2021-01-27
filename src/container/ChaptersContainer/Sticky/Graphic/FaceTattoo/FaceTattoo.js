@@ -60,8 +60,8 @@ const FaceTattoo = () => {
   };
 
   return (
-    <Container>
-      <FaceWoman {...faceProps}></FaceWoman>
+    <Container className="face-woman-container">
+      <FaceWoman {...faceProps} className="face-woman"></FaceWoman>
     </Container>
   );
 };

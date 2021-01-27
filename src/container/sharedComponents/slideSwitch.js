@@ -15,54 +15,58 @@ const CardWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 20px;
+  // padding: 0 20px;
   min-height: 150vh;
   text-align: center;
   border: 3px solid ${({ theme }) => theme.stroke2}; // to remove before pub
   pointer-events: none;
 
-  @media (${(theme) => theme.breakpointSmall}) {
+  @media (${({ theme }) => theme.breakpointSmall}) {
     padding: 0;
   }
 `;
 
 const Card = styled.div`
-position: relative;
-margin: auto;
-background-color: ${({ theme, type }) =>
-  (type === "quote" && theme.fill1) || theme.white};
-border: 1px solid ${({ theme, type }) =>
-  (type === "intro" && "none") ||
-  (type === "quote" && theme.stroke1) ||
-  theme.white};
-opacity: 0.95;
-max-width: 500px;
-padding: 10px;
-pointer-events: auto;
+  position: relative;
+  margin: auto;
+  background-color: ${({ theme, type }) =>
+    (type === "quote" && theme.fill1) || theme.white};
+  border: 1px solid ${({ theme, type }) =>
+    (type === "intro" && "none") ||
+    (type === "quote" && theme.stroke1) ||
+    theme.white};
+  opacity: 0.95;
+  max-width: 500px;
+  padding: 10px;
+  pointer-events: auto;
 
-p {
-  color: ${({ theme }) => theme.black}
-  opacity: 1;
-  text-align: left;
-  &.chapter-roman-numeral {
-    text-align: center;
-    text-transform: uppercase;
+  p {
+    color: ${({ theme }) => theme.black}
+    opacity: 1;
+    text-align: left;
+    &.chapter-roman-numeral {
+      text-align: center;
+      text-transform: uppercase;
+    }
   }
-}
 
-h2 {
-  color: ${({ theme }) => theme.black}
-  text-align: center;
-}
+  h2 {
+    color: ${({ theme }) => theme.black}
+    text-align: center;
+  }
 
-h3.card-title.with-icon {
-  margin-top: 0;
-}
+  h3.card-title.with-icon {
+    margin-top: 0;
+  }
 
-@media (${({ theme }) => theme.breakpointSmall}) {
-  padding: 20px;
-  padding-top: 5px;
-}
+  @media (${({ theme }) => theme.breakpointSmall}) {
+    padding: 20px;
+    padding-top: 5px;
+  }
+
+  @media (${({ theme }) => theme.breakpointMedium}) {
+    margin-left: 20px;
+  }
 `;
 
 const CardIntro = styled(Card)`
@@ -95,8 +99,14 @@ const CardIntro = styled(Card)`
 const ContentsWrapper = styled.div``;
 
 const CardChart = styled(Card)`
-  max-width: 800px;
+  max-width: 1000px;
   min-height: 150px;
+
+  @media (${({ theme }) => theme.breakpointMedium}) {
+    &.words-chart {
+      margin: auto;
+    }
+  }
 `;
 
 const CardKicker = styled(Card)`
