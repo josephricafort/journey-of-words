@@ -5,6 +5,14 @@ import styled, { ThemeContext } from "styled-components";
 
 import D3SvgOverlay from "../../../../utils/D3SvgOverlay/D3SvgOverlay";
 
+const DivTooltipWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  max-width: 1400px;
+  width: 100%;
+  height: 100%;
+`;
+
 const DivTooltip = styled.div`
   ${({ theme }) => `
     position: absolute;
@@ -30,6 +38,7 @@ const VoronoiGridTooltip = ({ data, earthWrapDims, type }) => {
 
   function drawCallback(selection, projection, data) {
     const svg = selection.attr("class", "voronoi-grid");
+    const svgTooltip = svg.append("g").attr("class", "svg-tooltip");
     const dataFlat = data.flat();
 
     const longMeridian = (long) => (long > 0 ? long : parseFloat(long) + 360);
@@ -68,9 +77,6 @@ const VoronoiGridTooltip = ({ data, earthWrapDims, type }) => {
 
     // Text and Icon Markers from the TextMarkersLayer and IconMarkersLayer
     const iconMarker = (i) => d3.select(`#icon-marker-${i}`);
-    // const textMarker = (i) => d3.select(`#text-marker-${i}`);
-    // const textMarkersAll = d3.selectAll(".text-marker");
-    // const textMarkersOccluded = d3.selectAll("text.occluded");
 
     // Circle catchers
     const circleCatchers = svg
@@ -99,29 +105,20 @@ const VoronoiGridTooltip = ({ data, earthWrapDims, type }) => {
 
         divTooltip
           .style("opacity", 0.9)
+          .style("left", d.x + "px")
+          .style("top", d.y + "px")
           .html(
             (type === "distribution-chart" && d.culture) ||
               (type === "word-story" && d.langName + "<br />")
-          )
-          .style("left", d.x + 10 + "px")
-          .style("top", d.y - 32 + "px");
+          );
         iconMarker(i).attr("r", 6);
-        // textMarker(i).style("font-size", 18 / projection.scale + "px");
       })
       .on("mouseout", function (event, d) {
         const i = circleNodes.indexOf(this);
 
         divTooltip.style("opacity", 0);
         iconMarker(i).attr("r", 2);
-        // textMarker(i).style("font-size", 12 / projection.scale + "px");
       });
-
-    // svg.on("mouseover", function () {
-    //   d3.selectAll(".text-marker").style("opacity", 0.05);
-    // });
-    // .on("mouseout", function () {
-    //   d3.selectAll(".text-marker").style("opacity", 1);
-    // });
 
     svg.node();
   }
@@ -129,7 +126,9 @@ const VoronoiGridTooltip = ({ data, earthWrapDims, type }) => {
   return (
     <>
       <D3SvgOverlay data={data} drawCallback={drawCallback} />
-      <DivTooltip className="tooltip" ref={divRef} />
+      <DivTooltipWrapper className="tooltip-wrapper">
+        <DivTooltip className="tooltip" ref={divRef} />
+      </DivTooltipWrapper>
     </>
   );
 };

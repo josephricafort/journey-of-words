@@ -30,8 +30,8 @@ const GraphicWrapper = styled.div`
   opacity: 1;
   z-index: ${(props) => props.theme.zVisuals + props.zGraphic};
 
-  @media (${(props) => props.theme.breakpointMedium}) {
-    top: 30vh;
+  @media (${(props) => props.theme.breakpointLarge}) {
+    top: 25vh;
     transform: translate(-50%, -50%);
     left: auto;
     right: 0;

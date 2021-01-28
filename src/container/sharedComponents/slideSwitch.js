@@ -85,6 +85,7 @@ const CardIntro = styled(Card)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  opacity: 1;
 
   p {
     text-align: center;
