@@ -27,22 +27,22 @@ const SVG = styled.svg`
       );
       return styles;
     };
-    const blinkKeyframes = ({ grey6, fill2 }) => `@keyframes blink {
+    const blinkKeyframes = () => `@keyframes blink {
       0% {
-        fill: ${fill2};
+        fill: ${theme.fill2};
       }
     
       50% {
-        fill: ${grey6};
+        fill: ${theme.grey6};
       }
     
       100% {
-        fill: ${fill2};
+        fill: ${theme.fill2};
       }
     }`;
 
     return `
-    ${blinkKeyframes(theme)}
+    ${blinkKeyframes()}
 
     #words, #seas, #lands,
     #nature, #resources, #society,

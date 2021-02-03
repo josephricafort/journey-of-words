@@ -64,7 +64,7 @@ const Card = styled.div`
     padding-top: 5px;
   }
 
-  @media (${({ theme }) => theme.breakpointMedium}) {
+  @media (${({ theme }) => theme.breakpointLarge}) {
     margin-left: 20px;
   }
 `;

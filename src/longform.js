@@ -544,7 +544,7 @@ const longform = {
       {
         type: "intro",
         chapter: "nature",
-        id: 1,
+        id: 1.0,
         contents: {
           chapterLabel: "Chapter II",
           title: "Nature",
@@ -553,7 +553,7 @@ const longform = {
       },
       {
         type: "quote",
-        id: 1.1,
+        id: 1.01,
         contents: {
           quote: {
             an:
@@ -565,21 +565,22 @@ const longform = {
       },
       {
         type: "face-tattoo",
-        id: 1.21,
+        id: 1.021,
         tattoo: {
           area: "tattooWorld",
           isShown: true,
         },
         contents: {
+          title: "Tattoo As A Form Of Expression",
           p: [
-            "**Tattoos** showcase one's life experiences in most Austronesian cultures, especially in Philippine and Polynesian cultures",
+            "In most Austronesian cultures, **Tattoos** showcase one's life experiences, especially in Philippine and Polynesian cultures",
             "**Boat** as a vessel of *oral traditions*, **islands** as a symbol of *adventure and exploration* and **waves** representing the *mastery of seafaring*. These are some of the important things common among most Austronesian cultures",
           ],
         },
       },
       {
         type: "face-tattoo",
-        id: 1.22,
+        id: 1.022,
         tattoo: {
           area: "tattooNature",
           isShown: true,
@@ -593,8 +594,18 @@ const longform = {
         },
       },
       {
+        type: "word-story",
+        id: 1.03,
+        contents: {
+          wordAn: "*maCa",
+          wordEn: "eye",
+          story:
+            "The word for eye in Austronesian languages is very stable where the sets of words are similar in sound and meaning.",
+        },
+      },
+      {
         type: "distribution-chart",
-        id: 1.32,
+        id: 1.04,
         contents: {
           icon: "tpc_nature_agri.svg",
           title: "Forces of nature",
@@ -613,6 +624,36 @@ const longform = {
           varLegend: [
             { value: "?", description: "Absent" },
             { value: 1, description: "Present" },
+          ],
+        },
+      },
+      {
+        type: "words-chart",
+        id: 1.05,
+        icon: "boat",
+        contents: {
+          title: "Words Chart",
+          p: [
+            "Some very long texts here will be placed that describe something nice and informative about what the writer wants to talk about",
+          ],
+        },
+        data: {
+          wordsItems: [
+            {
+              category: "nature",
+              wordsAn: ["*taneq", "*buŋa", "*likaC"],
+              wordsEn: ["earth", "flower", "lightning"],
+            },
+            {
+              category: "seas",
+              wordsAn: ["*bali₃", "*laŋiC", "*Nabek"],
+              wordsEn: ["sand", "sky", "outrigger float"],
+            },
+            {
+              category: "agriculture",
+              wordsAn: ["*punti1", "*niuR", "*buaq"],
+              wordsEn: ["banana", "coconut", "fruit"],
+            },
           ],
         },
       },
@@ -735,36 +776,6 @@ const longform = {
           wordEn: "mother",
           story:
             "Some texts here telling the story of the word and why it is significant in the Austronesian culture.",
-        },
-      },
-      {
-        type: "words-chart",
-        id: 1.42,
-        icon: "boat",
-        contents: {
-          title: "Words Chart",
-          p: [
-            "Some very long texts here will be placed that describe something nice and informative about what the writer wants to talk about",
-          ],
-        },
-        data: {
-          wordsItems: [
-            {
-              category: "nature",
-              wordsAn: ["*taneq", "*buŋa", "*likaC"],
-              wordsEn: ["earth", "flower", "lightning"],
-            },
-            {
-              category: "seas",
-              wordsAn: ["*bali₃", "*laŋiC", "*Nabek"],
-              wordsEn: ["sand", "sky", "outrigger float"],
-            },
-            {
-              category: "agriculture",
-              wordsAn: ["*punti1", "*niuR", "*buaq"],
-              wordsEn: ["banana", "coconut", "fruit"],
-            },
-          ],
         },
       },
       {
