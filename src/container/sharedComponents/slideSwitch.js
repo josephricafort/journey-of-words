@@ -61,16 +61,16 @@ const Card = styled.div`
     padding-top: 5px;
   }
 
-  @media (${({ theme }) => theme.breakpointLarge}) {
-    margin-left: 20px;
-  }
+  // @media (${({ theme }) => theme.breakpointLarge}) {
+  //   margin-left: 20px;
+  // }
 `;
 
 const CardIntro = styled(Card)`
   width: 100vw;
   height: 150vh;
   margin: 0;
-  padding: 0;
+  padding: 20px;
   max-width: 100%;
   background-color: ${({ theme, chapter }) =>
     (chapter === CHAPTER_NAMES.WORLD && theme.blue2) ||
@@ -88,7 +88,7 @@ const CardIntro = styled(Card)`
     text-align: center;
   }
 
-  @media (${({ theme }) => theme.breakpointSmall}) {
+  @media (${({ theme }) => theme.breakpointMedium}) {
     padding: 0;
     padding-top: 5px;
   }
@@ -178,8 +178,8 @@ function slideSwitch(slide) {
 
   return (
     <CardWrapper className="scrolly-card-wrapper" type={slide.type}>
-      {slide.type === "intro" && (
-        <CardIntro className="scrolly-card intro" chapter={slide.chapter}>
+      {slide.type === "cover" && (
+        <CardIntro className="scrolly-card cover" chapter={slide.chapter}>
           <ContentsWrapper className="contents-wrapper">
             <p className="chapter-roman-numeral">
               {slide.contents.chapterLabel}
@@ -199,6 +199,16 @@ function slideSwitch(slide) {
             <p>{slide.contents.author}</p>
           </ContentsWrapper>
         </CardQuote>
+      )}
+      {slide.type === "intro" && (
+        <Card className="scrolly-card intro">
+          {slide.contents.title && (
+            <h3 className="card-title">{slide.contents.title}</h3>
+          )}
+          {slide.contents.p.map(
+            (p, i) => p && <MarkdownHTML {...markDownProps(p)} key={i} />
+          )}
+        </Card>
       )}
       {slide.type === "kicker" && (
         <CardKicker className="scrolly-card kicker">

@@ -542,7 +542,7 @@ const longform = {
   chaptersScrolly: {
     slides: [
       {
-        type: "intro",
+        type: "cover",
         chapter: "nature",
         id: 1.0,
         contents: {
@@ -561,6 +561,16 @@ const longform = {
             en: "Turn your face to the sun and the shadows fall behind you.",
           },
           author: "- Maori proverb",
+        },
+      },
+      {
+        type: "intro",
+        chapter: "nature",
+        id: 1.02,
+        contents: {
+          p: [
+            "Some historical context about the history of the Austronesians and what readers will expect to read throughout the entire chapter.",
+          ],
         },
       },
       {
@@ -779,7 +789,7 @@ const longform = {
         },
       },
       {
-        type: "intro",
+        type: "cover",
         chapter: "conversion",
         id: 2,
         contents: {
@@ -835,7 +845,7 @@ const longform = {
         },
       },
       {
-        type: "intro",
+        type: "cover",
         chapter: "extraction",
         id: 3,
         contents: {
@@ -913,7 +923,7 @@ const longform = {
         },
       },
       {
-        type: "intro",
+        type: "cover",
         chapter: "fate",
         id: 4,
         contents: {
