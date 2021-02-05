@@ -758,6 +758,27 @@ const longform = {
         },
       },
       {
+        type: "outro",
+        chapter: "nature",
+        id: 1.11,
+        contents: {
+          p: [
+            "The Austronesian way of life has been generally characterized as simple island life, spiritually connected with nature and have a greater value for family and community. Nature has become the Austronesians’ resource provider. It provided them with all their needs from food, shelter, clothing and other needs.",
+          ],
+        },
+      },
+      {
+        type: "outro",
+        chapter: "nature",
+        id: 1.12,
+        contents: {
+          p: [
+            "Meanwhile, a group of people sailing from far away lands made contact with the Austronesians of maritime Southeast Asia. Along with trade, they brought their different views of the world, their beliefs of a more powerful God, much larger than nature and spirits.",
+            "Will they be repulsive to the incoming foreign traders that may contradict their faith? Or will they embrace the faiths along with the riches the traders brought along?",
+          ],
+        },
+      },
+      {
         type: "intro",
         chapter: "conversion",
         id: 2,

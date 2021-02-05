@@ -283,7 +283,7 @@ function slideSwitch(slide) {
           </Suspense>
         </CardChart>
       )}
-      {slide.type === "extro" && (
+      {slide.type === "outro" && (
         <Card className="scrolly-card extro">
           {slide.contents.title && (
             <h3 className="card-title">{slide.contents.title}</h3>
