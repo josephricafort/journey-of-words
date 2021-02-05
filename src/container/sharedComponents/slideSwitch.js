@@ -148,6 +148,8 @@ const Icon = styled.img`
   margin-bottom: -30px;
 `;
 
+const IconGroup = styled.div``;
+
 const Bullet = ({ value }) => (
   <svg height={10} width={10}>
     <Circle cx={5} cy={5} r={5} value={value}></Circle>
@@ -211,6 +213,17 @@ function slideSwitch(slide) {
               src={require("../../assets/icons/topics/" + slide.contents.icon)}
               iconSize="medium"
             />
+          )}
+          {slide.contents.iconItems && (
+            <IconGroup>
+              {slide.contents.iconItems.map((icon) => (
+                <Icon
+                  className="topic-icon face-tattoo"
+                  src={require("../../assets/icons/topics/" + icon)}
+                  iconSize="small"
+                />
+              ))}
+            </IconGroup>
           )}
           {slide.contents.title && (
             <h3 className="card-title">{slide.contents.title}</h3>

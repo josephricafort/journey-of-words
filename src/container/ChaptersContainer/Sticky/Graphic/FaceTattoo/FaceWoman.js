@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useContext } from "react";
+import styled, { ThemeContext } from "styled-components";
 
 import AreaIcons from "./AreaIcons";
 import { tattooAreas, blinkAnim } from "./styleElements";
@@ -8,6 +8,9 @@ const SVG = styled.svg`
   ${({ data, currData, currSlideType, theme }) => {
     const tattooIsShown = (area) => data.find((t) => t.area === area).isShown;
     const currTattooIntro = (area) => currData.area === area;
+    const fillColor =
+      currData.area === "tattooWorld" ? theme.fillBlue2 : theme.fill2;
+
     const createTattooAreaStyles = () => {
       let styles = ``;
       const animateDuringTattoo = (t) =>
@@ -20,7 +23,7 @@ const SVG = styled.svg`
           ${animateDuringTattoo(t) ? blinkAnim : ``}
           ${
             animateDuringTattoo(t)
-              ? `fill: ${theme.fill2};`
+              ? `fill: ${fillColor};`
               : `fill: ${theme.grey6};`
           };
         }`)
@@ -29,7 +32,7 @@ const SVG = styled.svg`
     };
     const blinkKeyframes = () => `@keyframes blink {
       0% {
-        fill: ${theme.fill2};
+        fill: ${fillColor};
       }
     
       50% {
@@ -37,7 +40,7 @@ const SVG = styled.svg`
       }
     
       100% {
-        fill: ${theme.fill2};
+        fill: ${fillColor};
       }
     }`;
 
@@ -58,6 +61,8 @@ const SVG = styled.svg`
 `;
 
 const FaceWoman = ({ data, currData, currSlideType }) => {
+  const theme = useContext(ThemeContext);
+
   return (
     <SVG
       version="1.1"
@@ -70,6 +75,7 @@ const FaceWoman = ({ data, currData, currSlideType }) => {
       data={data}
       currData={currData}
       currSlideType={currSlideType}
+      theme={theme}
       className="face-woman"
     >
       <g id="elements">

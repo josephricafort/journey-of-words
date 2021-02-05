@@ -572,6 +572,11 @@ const longform = {
         },
         contents: {
           title: "Tattoo As A Form Of Expression",
+          iconItems: [
+            "tpc_world_land.svg",
+            "tpc_world_boatwords.svg",
+            "tpc_world_sea.svg",
+          ],
           p: [
             "In most Austronesian cultures, **Tattoos** showcase one's life experiences, especially in Philippine and Polynesian cultures",
             "**Boat** as a vessel of *oral traditions*, **islands** as a symbol of *adventure and exploration* and **waves** representing the *mastery of seafaring*. These are some of the important things common among most Austronesian cultures",
