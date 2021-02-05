@@ -31,10 +31,17 @@ const GraphicWrapper = styled.div`
   z-index: ${(props) => props.theme.zVisuals + props.zGraphic};
 
   @media (${(props) => props.theme.breakpointLarge}) {
-    top: 25vh;
+    top: 30vh;
     transform: translate(-50%, -50%);
     left: auto;
     right: 0;
+  }
+
+  @media (${(props) => props.theme.breakpointWide}) {
+    top: 30px;
+    transform: translateX(-50%);
+    left: 50%;
+    right: auto;
   }
 `;
 

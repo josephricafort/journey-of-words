@@ -20,6 +20,7 @@ const CardWrapper = styled.div`
   text-align: center;
   border: 3px solid ${({ theme }) => theme.stroke2}; // to remove before pub
   pointer-events: none;
+  max-width: ${(theme) => theme.wide}px;
 
   @media (${({ theme }) => theme.breakpointSmall}) {
     padding: 0;
@@ -53,10 +54,6 @@ const Card = styled.div`
   h2 {
     color: ${({ theme }) => theme.black}
     text-align: center;
-  }
-
-  h3.card-title.with-icon {
-    margin-top: 0;
   }
 
   @media (${({ theme }) => theme.breakpointSmall}) {
@@ -94,6 +91,13 @@ const CardIntro = styled(Card)`
   @media (${({ theme }) => theme.breakpointSmall}) {
     padding: 0;
     padding-top: 5px;
+  }
+`;
+
+const CardQuote = styled(CardIntro)`
+  h3,
+  p {
+    max-width: 500px;
   }
 `;
 
@@ -141,6 +145,7 @@ const Icon = styled.img`
     (iconSize === " medium" && `height: 70px; width: 70px;`) ||
     (iconSize === "large" && `height: 90px; width: 90px;`) ||
     `height: 70px; width: 70px;`}
+  margin-bottom: -30px;
 `;
 
 const Bullet = ({ value }) => (
@@ -185,11 +190,13 @@ function slideSwitch(slide) {
         </CardIntro>
       )}
       {slide.type === "quote" && (
-        <Card className="scrolly-card quote" {...slide}>
-          <h3>"{slide.contents.quote.an}"</h3>
-          <p>"{slide.contents.quote.en}"</p>
-          <p>{slide.contents.author}</p>
-        </Card>
+        <CardQuote className="scrolly-card quote" {...slide}>
+          <ContentsWrapper className="contents-wrapper">
+            <h3>"{slide.contents.quote.an}"</h3>
+            <p>"{slide.contents.quote.en}"</p>
+            <p>{slide.contents.author}</p>
+          </ContentsWrapper>
+        </CardQuote>
       )}
       {slide.type === "kicker" && (
         <CardKicker className="scrolly-card kicker">
@@ -206,7 +213,7 @@ function slideSwitch(slide) {
             />
           )}
           {slide.contents.title && (
-            <h3 className="card-title with-icon">{slide.contents.title}</h3>
+            <h3 className="card-title">{slide.contents.title}</h3>
           )}
           {slide.contents.p.map(
             (p, i) => p && <MarkdownHTML {...markDownProps(p)} key={i} />
@@ -218,11 +225,14 @@ function slideSwitch(slide) {
           <Word>
             {slide.contents.wordAn} ({slide.contents.wordEn})
           </Word>
-          {slide.contents.story && <p>{slide.contents.story}</p>}
+          {/* {slide.contents.story && <p>{slide.contents.story}</p>} */}
+          {slide.contents.p.map(
+            (p, i) => p && <MarkdownHTML {...markDownProps(p)} key={i} />
+          )}
         </Card>
       )}
       {slide.type === "distribution-chart" && (
-        <CardChart className="scrolly-card distribution-chart">
+        <Card className="scrolly-card distribution-chart">
           {slide.contents.icon && (
             <Icon
               className="topic-icon distribution-chart"
@@ -238,14 +248,14 @@ function slideSwitch(slide) {
           )}
           <DistributionChart slideData={slide.data} slideId={slide.id} />
           <LegendContainer className="variable-legends">
-            <p>Legend: </p>
+            <p>{slide.data.title}</p>
             {slide.data.varLegend.map((v) => (
               <Legend key={v.value}>
                 <Bullet value={v.value} /> {v.description}
               </Legend>
             ))}
           </LegendContainer>
-        </CardChart>
+        </Card>
       )}
       {slide.type === "words-chart" && (
         <CardChart className="scrolly-card words-chart">
@@ -259,6 +269,16 @@ function slideSwitch(slide) {
             <WordsChart slideData={slide.data} slideId={slide.id} />
           </Suspense>
         </CardChart>
+      )}
+      {slide.type === "extro" && (
+        <Card className="scrolly-card extro">
+          {slide.contents.title && (
+            <h3 className="card-title">{slide.contents.title}</h3>
+          )}
+          {slide.contents.p.map(
+            (p, i) => p && <MarkdownHTML {...markDownProps(p)} key={i} />
+          )}
+        </Card>
       )}
     </CardWrapper>
   );

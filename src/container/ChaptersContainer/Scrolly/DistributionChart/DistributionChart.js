@@ -62,7 +62,7 @@ const DistributionChart = ({ slideData }) => {
 
   return (
     <Container className="distrib-chart-container">
-      {varItems.map((v, vIndex) => (
+      {/* {varItems.map((v, vIndex) => (
         <div className="dotplot-wrapper" key={vIndex}>
           <h5>{v.varDefinition}</h5>
           <Suspense fallback={<div>Generating data...</div>}>
@@ -74,7 +74,7 @@ const DistributionChart = ({ slideData }) => {
             }
           </Suspense>
         </div>
-      ))}
+      ))} */}
     </Container>
   );
 };

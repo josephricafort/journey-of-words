@@ -97,7 +97,7 @@ const WordMarkersLayer = ({ data }) => {
     svgText.node();
 
     occlusion(svgText);
-    svgText.selectAll(".occluded").attr("opacity", 0.025);
+    svgText.selectAll(".occluded").attr("opacity", 0);
   }
 
   return (

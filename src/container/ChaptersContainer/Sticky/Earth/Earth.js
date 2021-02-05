@@ -87,6 +87,11 @@ const Wrapper = styled.div`
       right: 0;
       transform: translate(0, 0);
     }
+
+    @media (${theme.breakpointWide}) {
+      right: 50%;
+      transform: translateX(50%)
+    }
   `}
 `;
 

@@ -565,7 +565,7 @@ const longform = {
       },
       {
         type: "face-tattoo",
-        id: 1.021,
+        id: 1.02,
         tattoo: {
           area: "tattooWorld",
           isShown: true,
@@ -580,13 +580,14 @@ const longform = {
       },
       {
         type: "face-tattoo",
-        id: 1.022,
+        id: 1.03,
         tattoo: {
           area: "tattooNature",
           isShown: true,
           icon: "flower",
         },
         contents: {
+          title: "Kinship with Nature",
           icon: "tpc_nature_agri.svg",
           p: [
             "Aside from being master seafarers, the Austronesians have a deep connection with nature, the seas. They maintained their close relationship with them through worship and rituals.",
@@ -594,26 +595,18 @@ const longform = {
         },
       },
       {
-        type: "word-story",
-        id: 1.03,
-        contents: {
-          wordAn: "*maCa",
-          wordEn: "eye",
-          story:
-            "The word for eye in Austronesian languages is very stable where the sets of words are similar in sound and meaning.",
-        },
-      },
-      {
         type: "distribution-chart",
         id: 1.04,
         contents: {
           icon: "tpc_nature_agri.svg",
-          title: "Forces of nature",
+          title: "The Austronesians' Deeper Connection with Nature",
           p: [
-            "They strongly believe that the forces of nature are controlled by or imbued with the supernatural.",
+            "The Austronesians believe strongly believe that the forces of nature are controlled by or imbued with the supernatural. It is a belief that is common among most Austronesians.",
+            "Explore the map by hovering the dots. Each dot represent an Austronesian culture or subgroup.",
           ],
         },
         data: {
+          title: "Belief in the forces of nature",
           varItems: [
             {
               variable: "forcenature",
@@ -628,8 +621,110 @@ const longform = {
         },
       },
       {
-        type: "words-chart",
+        type: "word-story",
         id: 1.05,
+        contents: {
+          wordAn: "*maCa",
+          wordEn: "eye",
+          p: [
+            "The daily life of the Austronesians are being reflects the words and languages they use.",
+            "The word for eye in Austronesian languages is very stable where the sets of words are similar in sound and meaning.",
+          ],
+        },
+      },
+      {
+        type: "face-tattoo",
+        id: 1.06,
+        tattoo: {
+          area: "tattooResource",
+          isShown: true,
+        },
+        contents: {
+          icon: "tpc_nature_aqua.svg",
+          title: "Nature Provider Tattoo",
+          p: [
+            "Being knowledgeable about nature, they were also experts in agriculture and domestication of animals which has become their major food source. The surrounding seas and forests have also provided them with abundant food resources through fishing and hunting.",
+          ],
+        },
+      },
+      {
+        type: "distribution-chart",
+        id: 1.07,
+        contents: {
+          icon: "tpc_nature_aqua.svg",
+          title: "Nature as a Provider",
+          p: [
+            "Being knowledgeable about nature, they were also experts in agriculture and domestication of animals which has become their major food source. The surrounding seas and forests have also provided them with abundant food resources through fishing and hunting.",
+          ],
+        },
+        data: {
+          title: "Belief in the forces of nature",
+          varItems: [
+            {
+              variable: "landhuntind",
+              varDefinition:
+                "Forces of nature are controlled or embued by the supernatural.",
+            },
+            {
+              variable: "watergathermore",
+              varDefinition:
+                "Forces of nature are controlled or embued by the supernatural.",
+            },
+          ],
+          varLegend: [
+            { value: "?", description: "Absent" },
+            { value: 1, description: "Present" },
+          ],
+        },
+      },
+      {
+        type: "face-tattoo",
+        id: 1.08,
+        tattoo: {
+          area: "tattooSociety",
+          isShown: true,
+        },
+        contents: {
+          icon: "tpc_nature_people.svg",
+          title: "Society Tattoo",
+          p: [
+            "Austronesians value their family and community. They are also sociable and like to be with others. They also have a unique way of expressing their emotions using their body parts.",
+          ],
+        },
+      },
+      {
+        type: "distribution-chart",
+        id: 1.09,
+        contents: {
+          icon: "tpc_nature_people.svg",
+          title: "Family and Community",
+          p: [
+            "Austronesians value their family and community. They are also sociable and like to be with others. They also have a unique way of expressing their emotions using their body parts.",
+          ],
+        },
+        data: {
+          title: "Belief in the forces of nature",
+          varItems: [
+            {
+              variable: "landhuntind",
+              varDefinition:
+                "Forces of nature are controlled or embued by the supernatural.",
+            },
+            {
+              variable: "watergathermore",
+              varDefinition:
+                "Forces of nature are controlled or embued by the supernatural.",
+            },
+          ],
+          varLegend: [
+            { value: "?", description: "Absent" },
+            { value: 1, description: "Present" },
+          ],
+        },
+      },
+      {
+        type: "words-chart",
+        id: 1.1,
         icon: "boat",
         contents: {
           title: "Words Chart",
@@ -655,127 +750,6 @@ const longform = {
               wordsEn: ["banana", "coconut", "fruit"],
             },
           ],
-        },
-      },
-      {
-        type: "distribution-chart",
-        id: 1.31,
-        icon: "fern",
-        contents: {
-          title: "Austronesians and nature",
-          icon: "tpc_nature_agri.svg",
-          p: [
-            "They strongly believe that the forces of nature are controlled by or imbued with the supernatural.",
-          ],
-        },
-        data: {
-          varItems: [
-            {
-              variable: "naturespirits",
-              varDefinition: "Belief in nature spirits",
-            },
-            {
-              variable: "naturegods",
-              varDefinition: "Belief in nature gods",
-            },
-          ],
-          varLegend: [
-            { value: "?", description: "Absent" },
-            { value: 1, description: "Present, but not major focus" },
-            { value: 2, description: "Major Focus" },
-            { value: 3, description: "Major" },
-            { value: 4, description: "Principal focus" },
-          ],
-        },
-      },
-      {
-        type: "face-tattoo",
-        id: 1.24,
-        tattoo: {
-          area: "tattooBoat",
-          isShown: true,
-          icon: "boat-words",
-        },
-        contents: {
-          title: "Boat words tattoo chart here",
-          p: [
-            "Some very long texts here will be placed that describe something nice and informative about what the writer wants to talk about",
-            "Also similar stuffs with the first one blah blah blah.",
-            "I don't want to talk about it. :(",
-          ],
-        },
-      },
-      {
-        type: "face-tattoo",
-        id: 1.23,
-        tattoo: {
-          area: "tattooLand",
-          isShown: true,
-          icon: "islands",
-        },
-        contents: {
-          title: "Sea tattoo chart here",
-          p: [
-            "Some very long texts here will be placed that describe something nice and informative about what the writer wants to talk about",
-            "Also similar stuffs with the first one blah blah blah.",
-            "I don't want to talk about it. :(",
-          ],
-        },
-      },
-      {
-        type: "distribution-chart",
-        id: 1.3,
-        contents: {
-          title: "Austronesians and nature",
-          icon: "tpc_nature_agri.svg",
-          p: [
-            "Being knowledgeable about nature, they were also experts in agriculture and domestication of animals which has become their major food source. The surrounding seas and forests have also provided them with abundant food resources through fishing and hunting.",
-          ],
-          data: "./some-github-data-url-here",
-        },
-        data: {
-          varItems: [
-            {
-              variable: "forcenature",
-              varDefinition:
-                "Forces of nature are controlled or embued by the supernatural.",
-            },
-            {
-              variable: "naturespirits",
-              varDefinition: "Nature spirits",
-            },
-            {
-              variable: "naturegods",
-              varDefinition: "Nature gods",
-            },
-          ],
-          varLegend: [
-            { value: 0, description: "Absent" },
-            { value: 1, description: "Present" },
-            { value: 2, description: "Minor" },
-            { value: 3, description: "Major" },
-            { value: 4, description: "Primary" },
-          ],
-        },
-      },
-      {
-        type: "word-story",
-        id: 1.411,
-        contents: {
-          wordAn: "*kuto",
-          wordEn: "headlouse",
-          story:
-            "Some texts here telling the story of the word and why it is significant in the Austronesian culture.",
-        },
-      },
-      {
-        type: "word-story",
-        id: 1.412,
-        contents: {
-          wordAn: "*ina",
-          wordEn: "mother",
-          story:
-            "Some texts here telling the story of the word and why it is significant in the Austronesian culture.",
         },
       },
       {
