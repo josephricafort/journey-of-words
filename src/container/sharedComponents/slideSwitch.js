@@ -61,9 +61,9 @@ const Card = styled.div`
     padding-top: 5px;
   }
 
-  // @media (${({ theme }) => theme.breakpointLarge}) {
-  //   margin-left: 20px;
-  // }
+  @media (${({ theme }) => theme.breakpointLarge}) {
+    margin-left: 20px;
+  }
 `;
 
 const CardIntro = styled(Card)`
@@ -91,6 +91,10 @@ const CardIntro = styled(Card)`
   @media (${({ theme }) => theme.breakpointMedium}) {
     padding: 0;
     padding-top: 5px;
+  }
+
+  @media (${({ theme }) => theme.breakpointLarge}) {
+    margin-left: auto;
   }
 `;
 
