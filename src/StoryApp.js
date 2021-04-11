@@ -98,8 +98,8 @@ const StoryApp = () => {
     <ThemeProvider theme={{ ...variables, ...lightTheme, ...chapterThemeVars }}>
       <GlobalStyle />
       <AppContainer className="app-container">
-        {/* <IntroKicker {...introKicker.config}></IntroKicker>
-        <MapboxScrolly {...mapboxScrolly.config} /> */}
+        {/* <IntroKicker {...introKicker.config}></IntroKicker> */}
+        <MapboxScrolly {...mapboxScrolly.config} />
         <HeaderWrapper className="header-wrapper">
           <HeaderContainer className="header-container">
             <h1>{header.title}</h1>

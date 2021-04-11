@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext, useMemo } from "react";
 import styled from "styled-components";
 import axios from "axios";
-
 import {
   distFromHomeland,
   removeStringSpaces,
@@ -15,8 +14,6 @@ import {
 } from "../../../utils/constants";
 import SVGChart from "./SVGChart/SVGChart";
 import { Context } from "../../../storeContext/Store";
-
-const Container = styled.div``;
 
 const Selection = styled.div`
   position: relative;

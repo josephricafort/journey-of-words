@@ -4,7 +4,7 @@ const longform = {
     description:
       "How the shared linguistic ancestry of Austronesians tells us the story of mankind’s greatest expansion and adversities across the vast Indo-Pacific.",
     byline1:
-      "Based from the reasearch works of Robert Blust, Russell Gray, Simon Greenhill, Steven Trussel and Joseph Watts.",
+      "Based from the research works of Robert Blust, Russell Gray, Simon Greenhill, Steven Trussel and Joseph Watts.",
     byline2:
       "Written, designed and developed by Joseph Ricafort. Illustrations by Colleen Joyce Ricafort",
   },

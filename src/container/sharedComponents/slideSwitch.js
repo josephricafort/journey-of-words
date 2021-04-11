@@ -18,7 +18,7 @@ const CardWrapper = styled.div`
   // padding: 0 20px;
   min-height: 150vh;
   text-align: center;
-  border: 3px solid ${({ theme }) => theme.stroke2}; // to remove before pub
+  // border: 3px solid ${({ theme }) => theme.stroke2}; // to remove before pub
   pointer-events: none;
   max-width: ${(theme) => theme.wide}px;
 

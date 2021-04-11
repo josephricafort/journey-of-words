@@ -30,7 +30,9 @@ const SVG = styled.svg`
       );
       return styles;
     };
-    const blinkKeyframes = () => `@keyframes blink {
+
+    return `
+    @keyframes blink {
       0% {
         fill: ${fillColor};
       }
@@ -42,10 +44,7 @@ const SVG = styled.svg`
       100% {
         fill: ${fillColor};
       }
-    }`;
-
-    return `
-    ${blinkKeyframes()}
+    }
 
     #words, #seas, #lands,
     #nature, #resources, #society,
