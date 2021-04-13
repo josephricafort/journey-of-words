@@ -6,6 +6,7 @@ import DistributionChart from "../ChaptersContainer/Scrolly/DistributionChart/Di
 // import WordsChart from "../ChaptersContainer/Scrolly/WordsChart";
 import { Word } from "./styledElements";
 import { CHAPTER_NAMES } from "../../utils/constants";
+import colorScaleSel from "./colorScaleSel";
 
 const WordsChart = lazy(() =>
   import("../ChaptersContainer/Scrolly/WordsChart")
@@ -154,19 +155,14 @@ const Icon = styled.img`
 
 const IconGroup = styled.div``;
 
-const Bullet = ({ value }) => (
+const Bullet = ({ value, nValues }) => (
   <svg height={10} width={10}>
-    <Circle cx={5} cy={5} r={5} value={value}></Circle>
+    <Circle cx={5} cy={5} r={5} value={value} nValues={nValues}></Circle>
   </svg>
 );
 
 const Circle = styled.circle`
-  fill: ${({ theme, value }) =>
-    (value && value === "?" && theme.fill0) ||
-    (value === 1 && theme.fill1) ||
-    (value === 2 && theme.fill2) ||
-    (value === 3 && theme.fill3) ||
-    (value === 4 && theme.fill4)};
+  fill: ${({ theme, value, nValues }) => colorScaleSel(nValues, theme)[value]};
 `;
 
 function slideSwitch(slide) {
@@ -278,7 +274,8 @@ function slideSwitch(slide) {
             <p>{slide.data.title}</p>
             {slide.data.varLegend.map((v) => (
               <Legend key={v.value}>
-                <Bullet value={v.value} /> {v.description}
+                <Bullet value={v.value} nValues={slide.data.varLegend.length} />
+                {v.description}
               </Legend>
             ))}
           </LegendContainer>

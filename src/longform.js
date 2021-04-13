@@ -67,6 +67,7 @@ const longform = {
         },
         {
           id: "world-boat-1",
+          icon: "tpc_world_boatsail.svg",
           description: [
             `Suddenly, one of the Austronesians unknown to history had a **‘dream’** of how to cross the waters that no one had dared to cross before *(Blust 1977, 1984/1985)*.`,
             `Through this dream, they innovated a boat by combining a **sailing raft** used at sea and a **dugout canoe**, a centuries old boat used on the interior rivers. The **outrigger canoe** was born!`,
@@ -267,6 +268,7 @@ const longform = {
         },
         {
           id: "world-long-pause",
+          icon: "tpc_world_land.svg",
           title: "The Long Pause",
           description: [
             "By about **3,100 years ago**, and then evidently faced navigational challenges they could not immediately overcome, bringing the Austronesian expansion to a temporary halt.",
@@ -344,6 +346,7 @@ const longform = {
         },
         {
           id: "world-rising-sun",
+          icon: "tpc_world_sea.svg",
           title: "Another Dream Towards The Rising Sun",
           description: [
             "A full two millennia after the settlement of western Polynesia, voyagers set out again toward the rising sun.",
@@ -621,7 +624,8 @@ const longform = {
           ],
         },
         data: {
-          title: "Belief in the forces of nature",
+          title:
+            "Fishing and water-based hunting performed by one or more groups",
           varItems: [
             {
               variable: "forcenature",
@@ -630,8 +634,9 @@ const longform = {
             },
           ],
           varLegend: [
-            { value: "?", description: "Absent" },
             { value: 1, description: "Present" },
+            { value: 0, description: "Absent" },
+            { value: "?", description: "Missing data" },
           ],
         },
       },
@@ -675,11 +680,11 @@ const longform = {
         data: {
           title: "Belief in the forces of nature",
           varItems: [
-            {
-              variable: "landhuntind",
-              varDefinition:
-                "Forces of nature are controlled or embued by the supernatural.",
-            },
+            // {
+            //   variable: "landhuntind",
+            //   varDefinition:
+            //     "Forces of nature are controlled or embued by the supernatural.",
+            // },
             {
               variable: "watergathermore",
               varDefinition:
@@ -687,8 +692,31 @@ const longform = {
             },
           ],
           varLegend: [
-            { value: "?", description: "Absent" },
-            { value: 1, description: "Present" },
+            {
+              value: 4,
+              description:
+                "Principal (more important than any other source of food)",
+            },
+            {
+              value: 3,
+              description: "Major (one of the most important sources of food)",
+            },
+            {
+              value: 2,
+              description:
+                "Medium (a significant food source, but not one of the most important sources of food)",
+            },
+            {
+              value: 1,
+              description:
+                "Minor (forms a relatively insignificant part of diet)",
+            },
+            {
+              value: 0,
+              description:
+                "Absent (not practiced in the culture, or practiced but not a food source)",
+            },
+            { value: "?", description: "Missing data" },
           ],
         },
       },
@@ -720,20 +748,39 @@ const longform = {
         data: {
           title: "Belief in the forces of nature",
           varItems: [
+            // {
+            //   variable: "landhuntind",
+            //   varDefinition:
+            //     "Forces of nature are controlled or embued by the supernatural.",
+            // },
             {
-              variable: "landhuntind",
-              varDefinition:
-                "Forces of nature are controlled or embued by the supernatural.",
-            },
-            {
-              variable: "watergathermore",
+              variable: "ancestralspirits",
               varDefinition:
                 "Forces of nature are controlled or embued by the supernatural.",
             },
           ],
           varLegend: [
-            { value: "?", description: "Absent" },
-            { value: 1, description: "Present" },
+            {
+              value: 3,
+              description:
+                "Present, and the principal focus of supernatural practice",
+            },
+            {
+              value: 2,
+              description:
+                "Present, and a major focus of supernatural practice",
+            },
+            {
+              value: 1,
+              description:
+                "Present, but not a major focus of supernatural practice",
+            },
+            {
+              value: 0,
+              description:
+                "Absent (do not feature in the belief system of the culture)",
+            },
+            { value: "?", description: "Missing data" },
           ],
         },
       },

@@ -233,8 +233,18 @@ const CardImage = styled.img`
   width: 100%;
 `;
 
+const Icon = styled.img`
+  ${({ iconSize }) =>
+    (iconSize === "small" && `height: 50px; width: 50px;`) ||
+    (iconSize === " medium" && `height: 70px; width: 70px;`) ||
+    (iconSize === "large" && `height: 90px; width: 90px;`) ||
+    `height: 70px; width: 70px;`}
+  margin-bottom: -30px;
+`;
+
 const Chapter = ({
   id,
+  icon,
   title,
   image,
   description,
@@ -255,6 +265,13 @@ const Chapter = ({
   return (
     <CardWrapper id={id} className={[classList, "card-wrapper"]} {...alignment}>
       <Card className="card">
+        {icon && (
+          <Icon
+            className="topic-icon boatsail"
+            src={require("../assets/icons/topics/" + icon)}
+            iconSize="medium"
+          />
+        )}
         {title && <h3 className="title">{title}</h3>}
         {image && <CardImage src={image} alt={title}></CardImage>}
         {(Array.isArray(description) && (
