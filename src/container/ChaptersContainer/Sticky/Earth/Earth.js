@@ -18,6 +18,8 @@ import { removeStringSpaces } from "../../../../utils/utils";
 import {
   CHAPTER_NAMES,
   DB_GITHUB_API_WORDS,
+  DB_GITHUB_API_PULOTU,
+  SET_DISTRIBUTIONDATA,
 } from "../../../../utils/constants";
 import VoronoiGridTooltip from "./VoronoiGridTooltip";
 
@@ -109,11 +111,14 @@ const Earth = () => {
     currentChapterTheme,
     currentDistributionData,
   } = useContext(Context)[0];
-  const { type } = currentSlideData;
+  const { contents, type, data } = currentSlideData;
+  // const varItems = data;
 
-  const fetchData = () => {
+  // const [distributionData, setDistributionData] = useState([[], [], []]);
+  // const dispatch = useContext(Context)[1];
+
+  const fetchWordData = () => {
     if (type === "word-story") {
-      const { contents } = currentSlideData;
       const { wordEn } = contents;
       axios
         .get(DB_GITHUB_API_WORDS + "/" + removeStringSpaces(wordEn) + ".json")
@@ -125,7 +130,40 @@ const Earth = () => {
         });
     }
   };
-  useEffect(fetchData, [currentSlideData]);
+  useEffect(fetchWordData, [currentSlideData]);
+
+  // const fetchDistributionData = () => {
+  //   if (type === "distribution-chart") {
+  //     axios
+  //       .all(
+  //         varItems.map((v) =>
+  //           axios.get(
+  //             DB_GITHUB_API_PULOTU +
+  //               "/" +
+  //               removeStringSpaces(v.variable) +
+  //               ".json"
+  //           )
+  //         )
+  //       )
+  //       .then((responseArray) => {
+  //         setDistributionData(responseArray.map((res) => JSON.parse(res.data)));
+  //       })
+  //       .catch((error) => {
+  //         console.log(error);
+  //       });
+  //   }
+  // };
+  // useEffect(fetchDistributionData, []);
+
+  // const dispatchDistributionData = () => {
+  //   if (type === "distribution-chart") {
+  //     dispatch({
+  //       type: SET_DISTRIBUTIONDATA,
+  //       payload: distributionData,
+  //     });
+  //   }
+  // };
+  // useEffect(dispatchDistributionData, [distributionData]);
 
   const currentMapboxStyle = (theme) =>
     (theme === CHAPTER_NAMES.WORLD && MAPBOX_STYLE_WORLD) ||

@@ -572,7 +572,7 @@ const longform = {
         id: 1.02,
         contents: {
           p: [
-            "Some historical context about the history of the Austronesians and what readers will expect to read throughout the entire chapter.",
+            "From 4000 BC to 1500BC, the daily lives of the Austronesians were often associated with deities and nature, close ties with family and high respect with the ancestors. The connections between the Austronesian words and their respective cultures have a striking pattern and similarities.",
           ],
         },
       },
@@ -617,7 +617,7 @@ const longform = {
         id: 1.04,
         contents: {
           icon: "tpc_nature_agri.svg",
-          title: "The Austronesians' Deeper Connection with Nature",
+          title: "A Deeper Connection with Nature",
           p: [
             "The Austronesians believe strongly believe that the forces of nature are controlled by or imbued with the supernatural. It is a belief that is common among most Austronesians.",
             "Explore the map by hovering the dots. Each dot represent an Austronesian culture or subgroup.",
@@ -625,7 +625,7 @@ const longform = {
         },
         data: {
           title:
-            "Fishing and water-based hunting performed by one or more groups",
+            "Forces of nature are controlled or embued by the supernatural.",
           varItems: [
             {
               variable: "forcenature",
@@ -686,7 +686,7 @@ const longform = {
             //     "Forces of nature are controlled or embued by the supernatural.",
             // },
             {
-              variable: "watergathermore",
+              variable: "watergathergroup",
               varDefinition:
                 "Forces of nature are controlled or embued by the supernatural.",
             },

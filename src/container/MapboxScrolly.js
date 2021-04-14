@@ -267,7 +267,7 @@ const Chapter = ({
       <Card className="card">
         {icon && (
           <Icon
-            className="topic-icon boatsail"
+            className="topic-icon world"
             src={require("../assets/icons/topics/" + icon)}
             iconSize="medium"
           />

@@ -117,7 +117,7 @@ const VoronoiGridTooltip = ({ data, earthWrapDims, type }) => {
         const i = circleNodes.indexOf(this);
 
         divTooltip.style("opacity", 0);
-        iconMarker(i).attr("r", 2);
+        iconMarker(i).attr("r", 3);
       });
 
     svg.node();

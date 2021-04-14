@@ -21,13 +21,14 @@ const Container = styled.div`
   }
 `;
 
-const DotPlot = lazy(() => import("./DotPlot"));
+// const DotPlot = lazy(() => import("./DotPlot"));
 
-const DistributionChart = ({ slideData }) => {
+const DistributionChart = ({ slideData, slideId }) => {
   const { varItems } = slideData;
 
   const [distributionData, setDistributionData] = useState([[], [], []]);
-  const dispatch = useContext(Context)[1];
+  const [state, dispatch] = useContext(Context);
+  const { currentStepIndex } = state;
 
   const fetchDistributionData = () => {
     axios
@@ -48,17 +49,18 @@ const DistributionChart = ({ slideData }) => {
         console.log(error);
       });
   };
-  useEffect(fetchDistributionData, []);
+  useEffect(fetchDistributionData, [currentStepIndex]);
 
   const dispatchDistributionData = () => {
-    dispatch({
-      type: SET_DISTRIBUTIONDATA,
-      payload: distributionData,
-    });
+    currentStepIndex === slideId &&
+      dispatch({
+        type: SET_DISTRIBUTIONDATA,
+        payload: distributionData,
+      });
   };
   useEffect(dispatchDistributionData, [distributionData]);
 
-  const variableData = (vIndex) => distributionData[vIndex];
+  // const variableData = (vIndex) => distributionData[vIndex];
 
   return (
     <Container className="distrib-chart-container">

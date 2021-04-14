@@ -27,7 +27,7 @@ const IconMarkersLayer = ({ data }) => {
       .attr("font-size", 10 / projection.scale + "px")
       .attr("cx", (d) => d.lat && d.long && latLngToLayer(d.lat, d.long).x)
       .attr("cy", (d) => d.lat && d.long && latLngToLayer(d.lat, d.long).y)
-      .attr("r", (d) => 3)
+      .attr("r", 3)
       .attr("fill", (d) => colorScaleSel(valueLength, theme)[d.value])
       .style("opacity", 1)
       .style("pointer-events", "none");

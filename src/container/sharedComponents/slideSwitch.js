@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from "react";
 import styled from "styled-components";
 import MarkdownHTML from "react-markdown/with-html";
 
-import DistributionChart from "../ChaptersContainer/Scrolly/DistributionChart/DistributionChart";
+// import DistributionChart from "../ChaptersContainer/Scrolly/DistributionChart/DistributionChart";
 // import WordsChart from "../ChaptersContainer/Scrolly/WordsChart";
 import { Word } from "./styledElements";
 import { CHAPTER_NAMES } from "../../utils/constants";
@@ -10,6 +10,10 @@ import colorScaleSel from "./colorScaleSel";
 
 const WordsChart = lazy(() =>
   import("../ChaptersContainer/Scrolly/WordsChart")
+);
+
+const DistributionChart = lazy(() =>
+  import("../ChaptersContainer/Scrolly/DistributionChart/DistributionChart")
 );
 
 const CardWrapper = styled.div`
@@ -269,7 +273,9 @@ function slideSwitch(slide) {
           {slide.contents.p.map(
             (p, i) => p && <MarkdownHTML {...markDownProps(p)} key={i} />
           )}
-          <DistributionChart slideData={slide.data} slideId={slide.id} />
+          <Suspense fallback={<div>Fetching distribution chart...</div>}>
+            <DistributionChart slideData={slide.data} slideId={slide.id} />
+          </Suspense>
           <LegendContainer className="variable-legends">
             <p>{slide.data.title}</p>
             {slide.data.varLegend.map((v) => (
