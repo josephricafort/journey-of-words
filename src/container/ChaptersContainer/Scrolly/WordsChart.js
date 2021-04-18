@@ -147,7 +147,8 @@ const WordsChart = ({ slideData, slideId }) => {
 
   const wordProtoAn = (wordEn) => {
     const currCat = wordsItems.find((cat) => activeCat === cat.category);
-    return currCat["words"].find((w) => w.wordsEn === wordEn)["wordAn"];
+    console.log(wordEn);
+    return currCat["words"].find((w) => w.wordsEn === wordEn)["wordsAn"];
   };
 
   const handleClickCat = (cat) => {
