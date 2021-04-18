@@ -251,7 +251,7 @@ function slideSwitch(slide) {
       {slide.type === "word-story" && (
         <Card className="scrolly-card word-story">
           <Word>
-            {slide.contents.wordAn} ({slide.contents.wordEn})
+            {slide.contents.wordAn} ({slide.contents.wordToDisplay})
           </Word>
           {/* {slide.contents.story && <p>{slide.contents.story}</p>} */}
           {slide.contents.p.map(

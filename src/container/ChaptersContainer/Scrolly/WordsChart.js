@@ -145,10 +145,16 @@ const WordsChart = ({ slideData, slideId }) => {
     wordsInfoData,
   ]);
 
-  const wordProtoAn = (wordEn) => {
-    const currCat = wordsItems.find((cat) => activeCat === cat.category);
-    console.log(wordEn);
-    return currCat["words"].find((w) => w.wordsEn === wordEn)["wordsAn"];
+  const wordProtoAn = (wordEn) =>
+    wordsItems
+      .find((cat) => activeCat === cat.category)
+      ["words"].find((w) => w.wordsEn === wordEn)["wordsAn"];
+
+  const wordToDisplay = (wordEn) => {
+    const currCatWordItem = wordsItems
+      .find((cat) => activeCat === cat.category)
+      ["words"].find((w) => w.wordsEn === wordEn);
+    return currCatWordItem.wordToDisplay || currCatWordItem.wordEn;
   };
 
   const handleClickCat = (cat) => {
@@ -189,7 +195,7 @@ const WordsChart = ({ slideData, slideId }) => {
             wordName={word}
             onClick={(e) => handleClickWord(word)}
           >
-            {word}
+            {wordToDisplay(word)}
           </WordTab>
         ))}
       </WordSelection>

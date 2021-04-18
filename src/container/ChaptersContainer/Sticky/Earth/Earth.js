@@ -18,6 +18,7 @@ import { removeStringSpaces } from "../../../../utils/utils";
 import {
   CHAPTER_NAMES,
   DB_GITHUB_API_WORDS,
+  DB_GITHUB_API_WORDS_LOAN,
   DB_GITHUB_API_PULOTU,
   SET_DISTRIBUTIONDATA,
 } from "../../../../utils/constants";
@@ -111,17 +112,21 @@ const Earth = () => {
     currentChapterTheme,
     currentDistributionData,
   } = useContext(Context)[0];
-  const { contents, type, data } = currentSlideData;
+  const { id, contents, type, data } = currentSlideData;
   // const varItems = data;
 
   // const [distributionData, setDistributionData] = useState([[], [], []]);
   // const dispatch = useContext(Context)[1];
 
+  function wordsChartSource(id) {
+    return Math.floor(id) <= 1 ? DB_GITHUB_API_WORDS : DB_GITHUB_API_WORDS_LOAN;
+  }
+
   const fetchWordData = () => {
     if (type === "word-story") {
       const { wordEn } = contents;
       axios
-        .get(DB_GITHUB_API_WORDS + "/" + removeStringSpaces(wordEn) + ".json")
+        .get(wordsChartSource(id) + "/" + removeStringSpaces(wordEn) + ".json")
         .then((response) => {
           setScatterPlotData(JSON.parse(response.data));
         })

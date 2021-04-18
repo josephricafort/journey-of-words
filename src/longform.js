@@ -646,6 +646,7 @@ const longform = {
         contents: {
           wordAn: "*maCa",
           wordEn: "eye",
+          wordToDisplay: "eye",
           p: [
             "The daily life of the Austronesians are being reflects the words and languages they use.",
             "The word for eye in Austronesian languages is very stable where the sets of words are similar in sound and meaning.",
@@ -799,25 +800,85 @@ const longform = {
             {
               category: "nature",
               words: [
-                { wordsAn: "*taneq", wordsEn: "earth" },
-                { wordsAn: "*buŋa", wordsEn: "flower" },
-                { wordsAn: "*likaC", wordsEn: "lightning" },
+                { wordsAn: "*taneq", wordsEn: "earth", wordToDisplay: "earth" },
+                {
+                  wordsAn: "*buŋa",
+                  wordsEn: "flower",
+                  wordToDisplay: "flower",
+                },
+                {
+                  wordsAn: "*likaC",
+                  wordsEn: "lightning",
+                  wordToDisplay: "lightning",
+                },
               ],
             },
             {
               category: "seas",
               words: [
-                { wordsAn: "*bali₃", wordsEn: "sand" },
-                { wordsAn: "*laŋiC", wordsEn: "sky" },
-                { wordsAn: "*Nabek", wordsEn: "outrigger float" },
+                { wordsAn: "*bali₃", wordsEn: "sand", wordToDisplay: "sand" },
+                { wordsAn: "*laŋiC", wordsEn: "sky", wordToDisplay: "sky" },
+                {
+                  wordsAn: "*Nabek",
+                  wordsEn: "outriggerfloat",
+                  wordToDisplay: "outrigger float",
+                },
               ],
             },
             {
               category: "agriculture",
               words: [
-                { wordsAn: "*punti1", wordsEn: "banana" },
-                { wordsAn: "*niuR", wordsEn: "coconut" },
-                { wordsAn: "*buaq", wordsEn: "fruit" },
+                {
+                  wordsEn: "chicken",
+                  wordsAn: "*manuk",
+                  wordToDisplay: "chicken",
+                },
+                {
+                  wordsAn: "*punti1",
+                  wordsEn: "banana",
+                  wordToDisplay: "banana",
+                },
+                {
+                  wordsAn: "*niuR",
+                  wordsEn: "coconut",
+                  wordToDisplay: "coconut",
+                },
+                { wordsAn: "*buaq", wordsEn: "fruit", wordToDisplay: "fruit" },
+              ],
+            },
+            {
+              category: "family & social",
+              words: [
+                {
+                  wordsAn: "*amax",
+                  wordsEn: "father",
+                  wordToDisplay: "father",
+                },
+                { wordsAn: "*ina", wordsEn: "mother", wordToDisplay: "mother" },
+                {
+                  wordsAn: "*kuCux",
+                  wordsEn: "headlouse",
+                  wordToDisplay: "head louse",
+                },
+              ],
+            },
+            {
+              category: "emotion & expression",
+              words: [
+                { wordsAn: "*maCa", wordsEn: "eye", wordToDisplay: "eye" },
+                {
+                  wordsAn: "*susu1",
+                  wordsEn: "femalebreast",
+                  wordToDisplay: "female breast",
+                },
+                {
+                  wordsAn: "*NiSawa",
+                  wordsEn: "breath",
+                  wordToDisplay: "breath",
+                },
+                { wordsAn: "*qaCay", wordsEn: "liver", wordToDisplay: "liver" },
+                { wordsAn: "*takut", wordsEn: "fear", wordToDisplay: "fear" },
+                { wordsAn: "*batux", wordsEn: "stone", wordToDisplay: "stone" },
               ],
             },
           ],
@@ -874,8 +935,9 @@ const longform = {
         type: "word-story",
         id: 2.2,
         contents: {
-          wordAn: "*untuŋ",
-          wordEn: "eye",
+          wordAn: "*guntiŋ",
+          wordEn: "scissors",
+          wordToDisplay: "scissors",
           p: [
             "The daily life of the Austronesians are being reflects the words and languages they use.",
             "The word for eye in Austronesian languages is very stable where the sets of words are similar in sound and meaning.",
@@ -894,28 +956,163 @@ const longform = {
         },
         data: {
           wordsItems: [
-            // {
-            //   category: "animal domestication",
-            //   words: [{ wordsEn: "chicken", wordsAn: "*manuk" }],
-            // },
-            // {
-            //   category: "family & social",
-            //   words: [
-            //     { wordsAn: "*amax", wordsEn: "father" },
-            //     { wordsAn: "*ina", wordsEn: "mother" },
-            //     { wordsAn: "*kuCux", wordsEn: "head louse" },
-            //   ],
-            // },
             {
-              category: "trade",
+              category: "sharp tools",
               words: [
-                { wordsAn: "*untuŋ", wordsEn: "fortuneluckfortune" },
-                { wordsAn: "*akal", wordsEn: "trickruseschemewits" },
-                { wordsAn: "*dáyaʔ", wordsEn: "deceittrickeryfraud" },
-                { wordsAn: "*baraŋ", wordsEn: "putarrangeputinorder" },
+                {
+                  wordsAn: "*guntiŋ",
+                  wordsEn: "scissors",
+                  wordToDisplay: "scissors",
+                },
+                {
+                  wordsAn: "*paraŋ",
+                  wordsEn: "machetebushknife",
+                  wordToDisplay: "machete, bush knife",
+                },
+                {
+                  wordsAn: "*sundáŋ",
+                  wordsEn: "bolomachete",
+                  wordToDisplay: "bolo",
+                },
+              ],
+            },
+            {
+              category: "trade activities",
+              words: [
+                {
+                  wordsAn: "*akal",
+                  wordsEn: "trickruseschemewits",
+                  wordToDisplay: "trick",
+                },
                 {
                   wordsAn: "*dáyaʔ",
+                  wordsEn: "deceittrickeryfraud",
+                  wordToDisplay: "deceit",
+                },
+                // { wordsAn: "*baraŋ", wordsEn: "putarrangeputinorder" },
+                {
+                  wordsAn: "*baraŋ",
                   wordsEn: "goodsbelongingsthingspossessions",
+                  wordToDisplay: "goods, belongings",
+                },
+                // {
+                //   wordsAn: "*untuŋ",
+                //   wordsEn: "fortuneluckfortune",
+                //   wordToDisplay: "fortune, luck",
+                // },
+              ],
+            },
+            {
+              category: "food related",
+              words: [
+                {
+                  wordsAn: "*santol",
+                  wordsEn:
+                    "sandoricumindicumtreewithediblefruitsandoricumindicumorsandoricumkoetjape",
+                  wordToDisplay: "santol fruit",
+                },
+                {
+                  wordsAn: "*sambal",
+                  wordsEn: "spicycondimentsidedishwithrice",
+                  wordToDisplay: "spicy condiment",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      {
+        type: "word-story",
+        id: 2.3,
+        contents: {
+          wordAn: "*bisa",
+          wordEn: "powervenom",
+          wordToDisplay: "power, venom",
+          p: [
+            "The daily life of the Austronesians are being reflects the words and languages they use.",
+            "The word for eye in Austronesian languages is very stable where the sets of words are similar in sound and meaning.",
+          ],
+        },
+      },
+      {
+        type: "words-chart",
+        id: 2.4,
+        icon: "boat",
+        contents: {
+          title: "Words Chart",
+          p: [
+            "Some very long texts here will be placed that describe something nice and informative about what the writer wants to talk about",
+          ],
+        },
+        data: {
+          wordsItems: [
+            {
+              category: "religion",
+              words: [
+                {
+                  wordsAn: "*paŋgil",
+                  wordsEn: "callvsummonspirits",
+                  wordToDisplay: "call, summon",
+                },
+                {
+                  wordsAn: "*cemer",
+                  wordsEn: "defiledrituallypollutedceremoniallyunclean",
+                  wordToDisplay: "defiled",
+                },
+                {
+                  wordsAn: "*bisa",
+                  wordsEn: "powervenom",
+                  wordToDisplay: "power, venom",
+                },
+                // {
+                //   wordsAn: "*asal",
+                //   wordsEn: "originsourceorigin",
+                //   wordToDisplay: "origin, cause",
+                // },
+                {
+                  wordsAn: "*budi",
+                  wordsEn: "consciencemindinsight",
+                  wordToDisplay: "conscience",
+                },
+                {
+                  wordsAn: "*jimat",
+                  wordsEn: "charmtalismanprotectivecharm",
+                  wordToDisplay: "charm, talisman",
+                },
+              ],
+            },
+            {
+              category: "social norms",
+              words: [
+                {
+                  wordsAn: "*paŋkat",
+                  wordsEn: "rankposition",
+                  wordToDisplay: "rank, position",
+                },
+                {
+                  wordsAn: "*babu",
+                  wordsEn: "maidfemaleservant",
+                  wordToDisplay: "maid",
+                },
+                {
+                  wordsAn: "*kampuŋ",
+                  wordsEn: "assemblymeetingassemblygathering",
+                  wordToDisplay: "assembly",
+                },
+                {
+                  wordsAn: "*bujaŋ",
+                  wordsEn: "marriageable",
+                  wordToDisplay: "marriageable",
+                },
+                {
+                  wordsAn: "*susah",
+                  wordsEn: "difficultytroubleworrydifficulty",
+                  wordToDisplay: "difficulty",
+                },
+                {
+                  wordsAn: "*waris",
+                  wordsEn: "heirinheritance",
+                  wordToDisplay: "heir",
                 },
               ],
             },
@@ -968,7 +1165,7 @@ const longform = {
       },
       {
         type: "words-chart",
-        id: 3.1,
+        id: 3.3,
         icon: "boat",
         contents: {
           title: "Words Chart",
@@ -979,14 +1176,189 @@ const longform = {
         data: {
           wordsItems: [
             {
-              category: "emotion & expression",
+              category: "plantation",
               words: [
-                { wordsAn: "*maCa", wordsEn: "eye" },
-                { wordsAn: "*susu1", wordsEn: "female breast" },
-                { wordsAn: "*NiSawa", wordsEn: "breath" },
-                { wordsAn: "*qaCay", wordsEn: "liver" },
-                { wordsAn: "*takut", wordsEn: "fear" },
-                { wordsAn: "*batux", wordsEn: "stone" },
+                {
+                  wordsAn: "*tabako",
+                  wordsEn: "tobacco",
+                  wordToDisplay: "tobacco",
+                },
+                {
+                  wordsAn: "*kamátis",
+                  wordsEn: "tomato",
+                  wordToDisplay: "tomato",
+                },
+                {
+                  wordsAn: "*acar",
+                  wordsEn: "picklestopickle",
+                  wordToDisplay: "pickles",
+                },
+                {
+                  wordsAn: "*kapas",
+                  wordsEn: "cotton",
+                  wordToDisplay: "cotton",
+                },
+                {
+                  wordsAn: "*mani",
+                  wordsEn: "peanut",
+                  wordToDisplay: "peanut",
+                },
+                {
+                  wordsAn: "*átis",
+                  wordsEn: "sugarappleanonasquamosa",
+                  wordToDisplay: "sugar apple",
+                },
+                {
+                  wordsAn: "*kahíl",
+                  wordsEn: "orangebitterorangesevilleorangecitrusaurantium",
+                  wordToDisplay: "Seville orange",
+                },
+                {
+                  wordsAn: "*pala",
+                  wordsEn: "nutmeg",
+                  wordToDisplay: "nutmeg",
+                },
+                {
+                  wordsAn: "*nanas",
+                  wordsEn: "pineapple",
+                  wordToDisplay: "pineapple",
+                },
+                {
+                  wordsAn: "*mabúlo",
+                  wordsEn:
+                    "hairytreewithediblehairybrownfruitdiospyrosdiscolor",
+                  wordToDisplay: "mabolo fruit",
+                },
+              ],
+            },
+            {
+              category: "mining",
+              words: [
+                {
+                  wordsAn: "*emas",
+                  wordsEn: "gold",
+                  wordToDisplay: "gold",
+                },
+                {
+                  wordsAn: "*alámbre",
+                  wordsEn: "wire",
+                  wordToDisplay: "wire",
+                },
+                {
+                  wordsAn: "*piko",
+                  wordsEn: "pickaxemattockhoe",
+                  wordToDisplay: "pickaxe",
+                },
+                {
+                  wordsAn: "*tambaga",
+                  wordsEn: "alloycoppergoldalloy",
+                  wordToDisplay: "alloy",
+                },
+                {
+                  wordsAn: "*láta",
+                  wordsEn: "tincan",
+                  wordToDisplay: "tin can",
+                },
+              ],
+            },
+            {
+              category: "production",
+              words: [
+                {
+                  wordsAn: "*kabán",
+                  wordsEn: "drymeasureforgrainetc",
+                  wordToDisplay: "measure for grain",
+                },
+                {
+                  wordsAn: "*hasil",
+                  wordsEn: "yieldtitleyieldresults",
+                  wordToDisplay: "yield",
+                },
+                {
+                  wordsAn: "*laba",
+                  wordsEn: "gainprofitgain",
+                  wordToDisplay: "gain",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      {
+        type: "words-chart",
+        id: 3.4,
+        icon: "boat",
+        contents: {
+          title: "Adopted Words about Dominance, War and Violence",
+          p: [
+            "Some very long texts here will be placed that describe something nice and informative about what the writer wants to talk about",
+          ],
+        },
+        data: {
+          wordsItems: [
+            {
+              category: "dominance",
+              words: [
+                {
+                  wordsAn: "*ámo",
+                  wordsEn: "masterboss",
+                  wordToDisplay: "master, boss",
+                },
+                {
+                  wordsAn: "*bída",
+                  wordsEn: "story",
+                  wordToDisplay: "story",
+                },
+                {
+                  wordsAn: "*tabla",
+                  wordsEn: "drawntiedeveninscore",
+                  wordToDisplay: "tie, even",
+                },
+                {
+                  wordsAn: "*aniaya",
+                  wordsEn: "injusticeoppression",
+                  wordToDisplay: "injustice",
+                },
+                {
+                  wordsAn: "*pila",
+                  wordsEn: "filelinerow",
+                  wordToDisplay: "file, line",
+                },
+              ],
+            },
+            {
+              category: "war & violence",
+              words: [
+                {
+                  wordsAn: "*bedil",
+                  wordsEn: "weapon",
+                  wordToDisplay: "weapon",
+                },
+                {
+                  wordsAn: "*binasa",
+                  wordsEn: "destroy",
+                  wordToDisplay: "destroy",
+                },
+                {
+                  wordsAn: "*gása",
+                  wordsEn: "gauzewickofalamp",
+                  wordToDisplay: "gauze",
+                },
+                {
+                  wordsAn: "*bomba",
+                  wordsEn: "bomb",
+                  wordToDisplay: "bomb",
+                },
+                {
+                  wordsAn: "*kuláta",
+                  wordsEn: "riflebuttofarifle",
+                  wordToDisplay: "butt of rifle",
+                },
+                // {
+                //   wordsAn: "*rifle",
+                //   wordsEn: "riflegunrifle",
+                //   wordToDisplay: "rifle, gun",
+                // },
               ],
             },
           ],
@@ -995,10 +1367,80 @@ const longform = {
       {
         type: "cover",
         chapter: "fate",
-        id: 4,
+        id: 4.0,
         contents: {
           chapterLabel: "Chapter V",
           title: "Fate",
+        },
+      },
+      {
+        type: "words-chart",
+        id: 4.3,
+        icon: "",
+        contents: {
+          title: "Foreign Control",
+          p: [
+            "Some very long texts here will be placed that describe something nice and informative about what the writer wants to talk about",
+          ],
+        },
+        data: {
+          wordsItems: [
+            {
+              category: "foreign government",
+              words: [
+                {
+                  wordsAn: "*ukum",
+                  wordsEn: "judgepunish",
+                  wordToDisplay: "judge, punish",
+                },
+                {
+                  wordsAn: "*biaya",
+                  wordsEn: "monetarysupport",
+                  wordToDisplay: "monetary support",
+                },
+                {
+                  wordsAn: "*béa",
+                  wordsEn: "taxtoll",
+                  wordToDisplay: "tax, toll",
+                },
+                {
+                  wordsAn: "*bui",
+                  wordsEn: "jail",
+                  wordToDisplay: "jail",
+                },
+                {
+                  wordsAn: "*bukti",
+                  wordsEn: "proof",
+                  wordToDisplay: "proof",
+                },
+              ],
+            },
+            {
+              category: "foreign education",
+              words: [
+                {
+                  wordsAn: "*bisara",
+                  wordsEn: "speakdiscussion",
+                  wordToDisplay: "speak, discussion",
+                },
+                {
+                  wordsAn: "*akal",
+                  wordsEn: "intelligencecraftscheme",
+                  wordToDisplay: "intelligence",
+                },
+                {
+                  wordsAn: "*lápis",
+                  wordsEn: "pencil",
+                  wordToDisplay: "pencil",
+                },
+                {
+                  wordsAn: "*awam",
+                  wordsEn: "ignorantuneducatedpoor",
+                  wordToDisplay: "uneducated",
+                },
+              ],
+            },
+          ],
         },
       },
     ],
