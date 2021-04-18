@@ -10,6 +10,7 @@ import {
 } from "../../../utils/utils";
 import {
   DB_GITHUB_API_WORDS,
+  DB_GITHUB_API_WORDS_LOAN,
   DB_GITHUB_API_LOCATIONS,
 } from "../../../utils/constants";
 import SVGChart from "./SVGChart/SVGChart";
@@ -68,7 +69,7 @@ const CurrentWord = styled.div`
   margin-bottom: 10px;
 `;
 
-const WordsChart = ({ slideData }) => {
+const WordsChart = ({ slideData, slideId }) => {
   const { wordsItems } = slideData;
   const { currentSlideIndex } = useContext(Context)[0];
 
@@ -76,17 +77,25 @@ const WordsChart = ({ slideData }) => {
   // const [locationsData, setLocationsData] = useState([]);
 
   const categoryList = wordsItems.map((cat) => cat.category);
-  const wordsPerCatList = (cat) =>
-    wordsItems.find((wd) => wd.category === cat).wordsEn;
+  const wordsPerCatList = (cat) => {
+    return wordsItems
+      .find((c) => c.category === cat)
+      ["words"].map((wd) => wd.wordsEn);
+  };
+
   const [activeCat, setActiveCat] = useState(categoryList[0]);
   const [activeWord, setActiveWord] = useState(wordsPerCatList(activeCat)[0]);
+
+  function wordsChartSource(id) {
+    return Math.floor(id) <= 1 ? DB_GITHUB_API_WORDS : DB_GITHUB_API_WORDS_LOAN;
+  }
 
   const fetchData = () => {
     axios
       .all(
         wordsPerCatList(activeCat).map((wd) =>
           axios.get(
-            DB_GITHUB_API_WORDS + "/" + removeStringSpaces(wd) + ".json"
+            wordsChartSource(slideId) + "/" + removeStringSpaces(wd) + ".json"
           )
         )
       )
@@ -138,8 +147,7 @@ const WordsChart = ({ slideData }) => {
 
   const wordProtoAn = (wordEn) => {
     const currCat = wordsItems.find((cat) => activeCat === cat.category);
-    const indexWord = currCat.wordsEn.indexOf(wordEn);
-    return currCat.wordsAn[indexWord];
+    return currCat["words"].find((w) => w.wordsEn === wordEn)["wordAn"];
   };
 
   const handleClickCat = (cat) => {
@@ -184,7 +192,9 @@ const WordsChart = ({ slideData }) => {
           </WordTab>
         ))}
       </WordSelection>
-      <CurrentWord>{wordProtoAn(activeWord)}</CurrentWord>
+      <CurrentWord className="current-word">
+        {wordProtoAn(activeWord)}
+      </CurrentWord>
       <SVGChart {...svgChartProps} />
     </div>
   );

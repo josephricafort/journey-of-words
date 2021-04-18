@@ -798,18 +798,27 @@ const longform = {
           wordsItems: [
             {
               category: "nature",
-              wordsAn: ["*taneq", "*buŋa", "*likaC"],
-              wordsEn: ["earth", "flower", "lightning"],
+              words: [
+                { wordsAn: "*taneq", wordsEn: "earth" },
+                { wordsAn: "*buŋa", wordsEn: "flower" },
+                { wordsAn: "*likaC", wordsEn: "lightning" },
+              ],
             },
             {
               category: "seas",
-              wordsAn: ["*bali₃", "*laŋiC", "*Nabek"],
-              wordsEn: ["sand", "sky", "outrigger float"],
+              words: [
+                { wordsAn: "*bali₃", wordsEn: "sand" },
+                { wordsAn: "*laŋiC", wordsEn: "sky" },
+                { wordsAn: "*Nabek", wordsEn: "outrigger float" },
+              ],
             },
             {
               category: "agriculture",
-              wordsAn: ["*punti1", "*niuR", "*buaq"],
-              wordsEn: ["banana", "coconut", "fruit"],
+              words: [
+                { wordsAn: "*punti1", wordsEn: "banana" },
+                { wordsAn: "*niuR", wordsEn: "coconut" },
+                { wordsAn: "*buaq", wordsEn: "fruit" },
+              ],
             },
           ],
         },
@@ -862,8 +871,20 @@ const longform = {
         },
       },
       {
-        type: "words-chart",
+        type: "word-story",
         id: 2.2,
+        contents: {
+          wordAn: "*untuŋ",
+          wordEn: "eye",
+          p: [
+            "The daily life of the Austronesians are being reflects the words and languages they use.",
+            "The word for eye in Austronesian languages is very stable where the sets of words are similar in sound and meaning.",
+          ],
+        },
+      },
+      {
+        type: "words-chart",
+        id: 2.21,
         icon: "boat",
         contents: {
           title: "Words Chart",
@@ -873,20 +894,30 @@ const longform = {
         },
         data: {
           wordsItems: [
+            // {
+            //   category: "animal domestication",
+            //   words: [{ wordsEn: "chicken", wordsAn: "*manuk" }],
+            // },
+            // {
+            //   category: "family & social",
+            //   words: [
+            //     { wordsAn: "*amax", wordsEn: "father" },
+            //     { wordsAn: "*ina", wordsEn: "mother" },
+            //     { wordsAn: "*kuCux", wordsEn: "head louse" },
+            //   ],
+            // },
             {
-              category: "animal domestication",
-              wordsAn: ["*manuk"],
-              wordsEn: ["chicken"],
-            },
-            {
-              category: "fishing",
-              wordsAn: ["*quda", "*hasa"],
-              wordsEn: ["shrimp", "gills"],
-            },
-            {
-              category: "family & social",
-              wordsAn: ["*amax", "*ina", "*kuCux"],
-              wordsEn: ["father", "mother", "head louse"],
+              category: "trade",
+              words: [
+                { wordsAn: "*untuŋ", wordsEn: "fortuneluckfortune" },
+                { wordsAn: "*akal", wordsEn: "trickruseschemewits" },
+                { wordsAn: "*dáyaʔ", wordsEn: "deceittrickeryfraud" },
+                { wordsAn: "*baraŋ", wordsEn: "putarrangeputinorder" },
+                {
+                  wordsAn: "*dáyaʔ",
+                  wordsEn: "goodsbelongingsthingspossessions",
+                },
+              ],
             },
           ],
         },
@@ -949,21 +980,13 @@ const longform = {
           wordsItems: [
             {
               category: "emotion & expression",
-              wordsAn: [
-                "*maCa",
-                "*susu1",
-                "*NiSawa",
-                "*qaCay",
-                "*takut",
-                "*batux",
-              ],
-              wordsEn: [
-                "eye",
-                "female breast",
-                "breath",
-                "liver",
-                "fear",
-                "stone",
+              words: [
+                { wordsAn: "*maCa", wordsEn: "eye" },
+                { wordsAn: "*susu1", wordsEn: "female breast" },
+                { wordsAn: "*NiSawa", wordsEn: "breath" },
+                { wordsAn: "*qaCay", wordsEn: "liver" },
+                { wordsAn: "*takut", wordsEn: "fear" },
+                { wordsAn: "*batux", wordsEn: "stone" },
               ],
             },
           ],
