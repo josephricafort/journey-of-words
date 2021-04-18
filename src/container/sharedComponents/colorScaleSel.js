@@ -46,7 +46,15 @@ function colorScaleSel(sel, theme) {
         5: theme.fill4,
       };
     default:
-      break;
+      return {
+        "?": theme.fill0,
+        0: theme.fill0,
+        1: theme.fill0,
+        2: theme.fill1,
+        3: theme.fill2,
+        4: theme.fill3,
+        5: theme.fill4,
+      };
   }
 }
 

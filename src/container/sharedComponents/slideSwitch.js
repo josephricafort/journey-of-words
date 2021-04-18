@@ -230,11 +230,12 @@ function slideSwitch(slide) {
           )}
           {slide.contents.iconItems && (
             <IconGroup>
-              {slide.contents.iconItems.map((icon) => (
+              {slide.contents.iconItems.map((icon, i) => (
                 <Icon
                   className="topic-icon face-tattoo"
                   src={require("../../assets/icons/topics/" + icon)}
                   iconSize="small"
+                  key={"icon-" + i}
                 />
               ))}
             </IconGroup>

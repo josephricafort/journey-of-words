@@ -8,6 +8,13 @@ import colorScaleSel from "../../../sharedComponents/colorScaleSel";
 
 const IconMarkersLayer = ({ data }) => {
   const theme = useContext(ThemeContext);
+  const colorFillSet = {
+    fill0: theme.fill0,
+    fill1: theme.fill1,
+    fill2: theme.fill2,
+    fill3: theme.fill3,
+    fill4: theme.fill4,
+  };
 
   function drawCallback(selection, projection, data) {
     const svg = selection.attr("class", "icon-markers-layer");
@@ -28,7 +35,7 @@ const IconMarkersLayer = ({ data }) => {
       .attr("cx", (d) => d.lat && d.long && latLngToLayer(d.lat, d.long).x)
       .attr("cy", (d) => d.lat && d.long && latLngToLayer(d.lat, d.long).y)
       .attr("r", 3)
-      .attr("fill", (d) => colorScaleSel(valueLength, theme)[d.value])
+      .attr("fill", (d) => colorScaleSel(valueLength, colorFillSet)[d.value])
       .style("opacity", 1)
       .style("pointer-events", "none");
 
