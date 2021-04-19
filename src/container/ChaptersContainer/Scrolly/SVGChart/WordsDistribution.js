@@ -36,7 +36,7 @@ const Word = styled.span`
 `;
 
 const WordsDistribution = ({ data }) => {
-  const subgroupList = ["Formosan", "WMP", "CMP", "SHWNG", "OC"];
+  const subgroupList = ["Formosan", "WMP", "CMP", "SHWNG", "OC", undefined];
   const theme = useContext(ThemeContext);
 
   const domainExtent = d3.extent(data.map((e) => e.langNamesCount));

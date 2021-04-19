@@ -75,7 +75,7 @@ export const MAPBOX_STYLE_EXTRACTION = generateStylePath(
   mapboxStyles.extraction,
   true
 );
-export const MAPBOX_STYLE_FATE = generateStylePath(mapboxStyles.fate, IS_DRAFT);
+export const MAPBOX_STYLE_FATE = generateStylePath(mapboxStyles.fate, true);
 export const MAPBOX_STYLE_EXPLORATION = generateStylePath(
   mapboxStyles.exploration,
   true

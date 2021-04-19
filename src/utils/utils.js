@@ -37,7 +37,7 @@ export function fullSubgroupName(subgroupName) {
     (subgroupName === "OC" && "Oceanic") ||
     (subgroupName === "SHWNG" && "South Halmahera and West New Guinea") ||
     (subgroupName === "WMP" && "Western Malayo Polynesia") ||
-    null
+    "Ungrouped"
   );
 }
 

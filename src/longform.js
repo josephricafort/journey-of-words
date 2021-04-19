@@ -1129,11 +1129,45 @@ const longform = {
         },
       },
       {
-        type: "distribution-chart",
+        type: "face-tattoo",
+        id: 3.1,
+        tattoo: {
+          area: "tattooColonizer",
+          isShown: true,
+          icon: "spanish",
+        },
+        contents: {
+          title: "Colonization",
+          p: [
+            "Some very long texts here will be placed that describe something nice and informative about what the writer wants to talk about",
+            "Also similar stuffs with the first one blah blah blah.",
+            "I don't want to talk about it. :(",
+          ],
+        },
+      },
+      {
+        type: "face-tattoo",
         id: 3.2,
+        tattoo: {
+          area: "tattooColonyStatus",
+          isShown: true,
+          icon: "stillColony",
+        },
+        contents: {
+          title: "Colonization Status",
+          p: [
+            "Some very long texts here will be placed that describe something nice and informative about what the writer wants to talk about",
+            "Also similar stuffs with the first one blah blah blah.",
+            "I don't want to talk about it. :(",
+          ],
+        },
+      },
+      {
+        type: "distribution-chart",
+        id: 3.23,
         icon: "pickaxe",
         contents: {
-          title: "Austronesians and nature",
+          title: "Establishments of Seaports",
           p: [
             "Being knowledgeable about nature, they were also experts in agriculture and domestication of animals which has become their major food source. The surrounding seas and forests have also provided them with abundant food resources through fishing and hunting.",
           ],
@@ -1145,14 +1179,14 @@ const longform = {
               variable: "seaport",
               varDefinition: "Seaport",
             },
-            {
-              variable: "airtravel",
-              varDefinition: "Air travel",
-            },
-            {
-              variable: "vehiclesroads",
-              varDefinition: "Vehicles roads",
-            },
+            // {
+            //   variable: "airtravel",
+            //   varDefinition: "Air travel",
+            // },
+            // {
+            //   variable: "vehiclesroads",
+            //   varDefinition: "Vehicles roads",
+            // },
           ],
           varLegend: [
             { value: 0, description: "Absent" },
@@ -1164,8 +1198,25 @@ const longform = {
         },
       },
       {
+        type: "face-tattoo",
+        id: 3.31,
+        tattoo: {
+          area: "tattooExtraction",
+          isShown: true,
+          icon: "pickaxe",
+        },
+        contents: {
+          title: "Extracted trade goods",
+          p: [
+            "Some very long texts here will be placed that describe something nice and informative about what the writer wants to talk about",
+            "Also similar stuffs with the first one blah blah blah.",
+            "I don't want to talk about it. :(",
+          ],
+        },
+      },
+      {
         type: "words-chart",
-        id: 3.3,
+        id: 3.32,
         icon: "boat",
         contents: {
           title: "Words Chart",
@@ -1365,12 +1416,39 @@ const longform = {
         },
       },
       {
+        type: "face-tattoo",
+        id: 3.5,
+        tattoo: {
+          area: "tattooGovernment",
+          isShown: true,
+          icon: "building",
+        },
+        contents: {
+          title: "Colonial Government",
+          p: [
+            "Some very long texts here will be placed that describe something nice and informative about what the writer wants to talk about",
+            "Also similar stuffs with the first one blah blah blah.",
+            "I don't want to talk about it. :(",
+          ],
+        },
+      },
+      {
         type: "cover",
         chapter: "fate",
         id: 4.0,
         contents: {
           chapterLabel: "Chapter V",
           title: "Fate",
+        },
+      },
+      {
+        type: "intro",
+        chapter: "fate",
+        id: 4.1,
+        contents: {
+          p: [
+            "From 4000 BC to 1500BC, the daily lives of the Austronesians were often associated with deities and nature, close ties with family and high respect with the ancestors. The connections between the Austronesian words and their respective cultures have a striking pattern and similarities.",
+          ],
         },
       },
       {
