@@ -6,6 +6,7 @@ import MarkdownHTML from "react-markdown/with-html";
 // import WordsChart from "../ChaptersContainer/Scrolly/WordsChart";
 import { Word } from "./styledElements";
 import { CHAPTER_NAMES } from "../../utils/constants";
+import AreaChart from "./AreaChart";
 import colorScaleSel from "./colorScaleSel";
 
 const WordsChart = lazy(() =>
@@ -286,6 +287,12 @@ function slideSwitch(slide) {
               </Legend>
             ))}
           </LegendContainer>
+          {slide.data.areachart && (
+            <AreaChart
+              topic={slide.data.areachart}
+              nValues={slide.data.varLegend.length}
+            />
+          )}
         </Card>
       )}
       {slide.type === "words-chart" && (

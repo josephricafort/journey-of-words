@@ -638,6 +638,7 @@ const longform = {
             { value: 0, description: "Absent" },
             { value: "?", description: "Missing data" },
           ],
+          areachart: "agri",
         },
       },
       {
