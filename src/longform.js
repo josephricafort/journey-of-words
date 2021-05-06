@@ -638,7 +638,7 @@ const longform = {
             { value: 0, description: "Absent" },
             { value: "?", description: "Missing data" },
           ],
-          areachart: "agri",
+          areachart: "forcenature",
         },
       },
       {
@@ -720,6 +720,7 @@ const longform = {
             },
             { value: "?", description: "Missing data" },
           ],
+          areachart: "watergathergroup",
         },
       },
       {
@@ -784,6 +785,7 @@ const longform = {
             },
             { value: "?", description: "Missing data" },
           ],
+          areachart: "ancestralspirits",
         },
       },
       {

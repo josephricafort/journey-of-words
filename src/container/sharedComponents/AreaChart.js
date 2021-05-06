@@ -4,12 +4,10 @@ import axios from "axios";
 
 import colorScaleSel from "./colorScaleSel";
 import { ThemeContext } from "styled-components";
+import { DB_GITHUB_API_PULOTUDIST } from "../../utils/constants";
 
 const AreaChart = ({ topic, nValues }) => {
-  // const pulotuUrl =
-  //   "https://raw.githubusercontent.com/josephricafort/journey-of-words-r-data/master/api/pulotudata/forcenature.json";
-
-  const pulotuDistUrl = `https://raw.githubusercontent.com/josephricafort/journey-of-words-r-data/master/api/pulotudatadist/${topic}.json`;
+  const pulotuDistUrl = DB_GITHUB_API_PULOTUDIST + topic + ".json";
   const [pulotuData, setPulotuData] = useState([{}]);
   const theme = useContext(ThemeContext);
 
@@ -42,8 +40,8 @@ const AreaChart = ({ topic, nValues }) => {
     };
   });
 
-  const subgroups = Object.keys(data[0]).slice(1, 7);
   const groups = [...new Set(data.map((d) => d.asiaDistGroup))];
+  const subgroups = Object.keys(data[0]).slice(1);
 
   const x = d3.scaleBand().domain(groups).range([0, width]).padding([0]);
   const xAxis = d3.axisBottom(x).tickSizeOuter(0)(d3.select(".x-axis"));

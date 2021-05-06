@@ -41,6 +41,7 @@ export const DB_GITHUB_API_WORDS = DB_GITHUB_API + "wordsinfodata/";
 export const DB_GITHUB_API_LOCATIONS = DB_GITHUB_API + "locationsdata/";
 export const DB_GITHUB_API_PERWORDTALLY = DB_GITHUB_API + "dataperwordtally/";
 export const DB_GITHUB_API_PULOTU = DB_GITHUB_API + "pulotudata/";
+export const DB_GITHUB_API_PULOTUDIST = DB_GITHUB_API + "pulotudatadist/";
 export const DB_GITHUB_API_WORDS_LOAN = DB_GITHUB_API + "wordsloandata/";
 
 // mapbox
