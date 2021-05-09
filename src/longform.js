@@ -634,9 +634,9 @@ const longform = {
             },
           ],
           varLegend: [
-            { value: 1, description: "Present" },
-            { value: 0, description: "Absent" },
-            { value: "?", description: "Missing data" },
+            { value: "lvl1", description: "Present" },
+            { value: "lvl0", description: "Absent" },
+            { value: "lvlu", description: "Missing data" },
           ],
           areachart: "forcenature",
         },
@@ -695,30 +695,30 @@ const longform = {
           ],
           varLegend: [
             {
-              value: 4,
+              value: "lvl4",
               description:
                 "Principal (more important than any other source of food)",
             },
             {
-              value: 3,
+              value: "lvl3",
               description: "Major (one of the most important sources of food)",
             },
             {
-              value: 2,
+              value: "lvl2",
               description:
                 "Medium (a significant food source, but not one of the most important sources of food)",
             },
             {
-              value: 1,
+              value: "lvl1",
               description:
                 "Minor (forms a relatively insignificant part of diet)",
             },
             {
-              value: 0,
+              value: "lvl0",
               description:
                 "Absent (not practiced in the culture, or practiced but not a food source)",
             },
-            { value: "?", description: "Missing data" },
+            { value: "lvlu", description: "Missing data" },
           ],
           areachart: "watergathergroup",
         },
@@ -764,26 +764,26 @@ const longform = {
           ],
           varLegend: [
             {
-              value: 3,
+              value: "lvl3",
               description:
                 "Present, and the principal focus of supernatural practice",
             },
             {
-              value: 2,
+              value: "lvl2",
               description:
                 "Present, and a major focus of supernatural practice",
             },
             {
-              value: 1,
+              value: "lvl1",
               description:
                 "Present, but not a major focus of supernatural practice",
             },
             {
-              value: 0,
+              value: "lvl0",
               description:
                 "Absent (do not feature in the belief system of the culture)",
             },
-            { value: "?", description: "Missing data" },
+            { value: "lvlu", description: "Missing data" },
           ],
           areachart: "ancestralspirits",
         },
@@ -1192,12 +1192,14 @@ const longform = {
             // },
           ],
           varLegend: [
-            { value: 0, description: "Absent" },
-            { value: 1, description: "Present" },
-            { value: 2, description: "Minor" },
-            { value: 3, description: "Major" },
-            { value: 4, description: "Primary" },
+            { value: "lvl0", description: "Absent" },
+            { value: "lvl1", description: "Present" },
+            { value: "lvl2", description: "Minor" },
+            { value: "lvl3", description: "Major" },
+            { value: "lvl4", description: "Primary" },
+            { value: "lvlu", description: "Missing data" },
           ],
+          areachart: "seaport",
         },
       },
       {

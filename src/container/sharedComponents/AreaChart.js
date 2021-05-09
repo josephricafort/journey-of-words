@@ -25,29 +25,32 @@ const AreaChart = ({ topic, nValues }) => {
   const data = pulotuData;
 
   const dataNorm = data.map((d) => {
-    const { asiaDistGroup, lvl0, lvl1, lvl2, lvl3, lvl4, unknown } = d;
-    const sum = lvl0 + lvl1 + lvl2 + lvl3 + lvl4 + unknown;
+    const { asiaDistGroup, lvl0, lvl1, lvl2, lvl3, lvl4, lvlu } = d;
+    const sum = lvl0 + lvl1 + lvl2 + lvl3 + lvl4 + lvlu;
     const perc = (val) => (val / sum) * 100;
 
     return {
       asiaDistGroup,
+      lvlu: perc(lvlu),
       lvl0: perc(lvl0),
       lvl1: perc(lvl1),
       lvl2: perc(lvl2),
       lvl3: perc(lvl3),
       lvl4: perc(lvl4),
-      unknown: perc(unknown),
     };
   });
 
   const groups = [...new Set(data.map((d) => d.asiaDistGroup))];
-  const subgroups = Object.keys(data[0]).slice(1);
+  // const subgroups = Object.keys(data[0]).slice(1).sort();
+  const subgroups = ["lvlu", "lvl0", "lvl1", "lvl2", "lvl3", "lvl4", "lvl5"];
 
   const x = d3.scaleBand().domain(groups).range([0, width]).padding([0]);
-  const xAxis = d3.axisBottom(x).tickSizeOuter(0)(d3.select(".x-axis"));
+  const xAxis = d3.axisBottom(x).tickSizeOuter(0)(
+    d3.select(`.x-axis.${topic}`)
+  );
 
-  const y = d3.scaleLinear().domain([0, 100]).range([height, 0]);
-  const yAxis = d3.axisLeft(y)(d3.select(".y-axis"));
+  const y = d3.scaleLinear().domain([0, 100]).range([0, height]);
+  const yAxis = d3.axisLeft(y)(d3.select(`.y-axis.${topic}`));
 
   const color = d3
     .scaleOrdinal()
@@ -65,7 +68,7 @@ const AreaChart = ({ topic, nValues }) => {
   };
 
   const xAxisProps = {
-    className: "x-axis",
+    className: "x-axis " + topic,
     transform: `translate(0, ${height})`,
   };
 
@@ -75,7 +78,7 @@ const AreaChart = ({ topic, nValues }) => {
     <svg {...svgProps}>
       <g {...chartProps}>
         <g {...xAxisProps}>{xAxis}</g>
-        <g className="y-axis">{yAxis}</g>
+        <g className={"y-axis " + topic}>{yAxis}</g>
         <g className="chart">
           {stackedData.map((d, dIndex) => (
             <g fill={color(d.key)} key={d.key}>
@@ -83,8 +86,8 @@ const AreaChart = ({ topic, nValues }) => {
                 <rect
                   className={"dIndex" + dIndex + "-rect" + eIndex}
                   x={x(groups[eIndex])}
-                  y={y(e[1])}
-                  height={(y(e[0]) - y(e[1])).toString()}
+                  y={y(e[0])}
+                  height={(y(e[1]) - y(e[0])).toString()}
                   width={x.bandwidth()}
                   key={eIndex}
                 />

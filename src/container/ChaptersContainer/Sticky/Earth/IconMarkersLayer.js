@@ -16,6 +16,8 @@ const IconMarkersLayer = ({ data }) => {
     fill4: theme.fill4,
   };
 
+  const lvlRename = (val) => (val === "?" ? "lvlu" : "lvl" + val);
+
   function drawCallback(selection, projection, data) {
     const svg = selection.attr("class", "icon-markers-layer");
     const longMeridian = (long) => (long > 0 ? long : parseFloat(long) + 360);
@@ -23,7 +25,7 @@ const IconMarkersLayer = ({ data }) => {
       const coords = [parseFloat(lat), longMeridian(long)];
       return projection.latLngToLayerPoint(coords);
     };
-    const valueLength = [...new Set(data.flat().map((d) => d.value))].length;
+    const valueLength = [...new Set(data.map((d) => d.value))].length;
 
     svg
       .selectAll("circle")
@@ -35,7 +37,10 @@ const IconMarkersLayer = ({ data }) => {
       .attr("cx", (d) => d.lat && d.long && latLngToLayer(d.lat, d.long).x)
       .attr("cy", (d) => d.lat && d.long && latLngToLayer(d.lat, d.long).y)
       .attr("r", 3)
-      .attr("fill", (d) => colorScaleSel(valueLength, colorFillSet)[d.value])
+      .attr(
+        "fill",
+        (d) => colorScaleSel(valueLength, colorFillSet)[lvlRename(d.value)]
+      )
       .style("opacity", 1)
       .style("pointer-events", "none");
 
