@@ -682,11 +682,6 @@ const longform = {
         data: {
           title: "Belief in the forces of nature",
           varItems: [
-            // {
-            //   variable: "landhuntind",
-            //   varDefinition:
-            //     "Forces of nature are controlled or embued by the supernatural.",
-            // },
             {
               variable: "watergathergroup",
               varDefinition:
@@ -1416,6 +1411,49 @@ const longform = {
                 //   wordToDisplay: "rifle, gun",
                 // },
               ],
+            },
+          ],
+        },
+      },
+      {
+        type: "grid-chart",
+        id: 3.35,
+        icon: "boat",
+        contents: {
+          title: "Grid Chart",
+          p: ["Grid chart supporting texts here"],
+        },
+        data: {
+          gridData: [
+            {
+              category: "plantations",
+              uk: 2,
+              nl: 2,
+              fr: 1,
+              es_us: 2,
+              au: 1.2,
+              jp: 1,
+              uk_fr: 0.25,
+            },
+            {
+              category: "mining",
+              uk: 1,
+              nl: 2,
+              fr: 0,
+              es_us: 1,
+              au: 2,
+              jp: 1,
+              uk_fr: 1,
+            },
+            {
+              category: "goldSilver",
+              uk: 1,
+              nl: 2,
+              fr: 1,
+              es_us: 1,
+              au: 0,
+              jp: 1,
+              uk_fr: 2,
             },
           ],
         },

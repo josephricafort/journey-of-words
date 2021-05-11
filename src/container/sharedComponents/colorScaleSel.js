@@ -29,10 +29,10 @@ function colorScaleSel(sel, theme) {
     case 6:
       return {
         lvlu: theme.fill0,
-        lvl0: theme.fill0,
-        lvl1: theme.fill1,
-        lvl2: theme.fill2,
-        lvl3: theme.fill3,
+        lvl0: theme.fill1,
+        lvl1: theme.fill2,
+        lvl2: theme.fill3,
+        lvl3: theme.fill4,
         lvl4: theme.fill4,
       };
     case 7:

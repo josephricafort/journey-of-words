@@ -41,10 +41,9 @@ const AreaChart = ({ topic, nValues }) => {
   });
 
   const groups = [...new Set(data.map((d) => d.asiaDistGroup))];
-  // const subgroups = Object.keys(data[0]).slice(1).sort();
   const subgroups = ["lvlu", "lvl0", "lvl1", "lvl2", "lvl3", "lvl4", "lvl5"];
 
-  const x = d3.scaleBand().domain(groups).range([0, width]).padding([0]);
+  const x = d3.scaleBand().domain(groups).range([0, width]).padding([0.05]);
   const xAxis = d3.axisBottom(x).tickSizeOuter(0)(
     d3.select(`.x-axis.${topic}`)
   );

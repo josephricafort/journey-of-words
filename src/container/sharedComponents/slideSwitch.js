@@ -17,6 +17,10 @@ const DistributionChart = lazy(() =>
   import("../ChaptersContainer/Scrolly/DistributionChart/DistributionChart")
 );
 
+const GridChart = lazy(() =>
+  import("../ChaptersContainer/Scrolly/GridChart/GridChart")
+);
+
 const CardWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -305,6 +309,19 @@ function slideSwitch(slide) {
           )}
           <Suspense fallback={<div>Loading words chart...</div>}>
             <WordsChart slideData={slide.data} slideId={slide.id} />
+          </Suspense>
+        </CardChart>
+      )}
+      {slide.type === "grid-chart" && (
+        <CardChart className="scrolly-card grid-chart">
+          {slide.contents.title && (
+            <h3 className="card-title">{slide.contents.title}</h3>
+          )}
+          {slide.contents.p.map(
+            (p, i) => p && <MarkdownHTML {...markDownProps(p)} key={i} />
+          )}
+          <Suspense fallback={<div>Loading grid chart...</div>}>
+            <GridChart slideData={slide.data} slideId={slide.id} />
           </Suspense>
         </CardChart>
       )}
