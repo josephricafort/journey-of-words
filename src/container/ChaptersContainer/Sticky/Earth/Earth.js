@@ -8,7 +8,7 @@ import React, {
 } from "react";
 import styled, { ThemeContext } from "styled-components";
 import { Map as LeafletMap, TileLayer } from "react-leaflet";
-import { Projection } from "leaflet";
+import { Projection, CRS } from "leaflet";
 import axios from "axios";
 
 import { Context } from "../../../../storeContext/Store";
@@ -200,6 +200,8 @@ const Earth = () => {
     preferCanvas: true,
     ref: mapRef,
     projection: Projection.SphericalMercator,
+    continuousWorld: true,
+    worldCopyJump: true,
   };
 
   const tileLayerConfig = {
@@ -207,10 +209,14 @@ const Earth = () => {
     attribution: MAPBOX_ATTRIBUTION,
     ext: "jpg",
     zIndex: -100,
+    noWrap: false,
   };
 
   const WordMarkersLayer = lazy(() => import("./WordMarkersLayer"));
   const IconMarkersLayer = lazy(() => import("./IconMarkersLayer"));
+  const BoundariesLayer = lazy(() =>
+    import("./BoundariesLayer/BoundariesLayer")
+  );
 
   return (
     <Wrapper
@@ -238,6 +244,11 @@ const Earth = () => {
               type={type}
             />
             <IconMarkersLayer data={currentDistributionData} />
+          </Suspense>
+        )}
+        {type === "boundaries-chart" && (
+          <Suspense fallback={<div>Generating boundaries map...</div>}>
+            <BoundariesLayer />
           </Suspense>
         )}
       </LeafletMap>

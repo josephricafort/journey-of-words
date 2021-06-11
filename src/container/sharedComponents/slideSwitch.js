@@ -312,6 +312,16 @@ function slideSwitch(slide) {
           </Suspense>
         </CardChart>
       )}
+      {slide.type === "boundaries-chart" && (
+        <Card className="scrolly-card boundaries-chart">
+          {slide.contents.title && (
+            <h3 className="card-title">{slide.contents.title}</h3>
+          )}
+          {slide.contents.p.map(
+            (p, i) => p && <MarkdownHTML {...markDownProps(p)} key={i} />
+          )}
+        </Card>
+      )}
       {slide.type === "grid-chart" && (
         <CardChart className="scrolly-card grid-chart">
           {slide.contents.title && (

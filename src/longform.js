@@ -559,8 +559,7 @@ const longform = {
         id: 1.01,
         contents: {
           quote: {
-            an:
-              "Te tiro atu to kanohi ki tairawhiti ana tera whiti te ra kite ataata ka hinga ki muri kia koe.",
+            an: "Te tiro atu to kanohi ki tairawhiti ana tera whiti te ra kite ataata ka hinga ki muri kia koe.",
             en: "Turn your face to the sun and the shadows fall behind you.",
           },
           author: "- Maori proverb",
@@ -1136,6 +1135,18 @@ const longform = {
         },
         contents: {
           title: "Colonization",
+          p: [
+            "Some very long texts here will be placed that describe something nice and informative about what the writer wants to talk about",
+            "Also similar stuffs with the first one blah blah blah.",
+            "I don't want to talk about it. :(",
+          ],
+        },
+      },
+      {
+        type: "boundaries-chart",
+        id: 3.11,
+        contents: {
+          title: "Colony Boundaries Chart",
           p: [
             "Some very long texts here will be placed that describe something nice and informative about what the writer wants to talk about",
             "Also similar stuffs with the first one blah blah blah.",
