@@ -99,8 +99,8 @@ const StoryApp = () => {
       <GlobalStyle />
       <AppContainer className="app-container">
         {/* <IntroKicker {...introKicker.config}></IntroKicker> */}
-        {/* <MapboxScrolly {...mapboxScrolly.config} /> */}
-        <HeaderWrapper className="header-wrapper">
+        <MapboxScrolly {...mapboxScrolly.config} />
+        {/* <HeaderWrapper className="header-wrapper">
           <HeaderContainer className="header-container">
             <h1>{header.title}</h1>
             <p className="header-description">{header.description}</p>
@@ -111,7 +111,7 @@ const StoryApp = () => {
         <ScrollyContainer className="chapters">
           <Sticky className="chapters-sticky" />
           <Scrolly className="chapters-scrolly" {...chaptersScrolly}></Scrolly>
-        </ScrollyContainer>
+        </ScrollyContainer> */}
         {/* <MapExploration /> */}
       </AppContainer>
     </ThemeProvider>
