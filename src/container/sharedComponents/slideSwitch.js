@@ -323,7 +323,7 @@ function slideSwitch(slide) {
         </Card>
       )}
       {slide.type === "grid-chart" && (
-        <CardChart className="scrolly-card grid-chart">
+        <Card className="scrolly-card grid-chart">
           {slide.contents.title && (
             <h3 className="card-title">{slide.contents.title}</h3>
           )}
@@ -333,7 +333,7 @@ function slideSwitch(slide) {
           <Suspense fallback={<div>Loading grid chart...</div>}>
             <GridChart slideData={slide.data} slideId={slide.id} />
           </Suspense>
-        </CardChart>
+        </Card>
       )}
       {slide.type === "outro" && (
         <Card className="scrolly-card extro">

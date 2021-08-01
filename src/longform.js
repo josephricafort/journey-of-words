@@ -1498,16 +1498,62 @@ const longform = {
       {
         type: "intro",
         chapter: "fate",
-        id: 4.1,
+        id: 4.01,
         contents: {
+          title: "Loss of Political Autonomy",
           p: [
-            "From 4000 BC to 1500BC, the daily lives of the Austronesians were often associated with deities and nature, close ties with family and high respect with the ancestors. The connections between the Austronesian words and their respective cultures have a striking pattern and similarities.",
+            "The once isolated Austronesian peoples became under the political dominance of a foreign power for nearly 500 years.",
+          ],
+        },
+      },
+      {
+        type: "grid-chart",
+        id: 4.02,
+        icon: "boat",
+        contents: {
+          title: "Grid Chart",
+          p: [
+            "This resulted in considerable loss of autonomy for most of them. Foreign presence and violent resistance were present and rampant for some of the colonized Austronesian lands.",
+          ],
+        },
+        data: {
+          gridData: [
+            {
+              category: "plantations",
+              uk: 2,
+              nl: 2,
+              fr: 1,
+              es_us: 2,
+              au: 1.2,
+              jp: 1,
+              uk_fr: 0.25,
+            },
+            {
+              category: "mining",
+              uk: 1,
+              nl: 2,
+              fr: 0,
+              es_us: 1,
+              au: 2,
+              jp: 1,
+              uk_fr: 1,
+            },
+            {
+              category: "goldSilver",
+              uk: 1,
+              nl: 2,
+              fr: 1,
+              es_us: 1,
+              au: 0,
+              jp: 1,
+              uk_fr: 2,
+            },
           ],
         },
       },
       {
         type: "words-chart",
-        id: 4.3,
+        id: 4.03,
         icon: "",
         contents: {
           title: "Foreign Control",
@@ -1573,6 +1619,132 @@ const longform = {
               ],
             },
           ],
+        },
+      },
+      {
+        type: "distribution-chart",
+        id: 4.04,
+        icon: "pickaxe",
+        contents: {
+          title: "Imposition of Foreign Languages",
+          p: [
+            "The imposition of the foreign languages as the primary means of  communication for most of the indigenous population has caused language shifting and competition with the local Austronesian languages.",
+          ],
+          data: "./some-github-data-url-here",
+        },
+        data: {
+          varItems: [
+            {
+              variable: "langshift",
+              varDefinition: "Language Shift",
+            },
+            // {
+            //   variable: "airtravel",
+            //   varDefinition: "Air travel",
+            // },
+            // {
+            //   variable: "vehiclesroads",
+            //   varDefinition: "Vehicles roads",
+            // },
+          ],
+          varLegend: [
+            { value: "lvl0", description: "Absent" },
+            { value: "lvl1", description: "Present" },
+            { value: "lvl2", description: "Minor" },
+            { value: "lvl3", description: "Major" },
+            { value: "lvl4", description: "Primary" },
+            { value: "lvlu", description: "Missing data" },
+          ],
+          areachart: "seaport",
+        },
+      },
+      {
+        type: "face-tattoo",
+        id: 4.05,
+        tattoo: {
+          area: "tattooColonizer",
+          isShown: true,
+          icon: "spanish",
+        },
+        contents: {
+          title: "Hope and recovery from the losses",
+          p: [
+            "The incursion of modern technology and introduction of foreign religious and political ideologies have also resulted in the loss of seafaring cultures of the Austronesians, particularly the Polynesians.",
+            "In 1973, the Polynesian Voyaging Society was formed to build a large voyaging canoe. Their goal is to attempt the Hawai'i - Tahiti round-trip guided solely by traditional navigation.",
+          ],
+        },
+      },
+      {
+        type: "face-tattoo",
+        id: 4.06,
+        tattoo: {
+          area: "tattooColonizer",
+          isShown: true,
+          icon: "spanish",
+        },
+        contents: {
+          p: [
+            "Because no Polynesians knew how to navigate in the ancient ways, they engaged Mau Piailug, a traditional navigator from the Caroline Islands of Micronesia to guide the canoe. His method of navigating by the stars and swells was closely similar to extinct Polynesian methods.",
+            "Mau had been able to navigate Tahiti using only the observations of the sun, moon, and ocean swells, as a natural compass without modern instruments to guide the canoe. This demonstrated how Polynesian canoes and traditional navigational methods for long-distance voyaging.",
+          ],
+        },
+      },
+      {
+        type: "face-tattoo",
+        id: 4.07,
+        tattoo: {
+          area: "tattooColonizer",
+          isShown: true,
+          icon: "spanish",
+        },
+        contents: {
+          title: "A Story of Mankind’s Resilience and Adversities",
+          p: [
+            "Today, the Austronesians represent more than 400 million people around the world spanning from Madagascar in Africa up to Rapa Nui (Easter Islands) in Chile.",
+            "One of the most diverse and complex cultures in the world, a combination of indigenous and foreign languages, religions, and political views.",
+          ],
+        },
+      },
+      {
+        type: "face-tattoo",
+        id: 4.08,
+        tattoo: {
+          area: "tattooColonizer",
+          isShown: true,
+          icon: "spanish",
+        },
+        contents: {
+          p: [
+            "Situated in the ring of fire with frequent earthquakes, tsunamis, typhoons, their kinship with nature has given them courage in dire times of needs and one of those untold stories of mankind’s disengagement from nature.",
+          ],
+        },
+      },
+      {
+        type: "face-tattoo",
+        id: 4.09,
+        tattoo: {
+          area: "tattooColonizer",
+          isShown: true,
+          icon: "spanish",
+        },
+        contents: {
+          p: [
+            "The best seafarers the world has ever known and the revival of their seafaring tradition has led them to rediscover their maritime heritage and roots.",
+          ],
+        },
+      },
+      {
+        type: "face-tattoo",
+        id: 4.1,
+        tattoo: {
+          area: "tattooColonizer",
+          isShown: true,
+          icon: "spanish",
+        },
+        contents: {
+          title:
+            "The Austronesians’ story, told through generations of shared linguistic identity, is truly a remarkable story of courage, harmony, loss and resilience.",
+          p: [""],
         },
       },
     ],
