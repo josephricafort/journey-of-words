@@ -129,6 +129,14 @@ const CardKicker = styled(Card)`
       font-size: 36px;
     }
   }
+
+  figure {
+    img {
+      &.face-tattoo-img {
+        height: 300px;
+      }
+    }
+  }
 `;
 
 const CardIntro = styled(Card)`
@@ -295,6 +303,17 @@ function slideSwitch(slide) {
           )}
           {slide.contents.p.map(
             (p, i) => p && <MarkdownHTML {...markDownProps(p)} key={i} />
+          )}
+          {slide.contents.img && (
+            <figure>
+              <img
+                className="face-tattoo-img"
+                src={require("../../assets/images/" + slide.contents.img.src)}
+              />
+              <figcaption>
+                <MarkdownHTML {...markDownProps(slide.contents.img.caption)} />
+              </figcaption>
+            </figure>
           )}
         </Card>
       )}

@@ -31,7 +31,6 @@ const BoundariesLayer = () => {
       return { ...feat, geometry: { ...geometry, coordinates: [coordsArray] } };
     }),
   };
-  console.log(ausColsReproj);
 
   function drawCallback(selection, projection, data) {
     const svgBoundaries = selection

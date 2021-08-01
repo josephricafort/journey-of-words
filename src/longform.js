@@ -636,6 +636,11 @@ const longform = {
             "In most Austronesian cultures, **Tattoos** showcase one's life experiences, especially in Philippine and Polynesian cultures",
             "**Boat** as a vessel of *oral traditions*, **islands** as a symbol of *adventure and exploration* and **waves** representing the *mastery of seafaring*. These are some of the important things common among most Austronesian cultures",
           ],
+          img: {
+            src: "old_man_tattoo_larskrutak.jpg",
+            caption:
+              "Postcard of Maori moko, 1905 [larskrutak.com](https://www.larskrutak.com/embodied-symbols-of-the-south-seas-tattoo-in-polynesia/#prettyPhoto/5/)",
+          },
         },
       },
       {
