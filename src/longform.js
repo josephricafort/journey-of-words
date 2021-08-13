@@ -14,20 +14,24 @@ const longform = {
         {
           type: "kicker",
           id: 0,
+          alignment: "center",
           contents: {
             title:
               "Along these coasts 4000 years ago, there once lived a group of people who ventured on the journey that later became the world’s most widespread migration in human history.",
           },
         },
         {
-          type: "intro",
+          type: "main-intro",
           id: 0.1,
+          alignment: "center",
           chapter: "world",
           contents: {
             chapterLabel: "Chapter I",
-            title: "World",
-            byline:
+            title: "The Words That Sailed Across Half The World",
+            p: [
+              "Understanding the evolution of boat technology and linguistic evidence and tracing the migration of Austronesian peoples",
               'An adaptation of Robert Blust’s "Out Of Taiwan: The Austronesian Expansion As A Chapter In Human History"',
+            ],
           },
         },
       ],
@@ -46,6 +50,9 @@ const longform = {
           id: "world-taiwan",
           description:
             "4,000 years ago, a group of people called **the Austronesians**, living off the coasts of the island of present-day Taiwan, lived there for thousands of years.",
+          image: "tao_fishermen_1940_lanyu_airport.jpg",
+          imgcaption:
+            "Tao fishermen (circa late 1940s). Photo taken at Lanyu's airport.",
           location: {
             center: { lon: 120.36092, lat: 23.67234 },
             zoom: 7.38,
@@ -72,6 +79,9 @@ const longform = {
             `Suddenly, one of the Austronesians unknown to history had a **‘dream’** of how to cross the waters that no one had dared to cross before *(Blust 1977, 1984/1985)*.`,
             `Through this dream, they innovated a boat by combining a **sailing raft** used at sea and a **dugout canoe**, a centuries old boat used on the interior rivers. The **outrigger canoe** was born!`,
           ],
+          image: "austronesia_lanyu_community_boat_celebrate.jpg",
+          imgcaption:
+            "Mural paintings of Tao people celebrating about fishing taken at Lanyu Island, Taiwan. Photo by Jean-Claude Latombe (April 2017)",
           location: {
             center: { lon: 121.126, lat: 22.55054 },
             zoom: 9.77,
@@ -122,6 +132,9 @@ const longform = {
           title: "Rapid expansion throughout the Philippine islands",
           description:
             "Austronesians began moving south to the mouth of the **Cagayan river** in the **northern Philippines**.",
+          image: "barangayan_cagayan_river.jpg",
+          imgcaption:
+            "A barangayan boat in Cagayan River, Philippines. Photo by Henry Townsend (1917)",
           location: {
             center: { lon: 121.11063, lat: 20.84321 },
             zoom: 7.97,
@@ -144,6 +157,9 @@ const longform = {
         {
           id: "world-expansion-philippines",
           description: `They explored, settled and populated the new lands (present-day Philippines). The inter-island settling and expansion continued rapidly across the Philippine islands.`,
+          image: "karakoa.jpg",
+          imgcaption:
+            'A karakoa "caracoa" from *The Discovery and Conquest of the Molucco and Philippine Islands (1711) by Bartolomé Leonardo de Argensola.',
           location: {
             center: { lon: 122.85694, lat: 17.68924 },
             zoom: 6.13,
@@ -170,6 +186,9 @@ const longform = {
             "Despite their size and proximity to the Asian mainland, islands such as **Borneo**, **Sumatra**, **Java** and **Sulawesi** had few inhabitants before the arrival of Austronesian speakers some 4,000 years ago.",
             "Rice-growing Austronesian cultures then rapidly spread through these islands.",
           ],
+          image: "halmahera_pakata_tobelo.jpg",
+          imgcaption:
+            "Halmahera Pakata Tobelo (circa 1920). Smaller types of boats suitable for fishing, coastal trade, trade between closely spaced islands or transporting smaller groups of people. Source: [Collectie Stichting National Museum van Wereldculturen](https://collectie.wereldculturen.nl/?query=search=*=TM-10010571)",
           location: {
             center: { lon: 110.16905, lat: 4.94542 },
             zoom: 5.15,
@@ -247,6 +266,9 @@ const longform = {
           description: [
             "Austronesian speakers using single outrigger canoes and producing Lapita pottery had settled virtually all habitable islands in the **Bismarck archipelago**, **the Solomons chain**, **the Santa Cruz islands**, **Vanuatu**, **New Caledonia and the Loyalty islands**, and **the Fiji-Tonga-Samoa triangle.**",
           ],
+          image: "malanesia_boat.jpg",
+          imgcaption:
+            "Tepukei or Folafolau (Bluewater outrigger boat with a crab-claw sail). Photo by Bin im Garten (April 2014)",
           location: {
             center: { lon: 155.1758, lat: -7.33014 },
             zoom: 5.62,
@@ -353,6 +375,9 @@ const longform = {
             "Another person dreamed of innovating the boat once again, putting **two canoe hulls side-by-side** and **a platform across the top**. This innovation made less drag, more space to carry more crew, women and children, food and crops for the long journey ahead.",
             "Now, once again, the ocean was a highway waiting to be travelled by capable sailors, not an obstacle stopping their progress.",
           ],
+          image: "polynesian_canoe_herb_cane.jpg",
+          imgcaption:
+            "Polynesian canoe. Portrait by [Herb Cane](https://www.herbkanehawaii.com/)",
           location: {
             center: { lon: 155.1758, lat: -7.33014 },
             zoom: 5.62,
@@ -411,6 +436,9 @@ const longform = {
             "Then, within a century or two, all other habitable islands within **the Polynesian triangle** were settled by Polynesian speakers, a collective subgroup of the Austronesians.",
             "They evidently maintained bidirectional voyaging until the need to maintain contact with people still recognized as relatives was lost through generational distancing *(Wilmhurst, Hunt, Lipo and Anderson 2011)*.",
           ],
+          image: "hokulea_sailing.jpg",
+          imgcaption:
+            "Hokule'a, a modern Hawaiian wa'a kaulua or voyaging canoe. Photo by [HongKongHuey](https://flickr.com/people/46437992@N05) (January 22, 2009) taken onboard the Chinese junk *Princess Taiping*.",
           location: {
             center: { lon: -147.6826, lat: -27.11249 },
             zoom: 2.91,
@@ -435,6 +463,9 @@ const longform = {
           title: "Some Austronesians from the Barito river basin",
           description:
             "During this same time period another group of Austronesian speakers from the **Barito river basin in southeast Borneo**, ventured out from their home territory.",
+          image: "bakumpai_barito.jpg",
+          imgcaption:
+            "Dayak Bakumpai society in Barito River (circa 1920). Photo from [Collectie Stichting Nationaal Museum van Wereldculturen](http://collectie.wereldculturen.nl/?query=search=*=TM-10005854)",
           location: {
             center: { lon: 112.89527, lat: -0.7183 },
             zoom: 6.65,
@@ -489,6 +520,9 @@ const longform = {
           title: "Madagascar: The New Home",
           description:
             "Crossing the Mozambique channel, they settled the large island of **Madagascar**. *(Dahl 1951, 1991, Adelaar 1989)*.",
+          image: "madagascar_traditional_fishing_pirogue.jpg",
+          imgcaption:
+            "A Madagascar traditional fishing pirogue. Photo by [Jonathan Talbot](https://commons.wikimedia.org/wiki/File:Madagascar_-_Traditional_fishing_pirogue.jpg) (2007), World Resources Institute",
           location: {
             center: { lon: 47.87037, lat: -18.20538 },
             zoom: 5.89,

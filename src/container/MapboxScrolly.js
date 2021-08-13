@@ -199,7 +199,7 @@ const MapboxScrolly = (props) => {
 
 const CardWrapper = styled.div`
   max-width: 500px;
-  margin: 0 5px;
+  margin: 0 30px;
 
   &.step {
     padding: 50vh 0;
@@ -207,12 +207,6 @@ const CardWrapper = styled.div`
   }
   &.step.active {
     opacity: 0.9;
-  }
-
-  @media (${(props) => props.theme.breakpointSmall}) {
-    ${(props) => props.alignment === "center" && `margin: 0 auto;`}
-    ${(props) => props.alignment === "left" && `margin: 0 20px 0 auto`}
-    ${(props) => props.alignment === "right" && `margin: 0 auto 0 20px`}
   }
 `;
 
@@ -223,6 +217,12 @@ const Card = styled.div`
   color: ${(props) => props.theme.color};
   background-color: ${(props) => props.theme.backgroundColor};
   text-align: left;
+
+  @media (${(props) => props.theme.breakpointSmall}) {
+    ${(props) => props.alignment === "center" && `margin: 0 auto;`}
+    ${(props) => props.alignment === "left" && `margin: 0 auto 0 50px;`}
+    ${(props) => props.alignment === "right" && `margin: 0 50px 0 auto;`}
+  }
 
   @media (${(props) => props.theme.breakpointMedium}) {
     padding: 20px 40px;
@@ -242,11 +242,19 @@ const Icon = styled.img`
   margin-bottom: -30px;
 `;
 
+const ImgCaption = styled.div`
+  margin-top: 50px;
+  margin-bottom: -20px;
+  color: #777;
+  font-style: italic;
+`;
+
 const Chapter = ({
   id,
   icon,
   title,
   image,
+  imgcaption,
   description,
   currentChapterID,
   alignment,
@@ -263,8 +271,8 @@ const Chapter = ({
 
   const classList = id === currentChapterID ? "step active" : "step";
   return (
-    <CardWrapper id={id} className={[classList, "card-wrapper"]} {...alignment}>
-      <Card className="card">
+    <CardWrapper id={id} className={[classList, "card-wrapper"]}>
+      <Card className="card" {...alignment}>
         {icon && (
           <Icon
             className="topic-icon world"
@@ -273,16 +281,26 @@ const Chapter = ({
           />
         )}
         {title && <h3 className="title">{title}</h3>}
-        {image && <CardImage src={image} alt={title}></CardImage>}
         {(Array.isArray(description) && (
-          <div>
+          <div className="description">
             {description.map((d, i) => (
               <MarkdownHTML {...markDownProps(d)} key={i} />
             ))}
           </div>
         )) ||
           (description && <MarkdownHTML {...markDownProps(description)} />)}
+        {imgcaption && (
+          <ImgCaption>
+            <MarkdownHTML {...markDownProps(imgcaption)} />
+          </ImgCaption>
+        )}
       </Card>
+      {image && (
+        <CardImage
+          src={require("../assets/images/" + image)}
+          alt={title}
+        ></CardImage>
+      )}
     </CardWrapper>
   );
 };

@@ -2,8 +2,6 @@ import React, { lazy, Suspense } from "react";
 import styled from "styled-components";
 import MarkdownHTML from "react-markdown/with-html";
 
-// import DistributionChart from "../ChaptersContainer/Scrolly/DistributionChart/DistributionChart";
-// import WordsChart from "../ChaptersContainer/Scrolly/WordsChart";
 import { Word } from "./styledElements";
 import { CHAPTER_NAMES } from "../../utils/constants";
 import AreaChart from "./AreaChart";
@@ -28,7 +26,6 @@ const CardWrapper = styled.div`
   // padding: 0 20px;
   min-height: 150vh;
   text-align: center;
-  // border: 3px solid ${({ theme }) => theme.stroke2}; // to remove before pub
   pointer-events: none;
   max-width: ${(theme) => theme.wide}px;
 
@@ -69,10 +66,66 @@ const Card = styled.div`
   @media (${({ theme }) => theme.breakpointSmall}) {
     padding: 20px;
     padding-top: 5px;
+    margin-left: 20px;
+
+    ${({ alignment = "center" }) => `
+      ${
+        alignment === "center"
+          ? "margin: 0 auto;"
+          : alignment === "left"
+          ? "margin: 0 auto 0 50px;"
+          : alignment === "right"
+          ? "margin: 0 50px 0 auto;"
+          : "auto;"
+      }
+    `}
+  }
+`;
+
+const CardMainIntro = styled(Card)`
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  max-width: 800px;
+  text-shadow: 1px 1px 5px #000;
+
+  h2 {
+    font-size: 36px;
   }
 
-  @media (${({ theme }) => theme.breakpointLarge}) {
-    margin-left: 20px;
+  p {
+    text-align: center;
+  }
+
+  @media (${({ theme }) => theme.breakpointMedium}) {
+    h2 {
+      font-size: 64px;
+    }
+
+    p {
+      text-align: center;
+    }
+  }
+`;
+
+const CardKicker = styled(Card)`
+  max-width: 500px;
+  text-align: left;
+  background-color: transparent;
+  border: none;
+  text-align: center;
+  color: #fff;
+  text-shadow: 1px 1px 5px #000;
+
+  h3 {
+    font-size: 24px;
+    line-height: 1.35em;
+  }
+
+  @media (${({ theme }) => theme.breakpointMedium}) {
+    h3 {
+      font-size: 32px;
+    }
   }
 `;
 
@@ -83,7 +136,7 @@ const CardIntro = styled(Card)`
   padding: 20px;
   max-width: 100%;
   background-color: ${({ theme, chapter }) =>
-    (chapter === CHAPTER_NAMES.WORLD && theme.blue2) ||
+    (chapter === CHAPTER_NAMES.WORLD && "transparent") ||
     (chapter === CHAPTER_NAMES.NATURE && theme.green2) ||
     (chapter === CHAPTER_NAMES.CONVERSION && theme.yellow2) ||
     (chapter === CHAPTER_NAMES.EXTRACTION && theme.red2) ||
@@ -127,19 +180,6 @@ const CardChart = styled(Card)`
     }
   }
 `;
-
-const CardKicker = styled(Card)`
-  max-width: 500px;
-  text-align: left;
-`;
-
-// const Word = styled.p`
-//   display: inline-block;
-//   text-align: left;
-//   font-family: ${(props) => props.theme.cursive};
-//   font-size: 28px;
-//   background-color: ${(props) => props.theme.fill1};
-// `;
 
 const LegendContainer = styled.div`
   display: block;
@@ -197,6 +237,9 @@ function slideSwitch(slide) {
             {slide.contents.byline && (
               <p className="chapter-byline">{slide.contents.byline}</p>
             )}
+            {slide.contents.p.map(
+              (p, i) => p && <MarkdownHTML {...markDownProps(p)} key={i} />
+            )}
           </ContentsWrapper>
         </CardIntro>
       )}
@@ -209,15 +252,15 @@ function slideSwitch(slide) {
           </ContentsWrapper>
         </CardQuote>
       )}
-      {slide.type === "intro" && (
-        <Card className="scrolly-card intro">
+      {slide.type === "main-intro" && (
+        <CardMainIntro className="scrolly-card intro">
           {slide.contents.title && (
-            <h3 className="card-title">{slide.contents.title}</h3>
+            <h2 className="card-title">{slide.contents.title}</h2>
           )}
           {slide.contents.p.map(
             (p, i) => p && <MarkdownHTML {...markDownProps(p)} key={i} />
           )}
-        </Card>
+        </CardMainIntro>
       )}
       {slide.type === "kicker" && (
         <CardKicker className="scrolly-card kicker">
