@@ -137,6 +137,14 @@ const CardKicker = styled(Card)`
       }
     }
   }
+
+  figure {
+    img {
+      &.face-tattoo-img {
+        height: 300px;
+      }
+    }
+  }
 `;
 
 const CardIntro = styled(Card)`
