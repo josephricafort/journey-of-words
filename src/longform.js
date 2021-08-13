@@ -17,7 +17,7 @@ const longform = {
           alignment: "center",
           contents: {
             title:
-              "Along these coasts 4000 years ago, there once lived a group of people who ventured on a journey...",
+              "Along these coasts 4,000 years ago, there once lived a group of people who ventured on a journey...",
           },
         },
         {
@@ -69,16 +69,16 @@ const longform = {
             bearing: -0.05,
           },
           onChapterEnter: [
-            // {
-            //   layer: "formosa",
-            //   opacity: 1,
-            // },
+            {
+              layer: "formosa",
+              opacity: 0,
+            },
           ],
           onChapterExit: [
-            // {
-            //   layer: "formosa",
-            //   opacity: 0,
-            // },
+            {
+              layer: "formosa",
+              opacity: 0,
+            },
           ],
         },
         {
@@ -275,7 +275,7 @@ const longform = {
           description: [
             "Austronesian speakers using single outrigger canoes and producing Lapita pottery had settled virtually all habitable islands in the **Bismarck archipelago**, **the Solomons chain**, **the Santa Cruz islands**, **Vanuatu**, **New Caledonia and the Loyalty islands**, and **the Fiji-Tonga-Samoa triangle.**",
           ],
-          image: "malanesia_boat.jpg",
+          image: "melanesia_boat_landscape.jpg",
           imgcaption:
             "Tepukei or Folafolau (Bluewater outrigger boat with a crab-claw sail). Photo by Bin im Garten (April 2014)",
           location: {
