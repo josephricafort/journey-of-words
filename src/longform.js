@@ -17,12 +17,21 @@ const longform = {
           alignment: "center",
           contents: {
             title:
-              "Along these coasts 4000 years ago, there once lived a group of people who ventured on the journey that later became the world’s most widespread migration in human history.",
+              "Along these coasts 4000 years ago, there once lived a group of people who ventured on a journey...",
+          },
+        },
+        {
+          type: "kicker",
+          id: 0.1,
+          alignment: "center",
+          contents: {
+            title:
+              "...a journey that later became the world’s most widespread migration in human history.",
           },
         },
         {
           type: "main-intro",
-          id: 0.1,
+          id: 0.2,
           alignment: "center",
           chapter: "world",
           contents: {

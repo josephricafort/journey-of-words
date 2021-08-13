@@ -95,6 +95,7 @@ const CardMainIntro = styled(Card)`
 
   p {
     text-align: center;
+    line-height: 1.3em;
   }
 
   @media (${({ theme }) => theme.breakpointMedium}) {
@@ -104,6 +105,7 @@ const CardMainIntro = styled(Card)`
 
     p {
       text-align: center;
+      font-size: 22px;
     }
   }
 `;
@@ -124,7 +126,7 @@ const CardKicker = styled(Card)`
 
   @media (${({ theme }) => theme.breakpointMedium}) {
     h3 {
-      font-size: 32px;
+      font-size: 36px;
     }
   }
 `;
