@@ -114,7 +114,7 @@ const longform = {
           id: "world-boat-2",
           description: [
             `They called it:`,
-            `<span class="word-an">**\*qabaŋ₁**</span><span class="word-en"> (boat, canoe) </span> <span class="graphic-desc">*Proto-Austronesian (PAN, said to be the first reconstructed language of the Austronesians.</span>`,
+            `<span class="word-an">**\*qabaŋ₁**</span><span class="word-en"> (boat, canoe) </span> <span class="graphic-desc">*Proto-Austronesian (PAN), said to be the first reconstructed language of the Austronesians.</span>`,
             `The new outrigger canoe made crossing wide water gaps far easier than had been possible when only bamboo rafts were used at sea!`,
           ],
           location: {
@@ -165,7 +165,10 @@ const longform = {
         },
         {
           id: "world-expansion-philippines",
-          description: `They explored, settled and populated the new lands (present-day Philippines). The inter-island settling and expansion continued rapidly across the Philippine islands.`,
+          description: [
+            `They explored, settled and populated the new lands (present-day Philippines). The inter-island settling and expansion continued rapidly across the Philippine islands.`,
+            `<span class="word-an">**\*baŋkaʔ**</span><span class="word-en"> (boat / canoe) </span> <span class="graphic-desc">Proto-Malayo Polynesian (PMP) is a reconstructed ancestor of the Malayo-Polynesian languages and a subgroup family of the Austronesian languages. Words under this subgroup include Kavalan **baŋka**, Tagalog **baŋkaʔ**, Tausug **baŋkaʔ**, Mori and Muna **baŋka**, and Sumbawa **baŋka**</span>`,
+          ],
           image: "karakoa.jpg",
           imgcaption:
             'A karakoa "caracoa" from *The Discovery and Conquest of the Molucco and Philippine Islands (1711) by Bartolomé Leonardo de Argensola.',
@@ -409,8 +412,10 @@ const longform = {
         {
           id: "world-tahiti-society-islands",
           title: "Tahiti and the Society Islands",
-          description:
+          description: [
             "**Tahiti and the other Society Islands** appear to have been settled first, at around **1000 AD**.",
+            `<span class="word-an">**\*waŋkaʔ**</span><span class="word-en"> (boat, canoe) </span> <span class="graphic-desc">Proto-Oceanic language (POc) is a reconstructed language of the Oceanic subgroup of languages consisting of the languages (with their equivalent words): Manggarai and Rembong **waŋka**, Tobati **wăgě**, Yabem **waŋ**, Suau **waga**, Fijian **waqa**, Tongan **vaka**, and Hawaiian **waʻa**; Tahitian and Samoan **vaʻa**</span>`,
+          ],
           location: {
             center: { lon: -151.39495, lat: -16.95464 },
             zoom: 5.15,

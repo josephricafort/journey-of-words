@@ -91,6 +91,7 @@ const CardMainIntro = styled(Card)`
 
   h2 {
     font-size: 36px;
+    line-height: 1.1em;
   }
 
   p {

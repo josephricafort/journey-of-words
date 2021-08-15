@@ -9,21 +9,25 @@ const GlobalStyle = createGlobalStyle`
 
     h1 {
         font-size: 36px;
+        font-weight: 500;
     }
     h2 {
         font-size: 28px;
+        font-weight: 500;
     }
     h3 {
         font-size: 24px;
+        font-weight: 700;
     }
     h4 {
-        font-size: 20px;    
+        font-size: 20px; 
+        font-weight: 700;   
     }
     p {
         font-size: 16px;
         line-height: 22px;
     }
-    h1, h2, h3 {
+    h1, h2, h3, h4 {
         font-family: ${(props) => props.theme.serif};
     }
 
