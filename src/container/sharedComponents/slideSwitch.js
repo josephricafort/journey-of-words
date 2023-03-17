@@ -1,23 +1,11 @@
-import React, { lazy, Suspense } from "react";
+import React from "react";
 import styled from "styled-components";
 import MarkdownHTML from "react-markdown/with-html";
 
 import { Word } from "./styledElements";
 import { CHAPTER_NAMES } from "../../utils/constants";
-import AreaChart from "./AreaChart";
+
 import colorScaleSel from "./colorScaleSel";
-
-const WordsChart = lazy(() =>
-  import("../ChaptersContainer/Scrolly/WordsChart")
-);
-
-const DistributionChart = lazy(() =>
-  import("../ChaptersContainer/Scrolly/DistributionChart/DistributionChart")
-);
-
-const GridChart = lazy(() =>
-  import("../ChaptersContainer/Scrolly/GridChart/GridChart")
-);
 
 const CardWrapper = styled.div`
   display: flex;
@@ -188,29 +176,6 @@ const CardQuote = styled(CardIntro)`
 
 const ContentsWrapper = styled.div``;
 
-const CardChart = styled(Card)`
-  max-width: 1000px;
-  min-height: 150px;
-
-  @media (${({ theme }) => theme.breakpointMedium}) {
-    &.words-chart {
-      margin: auto;
-    }
-  }
-`;
-
-const LegendContainer = styled.div`
-  display: block;
-  text-align: left;
-  margin-top: 10px;
-  padding: 10px 10px 10px 0;
-`;
-
-const Legend = styled.div`
-  display: inline-block;
-  margin-right: 20px;
-`;
-
 const Icon = styled.img`
   ${({ iconSize }) =>
     (iconSize === "small" && `height: 50px; width: 50px;`) ||
@@ -336,54 +301,6 @@ function slideSwitch(slide) {
           )}
         </Card>
       )}
-      {slide.type === "distribution-chart" && (
-        <Card className="scrolly-card distribution-chart">
-          {slide.contents.icon && (
-            <Icon
-              className="topic-icon distribution-chart"
-              src={require("../../assets/icons/topics/" + slide.contents.icon)}
-              iconSize="small"
-            />
-          )}
-          {slide.contents.title && (
-            <h3 className="card-title with-icon">{slide.contents.title}</h3>
-          )}
-          {slide.contents.p.map(
-            (p, i) => p && <MarkdownHTML {...markDownProps(p)} key={i} />
-          )}
-          <Suspense fallback={<div>Fetching distribution chart...</div>}>
-            <DistributionChart slideData={slide.data} slideId={slide.id} />
-          </Suspense>
-          <LegendContainer className="variable-legends">
-            <p>{slide.data.title}</p>
-            {slide.data.varLegend.map((v) => (
-              <Legend key={v.value}>
-                <Bullet value={v.value} nValues={slide.data.varLegend.length} />
-                {v.description}
-              </Legend>
-            ))}
-          </LegendContainer>
-          {slide.data.areachart && (
-            <AreaChart
-              topic={slide.data.areachart}
-              nValues={slide.data.varLegend.length}
-            />
-          )}
-        </Card>
-      )}
-      {slide.type === "words-chart" && (
-        <CardChart className="scrolly-card words-chart">
-          {slide.contents.title && (
-            <h3 className="card-title">{slide.contents.title}</h3>
-          )}
-          {slide.contents.p.map(
-            (p, i) => p && <MarkdownHTML {...markDownProps(p)} key={i} />
-          )}
-          <Suspense fallback={<div>Loading words chart...</div>}>
-            <WordsChart slideData={slide.data} slideId={slide.id} />
-          </Suspense>
-        </CardChart>
-      )}
       {slide.type === "boundaries-chart" && (
         <Card className="scrolly-card boundaries-chart">
           {slide.contents.title && (
@@ -392,19 +309,6 @@ function slideSwitch(slide) {
           {slide.contents.p.map(
             (p, i) => p && <MarkdownHTML {...markDownProps(p)} key={i} />
           )}
-        </Card>
-      )}
-      {slide.type === "grid-chart" && (
-        <Card className="scrolly-card grid-chart">
-          {slide.contents.title && (
-            <h3 className="card-title">{slide.contents.title}</h3>
-          )}
-          {slide.contents.p.map(
-            (p, i) => p && <MarkdownHTML {...markDownProps(p)} key={i} />
-          )}
-          <Suspense fallback={<div>Loading grid chart...</div>}>
-            <GridChart slideData={slide.data} slideId={slide.id} />
-          </Suspense>
         </Card>
       )}
       {slide.type === "outro" && (
