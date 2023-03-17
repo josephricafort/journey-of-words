@@ -39,7 +39,7 @@ const longform = {
             title: "The Words That Sailed Across Half The World",
             p: [
               "Understanding the evolution of boat technology and linguistic evidence and tracing the migration of Austronesian peoples",
-              'An adaptation of Robert Blust’s "Out Of Taiwan: The Austronesian Expansion As A Chapter In Human History"',
+              'An adaptation of Dr. Robert Blust’s "Out Of Taiwan: The Austronesian Expansion As A Chapter In Human History"',
             ],
           },
         },
@@ -59,9 +59,9 @@ const longform = {
           id: "world-taiwan",
           description:
             "4,000 years ago, a group of people called **the Austronesians**, living off the coasts of the island of present-day Taiwan, lived there for thousands of years.",
-          image: "tao_fishermen_1940_lanyu_airport.jpg",
-          imgcaption:
-            "Tao fishermen (circa late 1940s). Photo taken at Lanyu's airport.",
+          // image: "tao_fishermen_1940_lanyu_airport.jpg",
+          // imgcaption:
+          //   "Tao fishermen (circa late 1940s). Photo taken at Lanyu's airport.",
           location: {
             center: { lon: 120.36092, lat: 23.67234 },
             zoom: 7.38,
@@ -472,9 +472,9 @@ const longform = {
           title: "Some Austronesians from the Barito river basin",
           description:
             "During this same time period another group of Austronesian speakers from the **Barito river basin in southeast Borneo**, ventured out from their home territory.",
-          image: "bakumpai_barito.jpg",
-          imgcaption:
-            "Dayak Bakumpai society in Barito River (circa 1920). Photo from [Collectie Stichting Nationaal Museum van Wereldculturen](http://collectie.wereldculturen.nl/?query=search=*=TM-10005854)",
+          // image: "bakumpai_barito.jpg",
+          // imgcaption:
+          //   "Dayak Bakumpai society in Barito River (circa 1920). Photo from [Collectie Stichting Nationaal Museum van Wereldculturen](http://collectie.wereldculturen.nl/?query=search=*=TM-10005854)",
           location: {
             center: { lon: 112.89527, lat: -0.7183 },
             zoom: 6.65,
