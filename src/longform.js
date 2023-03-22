@@ -48,7 +48,7 @@ const longform = {
   },
   mapboxScrolly: {
     config: {
-      style: "mapbox://styles/josephricafort/ckhxlghrg09zp1bqu5s7pt7jl/draft/",
+      style: "mapbox://styles/josephricafort/ckhxlghrg09zp1bqu5s7pt7jl",
       accessToken:
         "pk.eyJ1Ijoiam9zZXBocmljYWZvcnQiLCJhIjoiY2pueTd4d3lzMDB1ZzNxbGhxZnpyOHZ4eSJ9.SVeNEBhsMbzpUUt9tgbNSg",
       showMarkers: false,

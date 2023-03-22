@@ -69,6 +69,67 @@ const transformRequest = (url) => {
   };
 };
 
+const WhiteGradientFrame = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100vw;
+  height: 100vh;
+`;
+
+const TopGradient = styled.div`
+  width: 100%;
+  height: 300px;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+`;
+
+const LeftGradient = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100vh;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+`;
+
+const RightGradient = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 100vh;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    -90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+`;
+
+const BottomGradient = styled.div`
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+`;
+
 const MapboxScrolly = (props) => {
   const config = props;
   const mapContainer = useRef(null);
@@ -86,6 +147,10 @@ const MapboxScrolly = (props) => {
       pitch: mapStart.pitch,
       bearing: mapStart.bearing,
       transformRequest: transformRequest,
+      projection: {
+        name: "equalEarth",
+        center: [0, 180],
+      },
     });
 
     const marker = new mapboxgl.Marker();
@@ -168,6 +233,12 @@ const MapboxScrolly = (props) => {
         ref={(el) => (mapContainer.current = el)}
         className="absolute top right left bottom"
       />
+      <WhiteGradientFrame>
+        <TopGradient />
+        <LeftGradient />
+        <RightGradient />
+        <BottomGradient />
+      </WhiteGradientFrame>
       <div id="story">
         {config.title && (
           <Header id="header">
