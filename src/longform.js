@@ -58,7 +58,7 @@ const longform = {
         {
           id: "world-taiwan",
           description:
-            "4,000 years ago, a group of people called **the Austronesians**, living off the coasts of the island of present-day Taiwan, lived there for thousands of years.",
+            "5,000 years ago, a group of people called **the Austronesians**, living off the coasts of the island of present-day Taiwan, lived there for thousands of years.",
           // image: "tao_fishermen_1940_lanyu_airport.jpg",
           // imgcaption:
           //   "Tao fishermen (circa late 1940s). Photo taken at Lanyu's airport.",
@@ -80,6 +80,9 @@ const longform = {
               opacity: 0,
             },
           ],
+          customData: {
+            year: "5,000 years ago",
+          },
         },
         {
           id: "world-boat-1",
@@ -109,6 +112,9 @@ const longform = {
               opacity: 0,
             },
           ],
+          customData: {
+            year: "5,000 years ago",
+          },
         },
         {
           id: "world-boat-2",
@@ -135,6 +141,9 @@ const longform = {
               opacity: 0,
             },
           ],
+          customData: {
+            year: "5,000 years ago",
+          },
         },
         {
           id: "world-cagayan",
@@ -162,6 +171,9 @@ const longform = {
               opacity: 0,
             },
           ],
+          customData: {
+            year: "4,200 years ago",
+          },
         },
         {
           id: "world-expansion-philippines",
@@ -187,6 +199,9 @@ const longform = {
               opacity: 0,
             },
           ],
+          customData: {
+            year: "4,200 years ago",
+          },
         },
         {
           id: "world-greater-sunda-isalnds",
@@ -216,6 +231,9 @@ const longform = {
               opacity: 0,
             },
           ],
+          customData: {
+            year: "4,000 years ago",
+          },
         },
         {
           id: "world-newguinea-papua",
@@ -244,6 +262,9 @@ const longform = {
               opacity: 0,
             },
           ],
+          customData: {
+            year: "4,000 years ago",
+          },
         },
         {
           id: "world-new-britain-bismarck",
@@ -269,6 +290,9 @@ const longform = {
             //   opacity: 0,
             // },
           ],
+          customData: {
+            year: "3,400 years ago",
+          },
         },
         {
           id: "world-new-britain-bismarck-2",
@@ -296,6 +320,9 @@ const longform = {
             //   opacity: 0,
             // },
           ],
+          customData: {
+            year: "3,100 years ago",
+          },
         },
         {
           id: "world-long-pause",
@@ -323,6 +350,9 @@ const longform = {
             //   opacity: 0,
             // },
           ],
+          customData: {
+            year: "3,100 years ago",
+          },
         },
         {
           id: "world-at-this-stage-1",
@@ -347,6 +377,9 @@ const longform = {
             //     opacity: 0
             // }
           ],
+          customData: {
+            year: "1,100 BC",
+          },
         },
         {
           id: "world-at-this-stage-2",
@@ -374,6 +407,9 @@ const longform = {
             //     opacity: 0
             // }
           ],
+          customData: {
+            year: "1,100 BC",
+          },
         },
         {
           id: "world-rising-sun",
@@ -437,6 +473,9 @@ const longform = {
               opacity: 0,
             },
           ],
+          customData: {
+            year: "1,000 AD",
+          },
         },
         {
           id: "world-polynesian-triangle",
@@ -466,6 +505,9 @@ const longform = {
             //   opacity: 0,
             // },
           ],
+          customData: {
+            year: "1,000 AD",
+          },
         },
         {
           id: "world-barito",
@@ -493,6 +535,9 @@ const longform = {
             //     opacity: 0
             // }
           ],
+          customData: {
+            year: "1,000 AD",
+          },
         },
         {
           id: "world-barito-voyage",
@@ -523,6 +568,9 @@ const longform = {
             //     opacity: 0
             // }
           ],
+          customData: {
+            year: "1,000 AD",
+          },
         },
         {
           id: "world-madagascar",
