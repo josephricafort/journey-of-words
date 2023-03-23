@@ -82,6 +82,8 @@ const longform = {
           ],
           customData: {
             year: "5,000 years ago",
+            distToRapanui: 0,
+            distToMadagascar: 0,
           },
         },
         {
@@ -114,6 +116,8 @@ const longform = {
           ],
           customData: {
             year: "5,000 years ago",
+            distToRapanui: 0,
+            distToMadagascar: 0,
           },
         },
         {
@@ -143,6 +147,8 @@ const longform = {
           ],
           customData: {
             year: "5,000 years ago",
+            distToRapanui: 0,
+            distToMadagascar: 0,
           },
         },
         {
@@ -173,6 +179,8 @@ const longform = {
           ],
           customData: {
             year: "4,200 years ago",
+            distToRapanui: 493,
+            distToMadagascar: 0,
           },
         },
         {
@@ -201,6 +209,8 @@ const longform = {
           ],
           customData: {
             year: "4,200 years ago",
+            distToRapanui: 1264,
+            distToMadagascar: 0,
           },
         },
         {
@@ -233,6 +243,8 @@ const longform = {
           ],
           customData: {
             year: "4,000 years ago",
+            distToRapanui: 2901,
+            distToMadagascar: 0,
           },
         },
         {
@@ -264,6 +276,8 @@ const longform = {
           ],
           customData: {
             year: "4,000 years ago",
+            distToRapanui: 6172,
+            distToMadagascar: 0,
           },
         },
         {
@@ -292,6 +306,8 @@ const longform = {
           ],
           customData: {
             year: "3,400 years ago",
+            distToRapanui: 8620,
+            distToMadagascar: 0,
           },
         },
         {
@@ -322,6 +338,8 @@ const longform = {
           ],
           customData: {
             year: "3,100 years ago",
+            distToRapanui: 8620,
+            distToMadagascar: 0,
           },
         },
         {
@@ -352,6 +370,8 @@ const longform = {
           ],
           customData: {
             year: "3,100 years ago",
+            distToRapanui: 8620,
+            distToMadagascar: 0,
           },
         },
         {
@@ -379,6 +399,8 @@ const longform = {
           ],
           customData: {
             year: "1,100 BC",
+            distToRapanui: 8620,
+            distToMadagascar: 0,
           },
         },
         {
@@ -409,6 +431,8 @@ const longform = {
           ],
           customData: {
             year: "1,100 BC",
+            distToRapanui: 8620,
+            distToMadagascar: 0,
           },
         },
         {
@@ -441,6 +465,11 @@ const longform = {
             //     opacity: 0
             // }
           ],
+          customData: {
+            year: "1,000 AD",
+            distToRapanui: 8620,
+            distToMadagascar: 0,
+          },
         },
         {
           id: "world-tahiti-society-islands",
@@ -475,6 +504,8 @@ const longform = {
           ],
           customData: {
             year: "1,000 AD",
+            distToRapanui: 10815,
+            distToMadagascar: 0,
           },
         },
         {
@@ -507,6 +538,8 @@ const longform = {
           ],
           customData: {
             year: "1,000 AD",
+            distToRapanui: 17421,
+            distToMadagascar: 0,
           },
         },
         {
@@ -537,6 +570,8 @@ const longform = {
           ],
           customData: {
             year: "1,000 AD",
+            distToRapanui: 17421,
+            distToMadagascar: 2901,
           },
         },
         {
@@ -570,6 +605,8 @@ const longform = {
           ],
           customData: {
             year: "1,000 AD",
+            distToRapanui: 17421,
+            distToMadagascar: 2901,
           },
         },
         {
@@ -602,6 +639,11 @@ const longform = {
             //   opacity: 0,
             // },
           ],
+          customData: {
+            year: "1,000 AD",
+            distToRapanui: 17421,
+            distToMadagascar: 11082,
+          },
         },
         {
           id: "world-austronesian-complete",
@@ -629,6 +671,11 @@ const longform = {
             //     opacity: 0
             // }
           ],
+          customData: {
+            year: "Today",
+            distToRapanui: 17421,
+            distToMadagascar: 11082,
+          },
         },
       ],
     },

@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import CountUp from "react-countup";
+import usePrevious from "../../utils/usePrevious";
 
 const Container = styled.div`
   position: fixed;
@@ -51,7 +53,12 @@ const TimeInfoContainer = styled.div`
   }
 `;
 
-const InfoBar = () => {
+const InfoBar = (props) => {
+  const { year, distToMadagascar, distToRapanui } =
+    props.currentChapter.customData;
+
+  const prevChapter = usePrevious(props.currentChapter) || {};
+
   return (
     <Container className="info-bar">
       <TitleContainer>
@@ -63,16 +70,30 @@ const InfoBar = () => {
       </TitleContainer>
       <DistInfoContainer>
         <InfoMadagascar>
-          <DistCount>0km</DistCount>
+          <DistCount>
+            <CountUp end={distToMadagascar} delay={0} duration={3} suffix="km">
+              {({ countUpRef, update }) => {
+                update(distToMadagascar);
+                return <span ref={countUpRef} />;
+              }}
+            </CountUp>
+          </DistCount>
           <p>from Taiwan to Madagascar</p>
         </InfoMadagascar>
         <InfoRapaNui>
-          <DistCount>36,000km</DistCount>
+          <DistCount>
+            <CountUp end={distToRapanui} delay={0} duration={3} suffix="km">
+              {({ countUpRef, update }) => {
+                update(distToRapanui);
+                return <span ref={countUpRef} />;
+              }}
+            </CountUp>
+          </DistCount>
           <p>from Taiwan to Rapa Nui (Easter Islands)</p>
         </InfoRapaNui>
       </DistInfoContainer>
       <TimeInfoContainer>
-        <p>2023 AD</p>
+        <p>{year}</p>
       </TimeInfoContainer>
     </Container>
   );

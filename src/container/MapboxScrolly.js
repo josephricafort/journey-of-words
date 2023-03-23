@@ -2,16 +2,12 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import mapboxgl from "mapbox-gl";
 import scrollama from "scrollama";
 import styled from "styled-components";
+import usePrevious from "../utils/usePrevious";
 
 import { Context } from "../storeContext/Store";
 import { SET_CURRENTSLIDEDATA } from "../utils/constants";
 import MarkdownHTML from "react-markdown/with-html";
-import WhiteGradientFrame, {
-  TopGradient,
-  LeftGradient,
-  RightGradient,
-  BottomGradient,
-} from "../component/MapboxScrolly/WhiteGradientFrame";
+import WhiteGradientFrame from "../component/MapboxScrolly/WhiteGradientFrame";
 import InfoBar from "../component/MapboxScrolly/InfoBar";
 
 const MapContainer = styled.div`
@@ -178,7 +174,7 @@ const MapboxScrolly = (props) => {
         ref={(el) => (mapContainer.current = el)}
         className="absolute top right left bottom"
       />
-      <InfoBar />
+      <InfoBar currentChapter={currentChapter} />
       <WhiteGradientFrame />
       <div id="story">
         {config.title && (
