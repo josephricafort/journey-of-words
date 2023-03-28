@@ -147,7 +147,7 @@ const MapboxScrolly = (props) => {
           // });
         })
         .onStepExit((response) => {
-          var chapter = config.chapters.find(
+          const chapter = config.chapters.find(
             (chap) => chap.id === response.element.id
           );
           if (chapter.onChapterExit.length > 0) {

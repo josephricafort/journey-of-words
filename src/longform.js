@@ -82,8 +82,8 @@ const longform = {
           ],
           customData: {
             year: "5,000 years ago",
-            distToRapanui: 0,
-            distToMadagascar: 0,
+            distToRapanui: { start: 0, end: 0 },
+            distToMadagascar: { start: 0, end: 0 },
           },
         },
         {
@@ -116,8 +116,8 @@ const longform = {
           ],
           customData: {
             year: "5,000 years ago",
-            distToRapanui: 0,
-            distToMadagascar: 0,
+            distToRapanui: { start: 0, end: 0 },
+            distToMadagascar: { start: 0, end: 0 },
           },
         },
         {
@@ -147,8 +147,8 @@ const longform = {
           ],
           customData: {
             year: "5,000 years ago",
-            distToRapanui: 0,
-            distToMadagascar: 0,
+            distToRapanui: { start: 0, end: 0 },
+            distToMadagascar: { start: 0, end: 0 },
           },
         },
         {
@@ -179,8 +179,8 @@ const longform = {
           ],
           customData: {
             year: "4,200 years ago",
-            distToRapanui: 493,
-            distToMadagascar: 0,
+            distToRapanui: { start: 0, end: 493 },
+            distToMadagascar: { start: 0, end: 0 },
           },
         },
         {
@@ -209,8 +209,8 @@ const longform = {
           ],
           customData: {
             year: "4,200 years ago",
-            distToRapanui: 1264,
-            distToMadagascar: 0,
+            distToRapanui: { start: 493, end: 1264 },
+            distToMadagascar: { start: 0, end: 0 },
           },
         },
         {
@@ -243,8 +243,8 @@ const longform = {
           ],
           customData: {
             year: "4,000 years ago",
-            distToRapanui: 2901,
-            distToMadagascar: 0,
+            distToRapanui: { start: 1264, end: 2901 },
+            distToMadagascar: { start: 0, end: 0 },
           },
         },
         {
@@ -276,8 +276,8 @@ const longform = {
           ],
           customData: {
             year: "4,000 years ago",
-            distToRapanui: 6172,
-            distToMadagascar: 0,
+            distToRapanui: { start: 2901, end: 6172 },
+            distToMadagascar: { start: 0, end: 0 },
           },
         },
         {
@@ -306,8 +306,8 @@ const longform = {
           ],
           customData: {
             year: "3,400 years ago",
-            distToRapanui: 8620,
-            distToMadagascar: 0,
+            distToRapanui: { start: 6172, end: 8620 },
+            distToMadagascar: { start: 0, end: 0 },
           },
         },
         {
@@ -338,8 +338,8 @@ const longform = {
           ],
           customData: {
             year: "3,100 years ago",
-            distToRapanui: 8620,
-            distToMadagascar: 0,
+            distToRapanui: { start: 8620, end: 8620 },
+            distToMadagascar: { start: 0, end: 0 },
           },
         },
         {
@@ -370,8 +370,8 @@ const longform = {
           ],
           customData: {
             year: "3,100 years ago",
-            distToRapanui: 8620,
-            distToMadagascar: 0,
+            distToRapanui: { start: 8620, end: 8620 },
+            distToMadagascar: { start: 0, end: 0 },
           },
         },
         {
@@ -399,8 +399,8 @@ const longform = {
           ],
           customData: {
             year: "1,100 BC",
-            distToRapanui: 8620,
-            distToMadagascar: 0,
+            distToRapanui: { start: 8620, end: 8620 },
+            distToMadagascar: { start: 0, end: 0 },
           },
         },
         {
@@ -431,8 +431,8 @@ const longform = {
           ],
           customData: {
             year: "1,100 BC",
-            distToRapanui: 8620,
-            distToMadagascar: 0,
+            distToRapanui: { start: 8620, end: 8620 },
+            distToMadagascar: { start: 0, end: 0 },
           },
         },
         {
@@ -467,8 +467,8 @@ const longform = {
           ],
           customData: {
             year: "1,000 AD",
-            distToRapanui: 8620,
-            distToMadagascar: 0,
+            distToRapanui: { start: 8620, end: 8620 },
+            distToMadagascar: { start: 0, end: 0 },
           },
         },
         {
@@ -504,8 +504,8 @@ const longform = {
           ],
           customData: {
             year: "1,000 AD",
-            distToRapanui: 10815,
-            distToMadagascar: 0,
+            distToRapanui: { start: 8620, end: 10815 },
+            distToMadagascar: { start: 0, end: 0 },
           },
         },
         {
@@ -538,8 +538,8 @@ const longform = {
           ],
           customData: {
             year: "1,000 AD",
-            distToRapanui: 17421,
-            distToMadagascar: 0,
+            distToRapanui: { start: 8620, end: 17421 },
+            distToMadagascar: { start: 0, end: 0 },
           },
         },
         {
@@ -570,8 +570,8 @@ const longform = {
           ],
           customData: {
             year: "1,000 AD",
-            distToRapanui: 17421,
-            distToMadagascar: 2901,
+            distToRapanui: { start: 17421, end: 17421 },
+            distToMadagascar: { start: 0, end: 0 },
           },
         },
         {
@@ -605,8 +605,8 @@ const longform = {
           ],
           customData: {
             year: "1,000 AD",
-            distToRapanui: 17421,
-            distToMadagascar: 2901,
+            distToRapanui: { start: 17421, end: 17421 },
+            distToMadagascar: { start: 0, end: 2901 },
           },
         },
         {
@@ -641,8 +641,8 @@ const longform = {
           ],
           customData: {
             year: "1,000 AD",
-            distToRapanui: 17421,
-            distToMadagascar: 11082,
+            distToRapanui: { start: 17421, end: 17421 },
+            distToMadagascar: { start: 2901, end: 11082 },
           },
         },
         {
@@ -673,8 +673,8 @@ const longform = {
           ],
           customData: {
             year: "Today",
-            distToRapanui: 17421,
-            distToMadagascar: 11082,
+            distToRapanui: { start: 17421, end: 17421 },
+            distToMadagascar: { start: 11082, end: 11082 },
           },
         },
       ],

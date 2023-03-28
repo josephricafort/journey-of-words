@@ -71,9 +71,14 @@ const InfoBar = (props) => {
       <DistInfoContainer>
         <InfoMadagascar>
           <DistCount>
-            <CountUp end={distToMadagascar} delay={0} duration={3} suffix="km">
-              {({ countUpRef, update }) => {
-                update(distToMadagascar);
+            <CountUp
+              start={distToMadagascar.start}
+              end={distToMadagascar.end}
+              delay={0}
+              duration={3}
+              suffix="km"
+            >
+              {({ countUpRef }) => {
                 return <span ref={countUpRef} />;
               }}
             </CountUp>
@@ -82,9 +87,14 @@ const InfoBar = (props) => {
         </InfoMadagascar>
         <InfoRapaNui>
           <DistCount>
-            <CountUp end={distToRapanui} delay={0} duration={3} suffix="km">
-              {({ countUpRef, update }) => {
-                update(distToRapanui);
+            <CountUp
+              start={distToRapanui.start}
+              end={distToRapanui.end}
+              delay={0}
+              duration={3}
+              suffix="km"
+            >
+              {({ countUpRef }) => {
                 return <span ref={countUpRef} />;
               }}
             </CountUp>
