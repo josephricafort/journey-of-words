@@ -724,7 +724,7 @@ const longform = {
             year: "1,000 AD",
             distToRapanui: { start: 17421, end: 17421, opacity: 0.35 },
             distToMadagascar: { start: 2901, end: 11082, opacity: 1 },
-            distMadaRapa: { dist: 10000, opacity: 0 },
+            distMadaRapa: { dist: "22,701", opacity: 0 },
             showLocations: [
               "Taiwan",
               "Philippines",
@@ -767,7 +767,7 @@ const longform = {
             year: "Today",
             distToRapanui: { start: 17421, end: 17421, opacity: 0 },
             distToMadagascar: { start: 11082, end: 11082, opacity: 0 },
-            distMadaRapa: { dist: 10000, opacity: 1 },
+            distMadaRapa: { dist: "22,701", opacity: 1 },
             showLocations: [
               "Taiwan",
               "Philippines",

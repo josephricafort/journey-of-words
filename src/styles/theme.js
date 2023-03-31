@@ -23,7 +23,7 @@ const chapterThemes = {
     stroke2: variables.strokeBlue2,
     stroke3: variables.strokeBlue3,
     stroke4: variables.strokeBlue4,
-    backgroundColor: variables.blue1,
+    backgroundColor: variables.white,
     stageColor: variables.blue1,
     mapboxStyle: mapboxStyles.world,
   },

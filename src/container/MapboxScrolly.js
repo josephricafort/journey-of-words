@@ -227,6 +227,11 @@ const Card = styled.div`
   color: ${(props) => props.theme.color};
   background-color: ${(props) => props.theme.backgroundColor};
   text-align: left;
+  border-radius: ${(props) => (props.hasImage ? `10px 10px 0 0` : "10px")};
+
+  -webkit-box-shadow: 0 0 10px 8px #00000011; /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow: 0 0 10px 8px #00000011; /* Firefox 3.5 - 3.6 */
+  box-shadow: 0 0 10px 8px #00000011; /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 
   @media (${(props) => props.theme.breakpointSmall}) {
     ${(props) => props.alignment === "center" && `margin: 0 auto;`}
@@ -241,6 +246,11 @@ const Card = styled.div`
 
 const CardImage = styled.img`
   width: 100%;
+  border-radius: 0 0 10px 10px;
+
+  -webkit-box-shadow: 0 0 10px 8px #00000011; /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow: 0 0 10px 8px #00000011; /* Firefox 3.5 - 3.6 */
+  box-shadow: 0 0 10px 8px #00000011; /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 `;
 
 const Icon = styled.img`
@@ -282,7 +292,7 @@ const Chapter = ({
   const classList = id === currentChapterID ? "step active" : "step";
   return (
     <CardWrapper id={id} className={[classList, "card-wrapper"]}>
-      <Card className="card" {...alignment}>
+      <Card className="card" {...alignment} hasImage={!!image}>
         {icon && (
           <Icon
             className="topic-icon world"

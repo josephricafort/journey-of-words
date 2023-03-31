@@ -92,7 +92,7 @@ const InfoBar = ({ customData }) => {
               }}
             </CountUp>
           </DistCount>
-          <p>from Taiwan to Madagascar</p>
+          <p>from Taiwan towards Madagascar</p>
         </InfoMadagascar>
         <InfoRapaNui opacity={distToRapanui.opacity}>
           <DistCount>
@@ -108,7 +108,7 @@ const InfoBar = ({ customData }) => {
               }}
             </CountUp>
           </DistCount>
-          <p>from Taiwan to Rapa Nui (Easter Islands)</p>
+          <p>from Taiwan towards Rapa Nui (Easter Islands)</p>
         </InfoRapaNui>
         {customData.distMadaRapa && (
           <InfoMadaRapa opacity={customData.distMadaRapa.opacity}>
