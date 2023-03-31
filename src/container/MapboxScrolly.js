@@ -2,13 +2,13 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import mapboxgl from "mapbox-gl";
 import scrollama from "scrollama";
 import styled from "styled-components";
-import usePrevious from "../utils/usePrevious";
 
 import { Context } from "../storeContext/Store";
 import { SET_CURRENTSLIDEDATA } from "../utils/constants";
 import MarkdownHTML from "react-markdown/with-html";
 import WhiteGradientFrame from "../component/MapboxScrolly/WhiteGradientFrame";
 import InfoBar from "../component/MapboxScrolly/InfoBar";
+import DistanceAreaChart from "../component/MapboxScrolly/DistanceAreaChart";
 
 const MapContainer = styled.div`
   &.mapboxgl-map {
@@ -176,6 +176,9 @@ const MapboxScrolly = (props) => {
       />
       <InfoBar currentChapter={currentChapter} />
       <WhiteGradientFrame />
+      <DistanceAreaChart
+        showLocations={currentChapter.customData.showLocations}
+      />
       <div id="story">
         {config.title && (
           <Header id="header">

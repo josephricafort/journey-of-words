@@ -1,0 +1,142 @@
+[
+  {
+    "name": "Hawai‘i",
+    "subregion": "Polynesia",
+    "region": "Oceania",
+    "area": 10523370480.056,
+    "xMin": -156.06016,
+    "xMax": -154.81406,
+    "yMin": 18.90612,
+    "yMax": 20.26343
+  },
+  {
+    "name": "Kiribati",
+    "subregion": "Micronesia",
+    "region": "Oceania",
+    "area": 961960412.304,
+    "xMin": -174.54341,
+    "xMax": 176.85092,
+    "yMin": -11.46111,
+    "yMax": 6.44514
+  },
+  {
+    "name": "Malay Archipelago",
+    "subregion": "Malay Archipelago",
+    "region": "Asia",
+    "area": 1913540464019.61,
+    "xMin": 95.01271,
+    "xMax": 128.23764,
+    "yMin": -10.92262,
+    "yMax": 21.12238
+  },
+  {
+    "name": "Line Islands",
+    "subregion": "Polynesia",
+    "region": "Oceania",
+    "area": 615689322.78,
+    "xMin": -162.40018,
+    "xMax": -151.78095,
+    "yMin": -11.46111,
+    "yMax": 6.44514
+  },
+  {
+    "name": "Polynesia",
+    "subregion": "Polynesia",
+    "region": "Oceania",
+    "area": 293010727768.053,
+    "xMin": -178.18574,
+    "xMax": 179.90675,
+    "yMin": -48.06243,
+    "yMax": 23.57933
+  },
+  {
+    "name": "Melanesia",
+    "subregion": "Melanesia",
+    "region": "Oceania",
+    "area": 1019112889489.37,
+    "xMin": -180,
+    "xMax": 180,
+    "yMin": -29.08001,
+    "yMax": 2.63361
+  },
+  {
+    "name": "Taiwan",
+    "subregion": "",
+    "region": "Asia",
+    "area": 36011585861,
+    "xMin": 118.27955,
+    "xMax": 122.00538,
+    "yMin": 21.90461,
+    "yMax": 25.28742
+  },
+  {
+    "name": "Caroline Islands",
+    "subregion": "Micronesia",
+    "region": "Oceania",
+    "area": 1142098451.747,
+    "xMin": 132.21388,
+    "xMax": 163.04656,
+    "yMin": 0.91816,
+    "yMax": 9.77558
+  },
+  {
+    "name": "Greater Sunda Islands",
+    "subregion": "Malay Archipelago",
+    "region": "Asia",
+    "area": 1641197526113.64,
+    "xMin": 95.01271,
+    "xMax": 125.30128,
+    "yMin": -8.77793,
+    "yMax": 7.35578
+  },
+  {
+    "name": "New Zealand",
+    "subregion": "Polynesia",
+    "region": "Oceania",
+    "area": 266887479523.146,
+    "xMin": 166.46648,
+    "xMax": 178.56617,
+    "yMin": -47.2776,
+    "yMax": -34.39764
+  },
+  {
+    "name": "Madagascar",
+    "subregion": "",
+    "region": "Africa",
+    "area": 592772870754.114,
+    "xMin": 43.22291,
+    "xMax": 50.50392,
+    "yMin": -25.59857,
+    "yMax": -11.94362
+  },
+  {
+    "name": "Hawaiian Islands",
+    "subregion": "Polynesia",
+    "region": "Oceania",
+    "area": 16851542756.837,
+    "xMin": -178.30437,
+    "xMax": -154.81406,
+    "yMin": 18.90612,
+    "yMax": 28.40168
+  },
+  {
+    "name": "Philippines",
+    "subregion": "Malay Archipelago",
+    "region": "Asia",
+    "area": 293300595087.941,
+    "xMin": 116.95493,
+    "xMax": 126.61769,
+    "yMin": 4.65571,
+    "yMax": 20.83832
+  },
+  {
+    "name": "Micronesia",
+    "subregion": "Micronesia",
+    "region": "Oceania",
+    "area": 2788344615.599,
+    "xMin": 132.21388,
+    "xMax": 176.85092,
+    "yMin": -2.66277,
+    "yMax": 20.55541
+  }
+]

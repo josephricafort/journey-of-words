@@ -1,0 +1,90 @@
+[
+  {
+    "name": "Malay Archipelago",
+    "subregion": "Malay Archipelago",
+    "region": "Asia",
+    "area": 1913540464019.61,
+    "xCentroid": 113.26017,
+    "yCentroid": 0.9174
+  },
+  {
+    "name": "Polynesia",
+    "subregion": "Polynesia",
+    "region": "Oceania",
+    "area": 293010727768.053,
+    "xCentroid": 148.72995,
+    "yCentroid": -38.28201
+  },
+  {
+    "name": "Melanesia",
+    "subregion": "Melanesia",
+    "region": "Oceania",
+    "area": 1019112889489.37,
+    "xCentroid": 142.43424,
+    "yCentroid": -5.92455
+  },
+  {
+    "name": "Taiwan",
+    "subregion": "",
+    "region": "Asia",
+    "area": 36011585861,
+    "xCentroid": 120.95322,
+    "yCentroid": 23.75636
+  },
+  {
+    "name": "Greater Sunda Islands",
+    "subregion": "Malay Archipelago",
+    "region": "Asia",
+    "area": 1641197526113.64,
+    "xCentroid": 110.23326,
+    "yCentroid": -0.25025
+  },
+  {
+    "name": "New Zealand",
+    "subregion": "Polynesia",
+    "region": "Oceania",
+    "area": 266887479523.146,
+    "xCentroid": 172.63136,
+    "yCentroid": -41.79491
+  },
+  {
+    "name": "Madagascar",
+    "subregion": "",
+    "region": "Africa",
+    "area": 592772870754.114,
+    "xCentroid": 46.70487,
+    "yCentroid": -19.37404
+  },
+  {
+    "name": "Hawaiian Islands",
+    "subregion": "Polynesia",
+    "region": "Oceania",
+    "area": 16851542756.837,
+    "xCentroid": 203.6426,
+    "yCentroid": 20.25466
+  },
+  {
+    "name": "Philippines",
+    "subregion": "Malay Archipelago",
+    "region": "Asia",
+    "area": 293300595087.941,
+    "xCentroid": 122.8741,
+    "yCentroid": 11.76437
+  },
+  {
+    "name": "Micronesia",
+    "subregion": "Micronesia",
+    "region": "Oceania",
+    "area": 2788344615.599,
+    "xCentroid": 150.67383,
+    "yCentroid": 9.56509
+  },
+  {
+    "name": "Rapa Nui",
+    "subregion": "Polynesia",
+    "region": "Oceania",
+    "area": 174873129.36876,
+    "xCentroid": 250.64049,
+    "yCentroid": -27.11552
+  }
+]

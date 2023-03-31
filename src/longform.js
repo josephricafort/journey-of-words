@@ -84,6 +84,7 @@ const longform = {
             year: "5,000 years ago",
             distToRapanui: { start: 0, end: 0 },
             distToMadagascar: { start: 0, end: 0 },
+            showLocations: [],
           },
         },
         {
@@ -118,6 +119,7 @@ const longform = {
             year: "5,000 years ago",
             distToRapanui: { start: 0, end: 0 },
             distToMadagascar: { start: 0, end: 0 },
+            showLocations: ["Taiwan"],
           },
         },
         {
@@ -149,6 +151,7 @@ const longform = {
             year: "5,000 years ago",
             distToRapanui: { start: 0, end: 0 },
             distToMadagascar: { start: 0, end: 0 },
+            showLocations: ["Taiwan"],
           },
         },
         {
@@ -181,6 +184,7 @@ const longform = {
             year: "4,200 years ago",
             distToRapanui: { start: 0, end: 493 },
             distToMadagascar: { start: 0, end: 0 },
+            showLocations: ["Taiwan", "Philippines"],
           },
         },
         {
@@ -211,6 +215,7 @@ const longform = {
             year: "4,200 years ago",
             distToRapanui: { start: 493, end: 1264 },
             distToMadagascar: { start: 0, end: 0 },
+            showLocations: ["Taiwan", "Philippines"],
           },
         },
         {
@@ -245,6 +250,7 @@ const longform = {
             year: "4,000 years ago",
             distToRapanui: { start: 1264, end: 2901 },
             distToMadagascar: { start: 0, end: 0 },
+            showLocations: ["Taiwan", "Philippines", "Greater Sunda Islands"],
           },
         },
         {
@@ -278,6 +284,12 @@ const longform = {
             year: "4,000 years ago",
             distToRapanui: { start: 2901, end: 6172 },
             distToMadagascar: { start: 0, end: 0 },
+            showLocations: [
+              "Taiwan",
+              "Philippines",
+              "Greater Sunda Islands",
+              "Melanesia",
+            ],
           },
         },
         {
@@ -308,6 +320,12 @@ const longform = {
             year: "3,400 years ago",
             distToRapanui: { start: 6172, end: 8620 },
             distToMadagascar: { start: 0, end: 0 },
+            showLocations: [
+              "Taiwan",
+              "Philippines",
+              "Greater Sunda Islands",
+              "Melanesia",
+            ],
           },
         },
         {
@@ -340,6 +358,12 @@ const longform = {
             year: "3,100 years ago",
             distToRapanui: { start: 8620, end: 8620 },
             distToMadagascar: { start: 0, end: 0 },
+            showLocations: [
+              "Taiwan",
+              "Philippines",
+              "Greater Sunda Islands",
+              "Melanesia",
+            ],
           },
         },
         {
@@ -372,6 +396,12 @@ const longform = {
             year: "3,100 years ago",
             distToRapanui: { start: 8620, end: 8620 },
             distToMadagascar: { start: 0, end: 0 },
+            showLocations: [
+              "Taiwan",
+              "Philippines",
+              "Greater Sunda Islands",
+              "Melanesia",
+            ],
           },
         },
         {
@@ -401,6 +431,12 @@ const longform = {
             year: "1,100 BC",
             distToRapanui: { start: 8620, end: 8620 },
             distToMadagascar: { start: 0, end: 0 },
+            showLocations: [
+              "Taiwan",
+              "Philippines",
+              "Greater Sunda Islands",
+              "Melanesia",
+            ],
           },
         },
         {
@@ -433,6 +469,12 @@ const longform = {
             year: "1,100 BC",
             distToRapanui: { start: 8620, end: 8620 },
             distToMadagascar: { start: 0, end: 0 },
+            showLocations: [
+              "Taiwan",
+              "Philippines",
+              "Greater Sunda Islands",
+              "Melanesia",
+            ],
           },
         },
         {
@@ -469,6 +511,12 @@ const longform = {
             year: "1,000 AD",
             distToRapanui: { start: 8620, end: 8620 },
             distToMadagascar: { start: 0, end: 0 },
+            showLocations: [
+              "Taiwan",
+              "Philippines",
+              "Greater Sunda Islands",
+              "Melanesia",
+            ],
           },
         },
         {
@@ -506,6 +554,12 @@ const longform = {
             year: "1,000 AD",
             distToRapanui: { start: 8620, end: 10815 },
             distToMadagascar: { start: 0, end: 0 },
+            showLocations: [
+              "Taiwan",
+              "Philippines",
+              "Greater Sunda Islands",
+              "Melanesia",
+            ],
           },
         },
         {
@@ -540,6 +594,15 @@ const longform = {
             year: "1,000 AD",
             distToRapanui: { start: 8620, end: 17421 },
             distToMadagascar: { start: 0, end: 0 },
+            showLocations: [
+              "Taiwan",
+              "Philippines",
+              "Greater Sunda Islands",
+              "Melanesia",
+              "Polynesia",
+              "Micronesia",
+              "Rapa Nui",
+            ],
           },
         },
         {
@@ -572,6 +635,15 @@ const longform = {
             year: "1,000 AD",
             distToRapanui: { start: 17421, end: 17421 },
             distToMadagascar: { start: 0, end: 0 },
+            showLocations: [
+              "Taiwan",
+              "Philippines",
+              "Greater Sunda Islands",
+              "Melanesia",
+              "Polynesia",
+              "Micronesia",
+              "Rapa Nui",
+            ],
           },
         },
         {
@@ -607,6 +679,15 @@ const longform = {
             year: "1,000 AD",
             distToRapanui: { start: 17421, end: 17421 },
             distToMadagascar: { start: 0, end: 2901 },
+            showLocations: [
+              "Taiwan",
+              "Philippines",
+              "Greater Sunda Islands",
+              "Melanesia",
+              "Polynesia",
+              "Micronesia",
+              "Rapa Nui",
+            ],
           },
         },
         {
@@ -643,6 +724,16 @@ const longform = {
             year: "1,000 AD",
             distToRapanui: { start: 17421, end: 17421 },
             distToMadagascar: { start: 2901, end: 11082 },
+            showLocations: [
+              "Taiwan",
+              "Philippines",
+              "Greater Sunda Islands",
+              "Melanesia",
+              "Polynesia",
+              "Micronesia",
+              "Rapa Nui",
+              "Madagascar",
+            ],
           },
         },
         {
@@ -675,6 +766,16 @@ const longform = {
             year: "Today",
             distToRapanui: { start: 17421, end: 17421 },
             distToMadagascar: { start: 11082, end: 11082 },
+            showLocations: [
+              "Taiwan",
+              "Philippines",
+              "Greater Sunda Islands",
+              "Melanesia",
+              "Polynesia",
+              "Micronesia",
+              "Rapa Nui",
+              "Madagascar",
+            ],
           },
         },
       ],

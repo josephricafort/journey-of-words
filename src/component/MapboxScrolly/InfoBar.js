@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import CountUp from "react-countup";
 import usePrevious from "../../utils/usePrevious";
@@ -56,8 +56,6 @@ const TimeInfoContainer = styled.div`
 const InfoBar = (props) => {
   const { year, distToMadagascar, distToRapanui } =
     props.currentChapter.customData;
-
-  const prevChapter = usePrevious(props.currentChapter) || {};
 
   return (
     <Container className="info-bar">
