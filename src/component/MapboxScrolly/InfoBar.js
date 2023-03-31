@@ -28,11 +28,24 @@ const DistInfoContainer = styled.div`
 const InfoMadagascar = styled.div`
   margin-right: 50px;
   text-align: right;
+  opacity: ${(props) => props.opacity};
+  transition: opacity 1s ease 0s;
 `;
 
 const InfoRapaNui = styled.div`
   margin-left: 50px;
   text-align: left;
+  opacity: ${(props) => props.opacity};
+  transition: opacity 1s ease 0s;
+`;
+
+const InfoMadaRapa = styled.div`
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 0);
+  text-align: center;
+  opacity: ${(props) => props.opacity};
+  transition: opacity 1s ease 0s;
 `;
 
 const DistCount = styled.h4`
@@ -52,9 +65,8 @@ const TimeInfoContainer = styled.div`
   }
 `;
 
-const InfoBar = (props) => {
-  const { year, distToMadagascar, distToRapanui } =
-    props.currentChapter.customData;
+const InfoBar = ({ customData }) => {
+  const { year, distToMadagascar, distToRapanui } = customData;
 
   return (
     <Container className="info-bar">
@@ -66,7 +78,7 @@ const InfoBar = (props) => {
         </p>
       </TitleContainer>
       <DistInfoContainer>
-        <InfoMadagascar>
+        <InfoMadagascar opacity={distToMadagascar.opacity}>
           <DistCount>
             <CountUp
               start={distToMadagascar.start}
@@ -82,7 +94,7 @@ const InfoBar = (props) => {
           </DistCount>
           <p>from Taiwan to Madagascar</p>
         </InfoMadagascar>
-        <InfoRapaNui>
+        <InfoRapaNui opacity={distToRapanui.opacity}>
           <DistCount>
             <CountUp
               start={distToRapanui.start}
@@ -98,6 +110,12 @@ const InfoBar = (props) => {
           </DistCount>
           <p>from Taiwan to Rapa Nui (Easter Islands)</p>
         </InfoRapaNui>
+        {customData.distMadaRapa && (
+          <InfoMadaRapa opacity={customData.distMadaRapa.opacity}>
+            <DistCount>{customData.distMadaRapa.dist}km</DistCount>
+            <p>from Madagascar to Rapa Nui (Easter Islands)</p>
+          </InfoMadaRapa>
+        )}
       </DistInfoContainer>
       <TimeInfoContainer>
         <p>{year}</p>

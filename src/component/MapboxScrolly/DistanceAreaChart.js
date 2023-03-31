@@ -30,7 +30,7 @@ const LabelsContainer = styled.div``;
 
 const Title = styled.div`
   position: absolute;
-  bottom: ${(props) => props.marginBottom + 100}px;
+  bottom: ${(props) => props.marginBottom + props.chartHeight / 3}px;
   left: ${(props) => props.marginLeft}px;
   font-size: 14px;
   opacity: 0.65;
@@ -38,7 +38,7 @@ const Title = styled.div`
 
 const UnitLegend = styled.div`
   position: absolute;
-  bottom: ${(props) => props.marginBottom + 100}px;
+  bottom: ${(props) => props.marginBottom + props.chartHeight / 3}px;
   right: ${(props) => props.marginRight}px;
   font-size: 14px;
   opacity: 0.65;
@@ -57,7 +57,7 @@ const locOrder = [
 
 const DistanceAreaChart = ({ showLocations }) => {
   const width = 1000;
-  const height = 300;
+  const height = 250;
   const margin = { top: 100, right: 100, bottom: 10, left: 100 };
   const viewBox = `0, 0, ${width}, ${height}`;
 
@@ -76,7 +76,7 @@ const DistanceAreaChart = ({ showLocations }) => {
     .range([margin.left, width - margin.right]);
 
   const radiusScale = d3
-    .scaleLinear()
+    .scaleSqrt()
     .domain(d3.extent(data, (d) => d.area))
     .range([1, 75]);
 
@@ -143,10 +143,18 @@ const DistanceAreaChart = ({ showLocations }) => {
         </g>
       </SVGChart>
       <LabelsContainer className="labels-container">
-        <Title marginLeft={margin.left} marginBottom={margin.bottom}>
-          Area and distance between island groups
+        <Title
+          marginLeft={margin.left}
+          marginBottom={margin.bottom}
+          chartHeight={height}
+        >
+          Combined area and distance between island groups
         </Title>
-        <UnitLegend marginRight={margin.right} marginBottom={margin.bottom}>
+        <UnitLegend
+          marginRight={margin.right}
+          marginBottom={margin.bottom}
+          chartHeight={height}
+        >
           {"degrees East →"}
         </UnitLegend>
       </LabelsContainer>

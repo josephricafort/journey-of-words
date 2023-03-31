@@ -82,9 +82,9 @@ const longform = {
           ],
           customData: {
             year: "5,000 years ago",
-            distToRapanui: { start: 0, end: 0 },
-            distToMadagascar: { start: 0, end: 0 },
-            showLocations: [],
+            distToRapanui: { start: 0, end: 0, opacity: 0.35 },
+            distToMadagascar: { start: 0, end: 0, opacity: 0.35 },
+            showLocations: ["Taiwan"],
           },
         },
         {
@@ -117,8 +117,8 @@ const longform = {
           ],
           customData: {
             year: "5,000 years ago",
-            distToRapanui: { start: 0, end: 0 },
-            distToMadagascar: { start: 0, end: 0 },
+            distToRapanui: { start: 0, end: 0, opacity: 1 },
+            distToMadagascar: { start: 0, end: 0, opacity: 0.35 },
             showLocations: ["Taiwan"],
           },
         },
@@ -149,8 +149,8 @@ const longform = {
           ],
           customData: {
             year: "5,000 years ago",
-            distToRapanui: { start: 0, end: 0 },
-            distToMadagascar: { start: 0, end: 0 },
+            distToRapanui: { start: 0, end: 0, opacity: 1 },
+            distToMadagascar: { start: 0, end: 0, opacity: 0.35 },
             showLocations: ["Taiwan"],
           },
         },
@@ -182,8 +182,8 @@ const longform = {
           ],
           customData: {
             year: "4,200 years ago",
-            distToRapanui: { start: 0, end: 493 },
-            distToMadagascar: { start: 0, end: 0 },
+            distToRapanui: { start: 0, end: 493, opacity: 1 },
+            distToMadagascar: { start: 0, end: 0, opacity: 0.35 },
             showLocations: ["Taiwan", "Philippines"],
           },
         },
@@ -213,8 +213,8 @@ const longform = {
           ],
           customData: {
             year: "4,200 years ago",
-            distToRapanui: { start: 493, end: 1264 },
-            distToMadagascar: { start: 0, end: 0 },
+            distToRapanui: { start: 493, end: 1264, opacity: 1 },
+            distToMadagascar: { start: 0, end: 0, opacity: 0.35 },
             showLocations: ["Taiwan", "Philippines"],
           },
         },
@@ -248,8 +248,8 @@ const longform = {
           ],
           customData: {
             year: "4,000 years ago",
-            distToRapanui: { start: 1264, end: 2901 },
-            distToMadagascar: { start: 0, end: 0 },
+            distToRapanui: { start: 1264, end: 2901, opacity: 1 },
+            distToMadagascar: { start: 0, end: 0, opacity: 0.35 },
             showLocations: ["Taiwan", "Philippines", "Greater Sunda Islands"],
           },
         },
@@ -282,8 +282,8 @@ const longform = {
           ],
           customData: {
             year: "4,000 years ago",
-            distToRapanui: { start: 2901, end: 6172 },
-            distToMadagascar: { start: 0, end: 0 },
+            distToRapanui: { start: 2901, end: 6172, opacity: 1 },
+            distToMadagascar: { start: 0, end: 0, opacity: 0.35 },
             showLocations: [
               "Taiwan",
               "Philippines",
@@ -318,8 +318,8 @@ const longform = {
           ],
           customData: {
             year: "3,400 years ago",
-            distToRapanui: { start: 6172, end: 8620 },
-            distToMadagascar: { start: 0, end: 0 },
+            distToRapanui: { start: 6172, end: 8620, opacity: 1 },
+            distToMadagascar: { start: 0, end: 0, opacity: 0.35 },
             showLocations: [
               "Taiwan",
               "Philippines",
@@ -356,8 +356,8 @@ const longform = {
           ],
           customData: {
             year: "3,100 years ago",
-            distToRapanui: { start: 8620, end: 8620 },
-            distToMadagascar: { start: 0, end: 0 },
+            distToRapanui: { start: 8620, end: 8620, opacity: 1 },
+            distToMadagascar: { start: 0, end: 0, opacity: 0.35 },
             showLocations: [
               "Taiwan",
               "Philippines",
@@ -394,8 +394,8 @@ const longform = {
           ],
           customData: {
             year: "3,100 years ago",
-            distToRapanui: { start: 8620, end: 8620 },
-            distToMadagascar: { start: 0, end: 0 },
+            distToRapanui: { start: 8620, end: 8620, opacity: 1 },
+            distToMadagascar: { start: 0, end: 0, opacity: 0.35 },
             showLocations: [
               "Taiwan",
               "Philippines",
@@ -429,8 +429,8 @@ const longform = {
           ],
           customData: {
             year: "1,100 BC",
-            distToRapanui: { start: 8620, end: 8620 },
-            distToMadagascar: { start: 0, end: 0 },
+            distToRapanui: { start: 8620, end: 8620, opacity: 1 },
+            distToMadagascar: { start: 0, end: 0, opacity: 0.35 },
             showLocations: [
               "Taiwan",
               "Philippines",
@@ -467,8 +467,8 @@ const longform = {
           ],
           customData: {
             year: "1,100 BC",
-            distToRapanui: { start: 8620, end: 8620 },
-            distToMadagascar: { start: 0, end: 0 },
+            distToRapanui: { start: 8620, end: 8620, opacity: 1 },
+            distToMadagascar: { start: 0, end: 0, opacity: 0.35 },
             showLocations: [
               "Taiwan",
               "Philippines",
@@ -509,8 +509,8 @@ const longform = {
           ],
           customData: {
             year: "1,000 AD",
-            distToRapanui: { start: 8620, end: 8620 },
-            distToMadagascar: { start: 0, end: 0 },
+            distToRapanui: { start: 8620, end: 8620, opacity: 1 },
+            distToMadagascar: { start: 0, end: 0, opacity: 0.35 },
             showLocations: [
               "Taiwan",
               "Philippines",
@@ -552,8 +552,8 @@ const longform = {
           ],
           customData: {
             year: "1,000 AD",
-            distToRapanui: { start: 8620, end: 10815 },
-            distToMadagascar: { start: 0, end: 0 },
+            distToRapanui: { start: 8620, end: 10815, opacity: 1 },
+            distToMadagascar: { start: 0, end: 0, opacity: 0.35 },
             showLocations: [
               "Taiwan",
               "Philippines",
@@ -592,8 +592,8 @@ const longform = {
           ],
           customData: {
             year: "1,000 AD",
-            distToRapanui: { start: 8620, end: 17421 },
-            distToMadagascar: { start: 0, end: 0 },
+            distToRapanui: { start: 8620, end: 17421, opacity: 1 },
+            distToMadagascar: { start: 0, end: 0, opacity: 0.35 },
             showLocations: [
               "Taiwan",
               "Philippines",
@@ -633,8 +633,8 @@ const longform = {
           ],
           customData: {
             year: "1,000 AD",
-            distToRapanui: { start: 17421, end: 17421 },
-            distToMadagascar: { start: 0, end: 0 },
+            distToRapanui: { start: 17421, end: 17421, opacity: 0.35 },
+            distToMadagascar: { start: 0, end: 2901, opacity: 1 },
             showLocations: [
               "Taiwan",
               "Philippines",
@@ -677,8 +677,8 @@ const longform = {
           ],
           customData: {
             year: "1,000 AD",
-            distToRapanui: { start: 17421, end: 17421 },
-            distToMadagascar: { start: 0, end: 2901 },
+            distToRapanui: { start: 17421, end: 17421, opacity: 0.35 },
+            distToMadagascar: { start: 2901, end: 2901, opacity: 1 },
             showLocations: [
               "Taiwan",
               "Philippines",
@@ -722,8 +722,9 @@ const longform = {
           ],
           customData: {
             year: "1,000 AD",
-            distToRapanui: { start: 17421, end: 17421 },
-            distToMadagascar: { start: 2901, end: 11082 },
+            distToRapanui: { start: 17421, end: 17421, opacity: 0.35 },
+            distToMadagascar: { start: 2901, end: 11082, opacity: 1 },
+            distMadaRapa: { dist: 10000, opacity: 0 },
             showLocations: [
               "Taiwan",
               "Philippines",
@@ -764,8 +765,9 @@ const longform = {
           ],
           customData: {
             year: "Today",
-            distToRapanui: { start: 17421, end: 17421 },
-            distToMadagascar: { start: 11082, end: 11082 },
+            distToRapanui: { start: 17421, end: 17421, opacity: 0 },
+            distToMadagascar: { start: 11082, end: 11082, opacity: 0 },
+            distMadaRapa: { dist: 10000, opacity: 1 },
             showLocations: [
               "Taiwan",
               "Philippines",

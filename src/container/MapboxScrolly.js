@@ -166,7 +166,8 @@ const MapboxScrolly = (props) => {
   );
 
   const { alignment } = props.config || {};
-  const currentChapterID = currentChapter.id;
+  const { id: currentChapterID, customData } = currentChapter;
+  const { showLocations } = customData;
 
   return (
     <div>
@@ -174,11 +175,9 @@ const MapboxScrolly = (props) => {
         ref={(el) => (mapContainer.current = el)}
         className="absolute top right left bottom"
       />
-      <InfoBar currentChapter={currentChapter} />
+      <InfoBar {...{ customData }} />
       <WhiteGradientFrame />
-      <DistanceAreaChart
-        showLocations={currentChapter.customData.showLocations}
-      />
+      <DistanceAreaChart {...{ showLocations }} />
       <div id="story">
         {config.title && (
           <Header id="header">
