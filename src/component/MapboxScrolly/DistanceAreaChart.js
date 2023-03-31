@@ -9,6 +9,7 @@ const Container = styled.div`
   bottom: 0;
   left: 50%;
   transform: translate(-50%, 0);
+  z-index: 0;
 `;
 
 const SVGChart = styled.svg``;
@@ -25,6 +26,24 @@ const LabelText = styled.text`
   transition: transform 1s;
 `;
 
+const LabelsContainer = styled.div``;
+
+const Title = styled.div`
+  position: absolute;
+  bottom: ${(props) => props.marginBottom + 100}px;
+  left: ${(props) => props.marginLeft}px;
+  font-size: 14px;
+  opacity: 0.65;
+`;
+
+const UnitLegend = styled.div`
+  position: absolute;
+  bottom: ${(props) => props.marginBottom + 100}px;
+  right: ${(props) => props.marginRight}px;
+  font-size: 14px;
+  opacity: 0.65;
+`;
+
 const locOrder = [
   "Taiwan",
   "Philippines",
@@ -39,7 +58,7 @@ const locOrder = [
 const DistanceAreaChart = ({ showLocations }) => {
   const width = 1000;
   const height = 300;
-  const margin = { top: 50, right: 100, bottom: 20, left: 100 };
+  const margin = { top: 100, right: 100, bottom: 10, left: 100 };
   const viewBox = `0, 0, ${width}, ${height}`;
 
   const svgRef = useRef(null);
@@ -59,7 +78,7 @@ const DistanceAreaChart = ({ showLocations }) => {
   const radiusScale = d3
     .scaleLinear()
     .domain(d3.extent(data, (d) => d.area))
-    .range([1, 100]);
+    .range([1, 75]);
 
   const svgElement = d3.select(svgRef.current);
 
@@ -73,8 +92,11 @@ const DistanceAreaChart = ({ showLocations }) => {
   xAxis.call(d3.axisBottom(coordScale));
 
   useEffect(() => {
-    coordScale.domain(d3.extent(data, (d) => d.xCentroid));
-    xAxis.transition().duration(1000).call(d3.axisBottom(coordScale));
+    coordScale.domain([
+      d3.min(data, (d) => d.xCentroid),
+      d3.max(data, (d) => d.xCentroid),
+    ]);
+    xAxis.call(d3.axisBottom(coordScale));
   }, [data]);
 
   return (
@@ -111,7 +133,7 @@ const DistanceAreaChart = ({ showLocations }) => {
               transform={`translate(${coordScale(d.xCentroid)}, ${
                 (height - margin.bottom) / 2 - radiusScale(d.area)
               })`}
-              font-size={14}
+              fontSize={14}
               dx={3}
               dy={-3}
             >
@@ -120,6 +142,14 @@ const DistanceAreaChart = ({ showLocations }) => {
           ))}
         </g>
       </SVGChart>
+      <LabelsContainer className="labels-container">
+        <Title marginLeft={margin.left} marginBottom={margin.bottom}>
+          Area and distance between island groups
+        </Title>
+        <UnitLegend marginRight={margin.right} marginBottom={margin.bottom}>
+          {"degrees East →"}
+        </UnitLegend>
+      </LabelsContainer>
     </Container>
   );
 };

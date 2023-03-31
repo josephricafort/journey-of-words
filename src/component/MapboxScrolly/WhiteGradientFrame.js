@@ -53,7 +53,7 @@ const BottomGradient = styled.div`
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 100px;
+  height: 200px;
   background: rgb(255, 255, 255);
   background: linear-gradient(
     0deg,
