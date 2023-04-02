@@ -49,8 +49,8 @@ const IntroKicker = ({ slides, photo }) => {
   };
 
   useEffect(
-    () => dispatch({ type: SET_CURRENTSLIDEDATA, payload: currentSlideData }),
-    [currentSlideData]
+    () => dispatch({ type: SET_CURRENTSLIDEDATA, payload: currentSlideData })
+    // [currentSlideData]
   );
 
   return (

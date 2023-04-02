@@ -129,7 +129,7 @@ const longform = {
           id: "world-boat-2",
           description: [
             `They called it:`,
-            `<span class="word-an">**\*qabaŋ₁**</span><span class="word-en"> (boat, canoe) </span> <span class="graphic-desc">*Proto-Austronesian (PAN, said to be the first reconstructed language of the Austronesians.</span>`,
+            `<span class="word-an">**qabaŋ₁**</span><span class="word-en"> (boat, canoe) </span> <span class="graphic-desc">*Proto-Austronesian (PAN, said to be the first reconstructed language of the Austronesians.</span>`,
             `The new outrigger canoe made crossing wide water gaps far easier than had been possible when only bamboo rafts were used at sea!`,
           ],
           location: {

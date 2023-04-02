@@ -97,7 +97,7 @@ const DistanceAreaChart = ({ showLocations }) => {
       d3.max(data, (d) => d.xCentroid),
     ]);
     xAxis.call(d3.axisBottom(coordScale));
-  }, [data]);
+  });
 
   return (
     <Container>

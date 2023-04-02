@@ -164,13 +164,6 @@ const CardIntro = styled(Card)`
   }
 `;
 
-const CardQuote = styled(CardIntro)`
-  h3,
-  p {
-    max-width: 500px;
-  }
-`;
-
 const ContentsWrapper = styled.div``;
 
 function slideSwitch(slide) {
