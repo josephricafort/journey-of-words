@@ -2,10 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import MarkdownHTML from "react-markdown/with-html";
 
-import { Word } from "./styledElements";
 import { CHAPTER_NAMES } from "../../utils/constants";
-
-import colorScaleSel from "./colorScaleSel";
 
 const CardWrapper = styled.div`
   display: flex;
@@ -176,27 +173,6 @@ const CardQuote = styled(CardIntro)`
 
 const ContentsWrapper = styled.div``;
 
-const Icon = styled.img`
-  ${({ iconSize }) =>
-    (iconSize === "small" && `height: 50px; width: 50px;`) ||
-    (iconSize === " medium" && `height: 70px; width: 70px;`) ||
-    (iconSize === "large" && `height: 90px; width: 90px;`) ||
-    `height: 70px; width: 70px;`}
-  margin-bottom: -30px;
-`;
-
-const IconGroup = styled.div``;
-
-const Bullet = ({ value, nValues }) => (
-  <svg height={10} width={10}>
-    <Circle cx={5} cy={5} r={5} value={value} nValues={nValues}></Circle>
-  </svg>
-);
-
-const Circle = styled.circle`
-  fill: ${({ theme, value, nValues }) => colorScaleSel(nValues, theme)[value]};
-`;
-
 function slideSwitch(slide) {
   const markDownProps = (desc) => {
     return {
@@ -226,15 +202,6 @@ function slideSwitch(slide) {
           </ContentsWrapper>
         </CardIntro>
       )}
-      {slide.type === "quote" && (
-        <CardQuote className="scrolly-card quote" {...slide}>
-          <ContentsWrapper className="contents-wrapper">
-            <h3>"{slide.contents.quote.an}"</h3>
-            <p>"{slide.contents.quote.en}"</p>
-            <p>{slide.contents.author}</p>
-          </ContentsWrapper>
-        </CardQuote>
-      )}
       {slide.type === "main-intro" && (
         <CardMainIntro className="scrolly-card intro">
           {slide.contents.title && (
@@ -249,77 +216,6 @@ function slideSwitch(slide) {
         <CardKicker className="scrolly-card kicker">
           <h3 className="card-title">{slide.contents.title}</h3>
         </CardKicker>
-      )}
-      {slide.type === "face-tattoo" && (
-        <Card className="scrolly-card face-tattoo">
-          {slide.contents.icon && (
-            <Icon
-              className="topic-icon face-tattoo"
-              src={require("../../assets/icons/topics/" + slide.contents.icon)}
-              iconSize="medium"
-            />
-          )}
-          {slide.contents.iconItems && (
-            <IconGroup>
-              {slide.contents.iconItems.map((icon, i) => (
-                <Icon
-                  className="topic-icon face-tattoo"
-                  src={require("../../assets/icons/topics/" + icon)}
-                  iconSize="small"
-                  key={"icon-" + i}
-                />
-              ))}
-            </IconGroup>
-          )}
-          {slide.contents.title && (
-            <h3 className="card-title">{slide.contents.title}</h3>
-          )}
-          {slide.contents.p.map(
-            (p, i) => p && <MarkdownHTML {...markDownProps(p)} key={i} />
-          )}
-          {slide.contents.img && (
-            <figure>
-              <img
-                className="face-tattoo-img"
-                src={require("../../assets/images/" + slide.contents.img.src)}
-              />
-              <figcaption>
-                <MarkdownHTML {...markDownProps(slide.contents.img.caption)} />
-              </figcaption>
-            </figure>
-          )}
-        </Card>
-      )}
-      {slide.type === "word-story" && (
-        <Card className="scrolly-card word-story">
-          <Word>
-            {slide.contents.wordAn} ({slide.contents.wordToDisplay})
-          </Word>
-          {/* {slide.contents.story && <p>{slide.contents.story}</p>} */}
-          {slide.contents.p.map(
-            (p, i) => p && <MarkdownHTML {...markDownProps(p)} key={i} />
-          )}
-        </Card>
-      )}
-      {slide.type === "boundaries-chart" && (
-        <Card className="scrolly-card boundaries-chart">
-          {slide.contents.title && (
-            <h3 className="card-title">{slide.contents.title}</h3>
-          )}
-          {slide.contents.p.map(
-            (p, i) => p && <MarkdownHTML {...markDownProps(p)} key={i} />
-          )}
-        </Card>
-      )}
-      {slide.type === "outro" && (
-        <Card className="scrolly-card extro">
-          {slide.contents.title && (
-            <h3 className="card-title">{slide.contents.title}</h3>
-          )}
-          {slide.contents.p.map(
-            (p, i) => p && <MarkdownHTML {...markDownProps(p)} key={i} />
-          )}
-        </Card>
       )}
     </CardWrapper>
   );

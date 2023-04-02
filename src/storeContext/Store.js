@@ -3,11 +3,6 @@ import Reducer from "./Reducer";
 
 const initialState = {
   currentSlideData: {},
-  currentStepIndex: 1,
-  currentChapterTheme: "world",
-  currentChapterIndex: 0,
-
-  currentDistributionData: [{}, {}, {}],
 };
 
 const Store = ({ children }) => {

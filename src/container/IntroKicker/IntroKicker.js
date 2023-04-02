@@ -68,7 +68,7 @@ const IntroKicker = ({ slides, photo }) => {
           onStepEnter={onStepEnter}
           offset={0.5}
         >
-          {slides.map((slide, index) => (
+          {slides.map((slide) => (
             <Step
               className="scrolly-step"
               key={slide.id + "-" + slide.chapter}
