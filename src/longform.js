@@ -5,8 +5,7 @@ const longform = {
       "How the shared linguistic ancestry of Austronesians tells us the story of mankind’s greatest expansion and adversities across the vast Indo-Pacific.",
     byline1:
       "Based from the research works of Robert Blust, Russell Gray, Simon Greenhill, Steven Trussel and Joseph Watts.",
-    byline2:
-      "Written, designed and developed by Joseph Ricafort. Illustrations by Colleen Joyce Ricafort",
+    byline2: "Written, designed and developed by Joseph Ricafort.",
   },
   introKicker: {
     config: {
@@ -17,7 +16,7 @@ const longform = {
           alignment: "center",
           contents: {
             title:
-              "Along these coasts 4,000 years ago, there once lived a group of people who ventured on a journey...",
+              "Along these coasts 5,000 years ago, there once lived a group of people who ventured on a journey...",
           },
         },
         {
@@ -36,14 +35,18 @@ const longform = {
           chapter: "world",
           contents: {
             chapterLabel: "Chapter I",
-            title: "The Words That Sailed Across Half The World",
+            title: "The Sails That Sailed Across Half The World",
             p: [
-              "Understanding the evolution of boat technology and linguistic evidence and tracing the migration of Austronesian peoples",
+              "Understanding the evolution of boat technology and tracing the migration of Austronesian peoples.",
               'An adaptation of Dr. Robert Blust’s "Out Of Taiwan: The Austronesian Expansion As A Chapter In Human History"',
             ],
           },
         },
       ],
+      photo: {
+        source: "../../assets/images/mantou_rock_sunset_latombe.jpg",
+        credit: "Photo by Jean-Claude Latombe",
+      },
     },
   },
   mapboxScrolly: {

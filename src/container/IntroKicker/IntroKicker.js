@@ -12,22 +12,35 @@ const Container = styled.div`
   z-index: ${({ theme }) => theme.zContent + 5};
   background-color: ${({ theme }) => theme.blue8};
 
-  img {
-    position: sticky;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    object-position: center;
-  }
-
   .scrollama-container {
     margin-top: -125vh;
   }
 `;
 
-const IntroKicker = ({ slides }) => {
+const PhotoContainer = styled.div`
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  p {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    color: #ffffff;
+    opacity: 0.75;
+  }
+`;
+
+const IntroKicker = ({ slides, photo }) => {
   const dispatch = useContext(Context)[1];
   const [currentSlideData, setCurrentSlideData] = useState(slides[0]);
 
@@ -42,10 +55,13 @@ const IntroKicker = ({ slides }) => {
 
   return (
     <Container className="intro-kicker">
-      <img
-        src={require("../../assets/images/mantou_rock_sunset_latombe.jpg")}
-        alt="Mantou rock sunset Latombe"
-      />
+      <PhotoContainer className="background-photo">
+        <img
+          src={require("../../assets/images/mantou_rock_sunset_latombe.jpg")}
+          alt="Mantou rock sunset Latombe"
+        />
+        <p>{photo.credit}</p>
+      </PhotoContainer>
       <div className="scrollama-container">
         <Scrollama
           className="scrolly-scrollama"
