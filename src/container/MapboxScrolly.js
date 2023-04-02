@@ -161,8 +161,8 @@ const MapboxScrolly = (props) => {
 
   const dispatch = useContext(Context)[1];
   useEffect(
-    () => dispatch({ type: SET_CURRENTSLIDEDATA, payload: { id: 0 } })
-    // [currentChapter]
+    () => dispatch({ type: SET_CURRENTSLIDEDATA, payload: { id: 0 } }),
+    [currentChapter, dispatch]
   );
 
   const { alignment } = props.config || {};
