@@ -1,6 +1,6 @@
 const longform = {
   header: {
-    title: "The Words That Sailed Across Half The World",
+    title: "The Sails That Sailed Across Half The World",
     description:
       "How the shared linguistic ancestry of Austronesians tells us the story of mankind’s greatest expansion and adversities across the vast Indo-Pacific.",
     byline1:

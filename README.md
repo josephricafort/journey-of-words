@@ -1,12 +1,16 @@
-# Austronesian Languages Exploration
+# The Sails That Sailed Across Half The World
 
-Visualizing the Austronesian language database and reflecting the culture and society through words
+Final project for MVTEC Cartography module 2022-2023 by Joseph Ricafort
+
+This scrolly story takes you on a 5,000-year voyage, exploring the migration of Austronesian peoples and tracing the evolution of the seafaring technologies.
+
+Complete project documentation here: https://josephricafort.notion.site/Documentation-481e3c7851ec4b4294bcd9c4d3d3501b
 
 ---
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## How to run this project?
 
-## Available Scripts
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 In the project directory, you can run:
 

@@ -58,7 +58,7 @@ const locOrder = [
 const DistanceAreaChart = ({ showLocations }) => {
   const width = 1000;
   const height = 250;
-  const margin = { top: 100, right: 100, bottom: 10, left: 100 };
+  const margin = { top: 100, right: 200, bottom: 10, left: 200 };
   const viewBox = `0, 0, ${width}, ${height}`;
 
   const svgRef = useRef(null);
@@ -91,6 +91,13 @@ const DistanceAreaChart = ({ showLocations }) => {
 
   xAxis.call(d3.axisBottom(coordScale));
 
+  const isMajorIslands = (islands) =>
+    data
+      .sort((a, b) => a.area < b.area)
+      .slice(0, 3)
+      .map((d) => d.name)
+      .includes(islands);
+
   useEffect(() => {
     coordScale.domain([
       d3.min(data, (d) => d.xCentroid),
@@ -102,20 +109,8 @@ const DistanceAreaChart = ({ showLocations }) => {
   return (
     <Container>
       <SVGChart {...{ height, width, viewBox }} ref={svgRef}>
-        <g className="dot-markers">
-          {data.map((d) => (
-            <DotCircle
-              id={`dot-marker-${d.name}`}
-              cx={coordScale(d.xCentroid)}
-              cy={(height - margin.bottom) / 2}
-              r={3}
-              fill="#333333"
-              stroke="#FFFFFF"
-            ></DotCircle>
-          ))}
-        </g>
-        <g className="area-circle-markers">
-          {data.map((d) => (
+        {data.map((d) => (
+          <g className="area-circle-markers">
             <AreaCircle
               id={`circle-marker-${d.name}`}
               cx={coordScale(d.xCentroid)}
@@ -124,23 +119,35 @@ const DistanceAreaChart = ({ showLocations }) => {
               fill="orange"
               opacity={0.35}
             ></AreaCircle>
-          ))}
-        </g>
-        <g className="island-labels">
-          {data.map((d) => (
-            <LabelText
-              id={`island-label-${d.name}`}
-              transform={`translate(${coordScale(d.xCentroid)}, ${
-                (height - margin.bottom) / 2 - radiusScale(d.area)
-              })`}
-              fontSize={14}
-              dx={3}
-              dy={-3}
-            >
-              {d.name}
-            </LabelText>
-          ))}
-        </g>
+          </g>
+        ))}
+        {data.map((d) => (
+          <>
+            <g className="dot-markers">
+              <DotCircle
+                id={`dot-marker-${d.name}`}
+                cx={coordScale(d.xCentroid)}
+                cy={(height - margin.bottom) / 2}
+                r={3}
+                fill="#333333"
+                stroke="#FFFFFF"
+              ></DotCircle>
+            </g>
+            <g className="island-labels">
+              <LabelText
+                id={`island-label-${d.name}`}
+                transform={`translate(${coordScale(d.xCentroid)}, ${
+                  (height - margin.bottom) / 2 - radiusScale(d.area)
+                })`}
+                fontSize={14}
+                dx={3}
+                dy={-3}
+              >
+                {d.name}
+              </LabelText>
+            </g>
+          </>
+        ))}
       </SVGChart>
       <LabelsContainer className="labels-container">
         <Title
@@ -148,7 +155,7 @@ const DistanceAreaChart = ({ showLocations }) => {
           marginBottom={margin.bottom}
           chartHeight={height}
         >
-          Combined area and distance between island groups
+          Eastward distance (in degrees)
         </Title>
         <UnitLegend
           marginRight={margin.right}
