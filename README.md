@@ -1,6 +1,6 @@
 # The Sails That Sailed Across Half The World
 
-Final project for MVTEC Cartography module 2022-2023 by Joseph Ricafort
+MVTEC Cartography 2022-2023 Final Project by Joseph Ricafort
 
 This scrolly story takes you on a 5,000-year voyage, exploring the migration of Austronesian peoples and tracing the evolution of the seafaring technologies.
 
@@ -10,7 +10,7 @@ Complete project documentation here: https://josephricafort.notion.site/Document
 
 ## How to run this project?
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was based from [React + Mapbox](https://github.com/jsonkao/scrolly-mapbox) which the React was bootstrapped mainly with [Create React App](https://github.com/facebook/create-react-app).
 
 In the project directory, you can run:
 

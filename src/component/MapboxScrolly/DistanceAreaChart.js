@@ -91,13 +91,6 @@ const DistanceAreaChart = ({ showLocations }) => {
 
   xAxis.call(d3.axisBottom(coordScale));
 
-  const isMajorIslands = (islands) =>
-    data
-      .sort((a, b) => a.area < b.area)
-      .slice(0, 3)
-      .map((d) => d.name)
-      .includes(islands);
-
   useEffect(() => {
     coordScale.domain([
       d3.min(data, (d) => d.xCentroid),
