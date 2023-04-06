@@ -36,13 +36,13 @@ const Title = styled.div`
   opacity: 0.65;
 `;
 
-const UnitLegend = styled.div`
-  position: absolute;
-  bottom: ${(props) => props.marginBottom + props.chartHeight / 3}px;
-  right: ${(props) => props.marginRight}px;
-  font-size: 14px;
-  opacity: 0.65;
-`;
+// const UnitLegend = styled.div`
+//   position: absolute;
+//   bottom: ${(props) => props.marginBottom + props.chartHeight / 3}px;
+//   right: ${(props) => props.marginRight}px;
+//   font-size: 14px;
+//   opacity: 0.65;
+// `;
 
 const locOrder = [
   "Taiwan",

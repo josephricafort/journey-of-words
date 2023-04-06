@@ -4,8 +4,8 @@ const longform = {
     description:
       "How the shared linguistic ancestry of Austronesians tells us the story of mankind’s greatest expansion and adversities across the vast Indo-Pacific.",
     byline1:
-      "Based from the research works of Robert Blust, Russell Gray, Simon Greenhill, Steven Trussel and Joseph Watts.",
-    byline2: "Designed and developed by Joseph Ricafort.",
+      "Based from the research works of Robert Blust, Russell Gray, Simon Greenhill, Steven Trussel and Joseph Watts. Designed and developed by Joseph Ricafort for MVTEC 2022 Cartography final project.",
+    byline2: "",
   },
   introKicker: {
     config: {
@@ -38,7 +38,7 @@ const longform = {
             title: "The Sails That Sailed Across Half The World",
             p: [
               "Understanding the evolution of boat technology and tracing the migration of Austronesian peoples.",
-              'An adaptation of Dr. Robert Blust’s "Out Of Taiwan: The Austronesian Expansion As A Chapter In Human History"',
+              'An adaptation of Dr. Robert Blust’s "Out Of Taiwan: The Austronesian Expansion As A Chapter In Human History. Designed and developed by Joseph Ricafort for MVTEC 2022 Cartography final project.',
             ],
           },
         },
@@ -785,11 +785,12 @@ const longform = {
         },
         {
           id: "world-credits",
-          title: "Stretching across half the world",
+          title: "Data Sources and Tools",
           description: [
-            "The **‘Austronesian world’** was now complete, spanning some 206 degrees of longitude, from Madagascar, just off the east coast of Africa, to Easter Island, about 2,200 miles west of Chile in South America, and 72 degrees of latitude from northern Taiwan to the south island of New Zealand.",
-            "Stretching more than halfway around the planet, this was the most widespread language family on Earth before the European colonial expansions of the past five centuries",
-            "The expansion all began in Taiwan over 4,000 years ago, when someone unknown to history had a ‘dream’ of how to cross the waters that no one had dared to cross before *(Blust 1977, 1984/1985)*.",
+            "- [The Austronesian Homeland and Dispersal](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3335700) - Robert Blust, University of Hawaii",
+            "- [Natural Earth](https://www.naturalearthdata.com/) - Large scale cultural and physical data",
+            "- [A general overview of Austronesian population movements. (researchgate.net)](https://www.researchgate.net/figure/A-general-overview-of-Austronesian-population-movements-This-global-map-was-developed_fig1_357875412) - Main source for the Austronesian population movements map",
+            "- Crafted using React, Mapbox, QGIS and Observable",
           ],
           location: {
             center: { lon: 140.95198, lat: -1.68177 },
