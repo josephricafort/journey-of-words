@@ -783,6 +783,49 @@ const longform = {
             ],
           },
         },
+        {
+          id: "world-credits",
+          title: "Stretching across half the world",
+          description: [
+            "The **‘Austronesian world’** was now complete, spanning some 206 degrees of longitude, from Madagascar, just off the east coast of Africa, to Easter Island, about 2,200 miles west of Chile in South America, and 72 degrees of latitude from northern Taiwan to the south island of New Zealand.",
+            "Stretching more than halfway around the planet, this was the most widespread language family on Earth before the European colonial expansions of the past five centuries",
+            "The expansion all began in Taiwan over 4,000 years ago, when someone unknown to history had a ‘dream’ of how to cross the waters that no one had dared to cross before *(Blust 1977, 1984/1985)*.",
+          ],
+          location: {
+            center: { lon: 140.95198, lat: -1.68177 },
+            zoom: 1.53,
+            pitch: 0.0,
+            bearing: 0.0,
+          },
+          onChapterEnter: [
+            // {
+            //     layer: 'layer-name',
+            //     opacity: 1
+            // }
+          ],
+          onChapterExit: [
+            // {
+            //     layer: 'layer-name',
+            //     opacity: 0
+            // }
+          ],
+          customData: {
+            year: "Today",
+            distToRapanui: { start: 17421, end: 17421, opacity: 0 },
+            distToMadagascar: { start: 11082, end: 11082, opacity: 0 },
+            distMadaRapa: { dist: "22,701", opacity: 1 },
+            showLocations: [
+              "Taiwan",
+              "Philippines",
+              "Greater Sunda Islands",
+              "Melanesia",
+              "Polynesia",
+              "Micronesia",
+              "Rapa Nui",
+              "Madagascar",
+            ],
+          },
+        },
       ],
     },
   },

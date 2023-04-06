@@ -148,15 +148,15 @@ const DistanceAreaChart = ({ showLocations }) => {
           marginBottom={margin.bottom}
           chartHeight={height}
         >
-          Eastward distance (in degrees)
+          Eastward distance (in degrees) and circular areas (in km2)
         </Title>
-        <UnitLegend
+        {/* <UnitLegend
           marginRight={margin.right}
           marginBottom={margin.bottom}
           chartHeight={height}
         >
           {"degrees East →"}
-        </UnitLegend>
+        </UnitLegend> */}
       </LabelsContainer>
     </Container>
   );
